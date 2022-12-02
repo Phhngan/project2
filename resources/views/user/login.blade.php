@@ -7,10 +7,11 @@
             background: #A8B3D0;
             padding: 20px 10px 20px 10px;
             margin-top: 50px;
-            margin-left: 300px;
-            margin-right: 300px;
+            margin-left: 200px;
+            margin-right: 200px;
             border-radius: 5px;
             border: 2px solid #766FD2;
+ 
         }
         h1{
             margin-top: 20px;
@@ -43,6 +44,7 @@
         
     </div>
     <form class="login">
+        <div class="form-group">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -53,5 +55,6 @@
             <a href="#forgetpass"> Quên mật khẩu </a>
         </div>
         <button type="submit" >Submit</button>
+    </div>
     </form>
 @endsection
