@@ -51,6 +51,7 @@
       <img src="/images/logo1.png" alt="" width="100" class="logo">
     </a>
     <input type="text" placeholder="Search..">
+    <a></a>
 </nav>
 </div>
 
