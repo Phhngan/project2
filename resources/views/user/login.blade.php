@@ -50,7 +50,7 @@
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
             <input type="password" class="form-control" id="exampleInputPassword1">
-            <a href="#forgetpass"> Forget Password </a>
+            <a href="#forgetpass"> Quên mật khẩu </a>
         </div>
         <button type="submit" >Submit</button>
     </form>

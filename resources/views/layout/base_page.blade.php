@@ -11,51 +11,62 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <style>
-.top-bar{
-    background-color: #5168A1;
-    overflow: hidden;
-}
+        .top-bar {
+            background-color: #5168A1;
+            overflow: hidden;
+        }
 
-.top-item {
-  float: left;
-  color: white;
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  text-decoration: none;
-  font-size: 17px;
-}
-.top-item:hover{
-    color:white;
-}
-.header{
-    background-color: #A8B3D0;
-    height:150px;
-}
-.logo{
-    padding: 2px;
-}
+        .top-item {
+            float: left;
+            color: white;
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .top-item:hover {
+            color: white;
+        }
+
+        .header {
+            background-color: #A8B3D0;
+            height: 150px;
+        }
+
+        .logo {
+            padding: 2px;
+        }
 
         @yield('style');
     </style>
 </head>
 
 <body>
-        <nav class="top-bar">
+    <nav class="top-bar">
         <a href="#home" class="top-item">Home |</a>
         <a href="#lienhe" class="top-item">Liên hệ</a>
+    </nav>
+
+    <div class="header">
+        <nav class="header">
+            <a class="navbar-brand" href="/home">
+                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt="" width="100" class="logo">
+            </a>
+            <!-- <div class="input-group">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" />
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div> -->
+            <a></a>
         </nav>
+    </div>
 
-        <div class="header">
-            <nav class="header">
-            <a class="navbar-brand" href="#">
-      <img src="/images/logo1.png" alt="" width="100" class="logo">
-    </a>
-    <input type="text" placeholder="Search..">
-    <a></a>
-</nav>
-</div>
-
-        <div class="container">
+    <div class="container">
         @yield('content')
     </div>
     @section('js')
