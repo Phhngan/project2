@@ -3,7 +3,7 @@
 @section('title','Login')
 
 @section('style')
-        form{
+        .login{
             background: #A8B3D0;
             padding: 20px 10px 20px 10px;
             margin-top: 50px;
@@ -19,10 +19,10 @@
              
         }
         .mb-3 {
-            margin: 0px 200px 0px 200px;
+            margin: 25px 200px 0px 200px;
         }
         button{
-            margin: 0px 200px 0px 200px;
+            margin: 0px 200px 25px 200px;
             background-color: #2D1476;
             color: white;
             border-radius: 5px;
@@ -42,7 +42,7 @@
         <h1>Đăng nhập</h1>
         
     </div>
-    <form>
+    <form class="login">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
