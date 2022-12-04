@@ -110,9 +110,15 @@
             background-color: #5168A1;
             color: white;
             padding: 6px;
+            border-radius: 5px;
             font-size: 16px;
             border: none;
             overflow: hidden;
+        }
+
+        .dropbtn-sp:hover{
+            background-color: white;
+            color: #2D1476;
         }
 
         .dropd-sp {
@@ -154,7 +160,7 @@
 <body>
     <!-- top bar -->
     <nav class="top-bar">
-        <a href="#home" class="top-item">Home |</a>
+        <a href="/home" class="top-item">Home |</a>
         <a href="#lienhe" class="top-item">Liên hệ</a>
     </nav>
     <!-- header -->
@@ -171,8 +177,8 @@
                     <button type="submit">Tìm kiếm</button>
                 </form>
                 <div class="dangnhap-dangki">
-                    <a href="#Dangnhap" class="dang-nhap"> Đăng nhập /</a>
-                    <a href="#Dangki" class="dang-ki"> Đăng ký </a>
+                    <a href="/login" class="dang-nhap"> Đăng nhập /</a>
+                    <a href="/regiter" class="dang-ki"> Đăng ký </a>
                     <a class="cart" href="#cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-cart"
                             viewBox="0 0 16 16">

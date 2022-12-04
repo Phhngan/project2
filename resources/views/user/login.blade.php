@@ -11,7 +11,7 @@
             margin-right: 200px;
             border-radius: 5px;
             border: 2px solid #766FD2;
- 
+            height: 450px;
         }
         h1{
             margin-top: 20px;
@@ -22,20 +22,24 @@
         .mb-3 {
             margin: 25px 200px 0px 200px;
         }
-        button{
-            margin: 0px 200px 25px 200px;
+        .btn-dangnhap{
+            margin: 0px 200px 0px 200px;
             background-color: #2D1476;
             color: white;
             border-radius: 5px;
             padding: 5px 10px 5px 10px;
         }
-        button:hover {
+        .btn-dangnhap:hover {
             background-color: white;
             color: #2D1476;
         }  
         a{
             color: black;
         }
+        .form-group{
+            padding: 50px;
+        }
+       
 @endsection
 
 @section('content')
@@ -52,9 +56,14 @@
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
             <input type="password" class="form-control" id="exampleInputPassword1">
-            <a href="#forgetpass"> Quên mật khẩu </a>
         </div>
-        <button type="submit" >Submit</button>
+        <button type="submit" class="btn-dangnhap" >Submit</button>
+        <div class="mb-3">
+        <a class="quen-mat-khau" href="#forgetpass"> Quên mật khẩu </a>
+            <br>
+            <a>Chưa có tài khoản?</a>
+            <a href="/register"> Đăng kí </a>
+    </div>
     </div>
     </form>
 @endsection

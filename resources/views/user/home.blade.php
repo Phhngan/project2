@@ -2,7 +2,7 @@
 
 @section('title','Home')
 
-section('style')
+@section('style')
 
 @endsection
 
