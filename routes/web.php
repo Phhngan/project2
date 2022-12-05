@@ -15,15 +15,17 @@ use League\CommonMark\Util\Html5EntityDecoder;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-// ADMIN
-//admin dashboard
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+    return view('/home');
 });
 
-//
+// ADMIN
+//admin home
+Route::get('/admin/home', function () {
+    return view('admin/home');
+});
+Route::get('/admin/home', [\App\Http\Controllers\AdminController::class, 'viewHome']);
+
+//site home
 Route::get('/home', function () {
     return view('user.home');
 });
@@ -32,7 +34,8 @@ Route::get('/home', function () {
 Route::get('/login', function () {
     return view('user.login');
 });
-// 
+
+//register 
 Route::get('/register', function () {
     return view('user.register');
 });
