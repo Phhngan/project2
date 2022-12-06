@@ -11,4 +11,10 @@ class AdminController extends Controller
     {
         return view('admin/home');
     }
+
+    function viewAllProduct()
+    {
+        return view('admin/product/index');
+    }
+
 }

@@ -25,7 +25,10 @@ Route::get('/admin/home', function () {
 });
 Route::get('/admin/home', [\App\Http\Controllers\AdminController::class, 'viewHome']);
 
-//site home
+//quan li san pham
+Route::get('/admin/products', [\App\Http\Controllers\AdminController::class, 'viewAllProduct']);
+
+//SITE home
 Route::get('/home', function () {
     return view('user.home');
 });
