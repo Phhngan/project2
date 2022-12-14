@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call((PositionTypeDatabase::class));
         $this->call((RegionDatabase::class));
         $this->call((ProvinceDatabase::class));
-        $this->call((UserInforDatabase::class));
+        $this->call((UsersDatabase::class));
         $this->call((ImportInvoiceDatabase::class));
         $this->call((ImportInvoiceDetailDatabase::class));
         $this->call((SalesInvoiceStatusDatabase::class));
