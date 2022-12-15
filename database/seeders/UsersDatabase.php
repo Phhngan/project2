@@ -21,10 +21,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Phạm',
-                'use_firstName' => 'Hà Ngân',
+                'name' => 'Hà Ngân',
                 'use_birth' => '2002/01/02',
                 'use_gender' => 2,
-                'use_email' => 'phamhngan2102@gmail.com',
+                'email' => 'phamhngan2102@gmail.com',
                 'use_phone' => '0966835587',
                 'pro_id' => 24,
                 'use_district' => 'Hoàng Mai',
@@ -38,10 +38,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Hải',
-                    'use_firstName' => 'Nam Dương',
+                    'name' => 'Nam Dương',
                     'use_birth' => '2002/09/04',
                     'use_gender' => 1,
-                    'use_email' => 'namduongbeo49@gmail.com',
+                    'email' => 'namduongbeo49@gmail.com',
                     'use_phone' => '0354427760',
                     'pro_id' => 24,
                     'use_district' => 'Hoàng Mai',
@@ -55,10 +55,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Thị',
-                    'use_firstName' => 'A',
+                    'name' => 'A',
                     'use_birth' => '2002/12/05',
                     'use_gender' => 2,
-                    'use_email' => 'nguyenthia@gmail.com',
+                    'email' => 'nguyenthia@gmail.com',
                     'use_phone' => '0921345278',
                     'pro_id' => 24,
                     'use_district' => 'Hoàng Mai',
@@ -72,10 +72,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Văn',
-                    'use_firstName' => 'B',
+                    'name' => 'B',
                     'use_birth' => '2002/05/12',
                     'use_gender' => 1,
-                    'use_email' => 'nguyenvanb@gmail.com',
+                    'email' => 'nguyenvanb@gmail.com',
                     'use_phone' => '0367123283',
                     'pro_id' => 24,
                     'use_district' => 'Hoàng Mai',
@@ -89,10 +89,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Thị',
-                    'use_firstName' => 'C',
+                    'name' => 'C',
                     'use_birth' => '2002/07/23',
                     'use_gender' => 2,
-                    'use_email' => 'nguyenthic@gmail.com',
+                    'email' => 'nguyenthic@gmail.com',
                     'use_phone' => '0347273472',
                     'pro_id' => 26,
                     'use_district' => 'Tứ Kỳ',
@@ -106,10 +106,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Văn',
-                    'use_firstName' => 'D',
+                    'name' => 'D',
                     'use_birth' => '2002-04-19',
                     'use_gender' => 1,
-                    'use_email' => 'nguyenvand@gmail.com',
+                    'email' => 'nguyenvand@gmail.com',
                     'use_phone' => '0237123721',
                     'pro_id' => 15,
                     'use_district' => 'Hòa Vang',
@@ -123,10 +123,10 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Thị',
-                    'use_firstName' => 'E',
+                    'name' => 'E',
                     'use_birth' => '2002-02-26',
                     'use_gender' => 2,
-                    'use_email' => 'nguyenthie@gmail.com',
+                    'email' => 'nguyenthie@gmail.com',
                     'use_phone' => '0346278319',
                     'pro_id' => 58,
                     'use_district' => 'Quận 1',

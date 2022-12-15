@@ -15,9 +15,9 @@ use League\CommonMark\Util\Html5EntityDecoder;
 |
 */
 
-// Route::get('/', function () {
-//     return view('/home');
-// });
+Route::get('/', function () {
+    return redirect('home');
+});
 
 // ADMIN
 //admin home
@@ -38,9 +38,6 @@ Route::get('/home', function () {
 // Route::get('/login', function () {
 //     return view('user.login');
 // });
-Route::get('/', function () {
-    return redirect('login');
-});
 
 Route::get('/login',[LoginController::class,'viewLogin']);
 Route::post('/login',[LoginController::class,'login']);

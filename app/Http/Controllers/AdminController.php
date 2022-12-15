@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     //
+    public function __construct(){
+        $this->middleware('is_admin');
+    }
+
     function viewHome()
     {
         return view('admin/home');
@@ -15,6 +19,11 @@ class AdminController extends Controller
     function viewAllProduct()
     {
         return view('admin/product/index');
+    }
+
+    function viewSettings()
+    {
+        return view('admin/settings');
     }
 
 }

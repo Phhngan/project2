@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('Users', function (Blueprint $table) {
             $table->increments('use_id');
             $table->string('use_lastName');
-            $table->string('use_firstName');
+            $table->string('name');
             $table->date('use_birth')->nullable();
             $table->integer('use_gender')->nullable();
-            $table->string('use_email')->unique();
+            $table->string('email')->unique();
             $table->string('use_phone');
             $table->unsignedInteger('pro_id')->nullable();
             $table->string('use_district')->nullable();

@@ -19,7 +19,7 @@ class LoginController extends Controller
         $password = $request->get('password');
 
         $rs = Auth::attempt(
-            ['use_email' => $email, 'password' => $password]
+            ['email' => $email, 'password' => $password]
         );
 
         if ($rs == true){
@@ -36,22 +36,18 @@ class LoginController extends Controller
             // dd("Dang nhap that bai",);
         }
 
-        // $rs = DB::table('UserInfor')->where('use_email',$use_email)->where('use_password',$use_password)->first();
-           
-        // if($rs){
-        //     return redirect('/admin/home');
-        // } else {
-        //     return view('user.login');
-        // }
-        // if($rs) {
-        //     if($rs->pos_id > 1 ){
-        //         return redirect('/admin/home');
-        //     } else{
-        //         return redirect('/home');
-        //     }
-        // } else {
-        //     // log($rs->pos_id);
-        //     return view('user/login');
-        // }
+        // $rs = DB::table('UserInfor')->where('use_email',$use_email)->where('use_password',$use_password)->first();               
+    }
+
+    function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        $user = Auth::user();
+        if ($user->pos_id > 1){
+            return redirect('login');
+        } else {
+            return redirect('/');
+        }
     }
 }
