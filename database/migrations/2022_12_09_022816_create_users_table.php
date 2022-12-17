@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('UserInfor', function (Blueprint $table) {
+        Schema::create('Users', function (Blueprint $table) {
             $table->increments('use_id');
             $table->string('use_lastName');
-            $table->string('use_firstName');
+            $table->string('name');
             $table->date('use_birth')->nullable();
-            $table->integer('use_gender');
-            $table->string('use_email')->unique();
+            $table->integer('use_gender')->nullable();
+            $table->string('email')->unique();
             $table->string('use_phone');
             $table->unsignedInteger('pro_id')->nullable();
             $table->string('use_district')->nullable();
             $table->string('use_town')->nullable();
             $table->string('use_detailAddress')->nullable();
-            $table->string('use_password');
+            $table->string('password');
             $table->unsignedInteger('pos_id');
             
             $table->timestamp('email_verified_at')->nullable();

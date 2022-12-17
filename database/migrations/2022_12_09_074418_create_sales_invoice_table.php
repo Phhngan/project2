@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('sal_note')->nullable();
             $table->timestamps();
 
-            $table->foreign('use_id')->references('use_id')->on('UserInfor');
+            $table->foreign('use_id')->references('use_id')->on('Users');
             $table->foreign('sal_status_id')->references('sal_status_id')->on('SalesInvoiceStatus');
             $table->foreign('pro_id')->references('pro_id')->on('Province');
         });

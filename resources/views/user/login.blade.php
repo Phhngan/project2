@@ -47,7 +47,8 @@
         <h1>Đăng nhập</h1>
         
     </div>
-    <form class="login">
+    <form class="login" method="post">
+        @csrf
         <div class="form-group">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>

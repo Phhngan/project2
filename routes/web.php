@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -15,7 +16,7 @@ use League\CommonMark\Util\Html5EntityDecoder;
 */
 
 Route::get('/', function () {
-    return view('/home');
+    return redirect('home');
 });
 
 // ADMIN
@@ -34,9 +35,13 @@ Route::get('/home', function () {
 });
 
 //login 
-Route::get('/login', function () {
-    return view('user.login');
-});
+// Route::get('/login', function () {
+//     return view('user.login');
+// });
+
+Route::get('/login',[LoginController::class,'viewLogin']);
+Route::post('/login',[LoginController::class,'login']);
+Route::post('/logout',[LoginController::class,'logout']);
 
 //register 
 Route::get('/register', function () {
