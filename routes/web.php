@@ -42,3 +42,5 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('user.register');
 });
+
+//products

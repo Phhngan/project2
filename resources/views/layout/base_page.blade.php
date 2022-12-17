@@ -95,7 +95,7 @@
             text-align: center;
             text-decoration: none;
             font-size: 16px;
-            margin: 6px 200px 6px 200px;
+            margin: 6px 50px 6px;
             padding: 6px;
         }
 
@@ -106,7 +106,7 @@
         }
 
         .dropbtn-sp {
-            margin: 6px 200px 6px 200px;
+            margin: 6px 100px 6px 0px;
             background-color: #5168A1;
             color: white;
             padding: 6px;
@@ -152,6 +152,12 @@
         .dropd-sp:hover .dropdown-content {
             display: block;
         }
+.text-white{
+    text-decoration: none;
+}
+.footer{
+  margin-top: 50px;
+}
 
         @yield('style');
     </style>
@@ -193,9 +199,9 @@
     <!-- header-bottom -->
     <nav class="header-bottom">
         <a href="/home" class="bot-item">Trang chủ</a>
-        <a href="#gioithieu" class="bot-item">Giới thiệu</a>
+        <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
         <div class="dropd-sp">
-            <button class="dropbtn-sp">Sản phẩm</button>
+            <button class="dropbtn-sp" class="bot-item">Sản phẩm</button>
             <div class="dropdown-content">
                 <a href="#">Đồ mặn</a>
                 <a href="#">Đồ ngọt</a>
@@ -204,12 +210,160 @@
         </div>
     </nav>
 
+        <div class="full-screen-content">
+        @yield('full-screen-content')
+    </div>
     <div class="container">
         @yield('content')
     </div>
+
+    <!-- FOOTER -->
+    <nav class="footer">
+        <!-- Footer -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Đăng kí để nhận thông báo</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example21" class="form-control" />
+              <label class="form-label" for="form5Example21">Địa chỉ email</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Đăng kí
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+      
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Liên kết nhanh</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="/home" class="text-white">Trang chủ</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Giới thiệu</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Sản phẩm</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Liên hệ</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Về chúng tôi</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <p class="text-white">Chúng tôi chuyên cung cấp các sản phẩm thực phẩm sạch, an toàn cho sức khoẻ người tiêu dùng</p>
+            </li>
+            <li>
+              <p class="text-white">Hai Bà Trưng, Hà Nội, Vietnam</p>
+            </li>
+            <li>
+              <p class="text-white"> 1900 1000
+Thứ 2 - Chủ nhật: 9:00 - 18:00</p>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+ <!--Grid column-->
+ <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Bộ công thương</h5>
+
+          <ul class="list-unstyled mb-0">
+            <!-- <li>
+              <a href="/home" class="text-white">Trang chủ</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Giới thiệu</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Sản phẩm</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Liên hệ</a>
+            </li>
+          </ul> -->
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+          <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt=""
+                    height="100px" class="logo">
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="#">Snack</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</nav>
+
     @section('js')
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
     @show
 </body>
