@@ -4,20 +4,34 @@
 
 @section('content')
     <h1 class="text-center">Cập nhật sản phẩm</h1>
-    <form action="{{url('admin/product/'.$product->id.'/edit')}}" method="POST">
+    <form action="{{url('admin/product/'.$product->prd_id.'/edit')}}" method="POST">
         @csrf
         @method('put')
         <br>
-        <input value="{{ $product->name  }}" name="productName" type="text" class="form-control"
+        <input value="{{ $product->prd_code  }}" name="productName" type="text" class="form-control"
+               placeholder="Mã sản phẩm">
+        <br>
+        <input value="{{ $product->prd_name  }}" name="productName" type="text" class="form-control"
                placeholder="Tên sản phẩm">
         <br>
-        <input value="{{ $product->price  }}" name="productPrice" type="number" class="form-control"
-               placeholder="Giá sản phẩm">
+        <input value="{{ $product->prd_type_id  }}" name="productName" type="text" class="form-control"
+               placeholder="Loại sản phẩm">
         <br>
-        <input value="{{ $product->image }}" name="productImageURL" type="text" class="form-control"
-               placeholder="Link ảnh sản phẩm - nhập URL">
+        <input value="{{ $product->prd_weigh  }}" name="productName" type="text" class="form-control"
+               placeholder="Khối lượng">
         <br>
-        <textarea name="productDescription" id="editor">{{$product->description}}</textarea>
+        <input value="{{ $product->prd_source  }}" name="productName" type="text" class="form-control"
+               placeholder="Nguồn gốc">
+        <br>
+        <input value="{{ $product->prd_price  }}" name="productPrice" type="number" class="form-control"
+               placeholder="Giá bán">
+        <br>
+        <input value="{{ $product->prd_discount  }}" name="productName" type="text" class="form-control"
+               placeholder="Giảm giá">
+        <br>
+        <input value="{{ $product->prd_description  }}" name="productName" type="text" class="form-control"
+               placeholder="Mô tả">
+        <br>
         <button type="submit" class="btn btn-primary">Cập nhật</button>
     </form>
 @endsection
