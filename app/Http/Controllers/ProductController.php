@@ -12,7 +12,7 @@ class ProductController extends Controller
         // Lay du lieu
         $products = DB::table('Product')->get();
         // $images = DB::table('Images')->get();
-        // $type = DB::table('ProductType')->get();
+        // $type = DB::table('ProductType')->get(); 
 
         // Tra ve view -> view se render ra man hinh
         // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     // Xoa 1 sp theo id
     function delete($prd_id){
-        DB::table('Product')->where('')->delete($prd_id);
+        DB::table('Product')->where('prd_id',$prd_id)->delete();
         return redirect('admin/products');
     }
 
