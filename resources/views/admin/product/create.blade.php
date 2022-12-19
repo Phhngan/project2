@@ -1,6 +1,6 @@
 @extends('layout.admin_base')
 
-@section('title','Tao san pham')
+@section('title','Tạo sản phẩm')
 
 @section('content')
     <h1 class="text-center">Tạo sản phẩm mới</h1>

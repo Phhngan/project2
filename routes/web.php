@@ -17,8 +17,8 @@ use League\CommonMark\Util\Html5EntityDecoder;
 |
 */
 
-Route::get('/', function () {
-    return redirect('home');
+Route::get('/home', function () {
+    return redirect('user.home');
 });
 
 //SITE home
@@ -26,11 +26,11 @@ Route::get('/', function () {
         return view('user.home');
     });
 
+//SITE all products
+
+
 // ADMIN
 //admin home
-    // Route::get('/admin/home', function () {
-    //     return view('admin/home');
-    // });
     Route::get('/admin/home', [AdminController::class, 'viewHome']);
 
 // //quan li san pham

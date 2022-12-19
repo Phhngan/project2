@@ -9,11 +9,18 @@ margin-bottom: 50px;
 }
 .sp-noi-bat{
 background-color: #B8B0E3;
-height: 500px;
+height: 600px;
 margin-bottom:50px;
-opacity: 0.5;
 border-radius: 5px;
 }
+
+.sp-moi{
+background-color: #B8B0E3;
+height: 600px;
+margin-bottom:50px;
+border-radius: 5px;
+}
+
 .tieu-de{
 text-align: center;
 color: #FFFFFF;
@@ -22,52 +29,48 @@ font-family: "Times New Roman", Times, serif;
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+max-width: 300px;
+margin: auto;
+text-align: center;
+font-family: arial;
 }
 
 .price {
-  color: grey;
-  font-size: 22px;
+color: grey;
+font-size: 22px;
 }
 
 .card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
+border: none;
+outline: 0;
+padding: 8px;
+color: white;
+background-color: #5168A1;
+text-align: center;
+cursor: pointer;
+width: 100%;
+font-size: 15px;
 }
 
 .card button:hover {
-  opacity: 0.7;
+opacity: 0.7;
 }
 
 /* Create four equal columns that floats next to each other */
 .column {
-  float: left;
-  width: 25%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+float: left;
+width: 25%;
+padding: 10px;
+height: 300px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+content: "";
+display: table;
+clear: both;
 }
-
-@endsection
-
-@section('full-screen-content')
 
 @endsection
 
@@ -116,42 +119,110 @@ font-family: "Times New Roman", Times, serif;
   <h2 class="tieu-de">Sản phẩm nổi bật</h2>
   <div class="row">
     <div class="column">
-    <div class="card">
-  <img src="/w3images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-      </div>
-      <div class="column">
       <div class="card">
-  <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay" style="width:100%">
-  <h1>Cơm cháy chà bông</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
+          style="width:100%">
+        <h3>Trà hoa quả Meco</h3>
+        <p class="price">30.000VND</p>
+        <p><button>Thêm vào giỏ</button></p>
       </div>
-      <div class="column">
+    </div>
+    <div class="column">
       <div class="card">
-  <img src="/w3images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
+          style="width:100%">
+        <h3>Cơm cháy chà bông</h3>
+        <p class="price">50.000VND</p>
+        <p><button>Thêm vào giỏ</button></p>
       </div>
-      <div class="column">
+    </div>
+    <div class="column">
       <div class="card">
-  <img src="/w3images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
+          style="width:100%">
+        <h3>Coca cola Sig Mixers</h3>
+        <p class="price">96.000VND</p>
+        <p><button>Thêm vào giỏ</button></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
+          alt="banh-gau" style="width:100%">
+        <h3>Bánh gấu mix 3 vị</h3>
+        <p class="price">60.000VND</p>
+        <p><button>Thêm vào giỏ </button></p>
       </div>
     </div>
   </div>
+</div>
 
-  @endsection
+<!-- San pham moi -->
+<div class="sp-moi">
+  <h2 class="tieu-de">Sản phẩm mới</h2>
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
+          style="width:100%">
+        <h3>Trà hoa quả Meco</h3>
+        <p class="price">30.000VND</p>
+        <p><button>Thêm vào giỏ</button></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
+          style="width:100%">
+        <h3>Cơm cháy chà bông</h3>
+        <p class="price">50.000VND</p>
+        <p><button>Thêm vào giỏ</button></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
+          style="width:100%">
+        <h3>Coca cola Sig Mixers</h3>
+        <p class="price">96.000VND</p>
+        <p><button>Thêm vào giỏ</button></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
+          alt="banh-gau" style="width:100%">
+        <h3>Bánh gấu mix 3 vị</h3>
+        <p class="price">60.000VND</p>
+        <p><button>Thêm vào giỏ </button></p>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+
+@section('full-screen-content')
+<div class="nhan-hang">
+<h2 class="tieu-de">Các nhãn hàng</h2>
+<div class="row">
+<div class="column">
+
+</div>
+<div class="column">
+
+</div>
+<div class="column">
+
+</div>
+<div class="column">
+
+</div>
+<div class="column">
+
+</div>
+<div class="column">
+
+</div>
+</div>
+</div>
+@endsection

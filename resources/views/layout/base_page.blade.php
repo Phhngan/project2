@@ -10,155 +10,155 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/base_site.css">
     <style>
-        .top-bar {
-            background-color: #5168A1;
-            overflow: hidden;
-        }
+      .top-bar {
+    background-color: #5168A1;
+    overflow: hidden;
+}
 
-        .top-item {
-            float: left;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 2px 0px 2px 5px;
-        }
-
-        .top-item:hover {
-            color: white;
-        }
-
-        .header {
-            background-color: #A8B3D0;
-            height: 150px;
-            position: sticky;
-        }
-
-        .logo {
-            margin-top: 25px;
-            margin-bottom: 25px;
-            float: left;
-        }
-
-        .header .search-container {
-            float: inherit;
-            width: 700px;
-        }
-
-        .header input[type=text] {
-            padding: 6px;
-            margin: 50px auto 25px 150px;
-            font-size: 17px;
-            width: 300px;
-            border: none;
-        }
-
-        .header .search-container button {
-            float: inherit;
-            padding: 6px 10px;
-            margin: 50px auto 25px auto;
-            background: 5168A1;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .header .dangnhap-dangki {
-            float: inherit;
-            width: 580px;
-            margin: -60px auto auto 950px;
-        }
-
-        .dang-nhap,
-        .dang-ki {
-            float: inherit;
-            color: white;
-            font-family: "Times New Roman", Times, serif;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .cart {
-            float: inherit;
-            margin-left: 150px;
-        }
-
-        .header-bottom {
-            background-color: #5168A1;
-            overflow: hidden;
-        }
-
-        .bot-item {
-            float: left;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 6px 50px 6px;
-            padding: 6px;
-        }
-
-        .bot-item:hover{
-            background-color: white;
-            border-radius: 5px;
-            color: #2D1476;
-        }
-
-        .dropbtn-sp {
-            margin: 6px 100px 6px 0px;
-            background-color: #5168A1;
-            color: white;
-            padding: 6px;
-            border-radius: 5px;
-            font-size: 16px;
-            border: none;
-            overflow: hidden;
-        }
-
-        .dropbtn-sp:hover{
-            background-color: white;
-            color: #2D1476;
-        }
-
-        .dropd-sp {
-            float: left;
-            overflow: hidden;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            margin-left: 200px;
-        }
-
-        .dropdown-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        .dropd-sp:hover .dropdown-content {
-            display: block;
-        }
-.text-white{
+.top-item {
+    float: left;
+    color: white;
+    text-align: center;
     text-decoration: none;
+    font-size: 16px;
+    margin: 2px 0px 2px 5px;
+}
+
+.top-item:hover {
+    color: white;
+}
+
+.header {
+    background-color: #A8B3D0;
+    height: 150px;
+    position: sticky;
+}
+
+.logo {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    float: left;
+}
+
+.header .search-container {
+    float: inherit;
+    width: 700px;
+}
+
+.header input[type=text] {
+    padding: 6px;
+    margin: 50px auto 25px 150px;
+    font-size: 17px;
+    width: 300px;
+    border: none;
+}
+
+.header .search-container button {
+    float: inherit;
+    padding: 6px 10px;
+    margin: 50px auto 25px auto;
+    background: 5168A1;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.header .dangnhap-dangki {
+    float: inherit;
+    width: 580px;
+    margin: -60px auto auto 950px;
+}
+
+.dang-nhap,
+.dang-ki {
+    float: inherit;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.cart {
+    float: inherit;
+    margin-left: 150px;
+}
+
+.header-bottom {
+    background-color: #5168A1;
+    overflow: hidden;
+}
+
+.bot-item {
+    float: left;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 6px 50px 6px;
+    padding: 6px;
+}
+
+.bot-item:hover{
+    background-color: white;
+    border-radius: 5px;
+    color: #2D1476;
+}
+
+.dropbtn-sp {
+    margin: 6px 100px 6px 0px;
+    background-color: #5168A1;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    overflow: hidden;
+}
+
+.dropbtn-sp:hover{
+    background-color: white;
+    color: #2D1476;
+}
+
+.dropd-sp {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-left: 200px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropd-sp:hover .dropdown-content {
+    display: block;
+}
+.text-white{
+text-decoration: none;
 }
 .footer{
-  margin-top: 50px;
+margin-top: 50px;
 }
-
         @yield('style');
     </style>
 </head>
@@ -210,12 +210,13 @@
         </div>
     </nav>
 
-        <div class="full-screen-content">
-        @yield('full-screen-content')
-    </div>
     <div class="container">
         @yield('content')
     </div>
+
+    <div class="full-screen-content">
+          @yield('full-screen-content')
+      </div>
 
     <!-- FOOTER -->
     <nav class="footer">
@@ -316,24 +317,9 @@ Thứ 2 - Chủ nhật: 9:00 - 18:00</p>
 
  <!--Grid column-->
  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Bộ công thương</h5>
-
-          <ul class="list-unstyled mb-0">
-            <!-- <li>
-              <a href="/home" class="text-white">Trang chủ</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Giới thiệu</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Sản phẩm</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Liên hệ</a>
-            </li>
-          </ul> -->
+ <img src="https://github.com/Phhngan/snack_images/blob/master/bo-cong-thuong.png?raw=true" alt=""
+                    height="90px" class="logo">
         </div>
-        <!--Grid column-->
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
@@ -341,14 +327,10 @@ Thứ 2 - Chủ nhật: 9:00 - 18:00</p>
           <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt=""
                     height="100px" class="logo">
         </div>
-        <!--Grid column-->
 
       </div>
-      <!--Grid row-->
     </section>
-    <!-- Section: Links -->
   </div>
-  <!-- Grid container -->
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
