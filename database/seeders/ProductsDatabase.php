@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductDatabase extends Seeder
+class ProductsDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class ProductDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('Product')->insert(
+        DB::table('Products')->insert(
             [
                 [
                     'prd_code' => 'SP1',

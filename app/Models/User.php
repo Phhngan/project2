@@ -18,9 +18,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'use_lastName',
         'name',
+        'use_birth',
+        'use_gender',
         'email',
+        'use_phone',
+        'pro_id',
+        'use_district',
+        'use_town',
+        'use_detailAddress',
         'password',
+        'pos_id',
     ];
 
     /**
@@ -41,4 +50,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function positionType(){
+        return $this->belongsTo(PositionType::class, 'pos_id', 'pos_id');
+    }
+
+    public function province(){
+        return $this->belongsTo(Province::class, 'pro_id', 'pro_id');
+    }
+
+    public function importInvoice(){
+        return $this->hasMany(ImportInvoice::class, 'id', 'use_id');
+    }
+
+    public function salesInvoice(){
+        return $this->hasMany(SalesInvoice::class, 'id', 'use_id');
+    }
 }

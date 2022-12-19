@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SupplyUnitDatabase extends Seeder
+class SupplyUnitsDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class SupplyUnitDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('SupplyUnit')->insert(
+        DB::table('SupplyUnits')->insert(
             [
                 [
                     'unit_code' => 'Unit1',

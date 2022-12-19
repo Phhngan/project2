@@ -20,19 +20,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call((ProductTypeDatabase::class));
-        $this->call((ProductDatabase::class));
+        $this->call((ProductTypesDatabase::class));
+        $this->call((ProductsDatabase::class));
         // $this->call((ImagesDatabase::class));
-        $this->call((ProductStatusDatabase::class));
-        $this->call((SupplyUnitDatabase::class));
-        $this->call((PositionTypeDatabase::class));
-        $this->call((RegionDatabase::class));
-        $this->call((ProvinceDatabase::class));
+        $this->call((ProductStatussDatabase::class));
+        $this->call((SupplyUnitsDatabase::class));
+        $this->call((PositionTypesDatabase::class));
+        $this->call((RegionsDatabase::class));
+        $this->call((ProvincesDatabase::class));
         $this->call((UsersDatabase::class));
-        $this->call((ImportInvoiceDatabase::class));
-        $this->call((ImportInvoiceDetailDatabase::class));
-        $this->call((SalesInvoiceStatusDatabase::class));
-        $this->call((SalesInvoiceDatabase::class));
-        $this->call((SalesInvoiceDetailDatabase::class));
+        $this->call((ImportInvoicesDatabase::class));
+        $this->call((ImportInvoiceDetailsDatabase::class));
+        $this->call((SalesInvoiceStatussDatabase::class));
+        $this->call((SalesInvoicesDatabase::class));
+        $this->call((SalesInvoiceDetailsDatabase::class));
     }
 }

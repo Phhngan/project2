@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductStatusDatabase extends Seeder
+class SalesInvoiceStatussDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,22 +16,22 @@ class ProductStatusDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('ProductStatus')->insert(
+        DB::table('SalesInvoiceStatuss')->insert(
             [
                 [
-                    'prd_status' => 'Còn hạn',
+                    'sal_status' => 'Đang xác nhận',
                 ],
                 [
-                    'prd_status' => 'Gần hết hạn',
+                    'sal_status' => 'Đã xác nhận',
                 ],
                 [
-                    'prd_status' => 'Hết hạn',
+                    'sal_status' => 'Đang giao hàng',
                 ],
                 [
-                    'prd_status' => 'Đã bán hết',
+                    'sal_status' => 'Giao hàng thành công',
                 ],
                 [
-                    'prd_status' => 'Không còn sản xuất',
+                    'sal_status' => 'Đã hủy',
                 ],
             ]
         );

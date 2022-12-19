@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PositionTypeDatabase extends Seeder
+class ProductTypesDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,22 +16,16 @@ class PositionTypeDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('PositionType')->insert(
+        DB::table('ProductTypes')->insert(
             [
                 [
-                    'pos_name' => 'Khách hàng'
+                    'prd_type' => 'Đồ mặn'
                 ],
                 [
-                    'pos_name' => 'Quản lý tổng'
+                    'prd_type' => 'Đồ ngọt'
                 ],
                 [
-                    'pos_name' => 'Quản lý kho'
-                ],
-                [
-                    'pos_name' => 'Quản lý đơn hàng'
-                ],
-                [
-                    'pos_name' => 'Người giao hàng'
+                    'prd_type' => 'Đồ uống'
                 ]
             ]
         );

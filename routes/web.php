@@ -17,8 +17,8 @@ use League\CommonMark\Util\Html5EntityDecoder;
 |
 */
 
-Route::get('/home', function () {
-    return redirect('user.home');
+Route::get('/', function () {
+    return redirect('home');
 });
 
 //SITE home

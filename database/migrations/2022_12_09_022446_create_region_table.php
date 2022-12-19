@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Region', function (Blueprint $table) {
+        Schema::create('Regions', function (Blueprint $table) {
             $table->increments('reg_id');
             $table->string('reg_name');
             $table->integer('reg_ship');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Region');
+        Schema::dropIfExists('Regions');
     }
 };

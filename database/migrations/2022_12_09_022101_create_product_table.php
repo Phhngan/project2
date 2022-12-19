@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Product', function (Blueprint $table) {
+        Schema::create('Products', function (Blueprint $table) {
             $table->increments('prd_id');
             $table->string('prd_code');
             $table->string('prd_name');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('prd_description')->nullable();
             $table->timestamps();
 
-            $table->foreign('prd_type_id')->references('prd_type_id')->on('ProductType');
+            $table->foreign('prd_type_id')->references('prd_type_id')->on('ProductTypes');
         });
     }
 
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Product');
+        Schema::dropIfExists('Products');
     }
 };

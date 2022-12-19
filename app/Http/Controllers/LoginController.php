@@ -43,11 +43,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        $user = Auth::user();
-        if ($user->pos_id > 1){
-            return redirect('login');
-        } else {
-            return redirect('/');
-        }
+        return redirect('/login');
     }
 }

@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Province', function (Blueprint $table) {
+        Schema::create('Provinces', function (Blueprint $table) {
             $table->increments('pro_id');
             $table->string('pro_name');
             $table->unsignedInteger('reg_id');
             $table->timestamps();
 
-            $table->foreign('reg_id')->references('reg_id')->on('Region');
+            $table->foreign('reg_id')->references('reg_id')->on('Regions');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Province');
+        Schema::dropIfExists('Provinces');
     }
 };

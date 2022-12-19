@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('SalesInvoiceDetail', function (Blueprint $table) {
+        Schema::create('SalesInvoiceDetails', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('sal_id');
             $table->unsignedInteger('prd_id');
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('sal_price');
             $table->timestamps();
 
-            $table->foreign('sal_id')->references('sal_id')->on('SalesInvoice');
-            $table->foreign('prd_id')->references('prd_id')->on('Product');
+            $table->foreign('sal_id')->references('sal_id')->on('SalesInvoices');
+            $table->foreign('prd_id')->references('prd_id')->on('Products');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('SalesInvoiceDetail');
+        Schema::dropIfExists('SalesInvoiceDetails');
     }
 };

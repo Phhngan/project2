@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ImportInvoiceDatabase extends Seeder
+class ImportInvoicesDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class ImportInvoiceDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('ImportInvoice')->insert(
+        DB::table('ImportInvoices')->insert(
             [
                 [
                     'unit_id' => 1,

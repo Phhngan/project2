@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RegionDatabase extends Seeder
+class RegionsDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class RegionDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('Region')->insert(
+        DB::table('Regions')->insert(
             [
                 [
                     'reg_name' => 'Hà Nội',

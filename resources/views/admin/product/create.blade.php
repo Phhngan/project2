@@ -21,7 +21,7 @@
         <br>
         <input name="productDiscount" type="number" class="form-control" placeholder="Giảm giá">
         <br>
-        <input name="producDescription" type="text" class="form-control" placeholder="Mô tả">
+        <input name="productDescription" type="text" class="form-control" placeholder="Mô tả">
         <br>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
     </form>

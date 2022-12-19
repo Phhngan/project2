@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('SalesInvoice', function (Blueprint $table) {
+        Schema::create('SalesInvoices', function (Blueprint $table) {
             $table->increments('sal_id');
             $table->unsignedInteger('use_id');
             $table->date('sal_date');
@@ -26,9 +26,9 @@ return new class extends Migration
             $table->string('sal_note')->nullable();
             $table->timestamps();
 
-            $table->foreign('use_id')->references('use_id')->on('Users');
-            $table->foreign('sal_status_id')->references('sal_status_id')->on('SalesInvoiceStatus');
-            $table->foreign('pro_id')->references('pro_id')->on('Province');
+            $table->foreign('use_id')->references('id')->on('Users');
+            $table->foreign('sal_status_id')->references('sal_status_id')->on('SalesInvoiceStatuss');
+            $table->foreign('pro_id')->references('pro_id')->on('Provinces');
         });
     }
 

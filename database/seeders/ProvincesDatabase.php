@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProvinceDatabase extends Seeder
+class ProvincesDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class ProvinceDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('Province')->insert(
+        DB::table('Provinces')->insert(
             [
                 [   //1
                     'pro_name' => 'An Giang',

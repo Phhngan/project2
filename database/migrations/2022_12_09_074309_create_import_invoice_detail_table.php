@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ImportInvoiceDetail', function (Blueprint $table) {
+        Schema::create('ImportInvoiceDetails', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('imp_id');
             $table->unsignedInteger('prd_id');
@@ -24,9 +24,9 @@ return new class extends Migration
             $table->integer('imp_quantity-left');
             $table->timestamps();
 
-            $table->foreign('imp_id')->references('imp_id')->on('ImportInvoice');
-            $table->foreign('prd_id')->references('prd_id')->on('Product');
-            $table->foreign('prd_status_id')->references('prd_status_id')->on('ProductStatus');
+            $table->foreign('imp_id')->references('imp_id')->on('ImportInvoices');
+            $table->foreign('prd_id')->references('prd_id')->on('Products');
+            $table->foreign('prd_status_id')->references('prd_status_id')->on('ProductStatuss');
         });
     }
 
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ImportInvoiceDetail');
+        Schema::dropIfExists('ImportInvoiceDetails');
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Users', function (Blueprint $table) {
-            $table->increments('use_id');
+            $table->increments('id');
             $table->string('use_lastName');
             $table->string('name');
             $table->date('use_birth')->nullable();
@@ -32,8 +32,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('pro_id')->references('pro_id')->on('Province');
-            $table->foreign('pos_id')->references('pos_id')->on('PositionType');
+            $table->foreign('pro_id')->references('pro_id')->on('Provinces');
+            $table->foreign('pos_id')->references('pos_id')->on('PositionTypes');
 
         });
     }
@@ -45,6 +45,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UserInfor');
+        Schema::dropIfExists('Users');
     }
 };
