@@ -23,6 +23,6 @@ class Province extends Model
     }
 
     public function salesInvoice(){
-        return $this->hasMany(SalesInvoice::class, 'pro_id', 'pro_id');
+        return $this->hasMany(Salesinvoice::class, 'pro_id', 'pro_id');
     }
 }

@@ -21,14 +21,14 @@ class Product extends Model
     ];
 
     public function productType(){
-        return $this->belongsTo(ProductType::class, 'prd_type_id', 'prd_type_id');
+        return $this->belongsTo(Producttype::class, 'prd_type_id', 'prd_type_id');
     }
 
     public function importInvoiceDetail(){
-        return $this->hasMany(ImportInvoiceDetail::class, 'prd_id', 'prd_id');
+        return $this->hasMany(Importinvoicedetail::class, 'prd_id', 'prd_id');
     }
     
     public function salesInvoiceDetail(){
-        return $this->hasMany(SalesInvoiceDetail::class, 'prd_id', 'prd_id');
+        return $this->hasMany(Salesinvoicedetail::class, 'prd_id', 'prd_id');
     }
 }

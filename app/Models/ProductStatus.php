@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductStatus extends Model
+class Productstatus extends Model
 {
     use HasFactory;
     protected $primaryKey = 'prd_status_id';
@@ -14,6 +14,6 @@ class ProductStatus extends Model
     ];
 
     public function importInvoiceDetail(){
-        return $this->hasMany(ImportInvoiceDetail::class, 'prd_status_id', 'prd_status_id');
+        return $this->hasMany(Importinvoicedetail::class, 'prd_status_id', 'prd_status_id');
     }
 }
