@@ -16,7 +16,7 @@ class SupplyUnitController extends Controller
 
     //Tao moi
     function create(){
-        return view('admin/supplyUnit.create');
+        return view('admin/supply-unit.create');
     }
     function save(Request $request){
         $unit_code = $request->get('unitCode');
@@ -27,7 +27,7 @@ class SupplyUnitController extends Controller
             ['unit_code' => $unit_code, 'unit_name' => $unit_name, 'unit_email' => $unit_email, 
             'unit_phone' => $unit_phone]
         );
-        return redirect('admin/supplyUnit');
+        return redirect('admin/supply-unit');
     }
 
     //Sua 
@@ -36,7 +36,7 @@ class SupplyUnitController extends Controller
         if ($supplyUnit == null) {
             return redirect()->route('error');
         }
-        return view('admin/supplyUnit.edit', ['supplyUnit' => $supplyUnit]);
+        return view('admin/supply-unit.edit', ['supplyUnit' => $supplyUnit]);
     }
     function update(Request $request, $unit_id){
         $unit_code = $request->get('unitCode');
@@ -47,6 +47,6 @@ class SupplyUnitController extends Controller
             ['unit_code' => $unit_code, 'unit_name' => $unit_name, 
             'unit_email' => $unit_email, 'unit_phone' => $unit_phone]
         );
-        return redirect('admin/supplyUnit');
+        return redirect('admin/supply-unit');
     }
 }

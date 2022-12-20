@@ -1,19 +1,17 @@
 @extends('layout.admin_base')
 
-@section('title','Thêm đơn vị cung cấp')
+@section('title','Thêm ảnh')
 
 @section('content')
     <h1 class="text-center">Thêm ảnh mới</h1>
     <form action="{{url('admin/images/create')}}" method="POST">
         @csrf
         <br>
-        <input name="unitCode" type="text" class="form-control" placeholder="Mã đơn vị">
+        <input name="imageURL" type="text" class="form-control" placeholder="URL ảnh">
         <br>
-        <input name="unitName" type="text" class="form-control" placeholder="Tên đơn vị">
+        <input name="imageRole" type="text" class="form-control" placeholder="Role">
         <br>
-        <input name="unitEmail" type="text" class="form-control" placeholder="Email">
-        <br>
-        <input name="unitPhone" type="number" class="form-control" placeholder="Số điện thoại">
+        <input name="productId" type="number" class="form-control" placeholder="Mã sản phẩm">
         <br>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
     </form>

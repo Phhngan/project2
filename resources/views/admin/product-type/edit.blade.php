@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật loại sản phẩm</h1>
-<form action="{{url('admin/product-type/'.$productType->prd_id.'/edit')}}" method="POST">
+<form action="{{url('admin/product-type/'.$productType->prd_type_id.'/edit')}}" method="POST">
     @csrf
     @method('put')
     <br>
@@ -16,4 +16,17 @@
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>
+@endsection
+@section('js')
+    @parent
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

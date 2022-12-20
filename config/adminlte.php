@@ -306,63 +306,64 @@ return [
 
         [
             'text' => 'Loại sản phẩm',
-            'url' => 'admin/loai-san-pham',
-            'icon' => 'fa fa-book',
+            'url' => 'admin/product-type',
+            'icon' => 'fa fa-eye',
         ],
 
         [
-            'text' => 'Sản phẩm',
-            'icon' => 'fa fa-cutlery',
+            'text' => 'Trạng thái sản phẩm',
+            'icon' => 'fa fa-hourglass-end',
+            'url' => 'admin/product-status',
             'submenu' => [
                 [
                     'text' => 'Còn hạn',
-                    'url' => '#con-han',
+                    'url' => 'admin/product-status/con-han',
                 ],
                 [
                     'text' => 'Gần hết hạn',
-                    'url' => '#gan-het-han',
+                    'url' => 'admin/product-status/gan-het-han',
                 ],
                 [
                     'text' => 'Đã hết hạn',
-                    'url' => '#da-het-han',
+                    'url' => 'admin/product-status/da-het-han',
                 ],
                 [
                     'text' => 'Đã bán hết',
-                    'url' => '#da-ban-het',
+                    'url' => 'admin/product-status/da-ban-het',
                 ],
                 [
                     'text' => 'Không còn sản xuất',
-                    'url' => '#khong-con-san-xuat',
+                    'url' => 'admin/product-status/khong-con-san-xuat',
                 ],
             ],
         ],
 
         [
             'text' => 'Thư viện ảnh',
-            'url' => '#thu-vien-anh',
-            'icon' => 'fa fa-picture-o',
+            'url' => 'admin/images',
+            'icon' => 'fa fa-camera-retro',
         ],
 
         [
             'text' => 'Đơn vị cung cấp',
-            'url' => 'admin/don-vi-cung-cap',
-            'icon' => 'fa fa-building-o',
+            'url' => 'admin/supply-unit',
+            'icon' => 'fa fa-building',
         ],
 
         [
             'text' => 'Hóa đơn nhập hàng',
-            'url' => 'admin/hoa-don-nhap',
-            'icon' => 'fa fa-handshake-o',
+            'url' => 'admin/import-invoice',
+            'icon' => 'fa fa-handshake',
         ],
         [
             'text' => 'Ship',
-            'url' => 'admin/shipping',
+            'url' => 'admin/ship',
             'icon' => 'fa fa-car',
         ],
 
         [
             'text' => 'Nhân viên',
-            'url' => 'admin/nhan-vien',
+            'url' => 'admin/employees',
             'icon' => 'fa fa-id-card',
         ],
 
@@ -372,23 +373,23 @@ return [
             'submenu' => [
                 [
                     'text' => 'Chưa xác nhận',
-                    'url' => '#chua-xac-nhan',
+                    'url' => 'admin/sales-invoice/chua-xac-nhan',
                 ],
                 [
                     'text' => 'Đã xác nhận',
-                    'url' => '#da-xac-nhan',
+                    'url' => 'admin/sales-invoice/da-xac-nhan',
                 ],
                 [
                     'text' => 'Đã ship hàng',
-                    'url' => '#da-ship-hang',
+                    'url' => 'admin/sales-invoice/da-ship-hang',
                 ],
                 [
                     'text' => 'Nhận hàng thành công',
-                    'url' => '#thanh-cong',
+                    'url' => 'admin/sales-invoice/thanh-cong',
                 ],
                 [
                     'text' => 'Đã hủy',
-                    'url' => '#da-huy',
+                    'url' => 'admin/sales-invoice/da-huy',
                 ],
             ],
         ],

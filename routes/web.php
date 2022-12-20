@@ -18,7 +18,11 @@ use League\CommonMark\Util\Html5EntityDecoder;
 */
 
 Route::get('/', function () {
-    return redirect('home');
+    return redirect('/home');
+});
+
+Route::get('/admin', function () {
+    return redirect('/admin/home');
 });
 
 //SITE home
@@ -62,9 +66,9 @@ Route::get('/', function () {
     Route::get("/admin/product-type", [ProductTypeController::class, 'product-type.index']);
 
     // Thêm 1 loại sản phẩm : view
-    Route::get("/admin/product-type/{prd_type_id}/create", [ProductTypeController::class, 'product-type.create']);
+    Route::get("/admin/product-type/create", [ProductTypeController::class, 'product-type.create']);
     // Thêm loại sp => ko có giao diện
-    Route::post("/admin/product-type/{prd_type_id}/create", [ProductTypeController::class, 'save']);
+    Route::post("/admin/product-type/create", [ProductTypeController::class, 'save']);
 
     // Sửa 1 loại sản phẩm : view
     Route::get("/admin/product-type/{prd_type_id}/edit", [ProductTypeController::class, 'product-type.edit']);
@@ -74,27 +78,38 @@ Route::get('/', function () {
 // TRẠNG THÁI SẢN PHẨM
     // Xem toàn bộ trạng thái
     Route::get("/admin/product-status", [Controller::class, 'product-status.index']);
-    // Sản phẩm còn hạn : views
-    Route::get("/admin/product-status/con-han", [Controller::class, 'product-status.con-han']);
-    // Sản phẩm gần hết hạn : view
-    Route::get("/admin/product-status/gan-het-han", [Controller::class, 'product-status.gan-het-han']);
-    // Sản phẩm đã hết hạn : view
-    Route::get("/admin/product-status/da-het-han", [Controller::class, 'product-status.da-het-han']);
-    // Sản phẩm đã bán hết : view 
-    Route::get("/admin/product-status/da-ban-het", [Controller::class, 'product-status.da-ban-het']);
-    // Sản phẩm không còn sản xuất : view
+    // // Sản phẩm còn hạn : views
+    // Route::get("/admin/product-status/{prd_status_id}", [Controller::class, 'product-status.con-han']);
+    // // Sản phẩm gần hết hạn : view
+    // Route::get("/admin/product-status/gan-het-han", [Controller::class, 'product-status.gan-het-han']);
+    // // Sản phẩm đã hết hạn : view
+    // Route::get("/admin/product-status/da-het-han", [Controller::class, 'product-status.da-het-han']);
+    // // Sản phẩm đã bán hết : view 
+    // Route::get("/admin/product-status/da-ban-het", [Controller::class, 'product-status.da-ban-het']);
+    // // Sản phẩm không còn sản xuất : view
+    // Route::get("/admin/product-status/khong-con-san-xuat", [Controller::class, 'product-status.khong-con-san-xuat']);
+
+// NOTE: trạng thái sản phẩm không biết controller nào và chưa làm view xong cho trạng thái
 
 // THƯ VIỆN ẢNH
     // Xem tất cả ảnh
-
+    Route::get("/admin/images", [ImagesController::class, 'images.index']);
+    // sửa : view
+    Route::get("/admin/images/{img_id}/edit", [ImagesController::class, 'images.edit']);
+    Route::put("/admin/product-type/{img_id}/edit", [ImagesController::class, 'update']);
+    // thêm : view
+    Route::get("/admin/images/create", [ImagesController::class, 'images.create']);
+    Route::post("/admin/product-type/create", [ImagesController::class, 'save']);
 
 // ĐƠN VỊ CUNG CẤP
     // Xem tất cả đơn vị cung cấp
     Route::get("/admin/supply-unit", [SupplyUnitController::class, 'supply-unit.index']);
     // Thêm đơn vị dung cấp view
     Route::get("/admin/supply-unit/create", [SupplyUnitController::class, 'supply-unit.create']);
+    Route::post("/admin/supply-unit/create", [SupplyUnitController::class, 'save']);
     // Sửa đơn vị cung cấp
-    Route::get("/admin/supply-unit/edit", [SupplyUnitController::class, 'supply-unit.edit']);
+    Route::get("/admin/supply-unit/{unit_id}/edit", [SupplyUnitController::class, 'supply-unit.edit']);
+    Route::put("/admin/supply-unit/{unit_id}/edit", [SupplyUnitController::class, 'update']);
 
 // HÓA ĐƠN NHẬP HÀNG
     // Xem tất cả hóa đơn
@@ -103,18 +118,41 @@ Route::get('/', function () {
     Route::get("/admin/import-invoice/details", [ImportInvoiceController::class, 'import-invoice.details']);
     // Thêm hóa đơn
     Route::get("/admin/import-invoice/create", [ImportInvoiceController::class, 'import-invoice.create']);
+    Route::get("/admin/import-invoice/create", [ImportInvoiceController::class, 'save']);
     // Thêm sản phẩm trong 1 hóa đơn
+    Route::get("/admin/import-invoice/edit", [ImportInvoiceController::class, 'import-invoice.edit']);
     Route::get("/admin/import-invoice/edit", [ImportInvoiceController::class, 'import-invoice.edit']);
 
 // SHIP
     // Xem tất cả
     Route::get("/admin/ship", [ShipController::class, 'ship.index']);
     // Sửa 
-    Route::get("/admin/ship/edit", [IShipController::class, 'ship.edit']);
+    Route::get("/admin/ship/edit", [ShipController::class, 'ship.edit']);
 
 // NHÂN VIÊN
+    // Xem tất cẩ nhân viên
+    Route::get("/admin/employees", [EmployeeController::class, 'emplyee.index']);
+    // Sửa vị trí nhân viên
+    Route::get("/admin/employees/edit", [EmployeeController::class, 'emplyee.edit']);
 
 // HÓA ĐƠN BÁN HÀNG
+    // Xem tất cả hóa đơn bán hàng
+    Route::get("/admin/sales-invoice", [SalesInvoiceController::class, 'sale-invoice.index']);
+    // Hóa đơn chưa xác nhận
+    Route::get("/admin/sales-invoice/chua-xac-nhan", [SalesInvoiceController::class, 'sale-invoice.chua-xac-nhan']);
+    // Hóa đơn đã xác nhận
+    Route::get("/admin/sales-invoice/da-xac-nhan", [SalesInvoiceController::class, 'sale-invoice.da-xac-nhan']);
+    // Hóa đơn đang ship
+    Route::get("/admin/sales-invoice/dang-ship-hang", [SalesInvoiceController::class, 'sale-invoice.dang-ship-hang']);
+    // Hóa đơn nhận thành công
+    Route::get("/admin/sales-invoice/thanh-cong", [SalesInvoiceController::class, 'sale-invoice.thanh-cong']);
+    // Hóa đơn đã hủy
+    Route::get("/admin/sales-invoice/da-huy", [SalesInvoiceController::class, 'sale-invoice.da-huy']);
+    // Chi tiết hóa đơn
+    Route::get("/admin/sales-invoice/details", [SalesInvoiceController::class, 'sale-invoice.details']);
+    // Sửa trạng thái
+    Route::get("/admin/sales-invoice/edit", [SalesInvoiceController::class, 'sale-invoice.edit']);
+
 
     /*--------------------------------------------------------------------------*/
 //login 

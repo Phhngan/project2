@@ -16,14 +16,14 @@ class ProductTypeController extends Controller
 
     //Tao moi
     function create(){
-        return view('admin/productType.create');
+        return view('admin/product-type.create');
     }
     function save(Request $request){
         $prd_type = $request->get('productTypeName');
         DB::table('ProductTypes')->insert(
             ['prd_type' => $prd_type]
         );
-        return redirect('admin/productType');
+        return redirect('admin/product-type');
     }
 
     //Sua
@@ -32,12 +32,12 @@ class ProductTypeController extends Controller
         if ($productType == null){
             return redirect()->route('error');
         }
-        return view('admin/productType.edit', ['productType' => $productType]);
+        return view('admin/product-type.edit', ['product-type' => $productType]);
     }
     function update(Request $request, $prd_type_id){
         $prd_type = $request->get('productTypeName');
         DB::table('ProductTypes')->where('prd_type_id', $prd_type_id)
             ->update(['prd_type' => $prd_type]);
-        return redirect('admin/productType');
+        return redirect('admin/product-type');
     }
 }

@@ -9,6 +9,7 @@
     <tr>
         <th>Mã loại sản phẩm</th>
         <th>Loại sản phẩm</th>
+        <th>Hành động</th>
     </tr>
     @forelse($productTypes as $productType)
     <tr>
@@ -19,8 +20,7 @@
             <p>{{$productType->prd_type}}</p>
         </td>
         <td>
-            <a href="{{url('/admin/product-type/'.$product->prd_type_id.'/edit')}}">Sửa</a>
-
+            <a class="btn btn-outline-secondary" href="{{url('/admin/product-type/'.$product->prd_type_id.'/edit')}}" role="button">Sửa</a>
             <br>
                 @csrf
             </form>
