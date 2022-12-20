@@ -23,6 +23,9 @@ class checkIsAdmin
                 // dd("Khong co quyen truy cap");
                 return redirect()->back();
             }
+            if ($user == null){
+                return redirect('home');
+            }
         }
         return $next($request);
     }

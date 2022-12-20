@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ImportInvoiceDetail extends Model
+class Importinvoicedetail extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
@@ -20,7 +20,7 @@ class ImportInvoiceDetail extends Model
     ];
 
     public function importInvoice(){
-        return $this->belongsTo(ImportInvoice::class, 'imp_id', 'imp_id');
+        return $this->belongsTo(Importinvoice::class, 'imp_id', 'imp_id');
     }
 
     public function product(){
@@ -28,6 +28,6 @@ class ImportInvoiceDetail extends Model
     }
 
     public function productStatus(){
-        return $this->belongsTo(ProductStatus::class, 'prd_status_id', 'prd_status_id');
+        return $this->belongsTo(Productstatus::class, 'prd_status_id', 'prd_status_id');
     }
 }

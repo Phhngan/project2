@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SalesInvoice extends Model
+class Salesinvoice extends Model
 {
     use HasFactory;
     protected $primaryKey = 'sal_id';
@@ -30,11 +30,11 @@ class SalesInvoice extends Model
     }
 
     public function salesInvoiceStatus(){
-        return $this->belongsTo(SalesInvoiceStatus::class, 'sal_status_id', 'sal_status_id');
+        return $this->belongsTo(Salesinvoicestatus::class, 'sal_status_id', 'sal_status_id');
     }
 
     public function salesInvoiceDetail(){
-        return $this->hasMany(SalesInvoiceDetail::class, 'sal_id', 'sal_id');
+        return $this->hasMany(Salesinvoicedetail::class, 'sal_id', 'sal_id');
     }
 }
 

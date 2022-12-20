@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SupplyUnit extends Model
+class Supplyunit extends Model
 {
     use HasFactory;
     protected $primaryKey = 'unit_id';
@@ -17,6 +17,6 @@ class SupplyUnit extends Model
     ];
 
     public function importInvoice(){
-        return $this->hasMany(ImportInvoice::class, 'unit_id', 'unit_id');
+        return $this->hasMany(Importinvoice::class, 'unit_id', 'unit_id');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ImportInvoice extends Model
+class Importinvoice extends Model
 {
     use HasFactory;
     protected $primaryKey = 'imp_id';
@@ -17,7 +17,7 @@ class ImportInvoice extends Model
     ];
 
     public function supplyUnit(){
-        return $this->belongsTo(SupplyUnit::class, 'unit_id', 'unit_id');
+        return $this->belongsTo(Supplyunit::class, 'unit_id', 'unit_id');
     }
 
     public function user(){
@@ -25,6 +25,6 @@ class ImportInvoice extends Model
     }
 
     public function importInvoiceDetail(){
-        return $this->hasMany(ImportInvoiceDetail::class, 'imp_id', 'imp_id');
+        return $this->hasMany(Importinvoicedetail::class, 'imp_id', 'imp_id');
     }
 }

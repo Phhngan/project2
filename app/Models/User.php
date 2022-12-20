@@ -52,7 +52,7 @@ class User extends Authenticatable
     ];
 
     public function positionType(){
-        return $this->belongsTo(PositionType::class, 'pos_id', 'pos_id');
+        return $this->belongsTo(Positiontype::class, 'pos_id', 'pos_id');
     }
 
     public function province(){
@@ -60,10 +60,10 @@ class User extends Authenticatable
     }
 
     public function importInvoice(){
-        return $this->hasMany(ImportInvoice::class, 'id', 'use_id');
+        return $this->hasMany(Importinvoice::class, 'id', 'use_id');
     }
 
     public function salesInvoice(){
-        return $this->hasMany(SalesInvoice::class, 'id', 'use_id');
+        return $this->hasMany(Salesinvoice::class, 'id', 'use_id');
     }
 }

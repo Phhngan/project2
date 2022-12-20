@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PositionType extends Model
+class Positiontype extends Model
 {
     use HasFactory;
     protected $primaryKey = 'pos_id';
