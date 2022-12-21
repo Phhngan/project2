@@ -9,22 +9,26 @@ use Illuminate\Support\Facades\DB;
 class ImagesController extends Controller
 {
     //Hien thi toan bo
-    function index(){
+    function index()
+    {
         $images = Image::get();
         return view('admin/images.index', ['images' => $images]);
     }
 
     //Xoa
-    function delete($img_id){
+    function delete($img_id)
+    {
         DB::table('Images')->where('img_id', $img_id)->delete();
         return redirect('admin/images');
-    } 
+    }
 
     //Tao moi
-    function create(){
+    function create()
+    {
         return view('admin/images.create');
     }
-    function save(Request $request){
+    function save(Request $request)
+    {
         $img_url = $request->get('imageURL');
         $img_role = $request->get('imageRole');
         $prd_id = $request->get('productId');
@@ -35,14 +39,16 @@ class ImagesController extends Controller
     }
 
     //Sua 
-    function edit($img_id){
-        $images = Image::findOrFail($img_id);
-        if ($images == null) {
+    function edit($img_id)
+    {
+        $image = Image::findOrFail($img_id);
+        if ($image == null) {
             return redirect()->route('error');
         }
-        return view('admin/images.edit', ['images' => $images]);
+        return view('admin/images.edit', ['image' => $image]);
     }
-    function update(Request $request, $img_id){
+    function update(Request $request, $img_id)
+    {
         $img_url = $request->get('imageURL');
         $img_role = $request->get('imageRole');
         $prd_id = $request->get('productId');

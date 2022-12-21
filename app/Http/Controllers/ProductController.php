@@ -14,13 +14,13 @@ class ProductController extends Controller
         // Lay du lieu
         $products = DB::table('Products')->get();
         // $products = Product::get();
-        $productType = Producttype::get();
+        // $productType = Producttype::get();
         // $images = DB::table('Images')->get();
         // $type = DB::table('ProductType')->get(); 
 
         // Tra ve view -> view se render ra man hinh
         // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
-        return view('admin/product.index',['products'=> $products], ['productType'=>$productType]);
+        return view('admin/product.index',['products'=> $products]);
     }
 
     // Xoa 1 sp theo id

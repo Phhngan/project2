@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="text-center">Thêm ảnh mới</h1>
-    <form action="{{url('admin/images/create')}}" method="POST">
+    <form action="{{url('admin/supplyUnit/create')}}" method="POST">
         @csrf
         <br>
         <input name="unitCode" type="text" class="form-control" placeholder="Mã đơn vị">

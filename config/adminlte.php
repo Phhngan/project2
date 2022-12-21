@@ -306,34 +306,34 @@ return [
 
         [
             'text' => 'Loại sản phẩm',
-            'url' => 'admin/product-type',
+            'url' => 'admin/productType',
             'icon' => 'fa fa-eye',
         ],
 
         [
             'text' => 'Trạng thái sản phẩm',
             'icon' => 'fa fa-hourglass-end',
-            'url' => 'admin/product-status',
+            'url' => 'admin/productStatus',
             'submenu' => [
                 [
                     'text' => 'Còn hạn',
-                    'url' => 'admin/product-status/con-han',
+                    'url' => 'admin/productStatus/con-han',
                 ],
                 [
                     'text' => 'Gần hết hạn',
-                    'url' => 'admin/product-status/gan-het-han',
+                    'url' => 'admin/productStatus/gan-het-han',
                 ],
                 [
                     'text' => 'Đã hết hạn',
-                    'url' => 'admin/product-status/da-het-han',
+                    'url' => 'admin/productStatus/da-het-han',
                 ],
                 [
                     'text' => 'Đã bán hết',
-                    'url' => 'admin/product-status/da-ban-het',
+                    'url' => 'admin/productStatus/da-ban-het',
                 ],
                 [
                     'text' => 'Không còn sản xuất',
-                    'url' => 'admin/product-status/khong-con-san-xuat',
+                    'url' => 'admin/productStatus/khong-con-san-xuat',
                 ],
             ],
         ],
@@ -346,13 +346,13 @@ return [
 
         [
             'text' => 'Đơn vị cung cấp',
-            'url' => 'admin/supply-unit',
+            'url' => 'admin/supplyUnit',
             'icon' => 'fa fa-building',
         ],
 
         [
             'text' => 'Hóa đơn nhập hàng',
-            'url' => 'admin/import-invoice',
+            'url' => 'admin/importInvoice',
             'icon' => 'fa fa-handshake',
         ],
         [
@@ -363,7 +363,7 @@ return [
 
         [
             'text' => 'Nhân viên',
-            'url' => 'admin/employees',
+            'url' => 'admin/employee',
             'icon' => 'fa fa-id-card',
         ],
 
@@ -373,23 +373,23 @@ return [
             'submenu' => [
                 [
                     'text' => 'Chưa xác nhận',
-                    'url' => 'admin/sales-invoice/chua-xac-nhan',
+                    'url' => 'admin/salesInvoice/chua-xac-nhan',
                 ],
                 [
                     'text' => 'Đã xác nhận',
-                    'url' => 'admin/sales-invoice/da-xac-nhan',
+                    'url' => 'admin/salesInvoice/da-xac-nhan',
                 ],
                 [
                     'text' => 'Đã ship hàng',
-                    'url' => 'admin/sales-invoice/da-ship-hang',
+                    'url' => 'admin/salesInvoice/ship-hang',
                 ],
                 [
                     'text' => 'Nhận hàng thành công',
-                    'url' => 'admin/sales-invoice/thanh-cong',
+                    'url' => 'admin/salesInvoice/thanh-cong',
                 ],
                 [
                     'text' => 'Đã hủy',
-                    'url' => 'admin/sales-invoice/da-huy',
+                    'url' => 'admin/salesInvoice/da-huy',
                 ],
             ],
         ],
