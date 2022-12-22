@@ -56,4 +56,11 @@ class EmployeeController extends Controller
         );
         return redirect('admin/employee');
     }
+
+    // Xoa 1 sp theo id
+    function delete($id)
+    {
+        DB::table('Users')->where('id', $id)->delete();
+        return redirect('admin/employee');
+    }
 }

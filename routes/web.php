@@ -6,6 +6,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\SupplyUnitController;
+use App\Http\Controllers\ShipController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ImportInvoiceController;
+use App\Http\Controllers\ImportInvoiceDetailController;
+use App\Http\Controllers\SalesInvoiceController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -118,7 +123,7 @@ Route::post("/admin/supplyUnit/create", [SupplyUnitController::class, 'save']);
 // Sửa đơn vị cung cấp
 Route::get("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'edit']);
 Route::put("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'update']);
-// Xoa 1 anh
+// Xoa 
 Route::delete("admin/supplyUnit/{unit_id}/delete", [SupplyUnitController::class, 'delete']);
 
 // HÓA ĐƠN NHẬP HÀNG
@@ -128,11 +133,20 @@ Route::get("/admin/importInvoice", [ImportInvoiceController::class, 'index']);
 Route::get("/admin/importInvoice/create", [ImportInvoiceController::class, 'create']);
 Route::get("/admin/importInvoice/create", [ImportInvoiceController::class, 'save']);
 // Sửa 1 hóa đơn
-Route::get("/admin/importInvoice/edit", [ImportInvoiceController::class, 'edit']);
-Route::get("/admin/importInvoice/edit", [ImportInvoiceController::class, 'update']);
-
+Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'edit']);
+Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'update']);
+// Xoa 
+Route::delete("/admin/importInvoice/{imp_id}/delete", [ImportInvoiceController::class, 'delete']);
 // Xem chi tiết 1 hóa đơn
-Route::get("/admin/importInvoice/details", [ImportInvoiceController::class, 'details']);
+Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceDetailController::class, 'index']);
+//Thêm chi tiết hóa đơn
+Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'create']);
+Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
+//Sửa chi tiết hóa đơn
+Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'edit']);
+Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
+//Xoa
+Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailController::class, 'delete']);
 
 // SHIP
 // Xem tất cả
@@ -153,21 +167,25 @@ Route::get("/admin/employee/edit", [EmployeeController::class, 'update']);
 
 // HÓA ĐƠN BÁN HÀNG
 // Xem tất cả hóa đơn bán hàng
-Route::get("/admin/salesInvoice", [SalesInvoiceController::class, 'index']);
+// Route::get("/admin/salesInvoice", [SalesInvoiceController::class, 'index']);
 // Hóa đơn chưa xác nhận
-Route::get("/admin/salesInvoice/chua-xac-nhan", [SalesInvoiceController::class, 'salesInvoice.chua-xac-nhan']);
+Route::get("/admin/salesInvoice/chua-xac-nhan", [SalesInvoiceController::class, 'chuaXacNhan']);
 // Hóa đơn đã xác nhận
-Route::get("/admin/salesInvoice/da-xac-nhan", [SalesInvoiceController::class, 'salesInvoice.da-xac-nhan']);
+Route::get("/admin/salesInvoice/da-xac-nhan", [SalesInvoiceController::class, 'daXacNhan']);
 // Hóa đơn đang ship
-Route::get("/admin/salesInvoice/dang-ship-hang", [SalesInvoiceController::class, 'salesInvoice.ship-hang']);
+Route::get("/admin/salesInvoice/dang-ship-hang", [SalesInvoiceController::class, 'shipHang']);
 // Hóa đơn nhận thành công
-Route::get("/admin/salesInvoice/thanh-cong", [SalesInvoiceController::class, 'salesInvoice.thanh-cong']);
+Route::get("/admin/salesInvoice/thanh-cong", [SalesInvoiceController::class, 'thanhCong']);
 // Hóa đơn đã hủy
-Route::get("/admin/salesInvoice/da-huy", [SalesInvoiceController::class, 'salesInvoice.da-huy']);
+Route::get("/admin/salesInvoice/da-huy", [SalesInvoiceController::class, 'daHuy']);
 // Chi tiết hóa đơn
-Route::get("/admin/salesInvoice/details", [SalesInvoiceController::class, 'salesInvoice.details']);
+Route::get("/admin/salesInvoice/{sal_id}/detail", [SalesInvoiceController::class, 'sdetail']);
+//Chuyển
+Route::get("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
+//Huy
+Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 // Sửa trạng thái
-Route::get("/admin/salesInvoice/edit", [SalesInvoiceController::class, 'salesInvoice.edit']);
+// Route::get("/admin/salesInvoice/edit", [SalesInvoiceController::class, 'salesInvoice.edit']);
 
 
 /*--------------------------------------------------------------------------*/

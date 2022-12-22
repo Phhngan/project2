@@ -19,11 +19,12 @@ class checkIsAdmin
     {
         if (Auth::check()){
             $user = Auth::user();
-            if ($user->pos_id == 1){
-                // dd("Khong co quyen truy cap");
-                return redirect()->back();
-            }
-            if ($user == null){
+            if ($user){
+                if ($user->pos_id == 1){
+                    // dd("Khong co quyen truy cap");
+                    return redirect()->back();
+                }
+            } else {
                 return redirect('home');
             }
         }
