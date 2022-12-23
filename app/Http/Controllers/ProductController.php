@@ -61,7 +61,7 @@ class ProductController extends Controller
         // Lay ra thong tin san pham co thong tin id = $id
 
         // Neu khong co -> Khong co thong tin san pham
-        $product = DB::table('Products')->find($prd_id);
+        $product = Product::findOrFail($prd_id);
 //        dd($product);
         // Tra du lieu ve view
         return view('admin/product.detail', ['product' => $product]);

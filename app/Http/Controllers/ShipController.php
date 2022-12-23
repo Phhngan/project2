@@ -10,8 +10,8 @@ class ShipController extends Controller
 {
     //Hien thi toan bo
     function index(){
-        $region = Region::get();
-        return view('admin/ship.index', ['region' => $region]);
+        $regions = Region::get();
+        return view('admin/ship.index', ['regions' => $regions]);
     }
 
     //Sua 

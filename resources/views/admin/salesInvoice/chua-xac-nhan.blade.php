@@ -7,6 +7,7 @@
     <table class="table">
         <tr>
             <th>Mã hóa đơn</th>
+            <th>Khách hàng</th>
             <th>Ngày đặt</th>
             <th>Tổng tiền</th>
             <th>Địa chỉ</th>
@@ -17,6 +18,9 @@
             <tr>
                 <td>
                     <p>{{$salesInvoice->sal_id}}</p>
+                </td>
+                <td>
+                    <p>{{$salesInvoice->use_id}}</p>
                 </td>
                 <td>
                     <p>{{$salesInvoice->sal_date}}</p>
@@ -32,7 +36,7 @@
                     <p>{{$salesInvoice->sal_note}}</p>
                 </td>             
                 <td>
-                    <a class="btn btn-outline-secondary" href="{{url('/admin/salesInvoice/{sal_id}/detail')}}" role="button">Xem chi tiết</a> 
+                    <a class="btn btn-outline-secondary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/details')}}" role="button">Xem chi tiết</a> 
                 </td>
             </tr>
         @empty

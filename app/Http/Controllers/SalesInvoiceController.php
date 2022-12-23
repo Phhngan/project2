@@ -45,10 +45,10 @@ class SalesInvoiceController extends Controller
     }
 
     //detail
-    function detail($sal_id)
+    function details($sal_id)
     {
         $salesInvoiceDetails = Salesinvoicedetail::where('sal_id', $sal_id)->get();
-        return view('admin/salesInvoice.da-huy', ['salesInvoiceDetails' => $salesInvoiceDetails]);
+        return view('admin/salesInvoice.details', ['salesInvoiceDetails' => $salesInvoiceDetails]);
     }
 
     //continue

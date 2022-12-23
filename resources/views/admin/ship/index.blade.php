@@ -15,17 +15,17 @@
         @forelse($regions as $region)
             <tr>
                 <td>
-                    <p>{{$region->reg_ship}}</p>
+                    <p>{{$region->reg_name}}</p>
                 </td>
                 <td>
-                    <p>{{$region->}}VND</p>
+                    <p>{{$region->reg_ship}} VND</p>
                     
                 </td>
                 <td>
-                    <p>{{$region->$reg_ship_extra }}VND</p>
+                    <p>{{$region->reg_ship_extra }} VND</p>
                 </td>
                 <td>
-                    <p>{{$region->reg_ship_time}}</p>
+                    <p>{{$region->reg_ship_time}} ngày</p>
                 </td>
                 <td>
                     <a class="btn btn-outline-primary" href="{{url('/admin/ship/edit')}}" role="button">Sửa</a>

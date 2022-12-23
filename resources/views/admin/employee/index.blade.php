@@ -3,12 +3,15 @@
 @section('title','Quản lí nhân viên')
 
 @section('content')
+    <br>
     <a class="btn btn-primary" href="{{url('/admin/employee/create')}}" role="button">+ Thêm nhân viên</a>
+    <br>
+    <br>
     <table class="table">
         <tr>
-            <th>Mã nhân viên</th>
-            <th>Họ</th>
-            <th>Tên</th>
+            <!-- <th>Mã nhân viên</th> -->
+            <th>Họ và tên</th>
+            <!-- <th>Tên</th> -->
             <th>Ngày sinh</th>
             <th>Giới tính</th>
             <th>Email</th>
@@ -19,16 +22,16 @@
         </tr>
         @forelse($users as $user)
             <tr>
-                <td>
+                <!-- <td>
                     <p>{{$user->id}}</p>
-                </td>
+                </td> -->
                 <td>
-                    <p>{{$user->use_lastName}}</p>
+                    <p>{{$user->use_lastName}} {{$user->name}}</p>
                     
                 </td>
-                <td>
+                <!-- <td>
                     <p>{{$user->name}}</p>
-                </td>
+                </td> -->
                 <td>
                     <p>{{$user->use_birth}}</p>
                 </td>

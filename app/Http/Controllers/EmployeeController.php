@@ -12,11 +12,11 @@ class EmployeeController extends Controller
     //Hien thi toan bo
     function index(){
         // $users = User::get();
-        $user= User::where('pos_id', '>', 1)->get();
+        $users= User::where('pos_id', '>', 1)->get();
         // if ($users->pos_id > 1){
         //     $user = $users;
         // }
-        return view('admin/employee.index', ['user' => $user]);
+        return view('admin/employee.index', ['users' => $users]);
     }
 
     //Tao moi   
