@@ -3,8 +3,7 @@
 @section('title','Loại sản phẩm')
 
 @section('content')
-{{-- Do du lieu --}}
-<a href="{{url('admin/productType/create')}}">+ Thêm loại sản phẩm</a>
+<a class="btn btn-primary" href="{{url('admin/productType/create')}}" role="button">+ Thêm loại sản phẩm</a>
 <table class="table">
     <tr>
         <th>Mã</th>

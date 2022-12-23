@@ -4,17 +4,18 @@
 
 @section('content')
     {{--    Do du lieu      --}}
-    <a href="{{url('admin/products/create')}}">+ Thêm sản phẩm</a>
+    <a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm</a>
+    <br>
     <table class="table">
         <tr>
             <th>Mã sản phẩm</th>
             <th>Sản phẩm</th>
             <th>Loại sản phẩm</th>
-            <th>Khối lượng</th>
-            <th>Nguồn gốc</th>
+            <!-- <th>Khối lượng</th>
+            <th>Nguồn gốc</th> -->
             <th>Giá bán</th>
-            <th>Giảm giá</th>
-            <th>Mô tả</th>
+            <!-- <th>Giảm giá</th>
+            <th>Mô tả</th> -->
             <th>Hành động</th>
         </tr>
         @forelse($products as $product)
@@ -46,8 +47,8 @@
                 </td>
                 
                 <td>
-                    <a href="{{url('/admin/products/'.$product->prd_id.'/edit')}}">Sửa</a>
-
+                    <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
+                    <a class="btn btn-outline-secondary" href="{{url('/admin/products/{prd_id}')}}" role="button">Xem chi tiết</a>
                     <br>
                     <form method="POST" action="{{url('admin/products/'.$product->prd_id.'/delete')}}">
                         @csrf

@@ -10,60 +10,62 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/base_site.css">
+    <link rel="stylesheet" href="{{url('css/base_site.css')}}">
     <style>
-.top-item {
-    float: left;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 2px 0px 2px 5px;
-}
-
-.top-item:hover {
-    color: white;
-}
 
 .header {
     background-color: #A8B3D0;
-    height: 150px;
+    height: 120px;
     position: sticky;
 }
 
 .logo {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 12px;
+    margin-left:25px;
     float: left;
 }
 
-.header .search-container {
-    float: inherit;
-    width: 700px;
+* {
+  box-sizing: border-box;
 }
 
-.header input[type=text] {
-    padding: 6px;
-    margin: 50px auto 25px 150px;
-    font-size: 17px;
-    width: 300px;
-    border: none;
+form.example {
+  margin-top:20px;
 }
 
-.header .search-container button {
-    float: inherit;
-    padding: 6px 10px;
-    margin: 50px auto 25px auto;
-    background: 5168A1;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  background: #5168A1;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 .header .dangnhap-dangki {
     float: inherit;
-    width: 580px;
-    margin: -60px auto auto 950px;
 }
 
 .dang-nhap,
@@ -72,12 +74,13 @@
     color: white;
     font-family: "Times New Roman", Times, serif;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
+    margin-top:30px;
 }
 
 .cart {
     float: inherit;
-    margin-left: 150px;
+    margin-top: 30px;
 }
 
 .header-bottom {
@@ -90,114 +93,102 @@
     color: white;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
-    margin: 6px 50px 6px;
+    font-size: 15px;
+    margin-left: 180px;
     padding: 6px;
 }
 
-.bot-item:hover{
+.header-bottom .bot-item:hover{
     background-color: white;
     border-radius: 5px;
     color: #2D1476;
 }
 
-.dropbtn-sp {
-    margin: 6px 100px 6px 0px;
-    background-color: #5168A1;
-    color: white;
-    padding: 6px;
-    border-radius: 5px;
-    font-size: 16px;
-    border: none;
-    overflow: hidden;
-}
-
-.dropbtn-sp:hover{
-    background-color: white;
-    color: #2D1476;
-}
-
-.dropd-sp {
-    float: left;
-    overflow: hidden;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    margin-left: 200px;
-}
-
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.dropd-sp:hover .dropdown-content {
-    display: block;
-}
 .text-white{
 text-decoration: none;
 }
 .footer{
 margin-top: 50px;
 }
+
+/* Create four equal columns that floats next to each other */
+.column-1  {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column-2  {
+  float: left;
+  width: 55%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column-3  {
+  float: left;
+  width: 15%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column-4  {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
         @yield('style');
     </style>
 </head>
 
 <body>
     <!-- header -->
-    <div class="header">
-        <nav class="header">
-            <a class="navbar-brand" href="/home">
-                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt=""
-                    height="100px" class="logo">
-            </a>
+    
 
-            <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search" name="search">
-                    <button type="submit">Tìm kiếm</button>
-                </form>
-                <div class="dangnhap-dangki">
+    <nav class="header">
+    <div class="row">
+  <div class="column-1" >
+  <a class="navbar-brand" href="/home">
+                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt="logo"
+                    height="80px" class="logo">
+            </a>
+  </div>
+  <div class="column-2">
+  <form class="example" action="/action_page.php">
+  <input type="text" placeholder="Search" name="search">
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+  </div>
+  <div class="column-3">
+  <div class="dangnhap-dangki">
                     <a href="/login" class="dang-nhap"> Đăng nhập /</a>
-                    <a href="/regiter" class="dang-ki"> Đăng ký </a>
-                    <a class="cart" href="#cart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-cart"
+                    <a href="/regiter" class="dang-ki"> Đăng ký </a></div>
+  </div>
+  <div class="column-4">
+  <a class="cart" href="#cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart"
                             viewBox="0 0 16 16">
                             <path
                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg>
                     </a>
-                </div>
-            </div>
-        </nav>
-    </div>
+  </div>
+</div>
+</nav>
     <!-- header-bottom -->
     <nav class="header-bottom">
         <a href="/home" class="bot-item">Trang chủ</a>
         <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
-        <div class="dropd-sp">
-            <button class="dropbtn-sp" class="bot-item">Sản phẩm</button>
-            <div class="dropdown-content">
-                <a href="#">Đồ mặn</a>
-                <a href="#">Đồ ngọt</a>
-                <a href="#">Đồ uống</a>
-            </div>
-        </div>
+        <a href="#" class="bot-item">Đồ mặn</a>
+        <a href="#" class="bot-item">Đồ ngọt</a>
+        <a href="#" class="bot-item">Đồ uống</a>
     </nav>
 
     <div class="container">
@@ -214,43 +205,6 @@ margin-top: 50px;
 <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
   <div class="container p-4">
-
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Đăng kí để nhận thông báo</strong>
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example21" class="form-control" />
-              <label class="form-label" for="form5Example21">Địa chỉ email</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Đăng kí
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
 
     <!-- Section: Text -->
     <section class="mb-4">

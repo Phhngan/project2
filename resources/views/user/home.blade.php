@@ -4,8 +4,9 @@
 
 @section('style')
 .carousel-inner{
-margin-top:50px;
+margin-top:25px;
 margin-bottom: 50px;
+height: 500px;
 }
 .sp-noi-bat{
 background-color: #B8B0E3;
@@ -25,7 +26,6 @@ border-radius: 5px;
 text-align: center;
 color: #FFFFFF;
 text-decoration: underline;
-font-family: "Times New Roman", Times, serif;
 }
 
 .card {
@@ -116,7 +116,7 @@ clear: both;
 
 <!-- San pham noi bat -->
 <div class="sp-noi-bat">
-  <h2 class="tieu-de">Sản phẩm nổi bật</h2>
+  <h2 class="tieu-de">SẢN PHẨM NỔI BẬT</h2>
   <div class="row">
     <div class="column">
       <div class="card">
@@ -159,7 +159,7 @@ clear: both;
 
 <!-- San pham moi -->
 <div class="sp-moi">
-  <h2 class="tieu-de">Sản phẩm mới</h2>
+  <h2 class="tieu-de">SẢN PHẨM MỚI</h2>
   <div class="row">
     <div class="column">
       <div class="card">

@@ -3,10 +3,11 @@
 @section('title','Thư viện')
 
 @section('content')
-<a href="{{url('admin/images/create')}}">+ Thêm ảnh</a>
+<a class="btn btn-primary" href="{{url('admin/images/create')}}" role="button">+ Thêm ảnh</a>
 <table class="table">
     <tr>
         <th>Mã ảnh</th>
+        <th>Ảnh</th>
         <th>URL ảnh</th>
         <th>Role</th>
         <th>ID sản phẩm</th>
@@ -16,6 +17,9 @@
     <tr>
         <td>
             <p>{{$image->img_id}}</p>
+        </td>
+        <td>
+            <img src="{{$image->img_url}}">
         </td>
         <td>
             <p>{{$image->img_url}}</p>

@@ -3,7 +3,7 @@
 @section('title','Đơn vị cung cấp')
 
 @section('content')
-<a href="{{url('/admin/supplyUnit/create')}}">+ Thêm đơn vị cung cấp</a>
+<a class="btn btn-primary" href="{{url('/admin/supplyUnit/create')}}" role="button">+ Thêm đơn vị cung cấp</a>
 <table class="table">
     <tr>
         <th> ID

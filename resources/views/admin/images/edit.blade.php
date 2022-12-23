@@ -8,11 +8,17 @@
     @csrf
     @method('put')
     <br>
+    <label for="imageURL">URL ảnh:</label>
+    <br>
     <input value="{{ $image->img_url  }}" name="imageURL" type="text" class="form-control" placeholder="URL ảnh">
+    <br>
+    <label for="imageRole">Role của ảnh:</label>
     <br>
     <input value="{{ $image->img_role  }}" name="imageRole" type="text" class="form-control" placeholder="Role ảnh">
     <br>
-    <input value="{{ $image->prd_id  }}" name="productId" type="number" class="form-control" placeholder="Mã sản phẩm">
+    <label for="imageURL">Mã sản phẩm:</label>
+    <br>
+    <input value="{{ $image->prd_id }}" name="productId" type="number" class="form-control" placeholder="Mã sản phẩm">
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>

@@ -3,7 +3,7 @@
 @section('title','Thêm đơn vị cung cấp')
 
 @section('content')
-    <h1 class="text-center">Thêm ảnh mới</h1>
+    <h1 class="text-center">Thêm đơn vị cung cấp</h1>
     <form action="{{url('admin/supplyUnit/create')}}" method="POST">
         @csrf
         <br>
