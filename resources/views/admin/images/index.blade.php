@@ -20,7 +20,7 @@
             <p>{{$image->img_id}}</p>
         </td>
         <td>
-            <img src="{{$image->img_url}}">
+            <img src="{{$image->img_url}}" width="100px">
         </td>
         <td>
             <p>{{$image->img_url}}</p>
