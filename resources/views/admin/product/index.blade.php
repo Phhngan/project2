@@ -25,7 +25,7 @@
                     
                 </td>
                 <td>
-                    <p>{{$product->prd_type_id}}</p>
+                    <p>{{$product->prd_type}}</p>
                 </td>
                 <td>
                     <p>0</p>

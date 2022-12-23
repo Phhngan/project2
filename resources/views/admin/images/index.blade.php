@@ -10,7 +10,8 @@
         <th>Ảnh</th>
         <th>URL ảnh</th>
         <th>Role</th>
-        <th>ID sản phẩm</th>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
         <th>Hành động</th>
     </tr>
     @forelse($images as $image)
@@ -29,9 +30,11 @@
             <p>{{$image->img_role}}</p>
         </td>
         <td>
-            <p>{{$image->prd_id}}</p>
+            <p>{{$image->prd_code}}</p>
         </td>
-
+        <td>
+            <p>{{$image->prd_name}}</p>
+        </td>
         <td>
             <a class="btn btn-outline-secondary" href="{{url('/admin/images/'.$image->img_id.'/edit')}}" role="button">Sửa</a>
         </td>

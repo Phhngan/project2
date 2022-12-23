@@ -131,20 +131,20 @@ Route::delete("admin/supplyUnit/{unit_id}/delete", [SupplyUnitController::class,
 Route::get("/admin/importInvoice", [ImportInvoiceController::class, 'index']);
 // Thêm hóa đơn
 Route::get("/admin/importInvoice/create", [ImportInvoiceController::class, 'create']);
-Route::get("/admin/importInvoice/create", [ImportInvoiceController::class, 'save']);
+Route::post("/admin/importInvoice/create", [ImportInvoiceController::class, 'save']);
 // Sửa 1 hóa đơn
 Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'edit']);
-Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'update']);
+Route::put("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'update']);
 // Xoa 
 Route::delete("/admin/importInvoice/{imp_id}/delete", [ImportInvoiceController::class, 'delete']);
 // Xem chi tiết 1 hóa đơn
 Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceDetailController::class, 'index']);
 //Thêm chi tiết hóa đơn
 Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'create']);
-Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
+Route::post("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
 //Sửa chi tiết hóa đơn
 Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'edit']);
-Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
+Route::put("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
 //Xoa
 Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailController::class, 'delete']);
 
@@ -153,17 +153,17 @@ Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailC
 Route::get("/admin/ship", [ShipController::class, 'index']);
 // Sửa 
 Route::get("/admin/ship/edit", [ShipController::class, 'edit']);
-Route::get("/admin/ship/edit", [ShipController::class, 'update']);
+Route::put("/admin/ship/edit", [ShipController::class, 'update']);
 
 // NHÂN VIÊN
 // Xem tất cẩ nhân viên
 Route::get("/admin/employee", [EmployeeController::class, 'index']);
 //Thêm nhân viên
 Route::get("/admin/employee/create", [EmployeeController::class, 'create']);
-Route::get("/admin/employee/create", [EmployeeController::class, 'save']);
+Route::post("/admin/employee/create", [EmployeeController::class, 'save']);
 // Sửa vị trí nhân viên
 Route::get("/admin/employee/edit", [EmployeeController::class, 'edit']);
-Route::get("/admin/employee/edit", [EmployeeController::class, 'update']);
+Route::put("/admin/employee/edit", [EmployeeController::class, 'update']);
 
 // HÓA ĐƠN BÁN HÀNG
 // Xem tất cả hóa đơn bán hàng
@@ -181,9 +181,9 @@ Route::get("/admin/salesInvoice/da-huy", [SalesInvoiceController::class, 'daHuy'
 // Chi tiết hóa đơn
 Route::get("/admin/salesInvoice/{sal_id}/details", [SalesInvoiceController::class, 'details']);
 //Chuyển
-Route::get("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
+Route::put("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
 //Huy
-Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
+Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 // Sửa trạng thái
 // Route::get("/admin/salesInvoice/edit", [SalesInvoiceController::class, 'salesInvoice.edit']);
 
