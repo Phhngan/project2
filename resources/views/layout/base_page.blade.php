@@ -169,7 +169,7 @@ margin-top: 50px;
   <div class="column-3">
   <div class="dangnhap-dangki">
                     <a href="/login" class="dang-nhap"> Đăng nhập /</a>
-                    <a href="/regiter" class="dang-ki"> Đăng ký </a></div>
+                    <a href="/register" class="dang-ki"> Đăng ký </a></div>
   </div>
   <div class="column-4">
   <a class="cart" href="#cart">

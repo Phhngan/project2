@@ -3,39 +3,46 @@
 @section('title','Chi tiết hóa đơn')
 
 @section('content')
-    <a class="btn btn-primary" href="{{url('/admin/importInvoice/{imp_id}/create')}}" role="button">+ Thêm sản phẩm</a>
-    <h3>Hóa đơn số: {{$importInvoiceDetail->imp_id}}</h3>
-    <table class="table">
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Giá tiền</th>
-            <th>Hạn sử dụng</th>
-            <th>Hành động</th>
-        </tr>
-        @forelse($importInvoiceDetails as $importInvoiceDetail)
-            <tr>
-                <td>
-                    <p>{{$importInvoiceDetail->prd_id}}</p>
-                </td>
-                <td>
-                    <p>{{$importInvoiceDetail->imp_quantity}}</p>
-                    
-                </td>
-                <td>
-                    <p>{{$importInvoiceDetail->imp_price}}VND</p>
-                </td>
-                <td>
-                    <p>{{$importInvoiceDetail->imp_expiryDate}}</p>
-                </td>
-                <td>
-                    <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/{imp_id}/{id}/edit')}}" role="button">Sửa</a>
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="3">Danh sach rong</td>
-            </tr>
-        @endforelse
-    </table>
+<br>
+<h3>Hóa đơn số: {{$importInvoice->imp_id}}</h3>
+<br>
+<a class="btn btn-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/create')}}" role="button">+ Thêm sản phẩm</a>
+<br>
+<table class="table">
+    <tr>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá tiền</th>
+        <th>Hạn sử dụng</th>
+        <th>Hành động</th>
+    </tr>
+    @forelse($importInvoiceDetails as $importInvoiceDetail)
+    <tr>
+        <td>
+            <p>{{$importInvoiceDetail->prd_code}}</p>
+        </td>
+        <td>
+            <p>{{$importInvoiceDetail->prd_name}}</p>
+        </td>
+        <td>
+            <p>{{$importInvoiceDetail->imp_quantity}}</p>
+
+        </td>
+        <td>
+            <p>{{$importInvoiceDetail->imp_price}} VND</p>
+        </td>
+        <td>
+            <p>{{$importInvoiceDetail->imp_expiryDate}}</p>
+        </td>
+        <td>
+            <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/'.$importInvoiceDetail->id.'/edit')}}" role="button">Sửa</a>
+        </td>
+    </tr>
+    @empty
+    <tr>
+        <td colspan="3">Danh sach rong</td>
+    </tr>
+    @endforelse
+</table>
 @endsection

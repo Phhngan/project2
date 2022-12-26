@@ -6,7 +6,6 @@
 <a class="btn btn-primary" href="{{url('admin/images/create')}}" role="button">+ Thêm ảnh</a>
 <table class="table">
     <tr>
-        <th>Mã ảnh</th>
         <th>Ảnh</th>
         <th>URL ảnh</th>
         <th>Role</th>
@@ -16,9 +15,6 @@
     </tr>
     @forelse($images as $image)
     <tr>
-        <td>
-            <p>{{$image->img_id}}</p>
-        </td>
         <td>
             <img src="{{$image->img_url}}" width="100px">
         </td>

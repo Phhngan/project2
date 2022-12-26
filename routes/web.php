@@ -11,6 +11,10 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ImportInvoiceController;
 use App\Http\Controllers\ImportInvoiceDetailController;
 use App\Http\Controllers\SalesInvoiceController;
+use App\Http\Controllers\ProductStatusController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ForgetPassController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -63,10 +67,10 @@ Route::get("/admin/products/{prd_id}", [ProductController::class, 'show']);
 // Sua 1 san pham: view
 Route::get("/admin/products/{prd_id}/edit", [ProductController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
-Route::put("admin/product/{prd_id}/edit", [ProductController::class, 'update']);
+Route::put("admin/products/{prd_id}/edit", [ProductController::class, 'update']);
 
 // Xoa 1 san pham
-Route::delete("admin/products/{prd_id}/delete", [ProductController::class, 'delete']);
+// Route::delete("admin/products/{prd_id}/delete", [ProductController::class, 'delete']);
 
 
 // LOẠI SẢN PHẨM
@@ -84,23 +88,19 @@ Route::get("/admin/productType/{prd_type_id}/edit", [ProductTypeController::clas
 Route::put("/admin/productType/{prd_type_id}/edit", [ProductTypeController::class, 'update']);
 
 // Xoa 1 san pham
-Route::delete("admin/productType/{prd_type_id}/delete", [ProductTypeController::class, 'delete']);
+// Route::delete("admin/productType/{prd_type_id}/delete", [ProductTypeController::class, 'delete']);
 
 // TRẠNG THÁI SẢN PHẨM
-// Xem toàn bộ trạng thái
-Route::get("/admin/product-status", [Controller::class, 'index']);
-// // Sản phẩm còn hạn : views
-// Route::get("/admin/product-status/{prd_status_id}", [Controller::class, 'product-status.con-han']);
-// // Sản phẩm gần hết hạn : view
-// Route::get("/admin/product-status/gan-het-han", [Controller::class, 'product-status.gan-het-han']);
-// // Sản phẩm đã hết hạn : view
-// Route::get("/admin/product-status/da-het-han", [Controller::class, 'product-status.da-het-han']);
-// // Sản phẩm đã bán hết : view 
-// Route::get("/admin/product-status/da-ban-het", [Controller::class, 'product-status.da-ban-het']);
-// // Sản phẩm không còn sản xuất : view
-// Route::get("/admin/product-status/khong-con-san-xuat", [Controller::class, 'product-status.khong-con-san-xuat']);
-
-// NOTE: trạng thái sản phẩm không biết controller nào và chưa làm view xong cho trạng thái
+// Con han
+Route::get("/admin/productStatus/con-han", [ProductStatusController::class, 'conHan']);
+// Gan het han
+Route::get("/admin/productStatus/gan-het-han", [ProductStatusController::class, 'ganHetHan']);
+// Het han
+Route::get("/admin/productStatus/het-han", [ProductStatusController::class, 'hetHan']);
+// Ban het
+Route::get("/admin/productStatus/ban-het", [ProductStatusController::class, 'banHet']);
+// Khong con san xuat
+Route::get("/admin/productStatus/khong-con-san-xuat", [ProductStatusController::class, 'khongConSanXuat']);
 
 // THƯ VIỆN ẢNH
 // Xem tất cả ảnh
@@ -124,7 +124,7 @@ Route::post("/admin/supplyUnit/create", [SupplyUnitController::class, 'save']);
 Route::get("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'edit']);
 Route::put("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'update']);
 // Xoa 
-Route::delete("admin/supplyUnit/{unit_id}/delete", [SupplyUnitController::class, 'delete']);
+// Route::delete("admin/supplyUnit/{unit_id}/delete", [SupplyUnitController::class, 'delete']);
 
 // HÓA ĐƠN NHẬP HÀNG
 // Xem tất cả hóa đơn
@@ -152,8 +152,8 @@ Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailC
 // Xem tất cả
 Route::get("/admin/ship", [ShipController::class, 'index']);
 // Sửa 
-Route::get("/admin/ship/edit", [ShipController::class, 'edit']);
-Route::put("/admin/ship/edit", [ShipController::class, 'update']);
+Route::get("/admin/ship/{reg_id}/edit", [ShipController::class, 'edit']);
+Route::put("/admin/ship/{reg_id}/edit", [ShipController::class, 'update']);
 
 // NHÂN VIÊN
 // Xem tất cẩ nhân viên
@@ -162,12 +162,10 @@ Route::get("/admin/employee", [EmployeeController::class, 'index']);
 Route::get("/admin/employee/create", [EmployeeController::class, 'create']);
 Route::post("/admin/employee/create", [EmployeeController::class, 'save']);
 // Sửa vị trí nhân viên
-Route::get("/admin/employee/edit", [EmployeeController::class, 'edit']);
-Route::put("/admin/employee/edit", [EmployeeController::class, 'update']);
+Route::get("/admin/employee/{id}/edit", [EmployeeController::class, 'edit']);
+Route::put("/admin/employee/{id}/edit", [EmployeeController::class, 'update']);
 
 // HÓA ĐƠN BÁN HÀNG
-// Xem tất cả hóa đơn bán hàng
-// Route::get("/admin/salesInvoice", [SalesInvoiceController::class, 'index']);
 // Hóa đơn chưa xác nhận
 Route::get("/admin/salesInvoice/chua-xac-nhan", [SalesInvoiceController::class, 'chuaXacNhan']);
 // Hóa đơn đã xác nhận
@@ -179,13 +177,11 @@ Route::get("/admin/salesInvoice/thanh-cong", [SalesInvoiceController::class, 'th
 // Hóa đơn đã hủy
 Route::get("/admin/salesInvoice/da-huy", [SalesInvoiceController::class, 'daHuy']);
 // Chi tiết hóa đơn
-Route::get("/admin/salesInvoice/{sal_id}/details", [SalesInvoiceController::class, 'details']);
+Route::get("/admin/salesInvoice/{sal_id}", [SalesInvoiceController::class, 'show']);
 //Chuyển
 Route::put("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
 //Huy
 Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
-// Sửa trạng thái
-// Route::get("/admin/salesInvoice/edit", [SalesInvoiceController::class, 'salesInvoice.edit']);
 
 
 /*--------------------------------------------------------------------------*/
@@ -195,6 +191,14 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //register 
-Route::get('/register', function () {
-    return view('user.register');
-});
+Route::get("/register", [RegisterController::class, 'viewRegister']);
+Route::post("/register", [RegisterController::class, 'register']);
+
+//forget pass
+Route::get("/forgetPass", [ForgetPassController::class, 'viewForgetPass']);
+Route::post("/forgetPass", [ForgetPassController::class, 'forgetPass']);
+
+//menu
+Route::get("/forgetPass", [MenuController::class, 'doMan']);
+Route::get("/forgetPass", [MenuController::class, 'doNgot']);
+Route::get("/forgetPass", [MenuController::class, 'doUong']);

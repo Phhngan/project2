@@ -25,11 +25,11 @@ class ProductController extends Controller
     }
 
     // Xoa 1 sp theo id
-    function delete($prd_id)
-    {
-        DB::table('Products')->where('prd_id', $prd_id)->delete();
-        return redirect('admin/products');
-    }
+    // function delete($prd_id)
+    // {
+    //     DB::table('Products')->where('prd_id', $prd_id)->delete();
+    //     return redirect('admin/products');
+    // }
 
     // View: Tao san pham
     function create()

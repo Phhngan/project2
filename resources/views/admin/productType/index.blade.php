@@ -21,11 +21,11 @@
         <td>
             <a class="btn btn-outline-secondary" href="{{url('/admin/productType/'.$productType->prd_type_id.'/edit')}}" role="button">Sửa</a>
             <br>
-            <form method="POST" action="{{url('admin/productType/'.$productType->prd_type_id.'/delete')}}">
+            <!-- <form method="POST" action="{{url('admin/productType/'.$productType->prd_type_id.'/delete')}}">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-danger">Xóa</button>
-            </form>
+            </form> -->
         </td>
     </tr>
     @empty

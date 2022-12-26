@@ -11,11 +11,12 @@ class EmployeeController extends Controller
 {
     //Hien thi toan bo
     function index(){
-        // $users = User::get();
-        $users= User::where('pos_id', '>', 1)->get();
-        // if ($users->pos_id > 1){
-        //     $user = $users;
-        // }
+        // $users= User::where('pos_id', '>', 1)->get();
+        $users = DB::table('Users')
+            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
+            ->select('Users.*', 'PositionTypes.pos_name')
+            ->where('Users.pos_id', '>', 1)
+            ->get();
         return view('admin/employee.index', ['users' => $users]);
     }
 
@@ -32,10 +33,22 @@ class EmployeeController extends Controller
         $use_phone = $request->get('phone');
         $password = $request->get('password');
         $pos_id = $request->get('position');
-        DB::table('Users')->insert(
-            ['use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth,
-            'use_gender' => $use_gender, 'email' => $email, 'use_phone' => $use_phone,
-            'password' => Hash::make($password), 'pos_id' => $pos_id,]
+        // DB::table('Users')->insert(
+        //     ['use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth,
+        //     'use_gender' => $use_gender, 'email' => $email, 'use_phone' => $use_phone,
+        //     'password' => Hash::make($password), 'pos_id' => $pos_id,]
+        // );
+        \App\Models\User::factory()->create(
+            [
+                'use_lastName' => $use_lastName,
+                'name' => $name,
+                'use_birth' => $use_birth,
+                'use_gender' => $use_gender,
+                'email' => $email,
+                'use_phone' => $use_phone,
+                'password' => Hash::make($password),
+                'pos_id' => $pos_id
+            ]
         );
         return redirect('admin/employee');
     }
@@ -49,18 +62,25 @@ class EmployeeController extends Controller
         return view('admin/employee.edit', ['user' => $user]);
     }
     function update(Request $request, $id){
+        $email = $request->get('email');
         $password = $request->get('password');
         $pos_id = $request->get('position');
-        DB::table('Users')->where('id', $id)->update(
-            ['password' => $password, 'pos_id' =>$pos_id]
-        );
+        if ($password) {
+            DB::table('Users')->where('id', $id)->update(
+                ['password' => Hash::make($password), 'pos_id' =>$pos_id, 'email' =>$email]
+            );
+        } else {
+            DB::table('Users')->where('id', $id)->update(
+                ['pos_id' =>$pos_id, 'email' =>$email]
+            );
+        }
         return redirect('admin/employee');
     }
 
     // Xoa 1 sp theo id
-    function delete($id)
-    {
-        DB::table('Users')->where('id', $id)->delete();
-        return redirect('admin/employee');
-    }
+    // function delete($id)
+    // {
+    //     DB::table('Users')->where('id', $id)->delete();
+    //     return redirect('admin/employee');
+    // }
 }

@@ -60,9 +60,9 @@ class SupplyUnitController extends Controller
     }
 
     // Xoa 1 sp theo id
-    function delete($unit_id)
-    {
-        DB::table('SupplyUnits')->where('unit_id', $unit_id)->delete();
-        return redirect('admin/supplyUnit');
-    }
+    // function delete($unit_id)
+    // {
+    //     DB::table('SupplyUnits')->where('unit_id', $unit_id)->delete();
+    //     return redirect('admin/supplyUnit');
+    // }
 }

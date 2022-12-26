@@ -17,10 +17,11 @@ class ShipController extends Controller
     //Sua 
     function edit($reg_id){
         $region = Region::findOrFail($reg_id);
+        // $region = Region::where('reg_id',$reg_id)->get();
         if ($region == null) {
             return redirect()->route('error');
         }
-        return view('admin/ship.edit', ['region' => $region]);
+        return view('admin/ship.edit', ['region' => $region], ['reg_id' => $reg_id]);
     }
     function update(Request $request, $reg_id){
         $reg_ship = $request->get('ship');

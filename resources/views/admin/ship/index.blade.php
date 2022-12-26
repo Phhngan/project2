@@ -28,7 +28,7 @@
                     <p>{{$region->reg_ship_time}} ngày</p>
                 </td>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{url('/admin/ship/edit')}}" role="button">Sửa</a>
+                    <a class="btn btn-outline-primary" href="{{url('/admin/ship/'.$region->reg_id.'/edit')}}" role="button">Sửa</a>
                 </td>
             </tr>
         @empty

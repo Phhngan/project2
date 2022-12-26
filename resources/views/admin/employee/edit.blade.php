@@ -4,13 +4,17 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật nhân viên</h1>
-<form action="{{url('/admin/employee/edit')}}" method="POST">
+<form action="{{url('/admin/employee/'.$user->id.'/edit')}}" method="POST">
     @csrf
     @method('put')
     <br>
+    <label for="email">Mật khẩu:</label>
+    <br>
+    <input value="{{ $user->email  }}" name="email" type="text" class="form-control" placeholder="Email">
+    <br>
     <label for="password">Mật khẩu:</label>
     <br>
-    <input value="{{ $user->password  }}" name="password" type="text" class="form-control" placeholder="Mật khẩu">
+    <input name="password" type="text" class="form-control" placeholder="Mật khẩu">
     <br>
     <label for="position">Vị trí công việc:</label>
     <br>

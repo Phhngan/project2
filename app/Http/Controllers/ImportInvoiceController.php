@@ -11,7 +11,12 @@ class ImportInvoiceController extends Controller
     //Hien thi toan bo 
     function index()
     {
-        $importInvoices = Importinvoice::get();
+        // $importInvoices = Importinvoice::get();
+        $importInvoices = DB::table('ImportInvoices')
+        ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
+        ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
+        ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name')->orderByDesc('ImportInvoices.imp_id')
+        ->get();
         return view('admin/importInvoice.index', ['importInvoices' => $importInvoices]);
     }
 
