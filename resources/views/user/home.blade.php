@@ -2,117 +2,54 @@
 
 @section('title','Home')
 
-@section('style')
-.carousel-inner{
-margin-top:25px;
-margin-bottom: 50px;
-height: 500px;
-}
-.sp-noi-bat{
-background-color: #B8B0E3;
-height: 600px;
-margin-bottom:50px;
-border-radius: 5px;
-}
+@yield('css-link')
 
-.sp-moi{
-background-color: #B8B0E3;
-height: 600px;
-margin-bottom:50px;
-border-radius: 5px;
-}
-
-.tieu-de{
-text-align: center;
-color: #FFFFFF;
-text-decoration: underline;
-}
-
-.card {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-max-width: 300px;
-margin: auto;
-text-align: center;
-font-family: arial;
-}
-
-.price {
-color: grey;
-font-size: 22px;
-}
-
-.card button {
-border: none;
-outline: 0;
-padding: 8px;
-color: white;
-background-color: #5168A1;
-text-align: center;
-cursor: pointer;
-width: 100%;
-font-size: 15px;
-}
-
-.card button:hover {
-opacity: 0.7;
-}
-
-/* Create four equal columns that floats next to each other */
-.column {
-float: left;
-width: 25%;
-padding: 10px;
-height: 300px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-content: "";
-display: table;
-clear: both;
-}
-
-@endsection
 
 @section('content')
-<!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-  </div>
-
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true" alt="Slide 1"
-        class="d-block" style="width:100%">
-      <div class="carousel-caption d-none d-md-block">
-        <h3><strong>Khuyến mãi tháng 1</strong></h3>
-        <h1>Sale up to 50%</h1>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true" alt="Slide 2"
-        class="d-block" style="width:100%">
-    </div>
-    <div class="carousel-item">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true" alt="Slide 3"
-        class="d-block" style="width:100%">
-    </div>
-  </div>
-
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
+<div class="main">
+  <div class="row">
+    <div class="leftcolumn">
+<section class="slideShow">
+  <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true"
+  style="width:100%">
+  <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack2.jpg?raw=true"
+  style="width:100%">
+  <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true"
+  style="width:100%">
+</section>
 </div>
+<div class="rightcolumn">
+<table class="table">
+        <tr>
+            <th>Danh mục sản phẩm</th>
+        </tr>
+        <tr>
+                <td>
+                <a href="/allProducts" class="menu">Tất cả sản phẩm</a>
+                </td>
+</tr>
+            <tr>
+                <td>
+                <a href="/do-man" class="menu">Đồ mặn</a>
+                </td>
+</tr>
+<tr>
+                <td>
+                <a href="do-ngot" class="menu">Đồ ngọt</a>
+                </td>
+</tr>
+<tr>
+                <td>
+                <a href="do-uong" class="menu">Đồ uống</a>
+                </td>
+                <td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
 
 <!-- San pham noi bat -->
 <div class="sp-noi-bat">
@@ -124,7 +61,8 @@ clear: both;
           style="width:100%">
         <h3>Trà hoa quả Meco</h3>
         <p class="price">30.000VND</p>
-        <p><button>Thêm vào giỏ</button></p>
+        <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     <div class="column">
@@ -133,7 +71,8 @@ clear: both;
           style="width:100%">
         <h3>Cơm cháy chà bông</h3>
         <p class="price">50.000VND</p>
-        <p><button>Thêm vào giỏ</button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     <div class="column">
@@ -142,7 +81,8 @@ clear: both;
           style="width:100%">
         <h3>Coca cola Sig Mixers</h3>
         <p class="price">96.000VND</p>
-        <p><button>Thêm vào giỏ</button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     <div class="column">
@@ -151,7 +91,8 @@ clear: both;
           alt="banh-gau" style="width:100%">
         <h3>Bánh gấu mix 3 vị</h3>
         <p class="price">60.000VND</p>
-        <p><button>Thêm vào giỏ </button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
   </div>
@@ -167,7 +108,8 @@ clear: both;
           style="width:100%">
         <h3>Trà hoa quả Meco</h3>
         <p class="price">30.000VND</p>
-        <p><button>Thêm vào giỏ</button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     <div class="column">
@@ -176,7 +118,8 @@ clear: both;
           style="width:100%">
         <h3>Cơm cháy chà bông</h3>
         <p class="price">50.000VND</p>
-        <p><button>Thêm vào giỏ</button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     <div class="column">
@@ -185,7 +128,8 @@ clear: both;
           style="width:100%">
         <h3>Coca cola Sig Mixers</h3>
         <p class="price">96.000VND</p>
-        <p><button>Thêm vào giỏ</button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     <div class="column">
@@ -194,35 +138,59 @@ clear: both;
           alt="banh-gau" style="width:100%">
         <h3>Bánh gấu mix 3 vị</h3>
         <p class="price">60.000VND</p>
-        <p><button>Thêm vào giỏ </button></p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
   </div>
 </div>
+
 @endsection
 
 @section('full-screen-content')
 <div class="nhan-hang">
-<h2 class="tieu-de">Các nhãn hàng</h2>
-<div class="row">
-<div class="column">
+  <h2 class="tieu-de">Các nhãn hàng</h2>
+  <div class="row" id="row-nhan-hang">
+    <div class="column" id="ten-nhan-hang">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"
+        style="width:100%">
+    </div>
+    <div class="column" id="ten-nhan-hang">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo"
+        style="width:100%">
+    </div>
+    <div class="column" id="ten-nhan-hang">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/pocky2.jpg?raw=true" alt="pocky"
+        style="width:100%">
+    </div>
+    <div class="column" id="ten-nhan-hang">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"
+        style="width:100%">
+    </div>
+  <div class="column" id="ten-nhan-hang">
+    <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo"
+      style="width:100%">
+  </div>
+</div>
+</div>
+@endsection
 
-</div>
-<div class="column">
+@section('js')
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
 
-</div>
-<div class="column">
-
-</div>
-<div class="column">
-
-</div>
-<div class="column">
-
-</div>
-<div class="column">
-
-</div>
-</div>
-</div>
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 3000);
+}
+</script>
 @endsection
