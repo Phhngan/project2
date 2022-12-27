@@ -1,0 +1,260 @@
+.body {font-family: arial;}
+.header {
+    background-color: #A8B3D0;
+    height: 120px;
+    position: sticky;
+}
+
+.logo {
+    margin-top: 12px;
+    margin-left:25px;
+    float: left;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example {
+  margin-top:20px;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  background: #5168A1;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.header .dangnhap-dangki {
+    float: inherit;
+}
+
+.dang-nhap,
+.dang-ki {
+    float: inherit;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    font-size: 17px;
+    margin-top:30px;
+}
+
+.cart {
+    float: inherit;
+    margin-top: 30px;
+}
+
+.header-bottom {
+    background-color: #5168A1;
+    overflow: hidden;
+}
+
+.bot-item {
+    float: left;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 180px;
+    padding: 6px;
+}
+
+.header-bottom .bot-item:hover{
+    background-color: white;
+    border-radius: 5px;
+    color: #2D1476;
+}
+
+.text-white{
+text-decoration: none;
+}
+.footer{
+margin-top: 50px;
+}
+
+/* Create four equal columns that floats next to each other */
+.header .column-1  {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  height: 120px; /* Should be removed. Only for demonstration */
+}
+.header .column-2  {
+  float: left;
+  width: 55%;
+  padding: 10px;
+  height: 120px; /* Should be removed. Only for demonstration */
+}
+.header .column-3  {
+  float: left;
+  width: 15%;
+  padding: 10px;
+  height: 120px; /* Should be removed. Only for demonstration */
+}
+.header .column-4  {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  height: 120px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.header .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ---------HOME-------- */
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 10px;
+}
+.mySlides{
+  margin-top:25px;
+  margin-bottom: 50px;
+  height: 500px;
+}
+.menu{
+  text-decoration: none;
+  color: black;
+}
+
+  
+  .sp-noi-bat{
+  background-color: #A8B3D0;
+  height: 600px;
+  margin-bottom:50px;
+  border-radius: 5px;
+  }
+  
+  .sp-moi{
+  background-color: #A8B3D0;
+  height: 600px;
+  margin-bottom:50px;
+  border-radius: 5px;
+  }
+  
+  .tieu-de{
+  text-align: center;
+  color: #FFFFFF;
+  text-decoration: underline;
+  padding: 10px;
+  font-size: 25px;
+  }
+  
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  }
+  
+  .price {
+  color: grey;
+  font-size: 22px;
+  }
+  
+  .card button, .card .btn-detail, .card .btn-add-to-cart{
+  border: none;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+  font-size: 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  margin: auto;
+  margin-bottom:10px;
+  }
+  .card .btn-detail{
+    background-color:#091B59;
+  }
+  .card .btn-add-to-cart{
+    background-color: #5168A1;
+  }
+  
+  .card .btn-detail:hover,  .card .btn-add-to-cart:hover{
+  opacity: 0.7;
+  }
+  
+ /* Create four equal columns that floats next to each other */
+ .sp-noi-bat .column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 300px;
+  }
+  
+  /* Clear floats after the columns */
+  .sp-noi-bat .row:after {
+  content: "";
+  display: table;
+  clear: both;
+  } 
+
+  .sp-moi .column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 300px;
+    }
+    
+    /* Clear floats after the columns */
+    .sp-moi .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    } 
+  
+  #ten-nhan-hang{
+  float: left;
+  width: 15%;
+  padding: 10px;
+  margin-left: 65px;
+  }
+  #row-nhan-hang:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+  .nhan-hang{
+    background-color: #D3D3D3;
+  }
+
+
+  
