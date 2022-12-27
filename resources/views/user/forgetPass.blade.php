@@ -65,7 +65,7 @@ margin-left: 0px;
             <label for="exampleInputPassword2" class="form-label">Nhập lại mật khẩu mới: </label>
             <input name="password2" type="password2" class="form-control" id="exampleInputPassword2">
         </div>
-        <a>{{$error}}</a>
+        <p class="error-noti">{{$error}}</p>
         <br>
         <button type="submit" class="btn-dangki">Lấy mật khẩu</button>
         <div class="mb-3">

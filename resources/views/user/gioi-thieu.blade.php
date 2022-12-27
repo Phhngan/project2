@@ -4,8 +4,11 @@
 
 @section('style')
 .banner-gioi-thieu{
-    background-image: url("https://www.splitshire.com/wp-content/uploads/2014/11/SplitShire-03692-1800x1200-uai-1800x1012.jpg");
+    background-image: url("https://wallpaperaccess.com/full/754632.jpg");
     color: white;
+    padding: 100px;
+    margin-top: 5px;
+    margin-bottom:25px;
 }
 * {
   box-sizing:border-box;
@@ -35,7 +38,7 @@
 }
 
 
-img {
+#gioi-thieu {
   display: block;
   height: auto;
   max-width: 100%;
@@ -86,11 +89,11 @@ cho gia đình với những thiết bị cao cấp, an toàn và tiện lợi..
 <div class="container-item">
   <div class="row">
     <div class="column-66">
-      <h3>QUAN ĐIỂM CHỦ ĐẠO</3>
+      <h3>QUAN ĐIỂM CHỦ ĐẠO</h3>
       <p>Lấy sự chân thành để phát triển bền vững. Đồ Nhập Khẩu là người bạn tin cây, nơi để chia sẻ mọi điều khi cần.</p>
     </div>
     <div class="column-33">
-        <img src="https://donhapkhau.vn/wp-content/uploads/2020/10/trust-in-business.jpg" width="335" height="471">
+        <img src="https://donhapkhau.vn/wp-content/uploads/2020/10/trust-in-business.jpg" id="gioi-thieu" width="350" height="471">
     </div>
   </div>
 </div>
@@ -99,7 +102,7 @@ cho gia đình với những thiết bị cao cấp, an toàn và tiện lợi..
 <div class="container-item" style="background-color:#f1f1f1">
   <div class="row">
     <div class="column-33">
-      <img src="https://donhapkhau.vn/wp-content/uploads/2020/10/triet-ly-kinh-doanh.jpg" alt="App" width="335" height="471">
+      <img src="https://donhapkhau.vn/wp-content/uploads/2020/10/triet-ly-kinh-doanh.jpg" id="gioi-thieu" width="350" height="471">
     </div>
     <div class="column-66">
       <h3>TRIẾT LÝ KINH DOANH</h3>
@@ -110,14 +113,14 @@ Hướng tới sự phát triển bền vững bằng việc hài hòa lợi íc
 </div>
 
 <!-- Section 3 -->
-<div class="container-iten">
+<div class="container-item">
   <div class="row">
     <div class="column-66">
       <h3>VẬN CHUYỂN VÀ LẮP ĐẶT TOÀN QUỐC</h3>
       <p>Hiện nay tất cả các sản phẩm Snack đang kinh doanh được cung cấp trên toàn quốc và bán online.</p>
     </div>
     <div class="column-33">
-        <img src="https://donhapkhau.vn/wp-content/uploads/2021/05/van-chuyen-toan-quoc-min.jpg" width="335" height="471" >
+        <img src="https://donhapkhau.vn/wp-content/uploads/2021/05/van-chuyen-toan-quoc-min.jpg" id="gioi-thieu" width="350" height="471" >
     </div>
   </div>
 </div>

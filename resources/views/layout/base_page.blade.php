@@ -41,7 +41,7 @@
           <a href="/regiter" class="dang-ki"> Đăng ký </a>
           @else
           <div class="dangnhap-dangki">
-          <a href="/login" class="dang-nhap"> {{Auth::user()->name}} /</a>
+          <a href="/profile" class="dang-nhap"> {{Auth::user()->name}} </a>
           @endif
         </div>
       </div>
@@ -61,9 +61,9 @@
   <nav class="header-bottom">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
-    <a href="#" class="bot-item">Đồ mặn</a>
-    <a href="#" class="bot-item">Đồ ngọt</a>
-    <a href="#" class="bot-item">Đồ uống</a>
+    <a href="doMan" class="bot-item">Đồ mặn</a>
+    <a href="doNgot" class="bot-item">Đồ ngọt</a>
+    <a href="doUong" class="bot-item">Đồ uống</a>
   </nav>
 
   <div class="container">
@@ -106,10 +106,10 @@
                   <a href="/gioi-thieu" class="text-white">Giới thiệu</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Sản phẩm</a>
+                  <a href="/products" class="text-white">Sản phẩm</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Liên hệ</a>
+                  <a href="#" class="text-white">Liên hệ</a>
                 </li>
               </ul>
             </div>

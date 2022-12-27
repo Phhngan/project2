@@ -10,42 +10,42 @@
 <div class="main">
   <div class="row">
     <div class="leftcolumn">
-<section class="slideShow">
+  <section class="slideShow">
   <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true"
   style="width:100%">
   <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack2.jpg?raw=true"
   style="width:100%">
   <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true"
-  style="width:100%">
-</section>
+    style="width:100%">
+  </section>
 </div>
 <div class="rightcolumn">
-<table class="table">
-        <tr>
-            <th>Danh mục sản phẩm</th>
-        </tr>
-        <tr>
-                <td>
-                <a href="/allProducts" class="menu">Tất cả sản phẩm</a>
-                </td>
-</tr>
-            <tr>
-                <td>
-                <a href="/do-man" class="menu">Đồ mặn</a>
-                </td>
-</tr>
-<tr>
-                <td>
-                <a href="do-ngot" class="menu">Đồ ngọt</a>
-                </td>
-</tr>
-<tr>
-                <td>
-                <a href="do-uong" class="menu">Đồ uống</a>
-                </td>
-                <td>
-</tr>
-</table>
+  <table class="table">
+    <tr>
+      <th>Danh mục sản phẩm</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="/allProducts" class="menu">Tất cả sản phẩm</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/do-man" class="menu">Đồ mặn</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="do-ngot" class="menu">Đồ ngọt</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="do-uong" class="menu">Đồ uống</a>
+      </td>
+      <td>
+    </tr>
+  </table>
 </div>
 </div>
 </div>
@@ -55,7 +55,7 @@
 <div class="sp-noi-bat">
   <h2 class="tieu-de">SẢN PHẨM NỔI BẬT</h2>
   <div class="row">
-    <div class="column">
+    <div class="column-sales">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
           style="width:100%">
@@ -167,30 +167,30 @@
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"
         style="width:100%">
     </div>
-  <div class="column" id="ten-nhan-hang">
-    <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo"
-      style="width:100%">
+    <div class="column" id="ten-nhan-hang">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo"
+        style="width:100%">
+    </div>
   </div>
-</div>
 </div>
 @endsection
 
 @section('js')
 <script>
-// Automatic Slideshow - change image every 3 seconds
-var myIndex = 0;
-carousel();
+  // Automatic Slideshow - change image every 3 seconds
+  var myIndex = 0;
+  carousel();
 
-function carousel() {
+  function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
     for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
+      x[i].style.display = "none";
     }
     myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
+    if (myIndex > x.length) { myIndex = 1 }
+    x[myIndex - 1].style.display = "block";
     setTimeout(carousel, 3000);
-}
+  }
 </script>
 @endsection

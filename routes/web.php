@@ -201,6 +201,35 @@ Route::get("/forgetPass", [ForgetPassController::class, 'viewForgetPass']);
 Route::post("/forgetPass", [ForgetPassController::class, 'forgetPass']);
 
 //menu
-Route::get("/forgetPass", [MenuController::class, 'doMan']);
-Route::get("/forgetPass", [MenuController::class, 'doNgot']);
-Route::get("/forgetPass", [MenuController::class, 'doUong']);
+Route::get("/doMan", [MenuController::class, 'doMan']);
+Route::get("/doNgot", [MenuController::class, 'doNgot']);
+Route::get("/doUong", [MenuController::class, 'doUong']);
+Route::get("/products", [MenuController::class, 'allProducts']);
+
+// chi tiết sản phẩm
+Route::get("/products/{prd_id}", [ProductDetailsController::class, 'show']);
+
+// giới thiệu
+Route::get('/gioi-thieu', function () {
+    return view('user.gioi-thieu');
+});
+
+//profile client
+Route::get("/client", [ClientController::class, 'profile']);
+// change pass client
+Route::get("/client/changepass", [ClientController::class, 'changePass']);
+// invoices
+Route::get("/client/invoices", [ClientController::class, 'invoices']);
+
+
+//profile admin
+Route::get("/admin/profile", [AdminController::class, 'profile']);
+//change pass admin
+Route::get("/admin/changPass", [AdminController::class, 'changPass']);
+
+// CART
+Route::get("/cart", [CartController::class, 'cart']);
+// đặt thành công
+Route::get('/thanhCong', function () {
+    return view('user.thank');
+});

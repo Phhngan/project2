@@ -256,5 +256,10 @@ margin-top: 50px;
     background-color: #D3D3D3;
   }
 
+  .error-noti {
+    color: red;
+    margin-left: 200px;
+  }
+
 
   
