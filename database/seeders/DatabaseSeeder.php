@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call((ProductTypesDatabase::class));
         $this->call((ProductsDatabase::class));
-        // $this->call((ImagesDatabase::class));
+        $this->call((ImagesDatabase::class));
         $this->call((ProductStatussDatabase::class));
         $this->call((SupplyUnitsDatabase::class));
         $this->call((PositionTypesDatabase::class));

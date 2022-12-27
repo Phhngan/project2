@@ -6,7 +6,7 @@
     <a class="btn btn-primary" href="{{url('/admin/importInvoice/create')}}" role="button">+ Thêm hóa đơn nhập</a>
     <table class="table">
         <tr>
-            <th>Mã hóa đơn nhập</th>
+            <th>Mã hóa đơn</th>
             <th>Đơn vị cung cấp</th>
             <th>Tổng tiền nhập</th>
             <th>Ngày nhập</th>
@@ -19,21 +19,21 @@
                     <p>{{$importInvoice->imp_id}}</p>
                 </td>
                 <td>
-                    <p>{{$importInvoice->unit_id}}</p>
+                    <p>{{$importInvoice->unit_name}}</p>
                     
                 </td>
                 <td>
-                    <p>{{$importInvoice->imp_total}}VND</p>
+                    <p>{{$importInvoice->imp_total}} VND</p>
                 </td>
                 <td>
                     <p>{{$importInvoice->imp_date}}</p>
                 </td>
                 <td>
-                    <p>{{$importInvoice->use_id}}</p>
+                    <p>{{$importInvoice->name}}</p>
                 </td>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/{imp_id}/edit')}}" role="button">Sửa</a>
-                    <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/{imp_id}')}}" role="button">Xem chi tiết</a>
+                    <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/edit')}}" role="button">Sửa</a>
+                    <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id)}}" role="button">Xem chi tiết</a>
                 </td>
             </tr>
         @empty

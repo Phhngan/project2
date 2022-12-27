@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="text-center">Thêm sản phẩm vào đơn nhập</h1>
-    <form action="{{url('/admin/importInvoice/{imp_id}/create')}}" method="POST">
+    <form action="{{url('/admin/importInvoice/'.$imp_id.'/create')}}" method="POST">
         @csrf
         <br>
         <label for="productId">Mã sản phẩm:</label>

@@ -3,8 +3,8 @@
 @section('title','Cập nhật shipping')
 
 @section('content')
-<h1 class="text-center">Cập nhật </h1>
-<form action="{{url('/admin/ship/edit')}}" method="POST">
+<h1 class="text-center">Cập nhật tiền ship</h1>
+<form action="{{url('/admin/ship/'.$reg_id.'/edit')}}" method="POST">
     @csrf
     @method('put')
     <br>

@@ -11,11 +11,8 @@
             <th>Mã sản phẩm</th>
             <th>Sản phẩm</th>
             <th>Loại sản phẩm</th>
-            <!-- <th>Khối lượng</th>
-            <th>Nguồn gốc</th> -->
+            <th>Số lượng</th>
             <th>Giá bán</th>
-            <!-- <th>Giảm giá</th>
-            <th>Mô tả</th> -->
             <th>Hành động</th>
         </tr>
         @forelse($products as $product)
@@ -28,33 +25,23 @@
                     
                 </td>
                 <td>
-                    <p>{{$product->prd_type_id}}</p>
+                    <p>{{$product->prd_type}}</p>
                 </td>
                 <td>
-                    <p>{{$product->prd_weigh}}g</p>
-                </td>
-                <td>
-                    <p>{{$product->prd_source}}</p>
+                    <p>0</p>
                 </td>
                 <td>
                     <p>{{$product->prd_price}} VND</p>
                 </td>
                 <td>
-                    <p>{{$product->prd_discount}}</p>
-                </td>
-                <td>
-                    <p>{{$product->prd_description}}</p>
-                </td>
-                
-                <td>
                     <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
-                    <a class="btn btn-outline-secondary" href="{{url('/admin/products/{prd_id}')}}" role="button">Xem chi tiết</a>
+                    <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
                     <br>
-                    <form method="POST" action="{{url('admin/products/'.$product->prd_id.'/delete')}}">
+                    <!-- <form method="POST" action="{{url('admin/products/'.$product->prd_id.'/delete')}}">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form>
+                    </form> -->
                 </td>
             </tr>
         @empty

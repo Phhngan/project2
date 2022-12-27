@@ -11,7 +11,10 @@ class ImagesController extends Controller
     //Hien thi toan bo
     function index()
     {
-        $images = Image::get();
+        $images = DB::table('Images')
+            ->join('Products', 'Images.prd_id', '=', 'Products.prd_id')
+            ->select('Images.*', 'Products.prd_name', 'Products.prd_code')
+            ->get();
         return view('admin/images.index', ['images' => $images]);
     }
 

@@ -47,9 +47,9 @@ class ProductTypeController extends Controller
     }
 
     // Xoa 1 sp theo id
-    function delete($prd_type_id)
-    {
-        DB::table('ProductTypes')->where('prd_type_id', $prd_type_id)->delete();
-        return redirect('admin/productType');
-    }
+    // function delete($prd_type_id)
+    // {
+    //     DB::table('ProductTypes')->where('prd_type_id', $prd_type_id)->delete();
+    //     return redirect('admin/productType');
+    // }
 }

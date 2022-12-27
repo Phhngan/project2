@@ -6,11 +6,11 @@
 <a class="btn btn-primary" href="{{url('admin/images/create')}}" role="button">+ Thêm ảnh</a>
 <table class="table">
     <tr>
-        <th>Mã ảnh</th>
         <th>Ảnh</th>
         <th>URL ảnh</th>
         <th>Role</th>
-        <th>ID sản phẩm</th>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
         <th>Hành động</th>
     </tr>
     @forelse($images as $image)
@@ -19,7 +19,7 @@
             <p>{{$image->img_id}}</p>
         </td>
         <td>
-            <img src="{{$image->img_url}}" width="100">
+            <img src="{{$image->img_url}}" width="100px">
         </td>
         <td>
             <p>{{$image->img_url}}</p>
@@ -29,9 +29,11 @@
             <p>{{$image->img_role}}</p>
         </td>
         <td>
-            <p>{{$image->prd_id}}</p>
+            <p>{{$image->prd_code}}</p>
         </td>
-
+        <td>
+            <p>{{$image->prd_name}}</p>
+        </td>
         <td>
             <a class="btn btn-outline-secondary" href="{{url('/admin/images/'.$image->img_id.'/edit')}}" role="button">Sửa</a>
         </td>
