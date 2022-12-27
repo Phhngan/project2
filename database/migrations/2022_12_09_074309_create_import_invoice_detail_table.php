@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('imp_price');
             $table->date('imp_expiryDate');
             $table->unsignedInteger('prd_status_id');
-            $table->integer('imp_quantity-left');
+            $table->integer('imp_quantity_left');
             $table->timestamps();
 
             $table->foreign('imp_id')->references('imp_id')->on('ImportInvoices');

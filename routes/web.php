@@ -101,6 +101,8 @@ Route::get("/admin/productStatus/het-han", [ProductStatusController::class, 'het
 Route::get("/admin/productStatus/ban-het", [ProductStatusController::class, 'banHet']);
 // Khong con san xuat
 Route::get("/admin/productStatus/khong-con-san-xuat", [ProductStatusController::class, 'khongConSanXuat']);
+//Chuyen sang ko con san xuat
+Route::put("/admin/productStatus/{prd_id}/chuyen", [ProductStatusController::class, 'chuyen']);
 
 // THƯ VIỆN ẢNH
 // Xem tất cả ảnh

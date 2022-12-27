@@ -25,7 +25,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 40000,
                     'imp_expiryDate' => '2022/10/25',
                     'prd_status_id' => 3,
-                    'imp_quantity-left' => 5,
+                    'imp_quantity_left' => 5,
                 ],
                 [
                     'imp_id' => 1,
@@ -34,7 +34,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 20000,
                     'imp_expiryDate' => '2023/05/12',
                     'prd_status_id' => 1,
-                    'imp_quantity-left' => 48,
+                    'imp_quantity_left' => 48,
                 ],
                 [
                     'imp_id' => 2,
@@ -43,7 +43,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 8000,
                     'imp_expiryDate' => '2023/01/15',
                     'prd_status_id' => 2,
-                    'imp_quantity-left' => 10,
+                    'imp_quantity_left' => 10,
                 ],
                 [
                     'imp_id' => 2,
@@ -52,7 +52,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 25000,
                     'imp_expiryDate' => '2023/06/17',
                     'prd_status_id' => 1,
-                    'imp_quantity-left' => 37,
+                    'imp_quantity_left' => 37,
                 ],
                 [
                     'imp_id' => 3,
@@ -61,7 +61,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 12000,
                     'imp_expiryDate' => '2023/05/19',
                     'prd_status_id' => 4,
-                    'imp_quantity-left' => 0,
+                    'imp_quantity_left' => 0,
                 ],
                 [
                     'imp_id' => 3,
@@ -70,7 +70,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 50000,
                     'imp_expiryDate' => '2023/09/04',
                     'prd_status_id' => 1,
-                    'imp_quantity-left' => 38,
+                    'imp_quantity_left' => 38,
                 ],
                 [
                     'imp_id' => 4,
@@ -79,7 +79,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 40000,
                     'imp_expiryDate' => '2023/10/25',
                     'prd_status_id' => 1,
-                    'imp_quantity-left' => 15,
+                    'imp_quantity_left' => 15,
                 ],
                 [
                     'imp_id' => 5,
@@ -88,7 +88,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 8000,
                     'imp_expiryDate' => '2024/01/15',
                     'prd_status_id' => 1,
-                    'imp_quantity-left' => 30,
+                    'imp_quantity_left' => 30,
                 ],
                 [
                     'imp_id' => 6,
@@ -97,7 +97,7 @@ class ImportInvoiceDetailsDatabase extends Seeder
                     'imp_price' => 12000,
                     'imp_expiryDate' => '2023/05/19',
                     'prd_status_id' => 1,
-                    'imp_quantity-left' => 20,
+                    'imp_quantity_left' => 20,
                 ],
             ]
         );

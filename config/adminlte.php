@@ -325,11 +325,11 @@ return [
                 ],
                 [
                     'text' => 'Đã hết hạn',
-                    'url' => 'admin/productStatus/da-het-han',
+                    'url' => 'admin/productStatus/het-han',
                 ],
                 [
                     'text' => 'Đã bán hết',
-                    'url' => 'admin/productStatus/da-ban-het',
+                    'url' => 'admin/productStatus/ban-het',
                 ],
                 [
                     'text' => 'Không còn sản xuất',

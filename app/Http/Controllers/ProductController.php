@@ -13,23 +13,14 @@ class ProductController extends Controller
     function index()
     {
         // Lay du lieu
-        // $products = DB::table('Products')->get();
         $products = DB::table('Products')
             ->join('ProductTypes', 'Products.prd_type_id', '=', 'ProductTypes.prd_type_id')
             ->select('Products.*', 'ProductTypes.prd_type')
             ->get();
 
         // Tra ve view -> view se render ra man hinh
-        // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
         return view('admin/product.index', ['products' => $products]);
     }
-
-    // Xoa 1 sp theo id
-    // function delete($prd_id)
-    // {
-    //     DB::table('Products')->where('prd_id', $prd_id)->delete();
-    //     return redirect('admin/products');
-    // }
 
     // View: Tao san pham
     function create()

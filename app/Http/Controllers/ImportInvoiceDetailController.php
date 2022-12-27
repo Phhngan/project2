@@ -65,7 +65,7 @@ class ImportInvoiceDetailController extends Controller
         return redirect('admin/importInvoice');
     }
 
-    // Xoa 1 sp theo id
+    // Xoa 
     function delete($id)
     {
         DB::table('ImportInvoiceDetails')->where('id', $id)->delete();
