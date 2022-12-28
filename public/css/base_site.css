@@ -26,6 +26,7 @@ form.example input[type=text] {
   float: left;
   width: 80%;
   background: #f1f1f1;
+  border-radius: 10px 0px 0px 10px;
 }
 
 form.example button {
@@ -38,6 +39,7 @@ form.example button {
   border: 1px solid grey;
   border-left: none;
   cursor: pointer;
+  border-radius: 0px 10px 10px 0px;
 }
 
 form.example button:hover {
@@ -72,6 +74,7 @@ form.example::after {
 .header-bottom {
     background-color: #5168A1;
     overflow: hidden;
+    margin-bottom:25px;
 }
 
 .bot-item {
@@ -123,6 +126,25 @@ margin-top: 50px;
   height: 120px; /* Should be removed. Only for demonstration */
 }
 
+.logout {
+    display: none;
+    position: absolute;
+    margin-top: 53px;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.logout a {
+  color: red;
+  padding: 6px 10px;
+  text-decoration: none;
+  display: block;
+}
+.dangnhap-dangki:hover .logout {display: block;}
+
+
 /* Clear floats after the columns */
 .header .row:after {
   content: "";
@@ -143,7 +165,6 @@ margin-top: 50px;
   padding-left: 10px;
 }
 .mySlides{
-  margin-top:25px;
   margin-bottom: 50px;
   height: 500px;
 }
@@ -172,7 +193,7 @@ margin-top: 50px;
   color: #FFFFFF;
   text-decoration: underline;
   padding: 10px;
-  font-size: 25px;
+  font-size: 22px;
   }
   
   .card {
@@ -185,7 +206,7 @@ margin-top: 50px;
   
   .price {
   color: grey;
-  font-size: 22px;
+  font-size: 20px;
   }
   
   .card button, .card .btn-detail, .card .btn-add-to-cart{
@@ -212,14 +233,6 @@ margin-top: 50px;
   opacity: 0.7;
   }
   
- /* Create four equal columns that floats next to each other */
- .sp-noi-bat .column {
-  float: left;
-  width: 25%;
-  padding: 10px;
-  height: 300px;
-  }
-  
   /* Clear floats after the columns */
   .sp-noi-bat .row:after {
   content: "";
@@ -227,7 +240,7 @@ margin-top: 50px;
   clear: both;
   } 
 
-  .sp-moi .column {
+  .column-product {
     float: left;
     width: 25%;
     padding: 10px;
@@ -261,5 +274,22 @@ margin-top: 50px;
     margin-left: 200px;
   }
 
+  .column-sales {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 300px;
+    }
+
+    #zoom {
+      transition: transform .2s;
+      margin: 0 auto;
+    }
+    
+    #zoom:hover {
+      -ms-transform: scale(1.05); /* IE 9 */
+      -webkit-transform: scale(1.05); /* Safari 3-8 */
+      transform: scale(1.05); 
+    }
 
   

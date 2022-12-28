@@ -1,173 +1,41 @@
 @extends('layout.base_page')
 
-@section('title','Sản phẩm')
+@section('title','Chi tiết sản phẩm')
 
-@section('styles')
-body {
-  font-family: 'open sans';
-  overflow-x: hidden; }
+@section('style')
 
-img {
-  max-width: 100%; }
+.body{
+    background-color: #DDE0F4;
+}
+.details{
+    background-color: white;
+}
 
-.preview {
-  display: -webkit-box;
-  display: -webkit-flex;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: vertical;
--webkit-box-direction: normal;
--webkit-flex-direction: column;
--ms-flex-direction: column;
-flex-direction: column; }
-@media screen and (max-width: 996px) {
-.preview {
-margin-bottom: 20px; } }
+.price-details{
+    color: red;
 
-.preview-pic {
--webkit-box-flex: 1;
--webkit-flex-grow: 1;
--ms-flex-positive: 1;
-flex-grow: 1; }
+}
 
-.preview-thumbnail.nav-tabs {
-border: none;
-margin-top: 15px; }
-.preview-thumbnail.nav-tabs li {
-width: 18%;
-margin-right: 2.5%; }
-.preview-thumbnail.nav-tabs li img {
-max-width: 100%;
-display: block; }
-.preview-thumbnail.nav-tabs li a {
-padding: 0;
-margin: 0; }
-.preview-thumbnail.nav-tabs li:last-of-type {
-margin-right: 0; }
-
-.tab-content {
-overflow: hidden; }
-.tab-content img {
-width: 100%;
--webkit-animation-name: opacity;
-animation-name: opacity;
--webkit-animation-duration: .3s;
-animation-duration: .3s; }
-
-.card {
-margin-top: 50px;
-background: #eee;
-padding: 3em;
-line-height: 1.5em; }
-
-@media screen and (min-width: 997px) {
-.wrapper {
-display: -webkit-box;
-display: -webkit-flex;
-display: -ms-flexbox;
-display: flex; } }
-
-.details {
-display: -webkit-box;
-display: -webkit-flex;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: vertical;
--webkit-box-direction: normal;
--webkit-flex-direction: column;
--ms-flex-direction: column;
-flex-direction: column; }
-
-.colors {
--webkit-box-flex: 1;
--webkit-flex-grow: 1;
--ms-flex-positive: 1;
-flex-grow: 1; }
-
-.product-title, .price, .sizes, .colors {
-text-transform: UPPERCASE;
-font-weight: bold; }
-
-.checked, .price span {
-color: #ff9f1a; }
-
-.product-title, .rating, .product-description, .price, .vote, .sizes {
-margin-bottom: 15px; }
-
-.product-title {
-margin-top: 0; }
-
-.size {
-margin-right: 10px; }
-.size:first-of-type {
-margin-left: 40px; }
-
-.color {
-display: inline-block;
-vertical-align: middle;
-margin-right: 10px;
-height: 2em;
-width: 2em;
-border-radius: 2px; }
-.color:first-of-type {
-margin-left: 20px; }
-
-.add-to-cart, .like {
-background: #ff9f1a;
-padding: 1.2em 1.5em;
-border: none;
-text-transform: UPPERCASE;
-font-weight: bold;
-color: #fff;
--webkit-transition: background .3s ease;
-transition: background .3s ease; }
-.add-to-cart:hover, .like:hover {
-background: #b36800;
-color: #fff; }
-
-.not-available {
+.qty {
+width: 40px;
+height: 25px;
 text-align: center;
-line-height: 2em; }
-.not-available:before {
-font-family: fontawesome;
-content: "\f00d";
-color: #fff; }
+padding-bottom: 18px;
+padding-top: 12px;
+}
 
-.orange {
-background: #ff9f1a; }
+input.qtyplus, input.qtyminus{ 
+    width:26px; 
+    height:26px;
+    padding-bottom: 30px;
+    background-color: #A8B3D0;
+    border-style: none;
+}
 
-.green {
-background: #85ad00; }
-
-.blue {
-background: #0076ad; }
-
-.tooltip-inner {
-padding: 1.3em; }
-
-@-webkit-keyframes opacity {
-0% {
-opacity: 0;
--webkit-transform: scale(3);
-transform: scale(3); }
-100% {
-opacity: 1;
--webkit-transform: scale(1);
-transform: scale(1); } }
-
-@keyframes opacity {
-0% {
-opacity: 0;
--webkit-transform: scale(3);
-transform: scale(3); }
-100% {
-opacity: 1;
--webkit-transform: scale(1);
-transform: scale(1); } }
 @endsection
+
 @section('content')
-<div class="card">
-    <div class="container-fliud">
+<!-- <div class="container-fliud">
         <div class="wrapper row">
             <div class="preview col-md-6">
 
@@ -210,11 +78,71 @@ transform: scale(1); } }
                 </div>
             </div>
         </div>
+    </div> -->
+
+<div class="details">
+    <div class="row align-items-start">
+        <div class="col">
+            <div class="details-img">
+                <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true"
+                    alt="com-chay" style="width:80%">
+            </div>
+        </div>
+
+        <div class="col">
+            <h3>Cơm cháy chà bông</h3>
+            <br>
+
+            <h4 class="price-details">Giá bán: <span>30.000VND</span></h4>
+            <br>
+            <form id='form-quantity' method='POST' class='quantity' action='#'>
+                <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                <input type='text' name='quantity' value='1' class='qty' />
+                <input type='button' value='+' class='qtyplus plus' field='quantity' />
+            </form>
+            <br>
+            <div class="action">
+                <button class="add-to-cart btn btn-primary" type="button">Add to cart</button>
+            </div>
+        </div>
+
     </div>
+
+    <div class="product-description">
+        <h4 class="section-details">MÔ TẢ SẢN PHẨM</h4>
+        <p class="product-description">Trà Meco vị chanh Thái 400ml được làm từ hồng trà Assam Ấn Độ kết hợp với
+            nước ép trái cây tươi mang lại hương vị thơm đặc trưng từ chanh, một loại trái cây ưa dùng và thường
+            được mọi người sử dụng.Có tác dụng giải khát, thanh nhiệt cơ thể, sảng khoái tinh thần.Sản phẩm
+            thiết kế dạng ly nhựa PP đảm bảo an toàn vệ sinh thực phẩm với công nghệ sản xuất chiết rót tiệt
+            trùng.Có ống hút nhỏ kèm theo, dễ dàng mang mang theo.
+            Bảo quản nơi khô ráo, thoáng mát, tránh ẩm ướt và tránh ánh nắng trực tiếp.
+            Hướng dẫn sử dụng: dùng trực tiếp. Ngon hơn khi để lạnh
+            Sau khi mở cốc có thể bảo quản được 6 tiếng ở nhiệt độ 0 - 6 độ C.
+        </p>
+    </div>
+
 </div>
+
 @endsection
 
 @section('js')
 @parent
+<script>
+    jQuery(document).ready(($) => {
+        $('.quantity').on('click', '.plus', function (e) {
+            let $input = $(this).prev('input.qty');
+            let val = parseInt($input.val());
+            $input.val(val + 1).change();
+        });
 
+        $('.quantity').on('click', '.minus',
+            function (e) {
+                let $input = $(this).next('input.qty');
+                var val = parseInt($input.val());
+                if (val > 0) {
+                    $input.val(val - 1).change();
+                }
+            });
+    });
+</script>
 @endsection

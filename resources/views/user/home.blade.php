@@ -4,7 +4,6 @@
 
 @yield('css-link')
 
-
 @section('content')
 
 <div class="main">
@@ -31,21 +30,23 @@
     </tr>
     <tr>
       <td>
-        <a href="/do-man" class="menu">Đồ mặn</a>
+        <a href="/doMan" class="menu">Đồ mặn</a>
       </td>
     </tr>
     <tr>
       <td>
-        <a href="do-ngot" class="menu">Đồ ngọt</a>
+        <a href="doNgot" class="menu">Đồ ngọt</a>
       </td>
     </tr>
     <tr>
       <td>
-        <a href="do-uong" class="menu">Đồ uống</a>
+        <a href="doUong" class="menu">Đồ uống</a>
       </td>
-      <td>
     </tr>
   </table>
+  <br>
+  <img src=" https://www.packagingstrategies.com/ext/resources/ISSUES/2021/06-June/MarketTrends-FamilyShot.jpg" alt="tra-hoa-qua"
+          style="width:100%">
 </div>
 </div>
 </div>
@@ -58,24 +59,24 @@
     <div class="column-sales">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
-          style="width:100%">
-        <h3>Trà hoa quả Meco</h3>
+          style="width:100%" id="zoom">
+        <h4 class="ten-sp">Trà hoa quả Meco</h4>
         <p class="price">30.000VND</p>
         <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
           style="width:100%">
-        <h3>Cơm cháy chà bông</h3>
+        <h4>Cơm cháy chà bông</h4>
         <p class="price">50.000VND</p>
         <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
           style="width:100%">
@@ -85,7 +86,7 @@
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
           alt="banh-gau" style="width:100%">
@@ -102,7 +103,7 @@
 <div class="sp-moi">
   <h2 class="tieu-de">SẢN PHẨM MỚI</h2>
   <div class="row">
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
           style="width:100%">
@@ -112,7 +113,7 @@
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
           style="width:100%">
@@ -122,7 +123,7 @@
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
           style="width:100%">
@@ -132,7 +133,7 @@
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column">
+    <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
           alt="banh-gau" style="width:100%">

@@ -18,7 +18,7 @@ class MenuController extends Controller
 
         // Tra ve view -> view se render ra man hinh
         // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
-        return view('admin/product.index', ['products' => $products]);
+        return view('user/doMan', ['products' => $products]);
     }
 
     //Do ngot
@@ -32,7 +32,7 @@ class MenuController extends Controller
 
         // Tra ve view -> view se render ra man hinh
         // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
-        return view('admin/product.index', ['products' => $products]);
+        return view('user/doNgot', ['products' => $products]);
     }
 
     //Do man
@@ -46,6 +46,6 @@ class MenuController extends Controller
 
         // Tra ve view -> view se render ra man hinh
         // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
-        return view('admin/product.index', ['products' => $products]);
+        return view('user/doUong', ['products' => $products]);
     }
 }

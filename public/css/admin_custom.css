@@ -5,9 +5,7 @@ table {
     border: 1px solid #ddd;
   }
   th{
-    text-align: center;
     padding: 10px;
-    background-color: rgba(175, 189, 249, 0.97);
   }
   td{
   padding: 6px;

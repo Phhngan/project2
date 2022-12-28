@@ -42,8 +42,11 @@
           @else
           <div class="dangnhap-dangki">
           <a href="/profile" class="dang-nhap"> {{Auth::user()->name}} </a>
+          <div class="logout">
+          <a href="#">Log Out</a>
+      </div>
+      </div>
           @endif
-        </div>
       </div>
       <div class="column-4">
         <a class="cart" href="#cart">

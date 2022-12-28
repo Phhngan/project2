@@ -209,6 +209,11 @@ Route::get("/products", [MenuController::class, 'allProducts']);
 // chi tiết sản phẩm
 Route::get("/products/{prd_id}", [ProductDetailsController::class, 'show']);
 
+Route::get('/productDetails', function () {
+    return view('user.productDetails');
+});
+
+
 // giới thiệu
 Route::get('/gioi-thieu', function () {
     return view('user.gioi-thieu');

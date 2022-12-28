@@ -1,6 +1,6 @@
 @extends('layout.base_page')
 
-@section('title','Đồ mặn')
+@section('title','Đồ ngọt')
 
 @section('content')
 <div class="row">
