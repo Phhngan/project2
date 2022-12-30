@@ -37,21 +37,21 @@ class ImportInvoiceDetailController extends Controller
         DB::table('ImportInvoiceDetails')->insert(
             ['imp_id' => $imp_id, 'prd_id' => $prd_id, 'imp_quantity' => $imp_quantity, 
             'imp_price' => $imp_price, 'imp_expiryDate' => $imp_expiryDate, 'prd_status_id' => 1, 
-            'imp_quantity-left' => $imp_quantity,]
+            'imp_quantity_left' => $imp_quantity,]
         );
-        return redirect('admin/importInvoice');
+        return redirect('admin/importInvoice/'.$imp_id);
     }
 
     //Sua
     function edit($imp_id, $id)
     {
-        // $importInvoice = Importinvoice::findOrFail($imp_id);
-        $importInvoiceDetail = Importinvoicedetail::findOrFail($id);
+        $importInvoice = Importinvoice::findOrFail($imp_id);
+        $importInvoiceDetail = DB::table('ImportInvoiceDetails')->where('imp_id', $imp_id)->where('id', $id)->get();
         // $importInvoiceDetail = Importinvoicedetail::where('id', $id)->get();
         if ($importInvoiceDetail == null) {
             return redirect()->route('error');
         }
-        return view('admin/importInvoice/detail.edit', ['importInvoiceDetail' => $importInvoiceDetail], ['imp_id' =>$imp_id], ['id' => $id]);
+        return view('admin/importInvoice/detail.edit', ['importInvoiceDetail' => $importInvoiceDetail], ['importInvoice' => $importInvoice]);
     }
     function update(Request $request, $id, $imp_id)
     {
@@ -66,9 +66,9 @@ class ImportInvoiceDetailController extends Controller
     }
 
     // Xoa 
-    function delete($id)
+    function delete($imp_id, $id)
     {
         DB::table('ImportInvoiceDetails')->where('id', $id)->delete();
-        return redirect('admin/importInvoice/{imp_id}');
+        return redirect('admin/importInvoice/'.$imp_id);
     }
 }

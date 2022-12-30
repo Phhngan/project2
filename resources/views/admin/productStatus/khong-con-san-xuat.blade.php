@@ -10,7 +10,7 @@
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
         <th>Số lượng còn lại</th>
-        <th>Hạn sử dụng</th>
+        <!-- <th>Hạn sử dụng</th> -->
     </tr>
     @forelse($products as $product)
     <tr>
@@ -26,15 +26,14 @@
                 <?php
                     $quantity = App\Models\Importinvoicedetail::
                         where('prd_id', $product->prd_id)
-                        ->where('imp_expiryDate', $product->imp_expiryDate)
                         ->sum('ImportInvoiceDetails.imp_quantity_left');
                     echo $quantity;
                 ?>
             </p>
         </td>
-        <td>
+        <!-- <td>
             <p>{{$product->imp_expiryDate}}</p>
-        </td>
+        </td> -->
     </tr>
     @empty
     <tr>

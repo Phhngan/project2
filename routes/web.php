@@ -145,8 +145,8 @@ Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceDetailController::clas
 Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'create']);
 Route::post("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
 //Sửa chi tiết hóa đơn
-Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'edit']);
-Route::put("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
+// Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'edit']);
+// Route::put("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
 //Xoa
 Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailController::class, 'delete']);
 
@@ -205,9 +205,8 @@ Route::get("/doMan", [MenuController::class, 'doMan']);
 Route::get("/doNgot", [MenuController::class, 'doNgot']);
 Route::get("/doUong", [MenuController::class, 'doUong']);
 Route::get("/products", [MenuController::class, 'allProducts']);
-
 // chi tiết sản phẩm
-Route::get("/products/{prd_id}", [ProductDetailsController::class, 'show']);
+Route::get("/products/{prd_id}", [MenuController::class, 'show']);
 
 Route::get('/productDetails', function () {
     return view('user.productDetails');
@@ -220,21 +219,31 @@ Route::get('/gioi-thieu', function () {
 });
 
 //profile client
-// Route::get("/client", [ClientController::class, 'profile']);
+Route::get("/client", [ClientController::class, 'profile']);
+//update profile
+Route::get("/client/{id}/edit", [ClientController::class, 'edit']);
+Route::put("/client/{id}/edit", [ClientController::class, 'update']);
 // change pass client
-Route::get("/client/changepass", [ClientController::class, 'changePass']);
+Route::get("/client/changePass", [ClientController::class, 'changePass']);
+Route::put("/client/changePass/{id}", [ClientController::class, 'updatePass']);
 // invoices
 Route::get("/client/invoices", [ClientController::class, 'invoices']);
-
+Route::get("/client/invoices/{sal_id}/details", [ClientController::class, 'details']);
+//Huy don
+Route::put("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel']);
 
 //profile admin
 Route::get("/admin/profile", [AdminController::class, 'profile']);
+//update profile
+Route::get("/admin/profile/{id}/edit", [AdminController::class, 'edit']);
+Route::put("/admin/profile/{id}/edit", [AdminController::class, 'update']);
 //change pass admin
-Route::get("/admin/changPass", [AdminController::class, 'changPass']);
+Route::get("/admin/changePass", [AdminController::class, 'changePass']);
+Route::put("/admin/changePass/{id}", [AdminController::class, 'updatePass']);
 
 // CART
 Route::get("/cart", [CartController::class, 'cart']);
 // đặt thành công
-Route::get('/thanhCong', function () {
+Route::get('/cart/success', function () {
     return view('user.thank');
 });

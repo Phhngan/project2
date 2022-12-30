@@ -8,17 +8,17 @@
     @csrf
     @method('put')
     <br>
-    <label for="ship">Miền ship:</label>
+    <label for="ship">Tiền ship:</label>
     <br>
-    <input value="{{ $region->reg_ship }}" name="ship" type="text" class="form-control" placeholder="Miền ship">
+    <input value="{{ $region->reg_ship }}" name="ship" type="number" class="form-control" placeholder="Tiền ship">
     <br>
     <label for="shipExtra">Phí ship extra:</label>
     <br>
-    <input value="{{ $region->$reg_ship_extra }}" name="shipExtra" type="text" class="form-control" placeholder="Phí ship extra">
+    <input value="{{ $region->reg_ship_extra }}" name="shipExtra" type="number" class="form-control" placeholder="Phí ship extra">
     <br>
     <label for="shipTime">Thời gian ship:</label>
     <br>
-    <input value="{{ $region->$reg_ship_time }}" name="shipTime" type="number" class="form-control" placeholder="Thời gian ship">
+    <input value="{{ $region->reg_ship_time }}" name="shipTime" type="number" class="form-control" placeholder="Thời gian ship">
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>

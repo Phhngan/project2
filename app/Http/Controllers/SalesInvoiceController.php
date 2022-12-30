@@ -77,8 +77,13 @@ class SalesInvoiceController extends Controller
     //detail
     function show($sal_id)
     {
-        $salesInvoiceDetails = Salesinvoicedetail::findOrFail($sal_id);
-        return view('admin/salesInvoice.details', ['salesInvoiceDetails' => $salesInvoiceDetails]);
+        // $salesInvoiceDetails = Salesinvoicedetail::findOrFail($sal_id);
+        $salesInvoiceDetails = DB::table('SalesInvoiceDetails')
+            ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
+            ->select('SalesInvoiceDetails.*', 'Products.prd_code', 'Products.prd_name', 'Products.prd_weigh')
+            ->where('sal_id', $sal_id)
+            ->get();
+        return view('admin/salesInvoice.details', ['salesInvoiceDetails' => $salesInvoiceDetails], ['sal_id', $sal_id]);
     }
 
     //continue

@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <td>
-        <a href="/allProducts" class="menu">Tất cả sản phẩm</a>
+        <a href="/products" class="menu">Tất cả sản phẩm</a>
       </td>
     </tr>
     <tr>

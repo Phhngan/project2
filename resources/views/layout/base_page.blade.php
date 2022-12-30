@@ -132,7 +132,7 @@
                 </li>
                 <li>
                   <p class="text-white"> 1900 1000
-                    Thứ 2 - Chủ nhật: 9:00 - 18:00</p>
+                    Thứ 2 - Chủ nhật: 8:00 - 20:00</p>
                 </li>
               </ul>
             </div>

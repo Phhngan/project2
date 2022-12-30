@@ -10,42 +10,54 @@ class MenuController extends Controller
     //Do man
     function doMan()
     {
-        // Lay du lieu
-        // $products = DB::table('Products')->get();
         $products = DB::table('Products')
-            ->where('prd_type_id', 1)
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('prd_type_id', 1)->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')
             ->get();
-
-        // Tra ve view -> view se render ra man hinh
-        // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
         return view('user/doMan', ['products' => $products]);
     }
 
     //Do ngot
     function doNgot()
     {
-        // Lay du lieu
-        // $products = DB::table('Products')->get();
         $products = DB::table('Products')
-            ->where('prd_type_id', 2)
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('prd_type_id', 2)->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')
             ->get();
-
-        // Tra ve view -> view se render ra man hinh
-        // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
         return view('user/doNgot', ['products' => $products]);
     }
 
     //Do man
     function doUong()
     {
-        // Lay du lieu
-        // $products = DB::table('Products')->get();
         $products = DB::table('Products')
-            ->where('prd_type_id', 3)
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('prd_type_id', 3)->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')
             ->get();
-
-        // Tra ve view -> view se render ra man hinh
-        // return view('admin/product.index',['products'=> $products],['images'=> $images],['type'=> $type]);
         return view('user/doUong', ['products' => $products]);
+    }
+
+    //All
+    function allProducts()
+    {
+        $products = DB::table('Products')
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')->get();
+        return view('user/allProducts', ['products' => $products]);
+    }
+
+    //Chi tiet san pham
+    function show($prd_id)
+    {
+        $product = DB::table('Products')
+            ->join('ProductTypes', 'Products.prd_type_id', '=', 'ProductTypes.prd_type_id')
+            ->select('Products.*', 'ProductTypes.prd_type')
+            ->where('Products.prd_id', $prd_id)
+            ->get();
+        return view('user/productDetails', ['product' => $product]);
     }
 }

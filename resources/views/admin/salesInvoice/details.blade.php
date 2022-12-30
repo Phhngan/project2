@@ -7,22 +7,29 @@
 @if($salesInvoiceDetails == null)
 <h2>Đơn không tồn tại</h2>
 @else
-<h3>Hóa đơn số: {{$salesInvoiceDetails->sal_id}}</h3>
-<br>
+<h3>Chi tiết hóa đơn:</h3>
 <table class="table">
     <tr>
         <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
         <th>Số lượng</th>
+        <th>Trọng lượng tổng</th>
         <th>Giá bán</th>
     </tr>
     @forelse($salesInvoiceDetails as $salesInvoiceDetail)
     <tr>
         <td>
-            <p>{{$salesInvoiceDetail->prd_id}}</p>
+            <p>{{$salesInvoiceDetail->prd_code}}</p>
+        </td>
+        <td>
+            <p>{{$salesInvoiceDetail->prd_name}}</p>
         </td>
         <td>
             <p>{{$salesInvoiceDetail->sal_quantity}}</p>
 
+        </td>
+        <td>
+            <p>{{$salesInvoiceDetail->prd_weigh * $salesInvoiceDetail->sal_quantity}}g</p>
         </td>
         <td>
             <p>{{$salesInvoiceDetail->sal_price}} VND</p>
@@ -40,4 +47,5 @@
     </tr>
     @endforelse
 </table>
+@endif
 @endsection

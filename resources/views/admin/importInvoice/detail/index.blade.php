@@ -36,7 +36,12 @@
             <p>{{$importInvoiceDetail->imp_expiryDate}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/'.$importInvoiceDetail->id.'/edit')}}" role="button">Sửa</a>
+            <!-- <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/'.$importInvoiceDetail->id.'/edit')}}" role="button">Sửa</a> -->
+            <form method="POST" action="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/'.$importInvoiceDetail->id.'/delete')}}">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger">Xóa</button>
+            </form>
         </td>
     </tr>
     @empty
