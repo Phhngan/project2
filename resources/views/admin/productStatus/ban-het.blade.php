@@ -9,7 +9,6 @@
     <tr>
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
-        <th>Hóa đơn nhập</th>
         <th>Số lượng còn lại</th>
         <th>Hạn sử dụng</th>
         <th>Hành động</th>
@@ -21,12 +20,18 @@
         </td>
         <td>
             <p>{{$product->prd_name}}</p>
+
         </td>
         <td>
-            <p>{{$product->imp_id}}</p>
-        </td>
-        <td>
-            <p>{{$product->imp_quantity_left}}</p>
+            <p>
+                <?php
+                    $quantity = App\Models\Importinvoicedetail::
+                        where('prd_id', $product->prd_id)
+                        ->where('imp_expiryDate', $product->imp_expiryDate)
+                        ->sum('ImportInvoiceDetails.imp_quantity_left');
+                    echo $quantity;
+                ?>
+            </p>
         </td>
         <td>
             <p>{{$product->imp_expiryDate}}</p>

@@ -54,12 +54,7 @@ class ProductController extends Controller
     //Xem chi tiết sản phẩm
     function show($prd_id)
     {
-        // Lay ra thong tin san pham co thong tin id = $id
-
-        // Neu khong co -> Khong co thong tin san pham
         $product = Product::findOrFail($prd_id);
-//        dd($product);
-        // Tra du lieu ve view
         return view('admin/product.detail', ['product' => $product]);
     }
 

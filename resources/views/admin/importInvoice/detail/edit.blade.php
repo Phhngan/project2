@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật chi tiết hóa đơn nhập</h1>
-<form action="{{url('/admin/importInvoice/'.$imp_id.'/'.$importInvoiceDetail->$id.'/edit')}}" method="POST">
+<form action="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/'.$importInvoiceDetail->id.'/edit')}}" method="POST">
     @csrf
     @method('put')
     <br>

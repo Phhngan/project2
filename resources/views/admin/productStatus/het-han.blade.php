@@ -25,10 +25,11 @@
         <td>
             <p>
                 <?php
-                $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
-                    ->where('imp_expiryDate', $product->imp_expiryDate)
-                    ->sum('ImportInvoiceDetails.imp_quantity_left');
-                echo $quantity;
+                    $quantity = App\Models\Importinvoicedetail::
+                        where('prd_id', $product->prd_id)
+                        ->where('imp_expiryDate', $product->imp_expiryDate)
+                        ->sum('ImportInvoiceDetails.imp_quantity_left');
+                    echo $quantity;
                 ?>
             </p>
         </td>

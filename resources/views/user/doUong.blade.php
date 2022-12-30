@@ -7,7 +7,7 @@
 @forelse($products as $product)
 <div class="column-product">
       <div class="card">
-
+        <img src="{{$product->img_url}}" style="width:100%">
         <h4 class="ten-sp">{{$product->prd_name}}</h4>
         <p class="price">{{$product->prd_price}} VND</p>
         <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
