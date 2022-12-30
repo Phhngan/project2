@@ -60,8 +60,11 @@
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
           style="width:100%" id="zoom">
+          <div class="khuyen-mai"><p><strong>25%</strong></p></div>
+          <br>
         <h4 class="ten-sp">Trà hoa quả Meco</h4>
-        <p class="price">30.000VND</p>
+        <p class="price" id="old-price">30.000VND</p>
+        <p class="price" id="new-price">25.000VND</p>
         <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
@@ -150,7 +153,7 @@
 
 @section('full-screen-content')
 <div class="nhan-hang">
-  <h2 class="tieu-de">Các nhãn hàng</h2>
+  <h2 class="tieu-de">CÁC NHÃN HÀNG</h2>
   <div class="row" id="row-nhan-hang">
     <div class="column" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"

@@ -3,7 +3,10 @@
 @section('title','Thư viện')
 
 @section('content')
+<br>
 <a class="btn btn-primary" href="{{url('admin/images/create')}}" role="button">+ Thêm ảnh</a>
+<br>
+<br>
 <table class="table">
     <tr>
         <th>Ảnh</th>

@@ -220,7 +220,7 @@ Route::get('/gioi-thieu', function () {
 });
 
 //profile client
-Route::get("/client", [ClientController::class, 'profile']);
+// Route::get("/client", [ClientController::class, 'profile']);
 // change pass client
 Route::get("/client/changepass", [ClientController::class, 'changePass']);
 // invoices

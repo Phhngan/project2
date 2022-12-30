@@ -3,7 +3,9 @@
 @section('title','Hóa đơn nhập hàng')
 
 @section('content')
+<br>
     <a class="btn btn-primary" href="{{url('/admin/importInvoice/create')}}" role="button">+ Thêm hóa đơn nhập</a>
+    <br><br>
     <table class="table">
         <tr>
             <th>Mã hóa đơn</th>

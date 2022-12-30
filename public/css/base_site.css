@@ -1,4 +1,4 @@
-.body {font-family: arial;}
+.body {font-family: sans-serif;}
 .header {
     background-color: #A8B3D0;
     height: 120px;
@@ -68,13 +68,19 @@ form.example::after {
 
 .cart {
     float: inherit;
-    margin-top: 30px;
+    margin-top: 20px;
+    padding-left: 50px;
+}
+
+.header-bottom1 {
+    background-color: #5168A1;
+    overflow: hidden;
 }
 
 .header-bottom {
-    background-color: #5168A1;
-    overflow: hidden;
-    margin-bottom:25px;
+  background-color: #5168A1;
+  overflow: hidden;
+  margin-bottom:25px;
 }
 
 .bot-item {
@@ -87,10 +93,15 @@ form.example::after {
     padding: 6px;
 }
 
-.header-bottom .bot-item:hover{
+.header-bottom1 .bot-item:hover{
     background-color: white;
     border-radius: 5px;
     color: #2D1476;
+}
+.header-bottom .bot-item:hover{
+  background-color: white;
+  border-radius: 5px;
+  color: #2D1476;
 }
 
 .text-white{
@@ -292,4 +303,79 @@ margin-top: 50px;
       transform: scale(1.05); 
     }
 
-  
+
+    /* ---------CLIENT INFO---------------- */
+
+    .sidebar-client {
+      width: 250px;
+      background-color: #f1f1f1;
+      height: 1000px;
+      float: left;
+    }
+    
+    .sidebar-client a {
+      display: block;
+      color: black;
+      padding: 18px;
+      text-decoration: none;
+    }
+     
+    .sidebar-client a.active {
+      background-color: #7B89E6;
+      color: white;
+    }
+    
+    .sidebar-client a:hover:not(.active) {
+      background-color:#A8B3D0;
+      color: white;
+    }
+    
+    div.content-info {
+      padding: 1px 16px;
+      height: 1000px;
+      float: left;
+  width: 80%;
+    }
+    
+    @media screen and (max-width: 700px) {
+      .sidebar-client {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .sidebar-client a {float: left;}
+      div.content-info {margin-left: 0;}
+    }
+    
+    @media screen and (max-width: 400px) {
+      .sidebar-client a {
+        text-align: center;
+        float: none;
+      }
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .khuyen-mai{
+      width: 50px;
+      background-color: red;
+      color: white;
+      position: absolute;
+      text-align: center;
+      border-radius: 50px;
+      left: 10px;
+      top: 10px;
+      padding-top: 10px;
+      padding-left: 2px;
+    }
+
+    #old-price{
+      text-decoration: line-through;
+    }
+    #new-price{
+      
+    }

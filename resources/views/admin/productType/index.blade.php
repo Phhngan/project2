@@ -3,7 +3,9 @@
 @section('title','Loại sản phẩm')
 
 @section('content')
+<br>
 <a class="btn btn-primary" href="{{url('admin/productType/create')}}" role="button">+ Thêm loại sản phẩm</a>
+<br><br>
 <table class="table">
     <tr>
         <th>Mã</th>

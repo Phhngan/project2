@@ -398,12 +398,12 @@ return [
         
         [
             'text' => 'profile',
-            'url' => 'admin/settings',
+            'url' => 'admin/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'change_password',
-            'url' => 'admin/settings',
+            'url' => 'admin/changePass',
             'icon' => 'fas fa-fw fa-lock',
         ],
         

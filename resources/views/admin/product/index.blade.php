@@ -4,8 +4,9 @@
 
 @section('content')
 {{-- Do du lieu      --}}
-<a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm</a>
 <br>
+<a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm</a>
+<br><br>
 <table class="table">
     <tr>
         <th>Mã sản phẩm</th>

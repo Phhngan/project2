@@ -3,6 +3,7 @@
 @section('title','Trạng thái sản phẩm')
 
 @section('content')
+<br>
 <table class="table">
     <tr>
         <th>Mã trạng thái</th>

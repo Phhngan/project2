@@ -31,6 +31,11 @@ input.qtyplus, input.qtyminus{
     background-color: #A8B3D0;
     border-style: none;
 }
+.section-details{
+background-color: #F3F3FC;
+width: 100%;
+padding: 6px;
+}
 
 @endsection
 
@@ -102,13 +107,14 @@ input.qtyplus, input.qtyminus{
             </form>
             <br>
             <div class="action">
-                <button class="add-to-cart btn btn-primary" type="button">Add to cart</button>
+                <button class="btn-add-to-cart btn btn-primary" type="button">Thêm vào giỏ</button>
             </div>
         </div>
 
     </div>
 
     <div class="product-description">
+        <hr>
         <h4 class="section-details">MÔ TẢ SẢN PHẨM</h4>
         <p class="product-description">Trà Meco vị chanh Thái 400ml được làm từ hồng trà Assam Ấn Độ kết hợp với
             nước ép trái cây tươi mang lại hương vị thơm đặc trưng từ chanh, một loại trái cây ưa dùng và thường
@@ -120,6 +126,95 @@ input.qtyplus, input.qtyminus{
             Sau khi mở cốc có thể bảo quản được 6 tiếng ở nhiệt độ 0 - 6 độ C.
         </p>
     </div>
+
+    <div class="product-about">
+        <hr>
+        <h4 class="section-details">CHI TIẾT SẢN PHẨM</h4>
+        <div class="row">
+              <div class="col-sm-3">
+                <p class="text-muted mb-0">Danh mục</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="mb-0">Đồ mặn</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="text-muted mb-0">Xuất xứ</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="mb-0">Việt Nam</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="text-muted mb-0">Hạn sử dụng</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="mb-0">2021</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="text-muted mb-0">Trọng lượng (hoặc thể tích)</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="mb-0">300g</p>
+              </div>
+            </div>
+    <hr>
+    </div>
+<br>
+    <!-- San pham gợi ý -->
+<div class="sp-noi-bat">
+  <h2 class="tieu-de">Các sản phẩm khác</h2>
+  <div class="row">
+    <div class="column-sales">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
+          style="width:100%" id="zoom">
+        <h4 class="ten-sp">Trà hoa quả Meco</h4>
+        <p class="price">30.000VND</p>
+        <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+      </div>
+    </div>
+    <div class="column-product">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
+          style="width:100%">
+        <h4>Cơm cháy chà bông</h4>
+        <p class="price">50.000VND</p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+      </div>
+    </div>
+    <div class="column-product">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
+          style="width:100%">
+        <h3>Coca cola Sig Mixers</h3>
+        <p class="price">96.000VND</p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+      </div>
+    </div>
+    <div class="column-product">
+      <div class="card">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
+          alt="banh-gau" style="width:100%">
+        <h3>Bánh gấu mix 3 vị</h3>
+        <p class="price">60.000VND</p>
+        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </div>
 
