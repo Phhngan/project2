@@ -63,22 +63,26 @@
           <div class="khuyen-mai"><p><strong>25%</strong></p></div>
           <br>
         <h4 class="ten-sp">Trà hoa quả Meco</h4>
-        <p class="price" id="old-price">30.000VND</p>
-        <p class="price" id="new-price">25.000VND</p>
+        <a class="price" id="old-price">30.000VND</a>
+        <a class="price" id="new-price">25.000VND</a>
         <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
+
     <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
-          style="width:100%">
+        style="width:100%" id="zoom">
+          <br>
         <h4>Cơm cháy chà bông</h4>
         <p class="price">50.000VND</p>
+        <br>
         <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
+    
     <div class="column-product">
       <div class="card">
         <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"

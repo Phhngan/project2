@@ -41,10 +41,7 @@
           <a href="/regiter" class="dang-ki"> Đăng ký </a>
           @else
           <div class="dangnhap-dangki">
-          <a href="/profile" class="dang-nhap"> {{Auth::user()->name}} </a>
-          <div class="logout">
-          <a href="#">Log Out</a>
-      </div>
+          <a href="/client" class="dang-nhap"> {{Auth::user()->name}} </a>
       </div>
           @endif
       </div>

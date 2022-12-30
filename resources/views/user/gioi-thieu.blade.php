@@ -59,10 +59,6 @@
 
 @section('content')
 
-@endsection
-
-@section('full-screen-content')
-
 <div class="banner-gioi-thieu">
 <h2 class="text-center">Giới thiệu</h2>
 <p class="text-center">Snack là website cung cấp các sản phẩm nhập khẩu trực tiếp từ Châu Âu, Mỹ, Đức, Hàn, Nhật...</p>

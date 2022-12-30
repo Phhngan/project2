@@ -3,23 +3,25 @@
 @section('title','Đổi mật khẩu')
 
 @section('content')
-<h1 class="text-center">Cập nhật nhân viên</h1>
+<h1 class="text-center">Đổi mật khẩu</h1>
 <form action="{{url('/admin/changPass')}}" method="POST">
     @csrf
     @method('put')
     <br>
-    <label for="old-password">Mật khẩu:</label>
+    <label for="oldPass">Mật khẩu cũ: </label>
     <br>
-    <input name="old-password" type="text" class="form-control" placeholder="Mật khẩu cũ">
+    <input name="oldpass" type="text"  class="form-control" placeholder="Mật khẩu cũ">
     <br>
-    <label for="password">Nhập khẩu mới:</label>
+    <label for="newPass1">Nhập khẩu mới:</label>
     <br>
-    <input name="password" type="text" class="form-control" placeholder="Mật khẩu mới">
+    <input name="newPass1" type="text" class="form-control" placeholder="Mật khẩu mới">
     <br>
-    <label for="password1">Nhập lại khẩu mới:</label>
+    <label for="newPass2">Nhập lại khẩu mới:</label>
     <br>
-    <input name="password1" type="text" class="form-control" placeholder="Mật khẩu mới">
+    <input name="newPass2" type="text" class="form-control" placeholder="Mật khẩu mới">
     <br>
+    <p class="error-noti">{{$error}}</p>
+        <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>
 @endsection

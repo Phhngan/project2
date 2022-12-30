@@ -6,12 +6,18 @@
 #card-client{
   max-width: 950px!important;
 }
+.btn-editor{
+  margin-left: 480px;
+  margin-right:10px;
+}
+
 @endsection
 
 @section('sidebar-client')
 <a class="active" href="/client">Thông tin khách hàng</a>
+<a href="/client/edit">Sửa thông tin</a>
   <a href="/client/invoices">Đơn hàng</a>
-  <a href="/client/changepass">Đổi mật khẩu</a>
+  <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
 @section('content-info')
@@ -23,10 +29,10 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
+                <p class="mb-0">Họ và tên</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
+                <p class="text-muted mb-0">{{$user->use_lastName}} {{$user->name}}</p>
               </div>
             </div>
             <hr>
@@ -35,7 +41,7 @@
                 <p class="mb-0">Ngày sinh</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">01/01/2001</p>
+                <p class="text-muted mb-0">{{$user->use_birth}}</p>
               </div>
             </div>
             <hr>
@@ -45,7 +51,13 @@
                 <p class="mb-0">Giới tính</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Nữ</p>
+                <p class="text-muted mb-0">
+                  <?php
+                    if ($user->use_gender == 1){
+                      echo "Nam";
+                    }else
+                      echo "Nữ";
+                  ?></p>
               </div>
             </div>
             <hr>
@@ -55,34 +67,66 @@
                 <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
+                <p class="text-muted mb-0">{{$user->email}}</p>
               </div>
             </div>
             <hr>
 
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
+                <p class="mb-0">Số điện thoại</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
+                <p class="text-muted mb-0">{{$user->use_phone}}</p>
               </div>
             </div>
             <hr>
 
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Address</p>
+                <p class="mb-0">Tỉnh thành</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                <p class="text-muted mb-0">{{$user->pro_name}}</p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Quận/huyện</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{$user->use_district}}</p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phường/xã</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{$user->use_town}}</p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Địa chỉ chi tiết</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{$user->use_detailAddress}}</p>
               </div>
             </div>
           </div>
 </div>
 
 <br><br>
-<a class="btn btn-primary" href="{{url('/client/#')}}" role="button">Sửa thông tin</a>
+
+<a class="btn btn-primary btn-editor" href="{{url('/client/edit')}}" role="button">Sửa thông tin</a>
+<a class="btn btn-danger" href="{{url('/logout')}}" role="button">Log Out</a>
 
 @endsection
 

@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductStatusController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgetPassController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -221,11 +222,11 @@ Route::get('/gioi-thieu', function () {
 //profile client
 Route::get("/client", [ClientController::class, 'profile']);
 //update profile
-Route::get("/client/{id}/edit", [ClientController::class, 'edit']);
-Route::put("/client/{id}/edit", [ClientController::class, 'update']);
+Route::get("/client/edit", [ClientController::class, 'edit']);
+Route::put("/client/edit", [ClientController::class, 'update']);
 // change pass client
 Route::get("/client/changePass", [ClientController::class, 'changePass']);
-Route::put("/client/changePass/{id}", [ClientController::class, 'updatePass']);
+Route::put("/client/changePass", [ClientController::class, 'updatePass']);
 // invoices
 Route::get("/client/invoices", [ClientController::class, 'invoices']);
 Route::get("/client/invoices/{sal_id}/details", [ClientController::class, 'details']);
@@ -235,8 +236,8 @@ Route::put("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel
 //profile admin
 Route::get("/admin/profile", [AdminController::class, 'profile']);
 //update profile
-Route::get("/admin/profile/{id}/edit", [AdminController::class, 'edit']);
-Route::put("/admin/profile/{id}/edit", [AdminController::class, 'update']);
+Route::get("/admin/profile/edit", [AdminController::class, 'edit']);
+Route::put("/admin/profile/edit", [AdminController::class, 'update']);
 //change pass admin
 Route::get("/admin/changePass", [AdminController::class, 'changePass']);
 Route::put("/admin/changePass/{id}", [AdminController::class, 'updatePass']);
@@ -246,4 +247,9 @@ Route::get("/cart", [CartController::class, 'cart']);
 // đặt thành công
 Route::get('/cart/success', function () {
     return view('user.thank');
+});
+
+//test
+Route::get('/cart', function () {
+    return view('user.cart');
 });

@@ -13,12 +13,6 @@ border-radius: 5px;
 border: 2px solid #766FD2;
 height: auto;
 }
-h1{
-margin-top: 20px;
-text-align: center;
-text-shadow: 2px 2px 5px #7B89E6;
-
-}
 .mb-3 {
 margin: 25px 200px 0px 200px;
 }
@@ -47,29 +41,30 @@ margin-left: 0px;
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
+<a href="/client/edit">Sửa thông tin</a>
   <a href="/client/invoices">Đơn hàng</a>
-  <a class="active" href="/client/changepass">Đổi mật khẩu</a>
+  <a class="active" href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
 @section('content-info')
-<div>
-    <h1>Đổi mật khẩu</h1>
+<br>
+<h3 class="text-center">Đổi mật khẩu</h3>
 
-</div>
-<form class="register" action="{{url('/changePass')}}" method="POST">
+<form class="register" action="{{url('client/changePass')}}" method="POST">
     @csrf
+    @method('put')
     <div class="form-group">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nhập mật khẩu cũ: </label>
-            <input name="oldpassword" type="oldpassword" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="oldPass" class="form-label">Nhập mật khẩu cũ: </label>
+            <input name="oldPass" type="oldPass" class="form-control" id="oldPass" placeholder="Mật khẩu cũ">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mật khẩu mới: </label>
-            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            <label for="newPass1" class="form-label">Mật khẩu mới: </label>
+            <input name="newPass1" type="newPass1" class="form-control" placeholder="Mật khẩu mới">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword2" class="form-label">Nhập lại mật khẩu mới: </label>
-            <input name="password2" type="password2" class="form-control" id="exampleInputPassword2">
+            <label for="newPass2" class="form-label">Nhập lại mật khẩu mới: </label>
+            <input name="newPass2" type="newPass2" class="form-control" placeholder="Nhập lại mật khẩu mới">
         </div>
         <p class="error-noti">{{$error}}</p>
         <br>

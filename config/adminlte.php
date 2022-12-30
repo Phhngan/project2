@@ -401,11 +401,19 @@ return [
             'url' => 'admin/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
+
         [
-            'text' => 'change_password',
+            'text' => 'Sửa thông tin',
+            'url' => 'admin/profile/edit',
+            'icon' => 'fas fa-user-edit',
+        ],
+
+        [
+            'text' => 'Đổi mật khẩu',
             'url' => 'admin/changePass',
             'icon' => 'fas fa-fw fa-lock',
         ],
+
         
         
     ],
