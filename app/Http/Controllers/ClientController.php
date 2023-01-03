@@ -12,8 +12,14 @@ class ClientController extends Controller
     //profile admin
     function profile()
     {
-        $user = Auth::user();
-        return view('user.clientInfo.profile', ['user' => $user]);
+        $userAuth = Auth::user();
+        $users = DB::table('Users')
+            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
+            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
+            ->select('Users.*', 'Provinces.pro_name')
+            ->where('Users.id', $userAuth->id)
+            ->get();
+        return view('user.clientInfo.profile', ['users' => $users]);
     }
 
     //update profile
@@ -75,9 +81,11 @@ class ClientController extends Controller
     {
         $user = Auth::user();
         $invoices =  DB::table('SalesInvoices')
-            ->select('SalesInvoices.*')
+            ->join('SalesInvoiceStatuss', 'SalesInvoices.sal_status_id', '=', 'SalesInvoiceStatuss.sal_status_id')
+            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
+            ->select('SalesInvoices.*', 'SalesInvoiceStatuss.sal_status', 'Provinces.pro_name')
             ->where('SalesInvoices.use_id', $user->id)
-            ->orderByDesc('SalesInvoices.sal_status_id')
+            ->orderBy('SalesInvoices.sal_status_id')
             ->get();
         return view('user/clientInfo.invoices', ['invoices' => $invoices]);
     }

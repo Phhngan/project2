@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Đổi mật khẩu</h1>
-<form action="{{url('/admin/changPass')}}" method="POST">
+<form action="{{url('/admin/changePass')}}" method="POST">
     @csrf
     @method('put')
     <br>

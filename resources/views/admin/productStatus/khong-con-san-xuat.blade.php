@@ -3,14 +3,13 @@
 @section('title','Loại sản phẩm')
 
 @section('content')
-{{-- Do du lieu      --}}
+{{-- Do du lieu --}}
 <br>
 <table class="table">
     <tr>
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
         <th>Số lượng còn lại</th>
-        <!-- <th>Hạn sử dụng</th> -->
     </tr>
     @forelse($products as $product)
     <tr>
@@ -30,10 +29,6 @@
                     echo $quantity;
                 ?>
             </p>
-        </td>
-        <!-- <td>
-            <p>{{$product->imp_expiryDate}}</p>
-        </td> -->
     </tr>
     @empty
     <tr>

@@ -16,7 +16,7 @@
       <img src="{{$product->img_url}}" style="height:298px" id="zoom"><br>
       <h4 class="ten-sp">{{$product->prd_name}}</h4>
       <p class="price">{{$product->prd_price}} VND</p><br>
-      <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+      <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
       <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
     </div>
   </div>

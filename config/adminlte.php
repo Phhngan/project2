@@ -402,11 +402,11 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
 
-        [
-            'text' => 'Sửa thông tin',
-            'url' => 'admin/profile/edit',
-            'icon' => 'fas fa-user-edit',
-        ],
+        // [
+        //     'text' => 'Sửa thông tin',
+        //     'url' => 'admin/profile/edit',
+        //     'icon' => 'fas fa-user-edit',
+        // ],
 
         [
             'text' => 'Đổi mật khẩu',

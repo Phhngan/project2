@@ -37,6 +37,7 @@
                 </td>             
                 <td>
                     <a class="btn btn-outline-secondary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id)}}" role="button">Xem chi tiết</a> 
+                    <a class="btn btn-outline-secondary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/continue')}}" role="button">Chuyển</a>
                 </td>
             </tr>
         @empty

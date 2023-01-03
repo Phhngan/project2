@@ -4,6 +4,7 @@
 
 @section('content')
 {{-- Do du lieu      --}}
+<a class="btn btn-primary" href="{{url('admin/productStatus/update')}}" role="button" method="put">Cập nhật</a>
 <br>
 <table class="table">
     <tr>
