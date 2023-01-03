@@ -40,50 +40,6 @@ padding: 6px;
 @endsection
 
 @section('content')
-<!-- <div class="container-fliud">
-        <div class="wrapper row">
-            <div class="preview col-md-6">
-
-                <div class="preview-pic tab-content">
-                    <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-                    <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-                    <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-                    <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-                    <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
-                </div>
-                <ul class="preview-thumbnail nav nav-tabs">
-                    <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
-                                src="http://placekitten.com/200/126" /></a></li>
-                    <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                    <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                    <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                    <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                </ul>
-
-            </div>
-            <div class="details col-md-6">
-                <h3 class="product-title">Trà hoa quả MECO</h3>
-                    <span class="review-no">41 reviews</span>
-                </div>
-                <p class="product-description">Trà Meco vị chanh Thái 400ml được làm từ hồng trà Assam Ấn Độ kết hợp với
-                    nước ép trái cây tươi mang lại hương vị thơm đặc trưng từ chanh, một loại trái cây ưa dùng và thường
-                    được mọi người sử dụng.Có tác dụng giải khát, thanh nhiệt cơ thể, sảng khoái tinh thần.Sản phẩm
-                    thiết kế dạng ly nhựa PP đảm bảo an toàn vệ sinh thực phẩm với công nghệ sản xuất chiết rót tiệt
-                    trùng.Có ống hút nhỏ kèm theo, dễ dàng mang mang theo.
-                    Bảo quản nơi khô ráo, thoáng mát, tránh ẩm ướt và tránh ánh nắng trực tiếp.
-                    Hướng dẫn sử dụng: dùng trực tiếp. Ngon hơn khi để lạnh
-                    Sau khi mở cốc có thể bảo quản được 6 tiếng ở nhiệt độ 0 - 6 độ C.
-                </p>
-                <h4 class="price">Giá bán: <span>30.000VND</span></h4>
-
-
-                <div class="action">
-                    <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-                    <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 <div class="details">
     <div class="row align-items-start">
@@ -109,6 +65,37 @@ padding: 6px;
             <div class="action">
                 <button class="btn-add-to-cart btn btn-primary" type="button">Thêm vào giỏ</button>
             </div>
+            <br>
+            <div class="product-about">
+        <hr>
+        <h4 class="section-details">CHI TIẾT SẢN PHẨM</h4>
+        <div class="row">
+              <div class="col-sm-5">
+                <p class="text-muted mb-0">Danh mục</p>
+              </div>
+              <div class="col-sm-7">
+                <p class="mb-0">Đồ mặn</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-5">
+                <p class="text-muted mb-0">Xuất xứ</p>
+              </div>
+              <div class="col-sm-7">
+                <p class="mb-0">Việt Nam</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-5">
+                <p class="text-muted mb-0">Trọng lượng (hoặc thể tích)</p>
+              </div>
+              <div class="col-sm-7">
+                <p class="mb-0">300g</p>
+              </div>
+            </div>
+    </div>
         </div>
 
     </div>
@@ -126,47 +113,7 @@ padding: 6px;
             Sau khi mở cốc có thể bảo quản được 6 tiếng ở nhiệt độ 0 - 6 độ C.
         </p>
     </div>
-
-    <div class="product-about">
-        <hr>
-        <h4 class="section-details">CHI TIẾT SẢN PHẨM</h4>
-        <div class="row">
-              <div class="col-sm-3">
-                <p class="text-muted mb-0">Danh mục</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="mb-0">Đồ mặn</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="text-muted mb-0">Xuất xứ</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="mb-0">Việt Nam</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="text-muted mb-0">Hạn sử dụng</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="mb-0">2021</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="text-muted mb-0">Trọng lượng (hoặc thể tích)</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="mb-0">300g</p>
-              </div>
-            </div>
     <hr>
-    </div>
 <br>
     <!-- San pham gợi ý -->
 <div class="sp-noi-bat">

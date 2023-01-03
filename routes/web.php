@@ -244,6 +244,7 @@ Route::put("/admin/changePass/{id}", [AdminController::class, 'updatePass']);
 
 // CART
 Route::get("/cart", [CartController::class, 'cart']);
+
 // đặt thành công
 Route::get('/cart/success', function () {
     return view('user.thank');
