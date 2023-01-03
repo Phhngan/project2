@@ -1,9 +1,9 @@
 @extends('layout.admin_base')
 
-@section('title','Đổi mật khẩu')
+@section('title','Đổi thông tin')
 
 @section('content')
-<h1 class="text-center">Đổi mật khẩu</h1>
+<h1 class="text-center">Đổi thông tin</h1>
 <form action="{{url('/admin/profile/edit')}}" method="POST">
     @csrf
     @method('put')
@@ -22,11 +22,7 @@
     <br>
     <label for="gender">Giới tính:</label>
     <br>
-    <input value="<?php
-                    if ($user->use_gender == 1){echo "Nam";
-                    }else
-                      echo "Nữ";
-                  ?>" name="gender" type="text" class="form-control" placeholder="Giới tính">
+    <input value="{{ $user->use_gender}}" name="gender" type="text" class="form-control" placeholder="Giới tính">
     <br>
     <label for="phone">Số điện thoại:</label>
     <br>
@@ -34,7 +30,7 @@
     <br>
     <label for="province">Tỉnh thành:</label>
     <br>
-    <input value="{{ $user->pro_name }}" name="province" type="text" class="form-control" placeholder="Tỉnh thành">
+    <input value="{{ $user->pro_id }}" name="province" type="text" class="form-control" placeholder="Tỉnh thành">
     <br>
     <label for="district">Quận/huyện:</label>
     <br>

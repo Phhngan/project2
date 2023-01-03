@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     //
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('is_admin');
     }
 
@@ -32,21 +33,30 @@ class AdminController extends Controller
     //profile admin
     function profile()
     {
-        $user = Auth::user();
-        return view('admin/setting.profile', ['user' => $user]);
+        $userAuth = Auth::user();
+        $users = DB::table('Users')
+            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
+            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
+            ->select('Users.*', 'PositionTypes.pos_name', 'Provinces.pro_name')
+            ->where('Users.id', $userAuth->id)
+            ->get();
+        // dd($users);
+        return view('admin/setting.profile', ['users' => $users]);
     }
 
     //update profile
-    function edit($id)
+    function edit()
     {
-        $user = DB::table('Users')
-            ->select('Users.*')
-            ->where('Users.id', $id)
-            ->get();
+        $user = Auth::user();
+        // $user = DB::table('Users')
+        //     ->select('Users.*')
+        //     ->where('Users.id', $id)
+        //     ->get();
         return view('admin/setting/edit', ['user' => $user]);
     }
-    function update(Request $request, $id)
+    function update(Request $request)
     {
+        $user = Auth::user();
         $use_lastName = $request->get('lastName');
         $name = $request->get('firstName');
         $use_birth = $request->get('birth');
@@ -56,33 +66,39 @@ class AdminController extends Controller
         $use_district = $request->get('district');
         $use_town = $request->get('town');
         $use_detailAddress = $request->get('detailAddress');
-        DB::table('Users')->where('id', $id)
-            ->update(['use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
-             'pro_id' => $pro_id, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress]);
-        return redirect('admin/profile/edit');
+        DB::table('Users')->where('id', $user->id)
+            ->update([
+                'use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
+                'pro_id' => $pro_id, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress
+            ]);
+        return redirect('admin/profile');
     }
 
     //change pass
     function changePass()
     {
         $user = Auth::user();
-        return view('admin/setting.changPass', ['user' => $user], ['error' => '']);
+        return view('admin/setting.changePass', ['user' => $user], ['error' => '']);
     }
-    function updatePass(Request $request, $id)
+    function updatePass(Request $request)
     {
         $user = Auth::user();
+        var_dump($user->password);
+        var_dump(Hash::make($user->password));
         $oldPass = $request->get('oldPass');
         $newPass1 = $request->get('newPass1');
         $newPass2 = $request->get('newPass2');
-        if ($oldPass == $user->password) {
+        var_dump(Hash::make($oldPass));
+        if (Hash::check($oldPass, $user->password)){
+        // if (Hash::make($oldPass) == $user->password) {
             if ($newPass1 == $newPass2) {
-                DB::table('Users')->where('id', $id)->update(['password' => Hash::make($newPass1)]);
+                DB::table('Users')->where('id', $user->id)->update(['password' => Hash::make($newPass1)]);
                 return redirect('login');
             } else {
-                return view('admin/setting.changPass', ['user' => $user], ['error' => 'Mật khẩu mới không trùng nhau']);
+                return view('admin/setting.changePass', ['user' => $user], ['error' => 'Mật khẩu mới không trùng nhau']);
             }
         } else {
-            return view('admin/setting.changPass', ['user' => $user], ['error' => 'Mật khẩu không chính xác']);
+            return view('admin/setting.changePass', ['user' => $user], ['error' => 'Mật khẩu không chính xác']);
         }
     }
 }

@@ -103,7 +103,11 @@ Route::get("/admin/productStatus/ban-het", [ProductStatusController::class, 'ban
 // Khong con san xuat
 Route::get("/admin/productStatus/khong-con-san-xuat", [ProductStatusController::class, 'khongConSanXuat']);
 //Chuyen sang ko con san xuat
+Route::get("/admin/productStatus/{prd_id}/chuyen", [ProductStatusController::class, 'chuyen']);
 Route::put("/admin/productStatus/{prd_id}/chuyen", [ProductStatusController::class, 'chuyen']);
+//Câp nhat
+Route::get("/admin/productStatus/update", [ProductStatusController::class, 'update']);
+Route::put("/admin/productStatus/update", [ProductStatusController::class, 'update']);
 
 // THƯ VIỆN ẢNH
 // Xem tất cả ảnh
@@ -182,8 +186,10 @@ Route::get("/admin/salesInvoice/da-huy", [SalesInvoiceController::class, 'daHuy'
 // Chi tiết hóa đơn
 Route::get("/admin/salesInvoice/{sal_id}", [SalesInvoiceController::class, 'show']);
 //Chuyển
+Route::get("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
 Route::put("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
 //Huy
+Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 
 
@@ -191,6 +197,7 @@ Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class
 //login 
 Route::get('/login', [LoginController::class, 'viewLogin']);
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //register 
@@ -240,7 +247,7 @@ Route::get("/admin/profile/edit", [AdminController::class, 'edit']);
 Route::put("/admin/profile/edit", [AdminController::class, 'update']);
 //change pass admin
 Route::get("/admin/changePass", [AdminController::class, 'changePass']);
-Route::put("/admin/changePass/{id}", [AdminController::class, 'updatePass']);
+Route::put("/admin/changePass", [AdminController::class, 'updatePass']);
 
 // CART
 Route::get("/cart", [CartController::class, 'cart']);

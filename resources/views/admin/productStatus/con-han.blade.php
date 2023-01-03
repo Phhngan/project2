@@ -4,6 +4,7 @@
 
 @section('content')
 {{-- Do du lieu      --}}
+<a class="btn btn-primary" href="{{url('admin/productStatus/update')}}" role="button" method="put">Cập nhật</a>
 <br>
 <table class="table">
     <tr>
@@ -24,21 +25,16 @@
         <td>
             <p>
                 <?php
-                    $quantity = App\Models\Importinvoicedetail::
-                        where('prd_id', $product->prd_id)
-                        ->where('imp_expiryDate', $product->imp_expiryDate)
-                        ->sum('ImportInvoiceDetails.imp_quantity_left');
-                    echo $quantity;
+                $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+                    ->where('imp_expiryDate', $product->imp_expiryDate)
+                    ->sum('ImportInvoiceDetails.imp_quantity_left');
+                echo $quantity;
                 ?>
             </p>
         </td>
         <td>
             <p>{{$product->imp_expiryDate}}</p>
         </td>
-        <!-- <td>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
-        </td> -->
     </tr>
     @empty
     <tr>

@@ -18,17 +18,9 @@ class ProductStatusController extends Controller
             ->where('prd_status_id', 1)
             ->orderBy('prd_id')
             ->get();
+        // dd($productCompares);
+        // var_dump($productCompares);
         foreach ($products as $product) {
-            $today = date("Y-m-d");
-            $new_time = strtotime ( '+30 day' , strtotime ( $today ) ) ;
-            $expiry_date = strtotime($product->imp_expiryDate);
-            if ($new_time < $expiry_date){
-                DB::table('ImportInvoiceDetails')->where('imp_expiryDate', $product->imp_expiryDate)
-                    ->update(['prd_status_id' => 1]);
-            } else {
-                DB::table('ImportInvoiceDetails')->where('imp_expiryDate', $product->imp_expiryDate)
-                    ->update(['prd_status_id' => 2]);
-            }
             $quantity = Importinvoicedetail::where('prd_id', $product->prd_id)
                 ->where('imp_expiryDate', $product->imp_expiryDate)
                 ->sum('ImportInvoiceDetails.imp_quantity_left');
@@ -115,5 +107,37 @@ class ProductStatusController extends Controller
         DB::table('ImportInvoiceDetails')->where('prd_id', $prd_id)
             ->update(['prd_status_id' => 5]);
         return redirect('admin/productStatus/khong-con-san-xuat');
+    }
+
+    //Update
+    function update(){
+        $products = DB::table('ImportInvoiceDetails')
+            ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
+            ->distinct()
+            ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
+            ->where('prd_status_id', '<', 4)
+            ->orderBy('prd_id')
+            ->get();
+        // dd($productCompares);
+        // var_dump($productCompares);
+        foreach ($products as $product) {
+            // var_dump($productCompare);
+            $today = date_create();
+            $expiry_date = date_create($product->imp_expiryDate);
+            $compare = intval(date_diff($expiry_date, $today)->format("%R%a"));
+            if (-10 >= $compare &&  $compare >= -40) {
+                DB::table('ImportInvoiceDetails')->where('prd_id', $product->prd_id)->where('imp_expiryDate', $product->imp_expiryDate)
+                    ->update(['prd_status_id' => 2]);
+            } 
+            if ($compare < -40) {
+                DB::table('ImportInvoiceDetails')->where('prd_id', $product->prd_id)->where('imp_expiryDate', $product->imp_expiryDate)
+                    ->update(['prd_status_id' => 1]);
+            }
+            if ($compare > -10) {
+                DB::table('ImportInvoiceDetails')->where('prd_id', $product->prd_id)->where('imp_expiryDate', $product->imp_expiryDate)
+                    ->update(['prd_status_id' => 3]);
+            }
+        }
+        return redirect('admin/productStatus/con-han');
     }
 }
