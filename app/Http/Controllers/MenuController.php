@@ -59,7 +59,40 @@ class MenuController extends Controller
             ->select('Products.*', 'ProductTypes.prd_type', 'Images.img_url')
             ->where('Products.prd_id', $prd_id)
             ->get();
-        // dd($product);
-        return view('user/productDetails', ['products' => $products]);
+
+        //Sản phẩm khác random
+        $randomProducts = DB::table('Products')
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+        return view('user/productDetails', ['products' => $products], ['randomProducts' => $randomProducts]);
+    }
+
+    //Hiển thị home
+    function home()
+    {
+        //SP mới nhất
+        $newProducts = DB::table('Products')
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')
+            ->orderByDesc('prd_id')
+            ->take(4)
+            ->get();
+        
+        //SP giảm giá
+        $discountProducts = DB::table('Products')
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->where('Images.img_role', 1)
+            ->select('Products.*', 'Images.img_url')
+            // ->where('Products.prd_discount', '>', 0)
+            ->orderByDesc('prd_discount')
+            ->take(4)
+            ->get();
+        // dd($discountProducts);
+        return view('user.home', ['newProducts' => $newProducts], ['discountProducts' => $discountProducts]);
     }
 }

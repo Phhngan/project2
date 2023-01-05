@@ -14,154 +14,120 @@
 <div class="main">
   <div class="row">
     <div class="leftcolumn">
-  <section class="slideShow">
-  <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true"
-  style="width:100%">
-  <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack2.jpg?raw=true"
-  style="width:100%">
-  <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true"
-    style="width:100%">
-  </section>
-</div>
-<div class="rightcolumn">
-  <table class="table">
-    <tr>
-      <th>Danh mục sản phẩm</th>
-    </tr>
-    <tr>
-      <td>
-        <a href="/products" class="menu">Tất cả sản phẩm</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/doMan" class="menu">Đồ mặn</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="doNgot" class="menu">Đồ ngọt</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="doUong" class="menu">Đồ uống</a>
-      </td>
-    </tr>
-  </table>
-  <br>
-  <img src=" https://www.packagingstrategies.com/ext/resources/ISSUES/2021/06-June/MarketTrends-FamilyShot.jpg" alt="tra-hoa-qua"
-          style="width:100%">
-</div>
-</div>
-</div>
-
-
-<!-- San pham noi bat -->
-<div class="sp-noi-bat">
-  <div class="cf-title" style="padding-top: 25px">
-  <h3>SẢN PHẨM NỔI BẬT</h3>
-</div>
-
-  <div class="row">
-    <div class="column-sales">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
-          style="width:100%" id="zoom">
-          <div class="khuyen-mai"><p><strong>25%</strong></p></div>
-          <br>
-        <h4 class="ten-sp">Trà hoa quả Meco</h4>
-        <a class="price" id="old-price">30.000VND</a>
-        <a class="price" id="new-price">25.000VND</a>
-        <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
-      </div>
+      <section class="slideShow">
+        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true" style="width:100%">
+        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack2.jpg?raw=true" style="width:100%">
+        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true" style="width:100%">
+      </section>
     </div>
-
-    <div class="column-product">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
-        style="width:100%" id="zoom">
-          <br>
-        <h4>Cơm cháy chà bông</h4>
-        <p class="price">50.000VND</p>
-        <br>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
-      </div>
-    </div>
-    
-    <div class="column-product">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
-          style="width:100%">
-        <h3>Coca cola Sig Mixers</h3>
-        <p class="price">96.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
-      </div>
-    </div>
-    <div class="column-product">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
-          alt="banh-gau" style="width:100%">
-        <h3>Bánh gấu mix 3 vị</h3>
-        <p class="price">60.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
-      </div>
+    <div class="rightcolumn">
+      <table class="table">
+        <tr>
+          <th>Danh mục sản phẩm</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="/products" class="menu">Tất cả sản phẩm</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="/doMan" class="menu">Đồ mặn</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="doNgot" class="menu">Đồ ngọt</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="doUong" class="menu">Đồ uống</a>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <img src=" https://www.packagingstrategies.com/ext/resources/ISSUES/2021/06-June/MarketTrends-FamilyShot.jpg" alt="tra-hoa-qua" style="width:100%">
     </div>
   </div>
 </div>
 
+
 <!-- San pham moi -->
 <div class="sp-moi">
-
-  <div class="cf-title" style="padding-top: 25px">
-  <h3>SẢN PHẨM MỚI</h3>
-</div>
-  
+  <h2 class="tieu-de">SẢN PHẨM MỚI NHẤT</h2>
   <div class="row">
-    <div class="column-product">
+    @forelse($newProducts as $newProduct)
+    @if($newProduct->prd_discount > 0)
+    <div class="column-sales">
       <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
-          style="width:100%">
-        <h3>Trà hoa quả Meco</h3>
-        <p class="price">30.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <img src="{{$newProduct->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+        <div class="khuyen-mai">
+          <p><strong>- {{$newProduct->prd_discount}}%</strong></p>
+        </div>
+        <br>
+        <h4 class="ten-sp">{{$newProduct->prd_name}}</h4>
+        <a class="price" id="old-price">{{$newProduct->prd_price}}VND</a>
+        <a class="price" id="new-price">{{$newProduct->prd_price * (100 - $newProduct->prd_discount)/100}}VND</a>
+        <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
+    @else
     <div class="column-product">
       <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
-          style="width:100%">
-        <h3>Cơm cháy chà bông</h3>
-        <p class="price">50.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <img src="{{$newProduct->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+        <br>
+        <h4>{{$newProduct->prd_name}}</h4>
+        <p class="price">{{$newProduct->prd_price}}VND</p>
+        <br>
+        <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
-    <div class="column-product">
+    @endif
+    @empty
+    <h3>Không có sản phẩm </h3>
+    @endforelse
+  </div>
+</div>
+
+<!-- San pham giam gia -->
+<div class="sp-moi">
+  <h2 class="tieu-de">SẢN PHẨM GIẢM GIÁ</h2>
+  <div class="row">
+    @forelse($discountProducts as $discountProduct)
+    @if($discountProduct->prd_discount > 0)
+    <div class="column-sales">
       <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
-          style="width:100%">
-        <h3>Coca cola Sig Mixers</h3>
-        <p class="price">96.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <img src="{{$discountProduct->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+        <div class="khuyen-mai">
+          <p><strong>- {{$discountProduct->prd_discount}}%</strong></p>
+        </div>
+        <br>
+        <h4 class="ten-sp">{{$discountProduct->prd_name}}</h4>
+        <a class="price" id="old-price">{{$discountProduct->prd_price}}VND</a>
+        <a class="price" id="new-price">{{$discountProduct->prd_price * (100 - $discountProduct->prd_discount)/100}}VND</a>
+        <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
+    @else
     <div class="column-product">
       <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
-          alt="banh-gau" style="width:100%">
-        <h3>Bánh gấu mix 3 vị</h3>
-        <p class="price">60.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
+        <img src="{{$discountProduct->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+        <br>
+        <h4>{{$discountProduct->prd_name}}</h4>
+        <p class="price">{{$discountProduct->prd_price}}VND</p>
+        <br>
+        <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
       </div>
     </div>
+    @endif
+    @empty
+    <h3>Không có sản phẩm </h3>
+    @endforelse
   </div>
 </div>
 
@@ -170,29 +136,24 @@
 @section('full-screen-content')
 <div class="nhan-hang">
   <div class="cf-title" style="padding-top: 25px">
-  <h3>CÁC NHÃN HÀNG</h3>
-</div>
-  
+    <h3>CÁC NHÃN HÀNG</h3>
+  </div>
+
   <div class="row" id="row-nhan-hang">
     <div class="column" id="ten-nhan-hang">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"
-        style="width:100%">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca" style="width:100%">
     </div>
     <div class="column" id="ten-nhan-hang">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo"
-        style="width:100%">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo" style="width:100%">
     </div>
     <div class="column" id="ten-nhan-hang">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/pocky2.jpg?raw=true" alt="pocky"
-        style="width:100%">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/pocky2.jpg?raw=true" alt="pocky" style="width:100%">
     </div>
     <div class="column" id="ten-nhan-hang">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"
-        style="width:100%">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca" style="width:100%">
     </div>
     <div class="column" id="ten-nhan-hang">
-      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo"
-        style="width:100%">
+      <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo" style="width:100%">
     </div>
   </div>
 </div>
@@ -211,7 +172,9 @@
       x[i].style.display = "none";
     }
     myIndex++;
-    if (myIndex > x.length) { myIndex = 1 }
+    if (myIndex > x.length) {
+      myIndex = 1
+    }
     x[myIndex - 1].style.display = "block";
     setTimeout(carousel, 3000);
   }

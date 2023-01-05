@@ -5,14 +5,14 @@
 @section('style')
 
 .body{
-    background-color: #DDE0F4;
+background-color: #DDE0F4;
 }
 .details{
-    background-color: white;
+background-color: white;
 }
 
 .price-details{
-    color: red;
+color: red;
 
 }
 
@@ -24,12 +24,12 @@ padding-bottom: 18px;
 padding-top: 12px;
 }
 
-input.qtyplus, input.qtyminus{ 
-    width:26px; 
-    height:26px;
-    padding-bottom: 30px;
-    background-color: #A8B3D0;
-    border-style: none;
+input.qtyplus, input.qtyminus{
+width:26px;
+height:26px;
+padding-bottom: 30px;
+background-color: #A8B3D0;
+border-style: none;
 }
 .section-details{
 background-color: #F3F3FC;
@@ -43,122 +43,113 @@ padding: 6px;
 
 @forelse($products as $product)
 <div class="details">
-    <div class="row align-items-start">
-        <div class="col">
-            <div class="details-img">
-                <img src="{{$product->img_url}}"
-                    style="width:80%">
-            </div>
-        </div>
+  <div class="row align-items-start">
+    <div class="col">
+      <div class="details-img">
+        <img src="{{$product->img_url}}" style="width:80%">
+      </div>
+    </div>
 
-        <div class="col">
-            <h3>{{$product->prd_name}}</h3>
-            <br>
+    <div class="col">
+      <h3>{{$product->prd_name}}</h3>
+      <br>
 
-            <h4 class="price-details">Giá bán: <span>{{ $product->prd_price }}</span></h4>
-            <br>
-            <form id='form-quantity' method='POST' class='quantity' action='#'>
-                <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                <input type='text' name='quantity' value='1' class='qty' />
-                <input type='button' value='+' class='qtyplus plus' field='quantity' />
-            </form>
-            <br>
-            <div class="action">
-                <button class="btn-add-to-cart btn btn-primary" type="button">Thêm vào giỏ</button>
-            </div>
-            <br>
-            <div class="product-about">
+      <h4 class="price-details">Giá bán: <span>{{ $product->prd_price }}</span></h4>
+      <br>
+      <form id='form-quantity' method='POST' class='quantity' action='#'>
+        <input type='button' value='-' class='qtyminus minus' field='quantity' />
+        <input type='text' name='quantity' value='1' class='qty' />
+        <input type='button' value='+' class='qtyplus plus' field='quantity' />
+      </form>
+      <br>
+      <div class="action">
+        <button class="btn-add-to-cart btn btn-primary" type="button">Thêm vào giỏ</button>
+      </div>
+      <br>
+      <div class="product-about">
         <hr>
         <h4 class="section-details">CHI TIẾT SẢN PHẨM</h4>
         <div class="row">
-              <div class="col-sm-5">
-                <p class="text-muted mb-0">Danh mục</p>
-              </div>
-              <div class="col-sm-7">
-                <p class="mb-0">{{$product->prd_type}}</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-5">
-                <p class="text-muted mb-0">Xuất xứ</p>
-              </div>
-              <div class="col-sm-7">
-                <p class="mb-0">{{$product->prd_source}}</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-5">
-                <p class="text-muted mb-0">Trọng lượng (hoặc thể tích)</p>
-              </div>
-              <div class="col-sm-7">
-                <p class="mb-0">{{$product->prd_weigh}}g</p>
-              </div>
-            </div>
-    </div>
+          <div class="col-sm-5">
+            <p class="text-muted mb-0">Danh mục</p>
+          </div>
+          <div class="col-sm-7">
+            <p class="mb-0">{{$product->prd_type}}</p>
+          </div>
         </div>
 
+        <div class="row">
+          <div class="col-sm-5">
+            <p class="text-muted mb-0">Xuất xứ</p>
+          </div>
+          <div class="col-sm-7">
+            <p class="mb-0">{{$product->prd_source}}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5">
+            <p class="text-muted mb-0">Trọng lượng (hoặc thể tích)</p>
+          </div>
+          <div class="col-sm-7">
+            <p class="mb-0">{{$product->prd_weigh}}g</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="product-description">
-        <hr>
-        <h4 class="section-details">MÔ TẢ SẢN PHẨM</h4>
-        <p class="product-description"> {{$product->prd_description}}
-        </p>
-    </div>
+  </div>
+
+  <div class="product-description">
     <hr>
-<br>
+    <h4 class="section-details">MÔ TẢ SẢN PHẨM</h4>
+    <p class="product-description"> {{$product->prd_description}}
+    </p>
+  </div>
+  <hr>
+  <br>
 
-@empty
+  @empty
   <h3>Không có sản phẩm </h3>
   @endforelse
-    <!-- San pham gợi ý -->
-<div class="sp-noi-bat">
-  <h2 class="tieu-de">Các sản phẩm khác</h2>
-  <div class="row">
-    <div class="column-sales">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_meco.jpg?raw=true" alt="tra-hoa-qua"
-          style="width:100%" id="zoom">
-        <h4 class="ten-sp">Trà hoa quả Meco</h4>
-        <p class="price">30.000VND</p>
-        <a class="btn-detail" href="/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+  <!-- San pham gợi ý -->
+  <div class="sp-goi-y">
+    <h2 class="tieu-de">Các sản phẩm khác</h2>
+    <div class="row">
+      @forelse($randomProducts as $randomProduct)
+      @if($randomProduct->prd_discount > 0)
+      <div class="column-sales">
+        <div class="card">
+          <img src="{{$randomProduct->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+          <div class="khuyen-mai">
+            <p><strong>- {{$randomProduct->prd_discount}}%</strong></p>
+          </div>
+          <br>
+          <h4 class="ten-sp">{{$randomProduct->prd_name}}</h4>
+          <a class="price" id="old-price">{{$randomProduct->prd_price}}VND</a>
+          <a class="price" id="new-price">{{$randomProduct->prd_price * (100 - $randomProduct->prd_discount)/100}}VND</a>
+          <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+          <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        </div>
       </div>
-    </div>
-    <div class="column-product">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" alt="com-chay"
-          style="width:100%">
-        <h4>Cơm cháy chà bông</h4>
-        <p class="price">50.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+      @else
+      <div class="column-product">
+        <div class="card">
+          <img src="{{$randomProduct->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+          <br>
+          <h4>{{$randomProduct->prd_name}}</h4>
+          <p class="price">{{$randomProduct->prd_price}}VND</p>
+          <br>
+          <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+          <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        </div>
       </div>
-    </div>
-    <div class="column-product">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-uong/drink_coca.jpg?raw=true" alt="co-ca"
-          style="width:100%">
-        <h3>Coca cola Sig Mixers</h3>
-        <p class="price">96.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
-      </div>
-    </div>
-    <div class="column-product">
-      <div class="card">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/do-ngot/dongot_banhgau.png?raw=true"
-          alt="banh-gau" style="width:100%">
-        <h3>Bánh gấu mix 3 vị</h3>
-        <p class="price">60.000VND</p>
-        <a class="btn-detail" href="#" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
-      </div>
+      @endif
+      @empty
+      <h3>Không có sản phẩm </h3>
+      @endforelse
     </div>
   </div>
-</div>
 
 
 </div>
@@ -168,21 +159,21 @@ padding: 6px;
 @section('js')
 @parent
 <script>
-    jQuery(document).ready(($) => {
-        $('.quantity').on('click', '.plus', function (e) {
-            let $input = $(this).prev('input.qty');
-            let val = parseInt($input.val());
-            $input.val(val + 1).change();
-        });
-
-        $('.quantity').on('click', '.minus',
-            function (e) {
-                let $input = $(this).next('input.qty');
-                var val = parseInt($input.val());
-                if (val > 0) {
-                    $input.val(val - 1).change();
-                }
-            });
+  jQuery(document).ready(($) => {
+    $('.quantity').on('click', '.plus', function(e) {
+      let $input = $(this).prev('input.qty');
+      let val = parseInt($input.val());
+      $input.val(val + 1).change();
     });
+
+    $('.quantity').on('click', '.minus',
+      function(e) {
+        let $input = $(this).next('input.qty');
+        var val = parseInt($input.val());
+        if (val > 0) {
+          $input.val(val - 1).change();
+        }
+      });
+  });
 </script>
 @endsection

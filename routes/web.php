@@ -39,9 +39,10 @@ Route::get('/admin', function () {
 });
 
 //SITE home
-Route::get('/home', function () {
-    return view('user.home');
-});
+// Route::get('/home', function () {
+//     return view('user.home');
+// });
+Route::get('/home', [MenuController::class, 'home']);
 
 //SITE all products
 

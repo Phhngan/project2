@@ -85,6 +85,7 @@ class ClientController extends Controller
             ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
             ->select('SalesInvoices.*', 'SalesInvoiceStatuss.sal_status', 'Provinces.pro_name')
             ->where('SalesInvoices.use_id', $user->id)
+            ->where('SalesInvoices.sal_status_id', '<', 5)
             ->orderBy('SalesInvoices.sal_status_id')
             ->get();
         return view('user/clientInfo.invoices', ['invoices' => $invoices]);
@@ -95,7 +96,7 @@ class ClientController extends Controller
             ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
             ->select('SalesInvoices.*', 'Products.prd_name', 'Products.prd_code', 'Products.prd_weigh')
             ->where('SalesInvoiceDetails.sal_id', $sal_id)
-            ->orderByDesc('SalesInvoiceDetails.id')
+            ->orderBy('SalesInvoiceDetails.id')
             ->get();
         return view('user.', ['invoiceDetails' => $invoiceDetails]);
     }
