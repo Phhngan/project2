@@ -38,7 +38,7 @@
         @if(Auth::check() == false)
         <div class="dangnhap-dangki">
           <a href="/login" class="dang-nhap"> Đăng nhập /</a>
-          <a href="/regiter" class="dang-ki"> Đăng ký </a>
+          <a href="/register" class="dang-ki"> Đăng ký </a>
           @else
           <div class="dangnhap-dangki">
           <a href="/client" class="dang-nhap"> {{Auth::user()->name}} </a>
@@ -61,9 +61,10 @@
   <nav class="header-bottom1">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
-    <a href="doMan" class="bot-item">Đồ mặn</a>
-    <a href="doNgot" class="bot-item">Đồ ngọt</a>
-    <a href="doUong" class="bot-item">Đồ uống</a>
+    <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
+    <a href="/doMan" class="bot-item">Đồ mặn</a>
+    <a href="/doNgot" class="bot-item">Đồ ngọt</a>
+    <a href="/doUong" class="bot-item">Đồ uống</a>
   </nav>
 <div class="row">
   <div class="sidebar-client">

@@ -53,11 +53,13 @@ class MenuController extends Controller
     //Chi tiet san pham
     function show($prd_id)
     {
-        $product = DB::table('Products')
+        $products = DB::table('Products')
             ->join('ProductTypes', 'Products.prd_type_id', '=', 'ProductTypes.prd_type_id')
-            ->select('Products.*', 'ProductTypes.prd_type')
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->select('Products.*', 'ProductTypes.prd_type', 'Images.img_url')
             ->where('Products.prd_id', $prd_id)
             ->get();
-        return view('user/productDetails', ['product' => $product]);
+        // dd($product);
+        return view('user/productDetails', ['products' => $products]);
     }
 }

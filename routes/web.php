@@ -214,11 +214,11 @@ Route::get("/doNgot", [MenuController::class, 'doNgot']);
 Route::get("/doUong", [MenuController::class, 'doUong']);
 Route::get("/products", [MenuController::class, 'allProducts']);
 // chi tiết sản phẩm
-Route::get("/{prd_id}/productDetails}", [MenuController::class, 'show']);
+Route::get("/{prd_id}/productDetails", [MenuController::class, 'show']);
 
-Route::get('/productDetails', function () {
-    return view('user.productDetails');
-});
+// Route::get('/productDetails', function () {
+//     return view('user.productDetails');
+// });
 
 
 // giới thiệu

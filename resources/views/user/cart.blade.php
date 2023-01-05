@@ -2,22 +2,60 @@
 
 @section('title','Giỏ hàng')
 
+@section('style')
+
+@endsection
+
 @section('content')
-<h2 class="text-center">Giỏ hàng</h2>
-<div class="col-25">
-    <div class="container-cart">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p><span class="tien-ship">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-    <a class="btn btn-primary" href="/checkout" role="button">Check out</a>
+<div class="cf-title">
+<h3>Giỏ hàng</h3>
+</div>
+<div class="item-products">
+<table class="table">
+    <tr>
+        <th>Sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+        <th>Hành động</th>
+    </tr>
+    <!-- @forelse($salesInvoiceDetails as $salesInvoiceDetail)
+    <tr>
+        <td>
+            <img src="{{$image->img_url}}" width="100px">
+        </td>
+        <td>
+            <p>{{$salesInvoiceDetail->prd_name}}</p>
+        </td>
+        <td>
+            <p>{{$salesInvoiceDetail->sal_quantity}}</p>
+
+        </td>
+        <td>
+            <p>{{$salesInvoiceDetail->sal_price}} VND</p>
+        </td>
+        <td>
+                  <form method="POST" action="{{url('admin/products/'.$product->prd_id.'/delete')}}">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+        </td>
+    </tr> -->
+    <br>
+</table>
   </div>
+
+  <div class="row">
+<div class="col-">
+
+</div>
+
+<div class="col-">
+
+</div>
+
+</div>
 
 @endsection
 

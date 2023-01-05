@@ -2,7 +2,12 @@
 
 @section('title','Home')
 
-@yield('css-link')
+@section('css-link')
+@endsection
+
+@section('style')
+
+@endsection
 
 @section('content')
 
@@ -54,7 +59,10 @@
 
 <!-- San pham noi bat -->
 <div class="sp-noi-bat">
-  <h2 class="tieu-de">SẢN PHẨM NỔI BẬT</h2>
+  <div class="cf-title" style="padding-top: 25px">
+  <h3>SẢN PHẨM NỔI BẬT</h3>
+</div>
+
   <div class="row">
     <div class="column-sales">
       <div class="card">
@@ -108,7 +116,11 @@
 
 <!-- San pham moi -->
 <div class="sp-moi">
-  <h2 class="tieu-de">SẢN PHẨM MỚI</h2>
+
+  <div class="cf-title" style="padding-top: 25px">
+  <h3>SẢN PHẨM MỚI</h3>
+</div>
+  
   <div class="row">
     <div class="column-product">
       <div class="card">
@@ -157,7 +169,10 @@
 
 @section('full-screen-content')
 <div class="nhan-hang">
-  <h2 class="tieu-de">CÁC NHÃN HÀNG</h2>
+  <div class="cf-title" style="padding-top: 25px">
+  <h3>CÁC NHÃN HÀNG</h3>
+</div>
+  
   <div class="row" id="row-nhan-hang">
     <div class="column" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca"

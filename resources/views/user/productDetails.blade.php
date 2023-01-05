@@ -41,20 +41,21 @@ padding: 6px;
 
 @section('content')
 
+@forelse($products as $product)
 <div class="details">
     <div class="row align-items-start">
         <div class="col">
             <div class="details-img">
-                <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true"
-                    alt="com-chay" style="width:80%">
+                <img src="{{$product->img_url}}"
+                    style="width:80%">
             </div>
         </div>
 
         <div class="col">
-            <h3>Cơm cháy chà bông</h3>
+            <h3>{{$product->prd_name}}</h3>
             <br>
 
-            <h4 class="price-details">Giá bán: <span>30.000VND</span></h4>
+            <h4 class="price-details">Giá bán: <span>{{ $product->prd_price }}</span></h4>
             <br>
             <form id='form-quantity' method='POST' class='quantity' action='#'>
                 <input type='button' value='-' class='qtyminus minus' field='quantity' />
@@ -74,7 +75,7 @@ padding: 6px;
                 <p class="text-muted mb-0">Danh mục</p>
               </div>
               <div class="col-sm-7">
-                <p class="mb-0">Đồ mặn</p>
+                <p class="mb-0">{{$product->prd_type}}</p>
               </div>
             </div>
 
@@ -83,7 +84,7 @@ padding: 6px;
                 <p class="text-muted mb-0">Xuất xứ</p>
               </div>
               <div class="col-sm-7">
-                <p class="mb-0">Việt Nam</p>
+                <p class="mb-0">{{$product->prd_source}}</p>
               </div>
             </div>
 
@@ -92,7 +93,7 @@ padding: 6px;
                 <p class="text-muted mb-0">Trọng lượng (hoặc thể tích)</p>
               </div>
               <div class="col-sm-7">
-                <p class="mb-0">300g</p>
+                <p class="mb-0">{{$product->prd_weigh}}g</p>
               </div>
             </div>
     </div>
@@ -103,18 +104,15 @@ padding: 6px;
     <div class="product-description">
         <hr>
         <h4 class="section-details">MÔ TẢ SẢN PHẨM</h4>
-        <p class="product-description">Trà Meco vị chanh Thái 400ml được làm từ hồng trà Assam Ấn Độ kết hợp với
-            nước ép trái cây tươi mang lại hương vị thơm đặc trưng từ chanh, một loại trái cây ưa dùng và thường
-            được mọi người sử dụng.Có tác dụng giải khát, thanh nhiệt cơ thể, sảng khoái tinh thần.Sản phẩm
-            thiết kế dạng ly nhựa PP đảm bảo an toàn vệ sinh thực phẩm với công nghệ sản xuất chiết rót tiệt
-            trùng.Có ống hút nhỏ kèm theo, dễ dàng mang mang theo.
-            Bảo quản nơi khô ráo, thoáng mát, tránh ẩm ướt và tránh ánh nắng trực tiếp.
-            Hướng dẫn sử dụng: dùng trực tiếp. Ngon hơn khi để lạnh
-            Sau khi mở cốc có thể bảo quản được 6 tiếng ở nhiệt độ 0 - 6 độ C.
+        <p class="product-description"> {{$product->prd_description}}
         </p>
     </div>
     <hr>
 <br>
+
+@empty
+  <h3>Không có sản phẩm </h3>
+  @endforelse
     <!-- San pham gợi ý -->
 <div class="sp-noi-bat">
   <h2 class="tieu-de">Các sản phẩm khác</h2>

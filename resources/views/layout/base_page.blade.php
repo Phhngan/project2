@@ -38,15 +38,15 @@
         @if(Auth::check() == false)
         <div class="dangnhap-dangki">
           <a href="/login" class="dang-nhap"> Đăng nhập /</a>
-          <a href="/regiter" class="dang-ki"> Đăng ký </a>
+          <a href="/register" class="dang-ki"> Đăng ký </a>
           @else
           <div class="dangnhap-dangki">
           <a href="/client" class="dang-nhap"> {{Auth::user()->name}} </a>
       </div>
-          @endif
+          
       </div>
       <div class="column-4">
-        <a class="cart" href="#cart">
+        <a class="cart" href="/cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart"
             viewBox="0 0 16 16">
             <path
@@ -54,6 +54,8 @@
           </svg>
         </a>
       </div>
+      @endif
+
     </div>
   </nav>
   <!-- header-bottom -->
@@ -61,9 +63,10 @@
   <nav class="header-bottom">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
-    <a href="doMan" class="bot-item">Đồ mặn</a>
-    <a href="doNgot" class="bot-item">Đồ ngọt</a>
-    <a href="doUong" class="bot-item">Đồ uống</a>
+    <a href="/products" class="bot-item">Tất cả sản phẩm</a>
+    <a href="/doMan" class="bot-item">Đồ mặn</a>
+    <a href="/doNgot" class="bot-item">Đồ ngọt</a>
+    <a href="/doUong" class="bot-item">Đồ uống</a>
   </nav>
 
   <div class="container">

@@ -68,8 +68,8 @@ form.example::after {
 
 .cart {
     float: inherit;
-    margin-top: 20px;
-    padding-left: 50px;
+    margin-top: 30px;
+    padding-left: 10px;
 }
 
 .header-bottom1 {
@@ -89,7 +89,7 @@ form.example::after {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
-    margin-left: 180px;
+    margin-left: 140px;
     padding: 6px;
 }
 
@@ -126,13 +126,13 @@ margin-top: 50px;
 }
 .header .column-3  {
   float: left;
-  width: 15%;
+  width: 12%;
   padding: 10px;
   height: 120px; /* Should be removed. Only for demonstration */
 }
 .header .column-4  {
   float: left;
-  width: 10%;
+  width: 13%;
   padding: 10px;
   height: 120px; /* Should be removed. Only for demonstration */
 }
@@ -171,14 +171,14 @@ margin-top: 50px;
   
   .sp-noi-bat{
   background-color: #A8B3D0;
-  height: 600px;
+  height: 650px;
   margin-bottom:50px;
   border-radius: 5px;
   }
   
   .sp-moi{
   background-color: #A8B3D0;
-  height: 600px;
+  height: 650px;
   margin-bottom:50px;
   border-radius: 5px;
   }
@@ -364,3 +364,23 @@ margin-top: 50px;
       text-decoration: none;
       padding-bottom: 10px;
     }
+
+
+/* ===HEADING STYLE=== */
+
+.cf-title h3 {
+	text-align:center;
+	text-transform:uppercase;
+	padding-bottom:5px;
+}
+.cf-title h3:after {
+	width:100px;
+	height:2px;
+	display:block;
+	content:"";
+	position:relative;
+	margin-top:10px;
+	left:50%;
+	margin-left:-50px;
+	background-color: #b80000;
+}

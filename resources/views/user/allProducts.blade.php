@@ -6,9 +6,15 @@
 .danhmuc-sp{
   height: 1100px;
 }
+body{
+  background-color: #EBECFE;
+}
 @endsection
 
 @section('content')
+<div class="cf-title">
+  <h3>Tất cả sản phẩm</h3>
+</div>
 <div class="row danhmuc-sp">
   @forelse($products as $product)
   <div class="column-product">
