@@ -46,7 +46,7 @@
           @endif
       </div>
       <div class="column-4">
-        <a class="cart" href="#cart">
+        <a class="cart" href="/cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart"
             viewBox="0 0 16 16">
             <path
@@ -58,9 +58,10 @@
   </nav>
   <!-- header-bottom -->
   
-  <nav class="header-bottom1">
+  <nav class="header-bottom">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
+    <a href="/products" class="bot-item">Tất cả sản phẩm</a>
     <a href="/doMan" class="bot-item">Đồ mặn</a>
     <a href="/doNgot" class="bot-item">Đồ ngọt</a>
     <a href="/doUong" class="bot-item">Đồ uống</a>

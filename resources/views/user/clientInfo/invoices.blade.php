@@ -20,7 +20,7 @@
 </div>
 <br>
 <table class="table">
-    <tr>
+    <tr style="background-color:#CED7FD">
         <th>Mã hóa đơn</th>
         <th>Ngày đặt</th>
         <th>Tổng tiền</th>
@@ -52,11 +52,10 @@
         </td>
         <td>
             @if($invoice->sal_status_id == 1)
-                <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
-                <br>
-                <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" role="button">Hủy đơn</a>
+                <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
+                <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" role="button">Hủy đơn</a>
             @else
-                <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
+                <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
             @endif
         </td>
     </tr>

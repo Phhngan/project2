@@ -20,7 +20,7 @@ border-style: none;
 }
 
 .card{
-max-width:500px;
+max-width:600px;
 }
 .btn-mua-hang{
     width:300px;
@@ -35,7 +35,7 @@ max-width:500px;
 </div>
 <div class="item-products">
 <table class="table">
-    <tr>
+    <tr style="background-color:#CED7FD">
         <th>Sản phẩm</th>
         <th>Tên sản phẩm</th>
         <th>Số lượng</th>
@@ -74,7 +74,7 @@ max-width:500px;
 
     <div class="col">
 
-        <div class="card mb-4" id="card-client">
+        <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
         <div class="card-body">
 
              <div class="row">
@@ -82,9 +82,9 @@ max-width:500px;
                     <h5 class="text-center">Thông tin giao hàng</h5>
                 </div>
                 </div>
-                 <br><hr>
+                <hr>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-sm-5">
         <p class="mb-0">Họ và tên</p>
       </div>
@@ -102,16 +102,28 @@ max-width:500px;
         <p class="text-muted mb-0">0966835587</p>
       </div>
     </div>
-    <hr>
-
-    <div class="row">
+    <hr> 
+  
+      <div class="row">
       <div class="col-sm-5">
         <p class="mb-0">Địa chỉ chi tiết</p>
       </div>
       <div class="col-sm-7">
         <p class="text-muted mb-0">Tòa Nam, Rice City Linh Đàm, Hà Nội</p>
       </div>
-    </div>
+    </div>-->
+
+    <form action="" method="POST">
+    @csrf
+    @method('put')
+    <label for="detailAddress" style="float:left;padding-bottom:6px">Địa chỉ cụ thể:</label>
+    <br>
+    <input value="Tòa Nam, Rice City Linh Đàm, Hà Nội" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+    <br>
+    <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
+    <br>
+</form>
+
 
 </div>
     </div>
@@ -119,7 +131,7 @@ max-width:500px;
 
 <div class="col">
 
-<div class="row">
+<!-- <div class="row">
       <div class="col-sm-6">
         <p class="mb-0">Giá thành:</p>
       </div>
@@ -149,9 +161,30 @@ max-width:500px;
     </div>
     <hr>
 
-    <button class="btn btn-info btn-mua-hang" >Mua hàng</button>
-</div>
+    <a class="btn btn-info btn-mua-hang" href="/checkout" role="button">Mua hàng</a> -->
 
+
+    <div class="card mb-4" id="card-client">
+        <div class="card-body">
+
+        <div class="row">
+      <div class="col-sm-6">
+        <p class="mb-0">Giá thành:</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="text-muted mb-0">50 000VND</p>
+      </div>
+    </div>
+    <hr>
+
+    <a class="btn btn-primary btn-mua-hang" href="/checkout" role="button">Tiếp tục</a>
+
+</div>
+    </div>
+
+
+
+</div>
 </div>
 
 @endsection

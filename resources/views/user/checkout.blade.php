@@ -1,74 +1,169 @@
 @extends('layout.base_page')
 
-@section('title','Check out')
+@section('title','Checkout')
+
+@section('style')
+.qty {
+width: 40px;
+height: 25px;
+text-align: center;
+padding-bottom: 18px;
+padding-top: 12px;
+}
+
+input.qtyplus, input.qtyminus{
+width:26px;
+height:26px;
+padding-bottom: 30px;
+background-color: #A8B3D0;
+border-style: none;
+}
+
+.card{
+max-width:600px;
+}
+.btn-mua-hang{
+    width:300px;
+    float:right;
+}
+.luu-y{
+  background-color:#EC8F9E;
+  height:80px;
+  border-radius:5px;
+  padding: 20px;
+}
+
+@endsection
 
 @section('content')
-<h2>Checkout Form</h2>
-<!-- <div class="row"> -->
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
-      
-        <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+<div class="cf-title">
+<h3>Thông tin đơn hàng</h3>
+</div>
 
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
-              </div>
-            </div>
-          </div>
+<div class="item-products">
+<table class="table">
+    <tr style="background-color:#CED7FD">
+        <th>Sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+    </tr>
 
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
-        <input type="submit" value="Continue to checkout" class="btn">
-      </form>
-    </div>
+    <tr>
+        <td>
+        <img src="https://github.com/Phhngan/snack_images/blob/master/san-pham/SP1/doman_khoga.png?raw=true" style="height:200px">
+        </td>
+        <td>
+            <p>Khô gà</p>
+        </td>
+        <td>
+            <p>1</p>
+        </td>
+        <td>
+            <p>50 000 VND</p>
+        </td>
+    </tr>
+    <br>
+</table>
   </div>
 
+<div class="row">
+
+    <div class="col">
+
+        <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
+        <div class="card-body">
+
+             <div class="row">
+                <div class="col">
+                    <h5 class="text-center">Thông tin giao hàng</h5>
+                </div>
+                </div>
+                <hr>
+
+    <div class="row">
+      <div class="col-sm-5">
+        <p class="mb-0">Họ và tên</p>
+      </div>
+      <div class="col-sm-7">
+        <p class="text-muted mb-0">Phạm Hà Ngân</p>
+      </div>
+    </div>
+    <hr>  
+
+    <div class="row">
+      <div class="col-sm-5">
+        <p class="mb-0">Số điện thoại</p>
+      </div>
+      <div class="col-sm-7">
+        <p class="text-muted mb-0">0966835587</p>
+      </div>
+    </div>
+    <hr> 
+  
+      <div class="row">
+      <div class="col-sm-5">
+        <p class="mb-0">Địa chỉ chi tiết</p>
+      </div>
+      <div class="col-sm-7">
+        <p class="text-muted mb-0">Tòa Nam, Rice City Linh Đàm, Hà Nội</p>
+      </div>
+    </div>
+
+</div>
+    </div>
+</div>
+
+<div class="col">
+
+    <div class="card mb-4" id="card-client">
+        <div class="card-body">
+
+        <div class="row">
+      <div class="col-sm-6">
+        <p class="mb-0">Giá thành:</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="text-muted mb-0">50 000VND</p>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="mb-0">Tiền ship:</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="text-muted mb-0">20 000VND</p>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="mb-0">Tổng đơn hàng:</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="text-muted mb-0">70 000VND</p>
+      </div>
+    </div>
+    <hr>
+
+
+    <a class="btn btn-primary btn-mua-hang" href="/cart/success" role="button">Mua hàng</a>
+    <a class="btn btn-warning" href="/cart" role="button">Quay lại giỏ hàng</a>
+</div>
+    </div>
+
+
+
+</div>
+</div>
+
+<div class="luu-y">
+<h6 class="text-center">Quý khách vui lòng kiểm tra kỹ thông tin, địa chỉ nhận hàng. Sau khi nhấn mua hàng, quý khách sẽ nhận được cuộc gọi xác nhận từ Snack.</h6>
+<h6 class="text-center">Hotline: 1900190012</h6>
+</div>
 @endsection
 
 @section('js')

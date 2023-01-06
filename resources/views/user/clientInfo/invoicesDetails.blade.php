@@ -16,16 +16,16 @@
 @section('content-info')
 <br>
 <div class="cf-title">
-    <h3>Đơn hàng</h3>
+    <h3>Chi tiết đơn hàng</h3>
 </div>
 <br>
 @if($invoiceDetails == null)
 <h2>Đơn không tồn tại</h2>
 @else
-<h3>Chi tiết đơn hàng:</h3>
 <table class="table">
-    <tr>
+    <tr style="background-color:#CED7FD">
         <th>Mã sản phẩm</th>
+        <th>Ảnh sản phẩm</th>
         <th>Tên sản phẩm</th>
         <th>Số lượng</th>
         <th>Trọng lượng</th>
@@ -35,6 +35,9 @@
     <tr>
         <td>
             <p>{{$invoiceDetail->prd_code}}</p>
+        </td>
+        <td>
+            <img src="{{$invoiceDetail->img_url}}" width="100px">
         </td>
         <td>
             <p>{{$invoiceDetail->prd_name}}</p>

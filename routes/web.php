@@ -263,3 +263,7 @@ Route::get('/cart/success', function () {
 Route::get('/cart', function () {
     return view('user.cart');
 });
+
+Route::get('/checkout', function () {
+    return view('user.checkout');
+});
