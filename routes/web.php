@@ -239,6 +239,7 @@ Route::put("/client/changePass", [ClientController::class, 'updatePass']);
 Route::get("/client/invoices", [ClientController::class, 'invoices']);
 Route::get("/client/invoices/{sal_id}/details", [ClientController::class, 'details']);
 //Huy don
+Route::get("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel']);
 Route::put("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel']);
 
 //profile admin

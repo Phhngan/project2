@@ -51,7 +51,13 @@
             <p>{{$invoice->sal_status}}</p>
         </td>
         <td>
-        <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
+            @if($invoice->sal_status_id == 1)
+                <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
+                <br>
+                <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" role="button">Hủy đơn</a>
+            @else
+                <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
+            @endif
         </td>
     </tr>
     @empty

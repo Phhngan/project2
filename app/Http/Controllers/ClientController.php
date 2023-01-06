@@ -94,7 +94,8 @@ class ClientController extends Controller
     {
         $invoiceDetails =  DB::table('SalesInvoiceDetails')
             ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
-            ->select('SalesInvoices.*', 'Products.prd_name', 'Products.prd_code', 'Products.prd_weigh')
+            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+            ->select('SalesInvoiceDetails.*', 'Products.prd_name', 'Products.prd_code', 'Products.prd_weigh', 'Images.img_url')
             ->where('SalesInvoiceDetails.sal_id', $sal_id)
             ->orderBy('SalesInvoiceDetails.id')
             ->get();
