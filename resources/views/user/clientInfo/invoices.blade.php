@@ -15,6 +15,10 @@
 
 @section('content-info')
 <br>
+<div class="cf-title">
+  <h3>Quản lí đơn hàng</h3>
+</div>
+<br>
 <table class="table">
     <tr>
         <th>Mã hóa đơn</th>
@@ -23,6 +27,7 @@
         <th>Địa chỉ</th>
         <th>Ghi chú</th>
         <th>Trạng thái</th>
+        <th>Hành động</th>
     </tr>
     @forelse($invoices as $invoice)
     <tr>
@@ -44,6 +49,9 @@
         </td>
         <td>
             <p>{{$invoice->sal_status}}</p>
+        </td>
+        <td>
+        <a class="btn btn-outline-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
         </td>
     </tr>
     @empty

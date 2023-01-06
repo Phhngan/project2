@@ -10,6 +10,10 @@ background-color: #DDE0F4;
 .details{
 background-color: white;
 }
+.sp-goi-y{
+  background-color: #CED7FD;
+  height:650px;
+}
 
 .price-details{
 color: red;
@@ -46,7 +50,7 @@ padding: 6px;
   <div class="row align-items-start">
     <div class="col">
       <div class="details-img">
-        <img src="{{$product->img_url}}" style="width:80%">
+        <img src="{{$product->img_url}}" style="height:450px">
       </div>
     </div>
 
@@ -114,13 +118,16 @@ padding: 6px;
   @endforelse
   <!-- San pham gợi ý -->
   <div class="sp-goi-y">
-    <h2 class="tieu-de">Các sản phẩm khác</h2>
+    <div class="cf-title" style="padding-top: 25px">
+       <h3>Các sản phẩm khác</h3>
+    </div>
+
     <div class="row">
       @forelse($randomProducts as $randomProduct)
       @if($randomProduct->prd_discount > 0)
       <div class="column-sales">
         <div class="card">
-          <img src="{{$randomProduct->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+          <img src="{{$randomProduct->img_url}}" style="height:298px" id="zoom">
           <div class="khuyen-mai">
             <p><strong>- {{$randomProduct->prd_discount}}%</strong></p>
           </div>
@@ -135,7 +142,7 @@ padding: 6px;
       @else
       <div class="column-product">
         <div class="card">
-          <img src="{{$randomProduct->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+          <img src="{{$randomProduct->img_url}}" style="height:298px" id="zoom">
           <br>
           <h4>{{$randomProduct->prd_name}}</h4>
           <p class="price">{{$randomProduct->prd_price}}VND</p>

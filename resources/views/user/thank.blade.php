@@ -31,8 +31,10 @@
 <div class="cf-title">
 <h3>Đặt hàng thành công</3>
 </div>
-<p class="text-center">Theo dõi đơn hàng của bạn tại đây.</p>
+<p class="text-center">Theo dõi đơn hàng của bạn <a href= "/client/invoices" >tại đây</a>.</p>
+
 </div>
+
 
 @endsection
 

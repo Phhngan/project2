@@ -20,7 +20,7 @@ background-color: #EBECFE;
     @if($product->prd_discount > 0)
     <div class="column-sales">
       <div class="card">
-        <img src="{{$product->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+        <img src="{{$product->img_url}}" style="height:298px" id="zoom">
         <div class="khuyen-mai">
           <p><strong>- {{$product->prd_discount}}%</strong></p>
         </div>
@@ -35,7 +35,7 @@ background-color: #EBECFE;
     @else
     <div class="column-product">
       <div class="card">
-        <img src="{{$product->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+        <img src="{{$product->img_url}}" style="height:298px" id="zoom">
         <br>
         <h4>{{$product->prd_name}}</h4>
         <p class="price">{{$product->prd_price}}VND</p>

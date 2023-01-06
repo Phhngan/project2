@@ -48,7 +48,9 @@ margin-left: 0px;
 
 @section('content-info')
 <br>
-<h3 class="text-center">Đổi mật khẩu</h3>
+<div class="cf-title">
+  <h3>Đổi mật khẩu</h3>
+</div>
 
 <form class="register" action="{{url('client/changePass')}}" method="POST">
     @csrf

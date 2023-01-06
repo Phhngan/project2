@@ -6,13 +6,21 @@
 @endsection
 
 @section('style')
-
+.customer{
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  padding-bottom:6px;
+}
 @endsection
 
 @section('content')
 
 <div class="main">
   <div class="row">
+
     <div class="leftcolumn">
       <section class="slideShow">
         <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true" style="width:100%">
@@ -20,6 +28,7 @@
         <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true" style="width:100%">
       </section>
     </div>
+
     <div class="rightcolumn">
       <table class="table">
         <tr>
@@ -55,13 +64,15 @@
 
 <!-- San pham moi -->
 <div class="sp-moi">
-  <h2 class="tieu-de">SẢN PHẨM MỚI NHẤT</h2>
+  <div class="cf-title" style="padding-top: 25px">
+  <h3>SẢN PHẨM MỚI NHẤT</h3>
+</div>
   <div class="row">
     @forelse($newProducts as $newProduct)
     @if($newProduct->prd_discount > 0)
     <div class="column-sales">
       <div class="card">
-        <img src="{{$newProduct->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+        <img src="{{$newProduct->img_url}}" style="height:298px" id="zoom">
         <div class="khuyen-mai">
           <p><strong>- {{$newProduct->prd_discount}}%</strong></p>
         </div>
@@ -76,7 +87,7 @@
     @else
     <div class="column-product">
       <div class="card">
-        <img src="{{$newProduct->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+        <img src="{{$newProduct->img_url}}" style="height:298px" id="zoom">
         <br>
         <h4>{{$newProduct->prd_name}}</h4>
         <p class="price">{{$newProduct->prd_price}}VND</p>
@@ -94,13 +105,15 @@
 
 <!-- San pham giam gia -->
 <div class="sp-moi">
-  <h2 class="tieu-de">SẢN PHẨM GIẢM GIÁ</h2>
+  <div class="cf-title" style="padding-top: 25px">
+  <h3>SẢN PHẨM GIẢM GIÁ</h3>
+</div>
   <div class="row">
     @forelse($discountProducts as $discountProduct)
     @if($discountProduct->prd_discount > 0)
     <div class="column-sales">
       <div class="card">
-        <img src="{{$discountProduct->img_url}}" alt="tra-hoa-qua" style="width:100%" id="zoom">
+        <img src="{{$discountProduct->img_url}}" style="height:298px" id="zoom">
         <div class="khuyen-mai">
           <p><strong>- {{$discountProduct->prd_discount}}%</strong></p>
         </div>
@@ -115,7 +128,7 @@
     @else
     <div class="column-product">
       <div class="card">
-        <img src="{{$discountProduct->img_url}}" alt="com-chay" style="width:100%" id="zoom">
+        <img src="{{$discountProduct->img_url}}" style="height:298px" id="zoom">
         <br>
         <h4>{{$discountProduct->prd_name}}</h4>
         <p class="price">{{$discountProduct->prd_price}}VND</p>
@@ -130,6 +143,34 @@
     @endforelse
   </div>
 </div>
+<!-- phản hồi khách hàng -->
+<div class="phan-hoi-khach-hang" style="background-color:#EBECFE;height:350px;margin-bottom:50px">
+<div class="cf-title" style="padding-top: 25px;padding-bottom:25px">
+  <h3>Phản hồi khách hàng</h3>
+</div>
+      <section class="slideShow">
+
+        <div class="mySlides1">
+        <img class="customer" src="https://www.assyst.de/cms/upload/sub/digitalisierung/18-F.jpg">
+        <p style="text-align:center"><span style="font-style:italic;font-weight:bold">Chị Hương </span></p>
+        <p style="text-align:center">Đồ ăn nhập khẩu thơm ngon, bổ dưỡng với sự đa dạng mẫu mã, hương vị luôn rất được gia đình tôi ưa chuộng.</p>
+        </div>  
+
+        <div class="mySlides1">
+        <img class="customer" src="https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg">
+        <p style="text-align:center"><span style="font-style:italic;font-weight:bold">Anh Justin Nguyen </span></p>
+        <p style="text-align:center">Tôi đã mua hàng ở đây nhiều lần trong thời gian ở Hà Nội.</p>
+        <p style="text-align:center">Ở đây có rất nhiều lựa chọn tuyệt vời cho cả món ăn và thức uống. Quá thú vị, không có từ nào để khen nhiều hơn được nữa!</p>
+        </div> 
+
+        <div class="mySlides1">
+        <img class="customer" src="https://www.assyst.de/cms/upload/sub/digitalisierung/7-F.jpg">
+        <p style="text-align:center"><span style="font-style:italic;font-weight:bold">Chị Jenny</span></p>
+        <p style="text-align:center">👍👍👍</p>
+        </div>
+
+      </section>
+    </div>
 
 @endsection
 
@@ -163,7 +204,9 @@
 <script>
   // Automatic Slideshow - change image every 3 seconds
   var myIndex = 0;
+  var newIndex = 0;
   carousel();
+  carousel1();
 
   function carousel() {
     var i;
@@ -177,6 +220,21 @@
     }
     x[myIndex - 1].style.display = "block";
     setTimeout(carousel, 3000);
+  }
+
+
+  function carousel1() {
+    var j;
+    var y = document.getElementsByClassName("mySlides1");
+    for (j = 0; j < y.length; j++) {
+      y[j].style.display = "none";
+    }
+    newIndex++;
+    if (newIndex > y.length) {
+      newIndex = 1
+    }
+    y[newIndex - 1].style.display = "block";
+    setTimeout(carousel1, 3000);
   }
 </script>
 @endsection

@@ -26,7 +26,9 @@
 
 @section('content-info')
 <br>
-<h3 class="text-center">Cập nhật thông tin khách hàng</h3>
+<div class="cf-title">
+  <h3>Cập nhật thông tin khách hàng</h3>
+</div>
 <br>
 <form class="edit-info" action="{{url('client/edit')}}" method="POST">
     @csrf

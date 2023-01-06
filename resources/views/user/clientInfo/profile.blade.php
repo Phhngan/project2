@@ -22,8 +22,9 @@ margin-right:10px;
 
 @section('content-info')
 <br>
-<h3 class="text-center">Thông tin khách hàng</h3>
-<br>
+<div class="cf-title">
+<h3>Thông tin khách hàng</h3>
+</div><br>
 
 <div class="card mb-4" id="card-client">
   <div class="card-body">

@@ -98,7 +98,7 @@ class ClientController extends Controller
             ->where('SalesInvoiceDetails.sal_id', $sal_id)
             ->orderBy('SalesInvoiceDetails.id')
             ->get();
-        return view('user.', ['invoiceDetails' => $invoiceDetails]);
+        return view('user/clientInfo.invoicesDetails', ['invoiceDetails' => $invoiceDetails]);
     }
 
     //Huy don
