@@ -26,7 +26,6 @@
 }
 .chuyen-khoan{
   background-color:#EBECFE;
-  opacity:0.4;
   width: 800px;
   display:block;
   margin-left:auto;
@@ -44,7 +43,7 @@
 <p class="text-center">Theo dõi đơn hàng của bạn <a href= "/client/invoices" >tại đây</a>.</p>
 <div class="chuyen-khoan">
 <p class="text-center" style="font-weight:bold;">Quét mã để thanh toán:</p>
-<img src="https://toanhocbactrungnam.vn/uploads/news/2019_11/1573006985.png" style="height:150px;display:block;margin-left:auto;margin-right:auto">
+<img src="https://github.com/Phhngan/snack_images/blob/master/chuyen-khoan.jpg?raw=true" style="height:200px;display:block;margin-left:auto;margin-right:auto">
 <br>
 <h6 class="text-center">Quý khách sẽ nhận được cuộc gọi xác nhận từ Snack sau ít phút.</h6>
 <br>
