@@ -81,7 +81,7 @@
         <a class="price" id="old-price">{{$newProduct->prd_price}}VND</a>
         <a class="price" id="new-price">{{$newProduct->prd_price * (100 - $newProduct->prd_discount)/100}}VND</a>
         <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     @else
@@ -93,7 +93,7 @@
         <p class="price">{{$newProduct->prd_price}}VND</p>
         <br>
         <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     @endif
@@ -122,7 +122,7 @@
         <a class="price" id="old-price">{{$discountProduct->prd_price}}VND</a>
         <a class="price" id="new-price">{{$discountProduct->prd_price * (100 - $discountProduct->prd_discount)/100}}VND</a>
         <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     @else
@@ -134,7 +134,7 @@
         <p class="price">{{$discountProduct->prd_price}}VND</p>
         <br>
         <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     @endif

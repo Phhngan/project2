@@ -29,7 +29,7 @@ body{
         <a class="price" id="old-price">{{$product->prd_price}}VND</a>
         <a class="price" id="new-price">{{$product->prd_price * (100 - $product->prd_discount)/100}}VND</a>
         <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     @else
@@ -41,7 +41,7 @@ body{
         <p class="price">{{$product->prd_price}}VND</p>
         <br>
         <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
     </div>
     @endif

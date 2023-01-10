@@ -16,6 +16,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgetPassController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -252,18 +253,11 @@ Route::get("/admin/changePass", [AdminController::class, 'changePass']);
 Route::put("/admin/changePass", [AdminController::class, 'updatePass']);
 
 // CART
-Route::get("/cart", [CartController::class, 'cart']);
-
-// đặt thành công
-Route::get('/cart/success', function () {
-    return view('user.thank');
-});
-
-//test
-Route::get('/cart', function () {
-    return view('user.cart');
-});
-
-Route::get('/checkout', function () {
-    return view('user.checkout');
-});
+Route::get("/{prd_id}/addCart", [CartController::class, 'addCart']);
+Route::get("/cart", [CartController::class, 'showCart']);
+Route::get("/cart/{car_id}/update", [CartController::class, 'update']);
+Route::delete("/cart/{car_id}/delete", [CartController::class, 'delete']);
+Route::get("/cart/updateAddress", [CartController::class, 'updateAddress']);
+Route::put("/cart/updateAddress", [CartController::class, 'updateAddress']);
+Route::get("/checkOut", [CartController::class, 'showCheckOut']);
+Route::get("/success", [CartController::class, 'success']);

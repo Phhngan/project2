@@ -23,164 +23,129 @@ border-style: none;
 max-width:600px;
 }
 .btn-mua-hang{
-    width:300px;
-    float:right;
+width:300px;
+float:right;
 }
 
 @endsection
 
 @section('content')
 <div class="cf-title">
-<h3>Giỏ hàng</h3>
+  <h3>Giỏ hàng</h3>
 </div>
 <div class="item-products">
-<table class="table">
-    <tr style="background-color:#CED7FD">
-        <th>Sản phẩm</th>
-        <th>Tên sản phẩm</th>
-        <th>Số lượng</th>
-        <th>Giá</th>
-        <th>Hành động</th>
-    </tr>
-
+  <table class="table">
     <tr>
-        <td>
-        <img src="https://github.com/Phhngan/snack_images/blob/master/san-pham/SP1/doman_khoga.png?raw=true" style="height:200px">
-        </td>
-        <td>
-            <p>Khô gà</p>
-        </td>
-        <td>
-        <form id='form-quantity' method='POST' class='quantity' action='#'>
-        <input type='button' value='-' class='qtyminus minus' field='quantity' />
-        <input type='text' name='quantity' value='1' class='qty' />
-        <input type='button' value='+' class='qtyplus plus' field='quantity' />
-      </form>
-
-        </td>
-        <td>
-            <p>50 000 VND</p>
-        </td>
-        <td>
-            <a class="btn btn-success" href="/" role="button">Cập nhật số lượng</a>
-            <a class="btn btn-danger" href="/" role="button">Xóa</a>
-        </td>
+      <th>Mã sản phẩm</th>
+      <th>Hình ảnh</th>
+      <th>Tên sản phẩm</th>
+      <th>Số lượng</th>
+      <th>Giá</th>
+      <th>Hành động</th>
     </tr>
+    @forelse($products as $product)
+    <tr>
+      <td>
+        <p>{{$product->prd_code}}</p>
+      </td>
+      <td>
+        <img src="{{$product->img_url}}" style="height:100px ;width:100px">
+      </td>
+      <td>
+        <p>{{$product->prd_name}}</p>
+      </td>
+      <td>
+        <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
+          <input type='button' value='-' class='qtyminus minus' field='quantity' />
+          <input type='text' name='quantity' value='{{$product->car_quantity}}' class='qty' />
+          <input type='button' value='+' class='qtyplus plus' field='quantity' />
+          <br>
+          <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </form>
+
+      </td>
+      <td>
+        <p>{{$product->prd_price * (100 - $product->prd_discount)/100}}VND</p>
+      </td>
+      <td>
+        <!-- <a class="btn btn-success" href="/cart/{{$product->car_id}}/update" role="button">Cập nhật số lượng</a> -->
+        <!-- <a class="btn btn-danger" href="/cart/{{$product->car_id}}/delete" role="button">Xóa</a> -->
+        <form method="POST" action="{{url('/cart/'.$product->car_id.'/delete')}}">
+          @csrf
+          @method('delete')
+          <button type="submit" class="btn btn-danger">Xóa</button>
+        </form>
+      </td>
+    </tr>
+    @empty
+    <tr>
+      <td colspan="3">Chưa có sản phẩm trong giỏ hàng</td>
+    </tr>
+    @endforelse
     <br>
-</table>
-  </div>
+  </table>
+</div>
 
 <div class="row">
-
-    <div class="col">
-
-        <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
-        <div class="card-body">
-
-             <div class="row">
-                <div class="col">
-                    <h5 class="text-center">Thông tin giao hàng</h5>
-                </div>
-                </div>
-                <hr>
-
-    <!-- <div class="row">
-      <div class="col-sm-5">
-        <p class="mb-0">Họ và tên</p>
-      </div>
-      <div class="col-sm-7">
-        <p class="text-muted mb-0">Phạm Hà Ngân</p>
-      </div>
-    </div>
-    <hr>  
-
-    <div class="row">
-      <div class="col-sm-5">
-        <p class="mb-0">Số điện thoại</p>
-      </div>
-      <div class="col-sm-7">
-        <p class="text-muted mb-0">0966835587</p>
-      </div>
-    </div>
-    <hr> 
-  
-      <div class="row">
-      <div class="col-sm-5">
-        <p class="mb-0">Địa chỉ chi tiết</p>
-      </div>
-      <div class="col-sm-7">
-        <p class="text-muted mb-0">Tòa Nam, Rice City Linh Đàm, Hà Nội</p>
-      </div>
-    </div>-->
-
-    <form action="" method="POST">
-    @csrf
-    @method('put')
-    <label for="detailAddress" style="float:left;padding-bottom:6px">Địa chỉ cụ thể:</label>
-    <br>
-    <input value="Tòa Nam, Rice City Linh Đàm, Hà Nội" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
-    <br>
-    <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
-    <br>
-</form>
-
-
-</div>
-    </div>
-</div>
-
-<div class="col">
-
-<!-- <div class="row">
-      <div class="col-sm-6">
-        <p class="mb-0">Giá thành:</p>
-      </div>
-      <div class="col-sm-6">
-        <p class="text-muted mb-0">50 000VND</p>
-      </div>
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <p class="mb-0">Tiền ship:</p>
-      </div>
-      <div class="col-sm-6">
-        <p class="text-muted mb-0">20 000VND</p>
-      </div>
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <p class="mb-0">Tổng đơn hàng:</p>
-      </div>
-      <div class="col-sm-6">
-        <p class="text-muted mb-0">70 000VND</p>
-      </div>
-    </div>
-    <hr>
-
-    <a class="btn btn-info btn-mua-hang" href="/checkout" role="button">Mua hàng</a> -->
-
-
-    <div class="card mb-4" id="card-client">
-        <div class="card-body">
-
+  <div class="col">
+    <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
+      <div class="card-body">
         <div class="row">
-      <div class="col-sm-6">
-        <p class="mb-0">Giá thành:</p>
-      </div>
-      <div class="col-sm-6">
-        <p class="text-muted mb-0">50 000VND</p>
+          <div class="col">
+            <h5 class="text-center">Thông tin giao hàng</h5>
+          </div>
+        </div>
+        <hr>
+        <form action="{{url('/cart/updateAddress')}}" method="POST">
+          @csrf
+          @method('put')
+          <label for="province" style="float:left;padding-bottom:6px">Tỉnh:</label>
+          <br>
+          <input value="{{ $user->pro_id  }}" name="province" type="text" class="form-control" placeholder="Tỉnh">
+          <br>
+          <label for="district" style="float:left;padding-bottom:6px">Huyện</label>
+          <br>
+          <input value="{{ $user->use_district  }}" name="district" type="text" class="form-control" placeholder="Huyện">
+          <br>
+          <label for="town" style="float:left;padding-bottom:6px">Xã:</label>
+          <br>
+          <input value="{{ $user->use_town  }}" name="town" type="text" class="form-control" placeholder="Xã">
+          <br>
+          <label for="detailAddress" style="float:left;padding-bottom:6px">Địa chỉ cụ thể:</label>
+          <br>
+          <input value="{{ $user->use_detailAddress  }}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+          <br>
+          <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
+          <br>
+        </form>
       </div>
     </div>
-    <hr>
+  </div>
+  <div class="card mb-4" id="card-client">
+    <div class="card-body">
 
-    <a class="btn btn-primary btn-mua-hang" href="/checkout" role="button">Tiếp tục</a>
-
-</div>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="mb-0">Tổng tiền:</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="text-muted mb-0">
+            <?php
+            $price = 0;
+            foreach ($products as $product) {
+              $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
+            }
+            echo $price;
+            ?>
+            VND</p>
+        </div>
+      </div>
+      <hr>
+      @if(count($products) > 0)
+      <a class="btn btn-primary btn-mua-hang" href="/checkOut" role="button">Tiếp tục</a>
+      @endif
     </div>
+  </div>
 
 
 

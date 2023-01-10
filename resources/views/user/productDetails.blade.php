@@ -11,8 +11,8 @@ background-color: #DDE0F4;
 background-color: white;
 }
 .sp-goi-y{
-  background-color: #CED7FD;
-  height:650px;
+background-color: #CED7FD;
+height:650px;
 }
 
 .price-details{
@@ -67,7 +67,7 @@ padding: 6px;
       </form>
       <br>
       <div class="action">
-        <button class="btn-add-to-cart btn btn-primary" type="button">Thêm vào giỏ</button>
+        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
       <br>
       <div class="product-about">
@@ -119,7 +119,7 @@ padding: 6px;
   <!-- San pham gợi ý -->
   <div class="sp-goi-y">
     <div class="cf-title" style="padding-top: 25px">
-       <h3>Các sản phẩm khác</h3>
+      <h3>Các sản phẩm khác</h3>
     </div>
 
     <div class="row">
