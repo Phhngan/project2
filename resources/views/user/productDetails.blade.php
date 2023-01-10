@@ -60,14 +60,14 @@ padding: 6px;
 
       <h4 class="price-details">Giá bán: <span>{{ $product->prd_price }}</span></h4>
       <br>
-      <form id='form-quantity' method='POST' class='quantity' action='#'>
+      <!-- <form id='form-quantity' method='POST' class='quantity' action='#'>
         <input type='button' value='-' class='qtyminus minus' field='quantity' />
         <input type='text' name='quantity' value='1' class='qty' />
         <input type='button' value='+' class='qtyplus plus' field='quantity' />
-      </form>
+      </form> -->
       <br>
       <div class="action">
-        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
       </div>
       <br>
       <div class="product-about">
@@ -136,7 +136,7 @@ padding: 6px;
           <a class="price" id="old-price">{{$randomProduct->prd_price}}VND</a>
           <a class="price" id="new-price">{{$randomProduct->prd_price * (100 - $randomProduct->prd_discount)/100}}VND</a>
           <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-          <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+          <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
         </div>
       </div>
       @else
@@ -148,7 +148,7 @@ padding: 6px;
           <p class="price">{{$randomProduct->prd_price}}VND</p>
           <br>
           <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-          <a class="btn-add-to-cart" href="#" role="button">Thêm vào giỏ</a>
+          <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
         </div>
       </div>
       @endif

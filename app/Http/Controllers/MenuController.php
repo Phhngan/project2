@@ -95,4 +95,7 @@ class MenuController extends Controller
         // dd($discountProducts);
         return view('user.home', ['newProducts' => $newProducts], ['discountProducts' => $discountProducts]);
     }
+
+    //search
+    
 }
