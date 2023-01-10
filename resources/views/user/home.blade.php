@@ -78,8 +78,8 @@
         </div>
         <br>
         <h4 class="ten-sp">{{$newProduct->prd_name}}</h4>
-        <a class="price" id="old-price">{{number_format($newProduct->prd_price).'VND'}}</a>
-        <a class="price" id="new-price">{{number_format($newProduct->prd_price * (100 - $newProduct->prd_discount)/100).'VND'}}</a>
+        <a class="price" id="old-price">{{number_format($newProduct->prd_price).' VND'}}</a>
+        <a class="price" id="new-price">{{number_format($newProduct->prd_price * (100 - $newProduct->prd_discount)/100).' VND'}}</a>
         <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
@@ -90,7 +90,7 @@
         <img src="{{$newProduct->img_url}}" style="height:298px" id="zoom">
         <br>
         <h4>{{$newProduct->prd_name}}</h4>
-        <p class="price">{{number_format($newProduct->prd_price).'VND'}}</p>
+        <p class="price">{{number_format($newProduct->prd_price).' VND'}}</p>
         <br>
         <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
@@ -119,8 +119,8 @@
         </div>
         <br>
         <h4 class="ten-sp">{{$discountProduct->prd_name}}</h4>
-        <a class="price" id="old-price">{{$discountProduct->prd_price}}VND</a>
-        <a class="price" id="new-price">{{$discountProduct->prd_price * (100 - $discountProduct->prd_discount)/100}}VND</a>
+        <a class="price" id="old-price">{{number_format($discountProduct->prd_price).' VND'}}</a>
+        <a class="price" id="new-price">{{number_format($discountProduct->prd_price * (100 - $discountProduct->prd_discount)/100).' VND'}}</a>
         <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
@@ -131,7 +131,7 @@
         <img src="{{$discountProduct->img_url}}" style="height:298px" id="zoom">
         <br>
         <h4>{{$discountProduct->prd_name}}</h4>
-        <p class="price">{{$discountProduct->prd_price}}VND</p>
+        <p class="price">{{number_format($discountProduct->prd_price).' VND'}}</p>
         <br>
         <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>

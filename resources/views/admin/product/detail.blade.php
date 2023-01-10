@@ -8,7 +8,7 @@
 <h2>Sản phẩm không tồn tại</h2>
 
 @else
-<h2 class="text-center">{{ $product->prd_name  }}</h2>
+<h2 class="text-center">{{ $product->prd_name  }}</h2><br>
 <table class="table">
 
     <!-- <tr>
@@ -20,7 +20,7 @@
     <tr>
         <th>Giá sản phẩm: </th>
         <td>
-            <p>{{ $product->prd_price }}</p>
+            <p>{{number_format($product->prd_price).' VND'}}</p>
         </td>
     </tr>
     <tr>

@@ -18,11 +18,11 @@
                     <p>{{$region->reg_name}}</p>
                 </td>
                 <td>
-                    <p>{{$region->reg_ship}} VND</p>
+                    <p>{{number_format($region->reg_ship).' VND'}}</p>
                     
                 </td>
                 <td>
-                    <p>{{$region->reg_ship_extra }} VND</p>
+                    <p>{{number_format($region->reg_ship_extra).' VND'}}</p>
                 </td>
                 <td>
                     <p>{{$region->reg_ship_time}} ngày</p>

@@ -39,10 +39,10 @@
             </p>
         </td>
         <td>
-            <p>{{$product->prd_price}} VND</p>
+            <p>{{number_format($product->prd_price).' VND'}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
             <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
             <br>
             <!-- <form method="POST" action="{{url('admin/products/'.$product->prd_id.'/delete')}}">

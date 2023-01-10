@@ -32,7 +32,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sach rong</td>
+        <td colspan="3">Danh sách rỗng</td>
     </tr>
     @endforelse
 </table>

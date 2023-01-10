@@ -7,9 +7,15 @@
     <form action="{{url('admin/images/create')}}" method="POST">
         @csrf
         <br>
+        <label for="imageURL">URL ảnh:</label>
+        <br>
         <input name="imageURL" type="text" class="form-control" placeholder="URL ảnh">
         <br>
+        <label for="imageRole">Role của ảnh:</label>
+        <br>
         <input name="imageRole" type="text" class="form-control" placeholder="Role">
+        <br>
+        <label for="imageURL">Mã sản phẩm:</label>
         <br>
         <input name="productId" type="number" class="form-control" placeholder="Mã sản phẩm">
         <br>

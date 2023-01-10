@@ -7,6 +7,8 @@
 <form action="{{url('admin/productType/create')}}" method="POST">
         @csrf
         <br>
+        <label for="productType">Loại sản phẩm:</label>
+        <br>
         <input name="productTypeName" type="text" class="form-control" placeholder="Tên loại sản phẩm">
         <br>
         <button type="submit" class="btn btn-primary">Thêm mới</button>

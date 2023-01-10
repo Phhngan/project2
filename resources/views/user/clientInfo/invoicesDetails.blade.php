@@ -49,7 +49,7 @@
             <p>{{$invoiceDetail->prd_weigh}}g</p>
         </td>
         <td>
-            <p>{{$invoiceDetail->sal_price}} VND</p>
+            <p>{{number_format($invoiceDetail->sal_price).' VND'}}</p>
         </td>
     </tr>
     <br>

@@ -59,7 +59,7 @@
   </nav>
   <!-- header-bottom -->
   
-  <nav class="header-bottom">
+  <nav class="header-bottom" style="margin-bottom:0px">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
     <a href="/products" class="bot-item">Tất cả sản phẩm</a>

@@ -8,26 +8,42 @@
         @csrf
         @method('put')
         <br>
+        <label for="productCode">Mã sản phẩm:</label>
+        <br>
         <input value="{{ $product->prd_code  }}" name="productCode" type="text" class="form-control"
                placeholder="Mã sản phẩm">
+        <br>
+        <label for="productName">Tên sản phẩm:</label>
         <br>
         <input value="{{ $product->prd_name  }}" name="productName" type="text" class="form-control"
                placeholder="Tên sản phẩm">
         <br>
+        <label for="productType">Loại sản phẩm:</label>
+        <br>
         <input value="{{ $product->prd_type_id  }}" name="productType" type="text" class="form-control"
                placeholder="Loại sản phẩm">
+       <br>
+        <label for="productWeigh">Khối lượng:</label>
         <br>
         <input value="{{ $product->prd_weigh  }}" name="productWeigh" type="text" class="form-control"
                placeholder="Khối lượng">
+       <br>
+        <label for="productSource">Nguồn gốc:</label>
         <br>
         <input value="{{ $product->prd_source  }}" name="productSource" type="text" class="form-control"
                placeholder="Nguồn gốc">
+       <br>
+        <label for="productPrice">Giá bán:</label>
         <br>
         <input value="{{ $product->prd_price  }}" name="productPrice" type="number" class="form-control"
                placeholder="Giá bán">
+       <br>
+        <label for="productDiscount">Giảm giá:</label>
         <br>
         <input value="{{ $product->prd_discount  }}" name="productDiscount" type="text" class="form-control"
                placeholder="Giảm giá">
+       <br>
+        <label for="productDescription">Mô tả:</label>
         <br>
         <input value="{{ $product->prd_description  }}" name="productDescription" type="text" class="form-control"
                placeholder="Mô tả">

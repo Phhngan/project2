@@ -25,7 +25,7 @@
                     
                 </td>
                 <td>
-                    <p>{{$importInvoice->imp_total}} VND</p>
+                    <p>{{number_format($importInvoice->imp_total).' VND'}}</p>
                 </td>
                 <td>
                     <p>{{$importInvoice->imp_date}}</p>
@@ -34,7 +34,7 @@
                     <p>{{$importInvoice->name}}</p>
                 </td>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/edit')}}" role="button">Sửa</a>
+                    <a class="btn btn-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/edit')}}" role="button">Sửa</a>
                     <a class="btn btn-outline-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id)}}" role="button">Xem chi tiết</a>
                 </td>
             </tr>

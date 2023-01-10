@@ -60,7 +60,7 @@ padding: 20px;
         <p>{{$product->car_quantity}}</p>
       </td>
       <td>
-        <p>{{$product->prd_price * (100 - $product->prd_discount)/100}}VND</p>
+        <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
       </td>
     </tr>
     @empty
@@ -139,9 +139,8 @@ padding: 20px;
               foreach ($products as $product) {
                 $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
               }
-              echo $price;
               ?>
-              VND</p>
+              {{number_format($price).' VND'}}</p>
           </div>
         </div>
         <hr>
@@ -173,9 +172,8 @@ padding: 20px;
                       $shipMoney = $ship->reg_ship + $ship->reg_ship_extra * ($weighDiffer / 200);
                   }
               }
-              echo $shipMoney;
               ?>
-              VND</p>
+              {{number_format($shipMoney).' VND'}}</p>
           </div>
         </div>
         <hr>
@@ -187,9 +185,8 @@ padding: 20px;
           <div class="col-sm-6">
             <p class="text-muted mb-0">
             <?php
-              echo $shipMoney + $price;
               ?>
-              VND</p>
+              {{number_format($shipMoney + $price).' VND'}}</p>
           </div>
         </div>
         <hr>

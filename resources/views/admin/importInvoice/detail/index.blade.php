@@ -30,7 +30,7 @@
 
         </td>
         <td>
-            <p>{{$importInvoiceDetail->imp_price}} VND</p>
+            <p>{{number_format($importInvoiceDetail->imp_price).' VND'}}</p>
         </td>
         <td>
             <p>{{$importInvoiceDetail->imp_expiryDate}}</p>

@@ -65,6 +65,12 @@ padding: 6px;
         <input type='text' name='quantity' value='1' class='qty' />
         <input type='button' value='+' class='qtyplus plus' field='quantity' />
       </form> -->
+                <p>Còn lại:       <?php
+                $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+                    ->where('prd_status_id', '<', 3)
+                    ->sum('ImportInvoiceDetails.imp_quantity_left');
+                echo $quantity;
+                ?> sản phẩm</p>
       <br>
       <div class="action">
         <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>

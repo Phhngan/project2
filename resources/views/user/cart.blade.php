@@ -65,7 +65,7 @@ float:right;
 
       </td>
       <td>
-        <p>{{$product->prd_price * (100 - $product->prd_discount)/100}}VND</p>
+        <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
       </td>
       <td>
         <!-- <a class="btn btn-success" href="/cart/{{$product->car_id}}/update" role="button">Cập nhật số lượng</a> -->
@@ -135,9 +135,8 @@ float:right;
             foreach ($products as $product) {
               $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
             }
-            echo $price;
             ?>
-            VND</p>
+            {{number_format($price).' VND'}}</p>
         </div>
       </div>
       <hr>
@@ -171,6 +170,10 @@ float:right;
         if (val > 0) {
           $input.val(val - 1).change();
         }
+        if(val < 0){
+          $input = 1;
+        }
+
       });
   });
 </script>

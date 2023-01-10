@@ -26,8 +26,8 @@ background-color: #EBECFE;
         </div>
         <br>
         <h4 class="ten-sp">{{$product->prd_name}}</h4>
-        <a class="price" id="old-price">{{$product->prd_price}}VND</a>
-        <a class="price" id="new-price">{{$product->prd_price * (100 - $product->prd_discount)/100}}VND</a>
+        <a class="price" id="old-price">{{number_format($product->prd_price).' VND'}}</a>
+        <a class="price" id="new-price">{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</a>
         <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
       </div>
@@ -38,7 +38,7 @@ background-color: #EBECFE;
         <img src="{{$product->img_url}}" style="height:298px" id="zoom">
         <br>
         <h4>{{$product->prd_name}}</h4>
-        <p class="price">{{$product->prd_price}}VND</p>
+        <p class="price">{{number_format($product->prd_price).' VND'}}</p>
         <br>
         <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
         <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
