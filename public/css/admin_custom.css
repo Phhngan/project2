@@ -15,4 +15,15 @@ table {
     background-color: #f2f2f2;
   }
 
-  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column-dashboard {
+    float: left;
+    width: 28%!important;
+    padding: 10px;
+    margin-left: 50px;
+    }

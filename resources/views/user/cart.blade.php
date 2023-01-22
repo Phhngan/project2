@@ -49,7 +49,7 @@ float:right;
         <p>{{$product->prd_code}}</p>
       </td>
       <td>
-        <img src="{{$product->img_url}}" style="height:100px ;width:100px">
+        <img src="{{$product->img_url}}" style="height:100px">
       </td>
       <td>
         <p>{{$product->prd_name}}</p>
