@@ -59,7 +59,7 @@
         <td>
             @if($invoice->sal_status_id == 1)
                 <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
-                <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" role="button">Hủy đơn</a>
+                <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" onclick="cancelOrder()" role="button">Hủy đơn</a>
             @else
                 <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button">Xem chi tiết</a>
             @endif
@@ -80,5 +80,9 @@
 
 @section('js')
 @parent
-
+<script>
+function cancelOrder(){
+    alert("Bạn đã hủy đơn!");
+}
+</script>
 @endsection

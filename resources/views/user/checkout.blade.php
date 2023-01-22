@@ -51,7 +51,7 @@ padding: 20px;
     @forelse($products as $product)
     <tr>
       <td>
-        <img src="{{$product->img_url}}" style="height:200px">
+        <img src="{{$product->img_url}}" style="height:150px">
       </td>
       <td>
         <p>{{$product->prd_name}}</p>
