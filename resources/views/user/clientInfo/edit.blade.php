@@ -58,9 +58,17 @@
     <br>
     <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
     <br>
-    <label for="province">Tỉnh thành:</label>
+    <!-- <label for="province">Tỉnh thành:</label>
     <br>
-    <input value="{{ $user->pro_name }}" name="province" type="text" class="form-control" placeholder="Tỉnh thành">
+    <input value="{{ $user->pro_name }}" name="province" type="text" class="form-control" placeholder="Tỉnh thành"> -->
+
+    <label for="khoi">Tỉnh thành:</label>
+	<select class="form-control" id="khoi" name="khoi" required>
+		<option value="">-- Chọn tỉnh thành --</option>
+			<option>Hà Nội</option>
+	</select>
+
+
     <br>
     <label for="district">Quận/huyện:</label>
     <br>

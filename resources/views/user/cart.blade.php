@@ -26,6 +26,14 @@ max-width:600px;
 width:300px;
 float:right;
 }
+.text-sp{
+  text-decoration: none;
+  color:black;
+}
+.text-sp:hover{
+  text-decoration: none;
+  color:#3E526D;
+}
 
 @endsection
 
@@ -52,7 +60,7 @@ float:right;
         <img src="{{$product->img_url}}" style="height:100px">
       </td>
       <td>
-        <p>{{$product->prd_name}}</p>
+        <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
       </td>
       <td>
         <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
@@ -171,6 +179,9 @@ float:right;
           $input.val(val - 1).change();
         }
         if(val < 0){
+          $input = 1;
+        }
+        if(val = 0){
           $input = 1;
         }
 

@@ -261,3 +261,8 @@ Route::get("/cart/updateAddress", [CartController::class, 'updateAddress']);
 Route::put("/cart/updateAddress", [CartController::class, 'updateAddress']);
 Route::get("/checkOut", [CartController::class, 'showCheckOut']);
 Route::get("/success", [CartController::class, 'success']);
+
+//test
+Route::get('/chua-dang-nhap', function () {
+    return view('error.chua-dang-nhap');
+});

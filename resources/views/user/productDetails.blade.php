@@ -41,6 +41,10 @@ width: 100%;
 padding: 6px;
 }
 
+#myPopup{
+  visibility: hidden;
+}
+
 @endsection
 
 @section('content')
@@ -71,7 +75,14 @@ padding: 6px;
                 echo $quantity;
                 ?> sản phẩm</p>
       <div class="action">
-        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
+        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" onclick="myFunction()" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
+
+        <div class="alert alert-success alert-dismissible" id="myPopup">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+
+
       </div>
       <br>
       <div class="product-about">
