@@ -5,66 +5,119 @@
 @section('content')
 <div class="row" style="margin-top:25px">
 
-<div class="small-box bg-gradient-success column-dashboard">
-  <div class="inner">
-    <h3>150</h3>
-    <p>Đơn hàng thành công</p>
+  <div class="small-box bg-gradient-success column-dashboard">
+    <div class="inner">
+      <h3>
+        <?php
+        $quantity1 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 4)
+          ->count();
+        echo $quantity1;
+        ?>
+      </h3>
+      <p>Đơn hàng thành công</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+    <a href="/admin/salesInvoice/thanh-cong" class="small-box-footer">
+      Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
+    </a>
   </div>
-  <div class="icon">
-    <i class="fas fa-shopping-cart"></i>
-  </div>
-  <a href="/admin/salesInvoice/thanh-cong" class="small-box-footer">
-  Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
 
-<div class="small-box bg-gradient-warning column-dashboard">
-  <div class="inner">
-    <h3>5</h3>
-    <p>Đơn hàng chưa duyệt</p>
+  <div class="small-box bg-gradient-warning column-dashboard">
+    <div class="inner">
+      <h3>
+        <?php
+        $quantity2 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 1)
+          ->count();
+        echo $quantity2;
+        ?>
+      </h3>
+      <p>Đơn hàng chưa duyệt</p>
+    </div>
+    <div class="icon">
+      <i class="fa fa-hourglass-end"></i>
+    </div>
+    <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
+      Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
+    </a>
   </div>
-  <div class="icon">
-    <i class="fa fa-hourglass-end"></i>
-  </div>
-  <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
-    Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
 
-<div class="small-box bg-gradient-danger column-dashboard">
-  <div class="inner">
-    <h3>10</h3>
-    <p>Sản phẩm hết hạn</p>
+  <div class="small-box bg-gradient-warning column-dashboard">
+    <div class="inner">
+      <h3>
+        <?php
+        $quantity3 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 2)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $quantity3;
+        ?>
+      </h3>
+      <p>Sản phẩm gần hết hạn</p>
+    </div>
+    <div class="icon">
+      <i class="fa fa-hourglass-end"></i>
+    </div>
+    <a href="/admin/productStatus/gan-het-han" class="small-box-footer">
+      Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
+    </a>
   </div>
-  <div class="icon">
-    <i class="fa fa-cubes"></i>
+
+  <div class="small-box bg-gradient-danger column-dashboard">
+    <div class="inner">
+      <h3>
+        <?php
+        $quantity4 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 3)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $quantity4;
+        ?>
+        <p>Sản phẩm hết hạn</p>
+    </div>
+    <div class="icon">
+      <i class="fa fa-cubes"></i>
+    </div>
+    <a href="/admin/productStatus/het-han" class="small-box-footer">
+      Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
+    </a>
   </div>
-  <a href="/admin/productStatus/het-han" class="small-box-footer">
-  Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
 
 </div>
 <hr>
-<h3 class="text-center">Thống kê</h3>
+<h3 class="text-center">Doanh thu theo tháng</h3>
+<label for="province">Năm:</label>
+<form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
+  <input type='button' value='-' class='qtyminus minus' field='quantity' />
+  <input type='number' name='quantity' min='2022' max='{{$yearNow}}' value='{{$year}}' class='qty' />
+  <input type='button' value='+' class='qtyplus plus' field='quantity' />
+  <br>
+  <button type="submit" class="btn btn-primary">Cập nhật</button>
+</form>
 <div>
   <canvas id="myChart"></canvas>
 </div>
 
-<br><hr><br>
+<br>
+<hr><br>
 <div class="row">
   <div class="col">
-<h3 class="text-center">Trạng thái sản phẩm</h3>
-<div id="piechart1" style="align:center"></div>
+    <h3 class="text-center">Trạng thái sản phẩm</h3>
+    <div id="piechart1" style="align:center"></div>
+  </div>
+
+  <div class="col">
+    <h3 class="text-center">Trạng thái đơn hàng</h3>
+    <div id="piechart2" style="align:center"></div>
+  </div>
 </div>
 
-<div class="col">
-<h3 class="text-center">Trạng thái đơn hàng</h3>
-<div id="piechart2" style="align:center"></div>
-</div>
-</div>
 
-   
 @endsection
 
 @section('js')
@@ -73,16 +126,47 @@
 
 <script>
   const ctx = document.getElementById('myChart');
-
+  <?php
+  for ($i = 0; $i < 12; $i++) {
+    $sales[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
+      ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+      ->where('SalesInvoices.sal_status_id', '<', 5)
+      ->where('SalesInvoices.sal_status_id', '>', 1)
+      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $i + 1 . '-' . '%')
+      ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
+      ->sum('SalesInvoiceDetails.sal_price');
+    $imports[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
+      ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+      ->where('SalesInvoices.sal_status_id', '<', 5)
+      ->where('SalesInvoices.sal_status_id', '>', 1)
+      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $i + 1 . '-' . '%')
+      ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
+      ->sum('SalesInvoiceDetails.imp_price');
+    $revenues[$i] = $sales[$i] - $imports[$i];
+  }
+  // dd($revenues)
+  ?>
   new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-      datasets: [{
-        label: 'Doanh thu từng tháng',
-        data: [120000, 190000, 30000, 500000, 200000, 3000, 30000, 150000, 760000, 900000, 120000, 50000],
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: 'Tổng tiền bán ra',
+          data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>, <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>],
+          borderWidth: 1
+        },
+        {
+          label: 'Tổng tiền nhập vào',
+          data: [<?php echo $imports[0] ?>, <?php echo $imports[1] ?>, <?php echo $imports[2] ?>, <?php echo $imports[3] ?>, <?php echo $imports[4] ?>, <?php echo $imports[5] ?>, <?php echo $imports[6] ?>, <?php echo $imports[7] ?>, <?php echo $imports[8] ?>, <?php echo $imports[9] ?>, <?php echo $imports[10] ?>, <?php echo $imports[11] ?>],
+          borderWidth: 1
+        },
+        {
+          label: 'Tổng tiền lãi',
+          data: [<?php echo $revenues[0] ?>, <?php echo $revenues[1] ?>, <?php echo $revenues[2] ?>, <?php echo $revenues[3] ?>, <?php echo $revenues[4] ?>, <?php echo $revenues[5] ?>, <?php echo $revenues[6] ?>, <?php echo $revenues[7] ?>, <?php echo $revenues[8] ?>, <?php echo $revenues[9] ?>, <?php echo $revenues[10] ?>, <?php echo $revenues[11] ?>],
+          borderWidth: 1
+        },
+      ]
     },
     options: {
       scales: {
@@ -99,28 +183,79 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+  // Load google charts
+  google.charts.load('current', {
+    'packages': ['corechart']
+  });
+  google.charts.setOnLoadCallback(drawChart);
 
-// Draw the chart and set the chart values
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-  ['Task', 'Total'],
-  ['Còn hạn', 8],
-  ['Gần hết hạn', 2],
-  ['Đã hết hạn', 4],
-  ['Đã bán hết', 2],
-  ['Không còn sản xuất', 8]
-]);
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Total'],
+      ['Còn hạn',
+        <?php
+        $num1 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 1)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $num1;
+        ?>
+      ],
+      ['Gần hết hạn',
+        <?php
+        $num2 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 2)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $num2;
+        ?>
+      ],
+      ['Đã hết hạn',
+        <?php
+        $num3 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 3)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $num3;
+        ?>
+      ],
+      ['Đã bán hết',
+        <?php
+        $num4 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 4)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $num4;
+        ?>
+      ],
+      ['Không còn sản xuất',
+        <?php
+        $num5 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+          ->where('prd_status_id', '=', 5)
+          ->select('ImportInvoiceDetails.imp_expiryDate')
+          ->distinct()
+          ->count();
+        echo $num5;
+        ?>
+      ],
+    ]);
+    <?php $total1 = $num1 + $num2 + $num3 + $num4 + $num5 ?>
+    // Optional; add a title and set the width and height of the chart
+    var options = {
+      'title': 'Tổng số sản phẩm',
+      'width': 550,
+      'height': 400
+    };
 
-  // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Tổng số sản phẩm', 'width':550, 'height':400};
-
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-  chart.draw(data, options);
-}
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+    chart.draw(data, options);
+  }
 </script>
 
 <!-- Pie Chart 2 -->
@@ -128,27 +263,93 @@ function drawChart() {
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+  // Load google charts
+  google.charts.load('current', {
+    'packages': ['corechart']
+  });
+  google.charts.setOnLoadCallback(drawChart);
 
-// Draw the chart and set the chart values
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-  ['Task', 'Total'],
-  ['Chưa xác nhận', 8],
-  ['Đã xác nhận', 2],
-  ['Đã ship hàng', 4],
-  ['Nhận thành công', 2],
-  ['Đã hủy', 8]
-]);
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Total'],
+      ['Chưa xác nhận',
+        <?php
+        $num6 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 1)
+          ->count();
+        echo $num6;
+        ?>
+      ],
+      ['Đã xác nhận',
+        <?php
+        $num7 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 2)
+          ->count();
+        echo $num7;
+        ?>
+      ],
+      ['Đã ship hàng',
+        <?php
+        $num8 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 3)
+          ->count();
+        echo $num8;
+        ?>
+      ],
+      ['Nhận thành công',
+        <?php
+        $num9 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 4)
+          ->count();
+        echo $num9;
+        ?>
+      ],
+      ['Đã hủy',
+        <?php
+        $num10 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+          ->where('sal_status_id', '=', 5)
+          ->count();
+        echo $num10;
+        ?>
+      ],
+    ]);
 
-  // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Tổng số đơn hàng', 'width':550, 'height':400};
+    // Optional; add a title and set the width and height of the chart
+    var options = {
+      'title': 'Tổng số đơn hàng',
+      'width': 550,
+      'height': 400
+    };
 
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-  chart.draw(data, options);
-}
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+    chart.draw(data, options);
+  }
+</script>
+<script>
+  jQuery(document).ready(($) => {
+    $('.quantity').on('click', '.plus', function(e) {
+      let $input = $(this).prev('input.qty');
+      let val = parseInt($input.val());
+      $input.val(val + 1).change();
+    });
+
+    $('.quantity').on('click', '.minus',
+      function(e) {
+        let $input = $(this).next('input.qty');
+        var val = parseInt($input.val());
+        if (val > 0) {
+          $input.val(val - 1).change();
+        }
+        if (val < 0) {
+          $input = 1;
+        }
+        if (val = 0) {
+          $input = 1;
+        }
+
+      });
+  });
 </script>
 @endsection

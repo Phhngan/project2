@@ -28,8 +28,8 @@
         </a>
       </div>
       <div class="column-2">
-        <form class="example" action="/action_page.php">
-          <input type="text" placeholder="Search" name="search">
+        <form METHOD="GET" class="example" action="{{url('/search')}}">
+          <input type="text" placeholder="Search" name="searchText">
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
       </div>

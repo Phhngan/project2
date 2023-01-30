@@ -52,7 +52,10 @@ Route::get('/home', [MenuController::class, 'home']);
 
 // ADMIN
 //admin home
-Route::get('/admin/home', [AdminController::class, 'viewHome']);
+Route::get('/admin/home', [AdminController::class, 'takeYear']);
+Route::get('/admin/home/{year}', [AdminController::class, 'viewHome']);
+// Route::get('/updateYear', [AdminController::class, 'updateYear']);
+// Route::put('/updateYear', [AdminController::class, 'updateYear']);
 
 // QUẢN LÍ SẢN PHẨM
 
@@ -222,6 +225,8 @@ Route::get("/{prd_id}/productDetails", [MenuController::class, 'show']);
 //     return view('user.productDetails');
 // });
 
+//search home
+Route::get("/search", [MenuController::class, 'search']);
 
 // giới thiệu
 Route::get('/gioi-thieu', function () {

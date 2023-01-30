@@ -13,7 +13,8 @@ class Salesinvoicedetail extends Model
         'sal_id',
         'prd_id',
         'sal_quantity',
-        'sal_price'
+        'sal_price',
+        'imp_price'
     ];
 
     public function salesInvoice(){

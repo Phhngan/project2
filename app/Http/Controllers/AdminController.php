@@ -15,9 +15,41 @@ class AdminController extends Controller
         $this->middleware('is_admin');
     }
 
-    function viewHome()
+    function takeYear(Request $request)
     {
-        return view('admin/home');
+        if ($request->get('quantity') == null) {
+            $date = getdate();
+            $year = $date['year'];
+        } else {
+            $year = $request->get('quantity');
+        }
+        var_dump($year);
+        return redirect('admin/home/' . $year);
+    }
+    // function updateYear(Request $request)
+    // {
+    //     $year = $request->get('quantity');
+    //     dd($year);
+    //     return redirect('admin/home/'.$year);
+    // }
+    function viewHome($year)
+    {
+        // for ($i = 0; $i < 12; $i++) {
+        //     $sales[$i] = DB::table('SalesInvoiceDetails')
+        //         ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+        //         ->where('SalesInvoices.sal_status_id', '<', 5)
+        //         ->where('SalesInvoices.sal_status_id', '>', 1)
+        //         ->where('SalesInvoices.sal_date', 'like', '%' . '-'. $i+1 .'-'. '%')
+        //         ->where('SalesInvoices.sal_date', 'like', '%' . $year. '%')
+        //         // ->where(date('Y', $timestamp = strtotime('sal_date')), '=', $year) 
+        //         // ->where((int)date('Y', $timestamp = strtotime('SalesInvoices.sal_date')), '=', $i + 1)
+        //         ->sum('SalesInvoiceDetails.sal_price');
+        // }
+        // var_dump($sales);
+        // dd();
+        $date = getdate();
+        $yearNow = $date['year'];
+        return view('admin/home')->with('year', $year)->with('yearNow', $yearNow);
     }
 
     function viewAllProduct()
@@ -53,10 +85,10 @@ class AdminController extends Controller
         //     ->where('Users.id', $id)
         //     ->get();
         $users = DB::table('Users')
-        ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-        ->select('Users.*', 'Provinces.pro_name')
-        ->where('Users.id', $user->id)
-        ->get();
+            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
+            ->select('Users.*', 'Provinces.pro_name')
+            ->where('Users.id', $user->id)
+            ->get();
         return view('admin/setting/edit', ['users' => $users]);
     }
     function update(Request $request)
@@ -94,8 +126,8 @@ class AdminController extends Controller
         $newPass1 = $request->get('newPass1');
         $newPass2 = $request->get('newPass2');
         var_dump(Hash::make($oldPass));
-        if (Hash::check($oldPass, $user->password)){
-        // if (Hash::make($oldPass) == $user->password) {
+        if (Hash::check($oldPass, $user->password)) {
+            // if (Hash::make($oldPass) == $user->password) {
             if ($newPass1 == $newPass2) {
                 DB::table('Users')->where('id', $user->id)->update(['password' => Hash::make($newPass1)]);
                 return redirect('login');

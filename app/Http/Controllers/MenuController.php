@@ -82,7 +82,7 @@ class MenuController extends Controller
             ->orderByDesc('prd_id')
             ->take(4)
             ->get();
-        
+
         //SP giảm giá
         $discountProducts = DB::table('Products')
             ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
@@ -97,5 +97,19 @@ class MenuController extends Controller
     }
 
     //search
-    
+    function search(Request $request)
+    {
+        $search = $request->get('searchText');
+        if (!empty($search)) {
+            $products = DB::table('Products')
+                ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
+                ->where('Images.img_role', 1)
+                ->where('prd_name', 'like', '%' . $search . '%')
+                ->select('Products.*', 'Images.img_url')
+                ->get();
+            return view('user/search')->with('products', $products);
+        } else {
+            return redirect(('products'));
+        }
+    }
 }

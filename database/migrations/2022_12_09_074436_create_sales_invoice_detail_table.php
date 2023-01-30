@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('prd_id');
             $table->integer('sal_quantity');
             $table->integer('sal_price');
+            $table->integer('imp_price');
             $table->timestamps();
 
             $table->foreign('sal_id')->references('sal_id')->on('SalesInvoices');

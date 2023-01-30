@@ -181,12 +181,23 @@ class CartController extends Controller
             ->get();
         foreach ($invoices as $invoice) {
             foreach ($products as $product) {
-                DB::table('SalesInvoiceDetails')->insert(
-                    [
-                        'sal_id' => $invoice->sal_id, 'prd_id' => $product->prd_id, 'sal_quantity' => $product->car_quantity,
-                        'sal_price' => $product->prd_price * ((100 - $product->prd_discount) / 100)
-                    ]
-                );
+                $imports = DB::table('ImportInvoiceDetails')
+                    ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
+                    ->select('ImportInvoiceDetails.*')
+                    ->where('prd_status_id', '<', 3)
+                    ->where('imp_quantity_left', '>', 0)
+                    ->where('prd_id', $product->prd_id)
+                    ->orderBy('id')
+                    ->take(1)
+                    ->get();
+                foreach ($imports as $import) {
+                    DB::table('SalesInvoiceDetails')->insert(
+                        [
+                            'sal_id' => $invoice->sal_id, 'prd_id' => $product->prd_id, 'sal_quantity' => $product->car_quantity,
+                            'sal_price' => $product->prd_price * ((100 - $product->prd_discount) / 100), 'imp_price' => $import->imp_price
+                        ]
+                    );
+                }
             }
         }
         DB::table('Carts')->where('use_id', $user->id)->delete();
