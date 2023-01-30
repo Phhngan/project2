@@ -13,30 +13,35 @@ class CartController extends Controller
     function addCart($prd_id)
     {
         $user = Auth::user();
-        $carts = DB::table('Carts')
-            ->where('Carts.prd_id', $prd_id)
-            ->get();
-        $number = count($carts);
-        // dd($number);
-        if ($number == 1) {
-            foreach ($carts as $cart) {
-                DB::table('Carts')->where('prd_id', $prd_id)
-                    ->update([
-                        'car_quantity' => $cart->car_quantity + 1
-                    ]);
-            }
+        // dd($user);
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
         } else {
-            DB::table('Carts')->insert(
-                [
-                    'use_id' => $user->id, 'prd_id' => $prd_id, 'car_quantity' => 1, 'pro_id' => $user->pro_id,
-                    'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
-                ]
-            );
-            DB::table('Carts')->where('use_id', $user->id)->update([
-                'pro_id' => $user->pro_id, 'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
-            ]);
+            $carts = DB::table('Carts')
+                ->where('Carts.prd_id', $prd_id)
+                ->get();
+            $number = count($carts);
+            // dd($number);
+            if ($number == 1) {
+                foreach ($carts as $cart) {
+                    DB::table('Carts')->where('prd_id', $prd_id)
+                        ->update([
+                            'car_quantity' => $cart->car_quantity + 1
+                        ]);
+                }
+            } else {
+                DB::table('Carts')->insert(
+                    [
+                        'use_id' => $user->id, 'prd_id' => $prd_id, 'car_quantity' => 1, 'pro_id' => $user->pro_id,
+                        'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
+                    ]
+                );
+                DB::table('Carts')->where('use_id', $user->id)->update([
+                    'pro_id' => $user->pro_id, 'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
+                ]);
+            }
+            return back();
         }
-        return back();
     }
 
     //show cart

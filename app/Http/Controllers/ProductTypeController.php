@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producttype;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductTypeController extends Controller
@@ -18,7 +19,12 @@ class ProductTypeController extends Controller
     //Tao moi
     function create()
     {
-        return view('admin/productType.create');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            return view('admin/productType.create');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
     function save(Request $request)
     {
@@ -32,11 +38,16 @@ class ProductTypeController extends Controller
     //Sua
     function edit($prd_type_id)
     {
-        $productType = Producttype::findOrFail($prd_type_id);
-        if ($productType == null) {
-            return redirect()->route('error');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            $productType = Producttype::findOrFail($prd_type_id);
+            if ($productType == null) {
+                return redirect()->route('error');
+            }
+            return view('admin/productType.edit', ['productType' => $productType]);
+        } else {
+            return view('error/khong-co-quyen-admin');
         }
-        return view('admin/productType.edit', ['productType' => $productType]);
     }
     function update(Request $request, $prd_type_id)
     {

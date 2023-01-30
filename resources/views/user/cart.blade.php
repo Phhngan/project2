@@ -62,10 +62,15 @@ color:#3E526D;
       <td>
         <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
       </td>
+      <?php
+        $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+          ->where('prd_status_id', '<', 3)
+          ->sum('ImportInvoiceDetails.imp_quantity_left');
+      ?>
       <td>
         <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
           <input type='button' value='-' class='qtyminus minus' field='quantity' />
-          <input type='number' name='quantity' min='1' value='{{$product->car_quantity}}' class='qty' />
+          <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
           <input type='button' value='+' class='qtyplus plus' field='quantity' />
           <br>
           <button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -118,7 +123,7 @@ color:#3E526D;
           <select class="form-control" id="" name="province" required>
             <option value="{{ $address->pro_id  }}" selected="selected">----{{$address->pro_name}}----</option>
             @foreach($provinces as $province)
-              <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
+            <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
             @endforeach
           </select>
           <label for="district" style="float:left;padding-bottom:6px">Huyện</label>

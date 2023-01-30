@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
     //Hien thi toan bo
-    function index(){
+    function index()
+    {
         // $users= User::where('pos_id', '>', 1)->get();
         $users = DB::table('Users')
             ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
@@ -21,10 +23,17 @@ class EmployeeController extends Controller
     }
 
     //Tao moi   
-    function create(){
-        return view('admin/employee.create');
+    function create()
+    {
+        $user = Auth::user();
+        if ($user->pos_id == 2) {
+            return view('admin/employee.create');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
-    function save(Request $request){
+    function save(Request $request)
+    {
         $use_lastName = $request->get('lastName');
         $name = $request->get('firstName');
         $use_birth = $request->get('birth');
@@ -54,29 +63,32 @@ class EmployeeController extends Controller
     }
 
     //Sua 
-    function edit($id){
-        // $user = User::findOrFail($id);
-        $users = DB::table('Users')
-        ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
-        ->select('Users.*', 'PositionTypes.pos_name')
-        ->where('Users.id', $id)
-        ->get();
-        // if ($user == null) {
-        //     return redirect()->route('error');
-        // }
-        return view('admin/employee.edit', ['users' => $users]);
+    function edit($id)
+    {
+        $user = Auth::user();
+        if ($user->pos_id == 2) {
+            $users = DB::table('Users')
+                ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
+                ->select('Users.*', 'PositionTypes.pos_name')
+                ->where('Users.id', $id)
+                ->get();
+            return view('admin/employee.edit', ['users' => $users]);
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
-    function update(Request $request, $id){
+    function update(Request $request, $id)
+    {
         $email = $request->get('email');
         $password = $request->get('password');
         $pos_id = $request->get('position');
         if ($password) {
             DB::table('Users')->where('id', $id)->update(
-                ['password' => Hash::make($password), 'pos_id' =>$pos_id, 'email' =>$email]
+                ['password' => Hash::make($password), 'pos_id' => $pos_id, 'email' => $email]
             );
         } else {
             DB::table('Users')->where('id', $id)->update(
-                ['pos_id' =>$pos_id, 'email' =>$email]
+                ['pos_id' => $pos_id, 'email' => $email]
             );
         }
         return redirect('admin/employee');

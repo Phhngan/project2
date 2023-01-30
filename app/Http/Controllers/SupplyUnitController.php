@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplyunit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SupplyUnitController extends Controller
@@ -18,7 +19,12 @@ class SupplyUnitController extends Controller
     //Tao moi
     function create()
     {
-        return view('admin/supplyUnit.create');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            return view('admin/supplyUnit.create');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
     function save(Request $request)
     {
@@ -38,11 +44,16 @@ class SupplyUnitController extends Controller
     //Sua 
     function edit($unit_id)
     {
-        $supplyUnit = Supplyunit::findOrFail($unit_id);
-        if ($supplyUnit == null) {
-            return redirect()->route('error');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            $supplyUnit = Supplyunit::findOrFail($unit_id);
+            if ($supplyUnit == null) {
+                return redirect()->route('error');
+            }
+            return view('admin/supplyUnit.edit', ['supplyUnit' => $supplyUnit]);
+        } else {
+            return view('error/khong-co-quyen-admin');
         }
-        return view('admin/supplyUnit.edit', ['supplyUnit' => $supplyUnit]);
     }
     function update(Request $request, $unit_id)
     {

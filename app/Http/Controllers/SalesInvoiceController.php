@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Salesinvoice;
 use App\Models\Salesinvoicedetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SalesInvoiceController extends Controller
@@ -57,6 +58,7 @@ class SalesInvoiceController extends Controller
             ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
             ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
             ->where('sal_status_id', 4)
+            ->orderByDesc('sal_id')
             ->get();
         return view('admin/salesInvoice.thanh-cong', ['salesInvoices' => $salesInvoices]);
     }
@@ -70,6 +72,7 @@ class SalesInvoiceController extends Controller
             ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
             ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
             ->where('sal_status_id', 5)
+            ->orderByDesc('sal_id')
             ->get();
         return view('admin/salesInvoice.da-huy', ['salesInvoices' => $salesInvoices]);
     }
@@ -89,34 +92,68 @@ class SalesInvoiceController extends Controller
     //continue
     function continue($sal_id)
     {
-        $salesInvoice = Salesinvoice::findOrFail($sal_id);
-        $sal_status_id = $salesInvoice->sal_status_id;
-        if ($sal_status_id == 1) {
-            $invoices =  DB::table('SalesInvoiceDetails')
-                ->select('SalesInvoiceDetails.*')
-                ->where('sal_id', $sal_id)
-                ->get();
-            foreach ($invoices as $invoice) {
-                $products = DB::table('ImportInvoiceDetails')
-                    ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
-                    ->select('ImportInvoiceDetails.*')
-                    ->where('ImportInvoices')
-                    ->where('prd_id', $invoice->prd_id)
-                    ->orderBy('id')
-                    ->take(1)
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 4) {
+            $salesInvoice = Salesinvoice::findOrFail($sal_id);
+            $sal_status_id = $salesInvoice->sal_status_id;
+            if ($sal_status_id == 1) {
+                $invoices =  DB::table('SalesInvoiceDetails')
+                    ->select('SalesInvoiceDetails.*')
+                    ->where('sal_id', $sal_id)
                     ->get();
+                foreach ($invoices as $invoice) {
+                    $products = DB::table('ImportInvoiceDetails')
+                        ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
+                        ->select('ImportInvoiceDetails.*')
+                        ->where('prd_status_id', '<', 3)
+                        ->where('imp_quantity_left', '>', 0)
+                        ->where('prd_id', $invoice->prd_id)
+                        ->orderBy('id')
+                        ->take(1)
+                        ->get();
+                    foreach ($products as $product) {
+                        if ($product->imp_quantity_left >= $invoice->sal_quantity) {
+                            DB::table('ImportInvoiceDetails')->where('id', $product->id)
+                                ->update(['imp_quantity_left' => $product->imp_quantity_left - $invoice->sal_quantity]);
+                        } else {
+                            $left = $invoice->sal_quantity - $product->imp_quantity_left;
+                            DB::table('ImportInvoiceDetails')->where('id', $product->id)
+                                ->update(['imp_quantity_left' => 0]);
+                            $productLefts = DB::table('ImportInvoiceDetails')
+                                ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
+                                ->select('ImportInvoiceDetails.*')
+                                ->where('prd_status_id', '<', 3)
+                                ->where('imp_quantity_left', '>', 0)
+                                ->where('prd_id', $invoice->prd_id)
+                                ->orderBy('id')
+                                ->take(1)
+                                ->get();
+                            foreach ($productLefts as $productLeft) {
+                                DB::table('ImportInvoiceDetails')->where('id', $productLeft->id)
+                                    ->update(['imp_quantity_left' => $productLeft->imp_quantity_left - $left]);
+                            }
+                        }
+                    }
+                }
             }
+            DB::table('SalesInvoices')->where('sal_id', $sal_id)
+                ->update(['sal_status_id' => $sal_status_id + 1]);
+            return redirect('admin/salesInvoice/chua-xac-nhan');
+        } else {
+            return view('error/khong-co-quyen-admin');
         }
-        DB::table('SalesInvoices')->where('sal_id', $sal_id)
-            ->update(['sal_status_id' => $sal_status_id + 1]);
-        return redirect('admin/salesInvoice/chua-xac-nhan');
     }
 
     //cancel
     function cancel($sal_id)
     {
-        DB::table('SalesInvoices')->where('sal_id', $sal_id)
-            ->update(['sal_status_id' => 5]);
-        return redirect('admin/salesInvoice/da-huy');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 4) {
+            DB::table('SalesInvoices')->where('sal_id', $sal_id)
+                ->update(['sal_status_id' => 5]);
+            return redirect('admin/salesInvoice/da-huy');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
 }

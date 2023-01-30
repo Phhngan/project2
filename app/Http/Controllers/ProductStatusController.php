@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Importinvoicedetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductStatusController extends Controller
@@ -104,13 +105,19 @@ class ProductStatusController extends Controller
     //Chuyen
     function chuyen($prd_id)
     {
-        DB::table('ImportInvoiceDetails')->where('prd_id', $prd_id)
-            ->update(['prd_status_id' => 5]);
-        return redirect('admin/productStatus/khong-con-san-xuat');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            DB::table('ImportInvoiceDetails')->where('prd_id', $prd_id)
+                ->update(['prd_status_id' => 5]);
+            return redirect('admin/productStatus/khong-con-san-xuat');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
 
     //Update
-    function update(){
+    function update()
+    {
         $products = DB::table('ImportInvoiceDetails')
             ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
             ->distinct()
@@ -128,7 +135,7 @@ class ProductStatusController extends Controller
             if (-10 >= $compare &&  $compare >= -40) {
                 DB::table('ImportInvoiceDetails')->where('prd_id', $product->prd_id)->where('imp_expiryDate', $product->imp_expiryDate)
                     ->update(['prd_status_id' => 2]);
-            } 
+            }
             if ($compare < -40) {
                 DB::table('ImportInvoiceDetails')->where('prd_id', $product->prd_id)->where('imp_expiryDate', $product->imp_expiryDate)
                     ->update(['prd_status_id' => 1]);

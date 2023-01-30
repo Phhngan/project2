@@ -17,15 +17,26 @@ class checkIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()){
-            $user = Auth::user();
-            if ($user){
-                if ($user->pos_id == 1){
-                    // dd("Khong co quyen truy cap");
-                    return redirect()->back();
-                }
-            } else {
-                return redirect('home');
+        // if (Auth::check()) {
+        //     $user = Auth::user();
+        //     // if ($user == null){
+        //     //     return redirect('home');
+        //     // } else {
+        //     if ($user->pos_id == 1) {
+        //         // dd("Khong co quyen truy cap");
+        //         return redirect()->back();
+        //     }
+        //     // }
+        // } else {
+        //     return redirect('home');
+        // }
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect('home');
+        } else {
+            if ($user->pos_id == 1) {
+                // dd("Khong co quyen truy cap");
+                return redirect()->back();
             }
         }
         return $next($request);

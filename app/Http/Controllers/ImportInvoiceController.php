@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Importinvoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ImportInvoiceController extends Controller
@@ -13,17 +14,22 @@ class ImportInvoiceController extends Controller
     {
         // $importInvoices = Importinvoice::get();
         $importInvoices = DB::table('ImportInvoices')
-        ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
-        ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
-        ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name')->orderByDesc('ImportInvoices.imp_id')
-        ->get();
+            ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
+            ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
+            ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name')->orderByDesc('ImportInvoices.imp_id')
+            ->get();
         return view('admin/importInvoice.index', ['importInvoices' => $importInvoices]);
     }
 
     //Tao moi
     function create()
     {
-        return view('admin/importInvoice.create');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            return view('admin/importInvoice.create');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
     function save(Request $request)
     {
@@ -40,11 +46,16 @@ class ImportInvoiceController extends Controller
     //Sua
     function edit($imp_id)
     {
-        $importInvoice = Importinvoice::findOrFail($imp_id);
-        if ($importInvoice == null) {
-            return redirect()->route('error');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            $importInvoice = Importinvoice::findOrFail($imp_id);
+            if ($importInvoice == null) {
+                return redirect()->route('error');
+            }
+            return view('admin/importInvoice.edit', ['importInvoice' => $importInvoice]);
+        } else {
+            return view('error/khong-co-quyen-admin');
         }
-        return view('admin/importInvoice.edit', ['importInvoice' => $importInvoice]);
     }
     function update(Request $request, $imp_id)
     {
@@ -58,9 +69,9 @@ class ImportInvoiceController extends Controller
     }
 
     // Xoa 1 sp theo id
-    function delete($imp_id)
-    {
-        DB::table('ImportInvoices')->where('imp_id', $imp_id)->delete();
-        return redirect('admin/importInvoice');
-    }
+    // function delete($imp_id)
+    // {
+    //     DB::table('ImportInvoices')->where('imp_id', $imp_id)->delete();
+    //     return redirect('admin/importInvoice');
+    // }
 }
