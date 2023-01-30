@@ -51,15 +51,17 @@ class CartController extends Controller
             // ->select('Products.*','Carts.*')
             ->where('Carts.use_id', $user->id)
             ->where('Images.img_role', 1)
-            ->distinct('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
+            // ->distinct('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
             ->orderByDesc('Carts.car_id')
             ->get();
         $addresses = DB::table('Carts')
-            ->select('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
+        // ->join('Provinces', 'Carts.pro_id', '=', 'Provinces.pro_id')
+        ->distinct()
+            ->select('Carts.pro_id', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress')
             ->where('Carts.use_id', $user->id)
-            ->distinct('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
+            
             ->get();
-        
+        var_dump($addresses);
         return view('user/cart', ['$addresses' => $addresses], ['products' => $products]);
     }
 

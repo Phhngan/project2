@@ -104,6 +104,7 @@ float:right;
           </div>
         </div>
         <hr>
+        @forelse($addresses as $address)
         <form action="{{url('/cart/updateAddress')}}" method="POST">
           @csrf
           @method('put')
@@ -117,7 +118,7 @@ float:right;
                 ->get();
           ?>
 	<select class="form-control" id="" name="province" required>
-  <option value="{{ $user->pro_id  }}" selected="selected"></option>
+  <option value="{{ $address->pro_id  }}" selected="selected">----{{$address->pro_name}}----</option>
 			@foreach($provinces as $province)
 <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
 @endforeach
@@ -128,19 +129,24 @@ float:right;
 
           <label for="district" style="float:left;padding-bottom:6px">Huyện</label>
           <br>
-          <input value="{{ $user->use_district  }}" name="district" type="text" class="form-control" placeholder="Huyện">
+          <input value="{{ $address->sal_district  }}" name="district" type="text" class="form-control" placeholder="Huyện">
           <br>
           <label for="town" style="float:left;padding-bottom:6px">Xã:</label>
           <br>
-          <input value="{{ $user->use_town  }}" name="town" type="text" class="form-control" placeholder="Xã">
+          <input value="{{ $address->sal_town  }}" name="town" type="text" class="form-control" placeholder="Xã">
           <br>
           <label for="detailAddress" style="float:left;padding-bottom:6px">Địa chỉ cụ thể:</label>
           <br>
-          <input value="{{ $user->use_detailAddress  }}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+          <input value="{{ $address->sal_detailAddress  }}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
           <br>
           <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
           <br>
         </form>
+        @empty
+        <tr>
+      <td colspan="3">Xin mời thêm sản phẩm</td>
+    </tr>
+        @endforelse
       </div>
     </div>
   </div>
