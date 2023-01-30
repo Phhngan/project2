@@ -33,7 +33,7 @@ class CartController extends Controller
                 ]
             );
         }
-        return redirect('/cart');
+        return back(); 
     }
 
     //show cart

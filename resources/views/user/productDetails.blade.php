@@ -41,8 +41,46 @@ width: 100%;
 padding: 6px;
 }
 
-#myPopup{
+.popup {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popuptext {
   visibility: hidden;
+  width: 160px;
+  background-color: green;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: fixed;
+  bottom: 50px;
+  left: 40%
+}
+
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
 
 @endsection
@@ -74,15 +112,9 @@ padding: 6px;
                     ->sum('ImportInvoiceDetails.imp_quantity_left');
                 echo $quantity;
                 ?> sản phẩm</p>
-      <div class="action">
-        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" onclick="myFunction()" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
-
-        <div class="alert alert-success alert-dismissible" id="myPopup">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong> This alert box could indicate a successful or positive action.
-  </div>
-
-
+      <div class="action popup" onclick="addToCart()">
+        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
+        <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
       </div>
       <br>
       <div class="product-about">
@@ -151,7 +183,13 @@ padding: 6px;
           <a class="price" id="old-price">{{number_format($randomProduct->prd_price).' VND'}}</a>
           <a class="price" id="new-price">{{number_format($randomProduct->prd_price * (100 - $randomProduct->prd_discount)/100).' VND'}}</a>
           <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+
+          <div class="popup" onclick="addToCart()">
           <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+        <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+      </div>
+
+          <!-- <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a> -->
         </div>
       </div>
       @else
@@ -163,7 +201,11 @@ padding: 6px;
           <p class="price">{{number_format($randomProduct->prd_price).' VND'}}</p>
           <br>
           <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-          <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+          <div class="popup" onclick="addToCart()">
+            <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+          </div>
+
         </div>
       </div>
       @endif
@@ -198,4 +240,13 @@ padding: 6px;
       });
   });
 </script> -->
+
+<script>
+// When the user clicks on div, open the popup
+function addToCart() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+
 @endsection

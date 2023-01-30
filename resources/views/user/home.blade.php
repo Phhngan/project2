@@ -81,7 +81,10 @@
         <a class="price" id="old-price">{{number_format($newProduct->prd_price).' VND'}}</a>
         <a class="price" id="new-price">{{number_format($newProduct->prd_price * (100 - $newProduct->prd_discount)/100).' VND'}}</a>
         <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+        <div class="popup" onclick="addToCart()">
         <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+          </div>
       </div>
     </div>
     @else
@@ -93,7 +96,10 @@
         <p class="price">{{number_format($newProduct->prd_price).' VND'}}</p>
         <br>
         <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+        <div class="popup" onclick="addToCart()">
         <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+          </div>
       </div>
     </div>
     @endif
@@ -122,7 +128,10 @@
         <a class="price" id="old-price">{{number_format($discountProduct->prd_price).' VND'}}</a>
         <a class="price" id="new-price">{{number_format($discountProduct->prd_price * (100 - $discountProduct->prd_discount)/100).' VND'}}</a>
         <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+        <div class="popup" onclick="addToCart()">
         <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+          </div>
       </div>
     </div>
     @else
@@ -134,7 +143,10 @@
         <p class="price">{{number_format($discountProduct->prd_price).' VND'}}</p>
         <br>
         <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+        <div class="popup" onclick="addToCart()">
         <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+          </div>
       </div>
     </div>
     @endif
@@ -244,5 +256,14 @@
     y[newIndex - 1].style.display = "block";
     setTimeout(carousel1, 3000);
   }
+
+// When the user clicks on div, open the popup
+function addToCart() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+
 </script>
+
+
 @endsection

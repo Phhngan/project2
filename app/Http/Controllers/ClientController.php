@@ -30,7 +30,12 @@ class ClientController extends Controller
         //     ->where('Users.id', $id)
         //     ->get();
         $user = Auth::user();
-        return view('user/clientInfo.edit', ['user' => $user]);
+        $users = DB::table('Users')
+        ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
+        ->select('Users.*', 'Provinces.pro_name')
+        ->where('Users.id', $user->id)
+        ->get();
+        return view('user/clientInfo.edit', ['users' => $users]);
     }
     function update(Request $request)
     {

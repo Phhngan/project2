@@ -65,7 +65,7 @@ float:right;
       <td>
         <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
           <input type='button' value='-' class='qtyminus minus' field='quantity' />
-          <input type='text' name='quantity' value='{{$product->car_quantity}}' class='qty' />
+          <input type='number' name='quantity' min='1' value='{{$product->car_quantity}}' class='qty' />
           <input type='button' value='+' class='qtyplus plus' field='quantity' />
           <br>
           <button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -109,8 +109,23 @@ float:right;
           @method('put')
           <label for="province" style="float:left;padding-bottom:6px">Tỉnh:</label>
           <br>
-          <input value="{{ $user->pro_id  }}" name="province" type="text" class="form-control" placeholder="Tỉnh">
-          <br>
+          <!-- <input value="{{ $user->pro_id  }}" name="province" type="text" class="form-control" placeholder="Tỉnh">
+          <br> -->
+          <?php
+             $provinces = DB::table('Provinces')
+                ->select('Provinces.*')
+                ->get();
+          ?>
+	<select class="form-control" id="" name="province" required>
+  <option value="{{ $user->pro_id  }}" selected="selected"></option>
+			@foreach($provinces as $province)
+<option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
+@endforeach
+
+	</select>
+
+
+
           <label for="district" style="float:left;padding-bottom:6px">Huyện</label>
           <br>
           <input value="{{ $user->use_district  }}" name="district" type="text" class="form-control" placeholder="Huyện">

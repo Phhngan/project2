@@ -30,6 +30,7 @@
   <h3>Cập nhật thông tin khách hàng</h3>
 </div>
 <br>
+@foreach($users as $user)
 <form class="edit-info" action="{{url('client/edit')}}" method="POST">
     @csrf
     @method('put')
@@ -48,27 +49,37 @@
     <br>
     <label for="gender">Giới tính:</label>
     <br>
-    <input value="<?php
+    <!-- <input value="" name="gender" type="text" class="form-control" placeholder="Giới tính"> -->
+
+<select class="form-control" id="" name="gender" required>
+  <option value="{{$user->use_gender}}" selected="selected">----<?php
                     if ($user->use_gender == 1){echo "Nam";
                     }else
                       echo "Nữ";
-                  ?>" name="gender" type="text" class="form-control" placeholder="Giới tính">
+                  ?>----</option>
+<option value="1">Nam</option>
+                  <option value="2">Nữ</option>
+
+                  </select>
+
     <br>
     <label for="phone">Số điện thoại:</label>
     <br>
     <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
     <br>
-    <!-- <label for="province">Tỉnh thành:</label>
-    <br>
-    <input value="{{ $user->pro_name }}" name="province" type="text" class="form-control" placeholder="Tỉnh thành"> -->
+    <label for="province">Tỉnh thành:</label>
+    <?php
+             $provinces = DB::table('Provinces')
+                ->select('Provinces.*')
+                ->get();
+          ?>
+	<select class="form-control" id="" name="province" required>
+  <option value="{{ $user->pro_id  }}" selected="selected">----{{ $user->pro_name }}----</option>
+			@foreach($provinces as $province)
+<option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
+@endforeach
 
-    <label for="khoi">Tỉnh thành:</label>
-	<select class="form-control" id="khoi" name="khoi" required>
-		<option value="">-- Chọn tỉnh thành --</option>
-			<option>Hà Nội</option>
 	</select>
-
-
     <br>
     <label for="district">Quận/huyện:</label>
     <br>
@@ -85,6 +96,7 @@
     <button type="submit" class="btn btn-primary">Cập nhật</button>
     <br><br>
 </form>
+@endforeach
 
 <br><br>
 

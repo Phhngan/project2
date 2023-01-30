@@ -52,7 +52,12 @@ class AdminController extends Controller
         //     ->select('Users.*')
         //     ->where('Users.id', $id)
         //     ->get();
-        return view('admin/setting/edit', ['user' => $user]);
+        $users = DB::table('Users')
+        ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
+        ->select('Users.*', 'Provinces.pro_name')
+        ->where('Users.id', $user->id)
+        ->get();
+        return view('admin/setting/edit', ['users' => $users]);
     }
     function update(Request $request)
     {
