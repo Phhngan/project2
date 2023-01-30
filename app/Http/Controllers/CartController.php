@@ -36,7 +36,7 @@ class CartController extends Controller
                 'pro_id' => $user->pro_id, 'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
             ]);
         }
-        return back(); 
+        return back();
     }
 
     //show cart
@@ -55,14 +55,14 @@ class CartController extends Controller
             ->orderByDesc('Carts.car_id')
             ->get();
         $addresses = DB::table('Carts')
-        // ->join('Provinces', 'Carts.pro_id', '=', 'Provinces.pro_id')
-        ->distinct()
-            ->select('Carts.pro_id', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress')
+            ->join('Provinces', 'Carts.pro_id', '=', 'Provinces.pro_id')
+            ->distinct()
+            ->select('Carts.pro_id', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress', 'Provinces.pro_name')
             ->where('Carts.use_id', $user->id)
-            
+
             ->get();
-        var_dump($addresses);
-        return view('user/cart', ['$addresses' => $addresses], ['products' => $products]);
+        // dd($addresses);
+        return view('user/cart', ['addresses' => $addresses], ['products' => $products]);
     }
 
     //update số lượng
