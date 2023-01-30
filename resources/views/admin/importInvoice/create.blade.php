@@ -7,13 +7,33 @@
     <form action="{{url('/admin/importInvoice/create')}}" method="POST">
         @csrf
         <br>
-        <label for="unitId">Mã đơn vị cung cấp:</label>
+        <label for="unitId">Đơn vị cung cấp:</label>
         <br>
-        <input name="unitId" type="text" class="form-control" placeholder="Mã đơn vị cung cấp">
+        <?php
+             $supplyunits = DB::table('Supplyunits')
+                ->select('Supplyunits.*')
+                ->get();
+          ?>
+	    <select class="form-control" id="" name="unitId" required>
+        <option value="" selected="selected">----Chọn đơn vị cung cấp----</option>
+			@foreach($supplyunits as $supplyunit)
+        <option value="{{ $supplyunit->unit_id }}">{{ $supplyunit->unit_name }}</option>
+            @endforeach
+	    </select>
         <br>
-        <label for="userId">Mã người nhập:</label>
+        <label for="userId">Người nhập:</label>
         <br>
-        <input name="userId" type="text" class="form-control" placeholder="Mã người nhập">
+        <?php
+             $users = DB::table('Users')
+                ->select('Users.*')->where('Users.pos_id', '>', 1)
+                ->get();
+          ?>
+	    <select class="form-control" id="" name="userId" required>
+        <option value="" selected="selected">----Chọn người nhập----</option>
+			@foreach($users as $user)
+        <option value="{{ $user->id }}">{{ $user->use_lastName }} {{ $user->name }}</option>
+            @endforeach
+	    </select>
         <br>
         <label for="importDate">Ngày nhập:</label>
         <br>

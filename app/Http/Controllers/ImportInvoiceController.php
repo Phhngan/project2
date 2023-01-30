@@ -44,7 +44,13 @@ class ImportInvoiceController extends Controller
         if ($importInvoice == null) {
             return redirect()->route('error');
         }
-        return view('admin/importInvoice.edit', ['importInvoice' => $importInvoice]);
+        $importInvoices = DB::table('ImportInvoices')
+        ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
+        ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
+        ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name', 'Users.use_lastName')
+        ->where('ImportInvoices.imp_id', $importInvoice->imp_id)
+        ->get();
+        return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices]);
     }
     function update(Request $request, $imp_id)
     {

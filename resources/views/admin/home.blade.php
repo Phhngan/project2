@@ -77,10 +77,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Doanh thu từng tháng',
+        data: [120000, 190000, 30000, 500000, 200000, 3000, 30000, 150000, 760000, 900000, 120000, 50000],
         borderWidth: 1
       }]
     },
