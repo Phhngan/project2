@@ -42,7 +42,17 @@
         <br>
         <label for="position">Vị trí công việc:</label>
         <br>
-        <input name="position" type="text" class="form-control" placeholder="Vị trí công việc">
+        <?php
+             $positions = DB::table('PositionTypes')
+                ->select('PositionTypes.*')
+                ->get();
+          ?>
+	<select class="form-control" id="" name="position" required>
+  <option value="" selected="selected">----Chọn vị trí----</option>
+			@foreach($positions as $position)
+<option value="{{ $position->pos_id}}">{{ $position->pos_name}}</option>
+@endforeach
+</select>
         <br>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
     </form>

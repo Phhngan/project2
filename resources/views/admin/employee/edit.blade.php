@@ -4,6 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật nhân viên</h1>
+@foreach($users as $user)
 <form action="{{url('/admin/employee/'.$user->id.'/edit')}}" method="POST">
     @csrf
     @method('put')
@@ -18,10 +19,21 @@
     <br>
     <label for="position">Vị trí công việc:</label>
     <br>
-    <input value="{{ $user->pos_id  }}" name="position" type="number" class="form-control" placeholder="Vị trí công việc">
+        <?php
+             $positions = DB::table('PositionTypes')
+                ->select('PositionTypes.*')
+                ->get();
+          ?>
+	<select class="form-control" id="" name="position" required>
+  <option value="{{$user->pos_id}}" selected="selected">----{{$user->pos_name}}----</option>
+			@foreach($positions as $position)
+<option value="{{ $position->pos_id}}">{{ $position->pos_name}}</option>
+@endforeach
+</select>
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>
+@endforeach
 @endsection
 
 @section('js')

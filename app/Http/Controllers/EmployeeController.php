@@ -55,11 +55,16 @@ class EmployeeController extends Controller
 
     //Sua 
     function edit($id){
-        $user = User::findOrFail($id);
-        if ($user == null) {
-            return redirect()->route('error');
-        }
-        return view('admin/employee.edit', ['user' => $user]);
+        // $user = User::findOrFail($id);
+        $users = DB::table('Users')
+        ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
+        ->select('Users.*', 'PositionTypes.pos_name')
+        ->where('Users.id', $id)
+        ->get();
+        // if ($user == null) {
+        //     return redirect()->route('error');
+        // }
+        return view('admin/employee.edit', ['users' => $users]);
     }
     function update(Request $request, $id){
         $email = $request->get('email');
