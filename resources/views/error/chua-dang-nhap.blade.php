@@ -1,6 +1,6 @@
 @extends('layout.base_page')
 
-@section('title','Đặt hàng thành công')
+@section('title','Lỗi')
 
 @section('style')
 .chua-dang-nhap{
