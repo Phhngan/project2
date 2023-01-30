@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ImagesController extends Controller
@@ -21,14 +22,24 @@ class ImagesController extends Controller
     //Xoa
     function delete($img_id)
     {
-        DB::table('Images')->where('img_id', $img_id)->delete();
-        return redirect('admin/images');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            DB::table('Images')->where('img_id', $img_id)->delete();
+            return redirect('admin/images');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
 
     //Tao moi
     function create()
     {
-        return view('admin/images.create');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            return view('admin/images.create');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
     function save(Request $request)
     {
@@ -44,11 +55,16 @@ class ImagesController extends Controller
     //Sua 
     function edit($img_id)
     {
-        $image = Image::findOrFail($img_id);
-        if ($image == null) {
-            return redirect()->route('error');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            $image = Image::findOrFail($img_id);
+            if ($image == null) {
+                return redirect()->route('error');
+            }
+            return view('admin/images.edit', ['image' => $image]);
+        } else {
+            return view('error/khong-co-quyen-admin');
         }
-        return view('admin/images.edit', ['image' => $image]);
     }
     function update(Request $request, $img_id)
     {

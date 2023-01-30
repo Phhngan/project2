@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Producttype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,12 @@ class ProductController extends Controller
     // View: Tao san pham
     function create()
     {
-        return view('admin/product.create');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            return view('admin/product.create');
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
     }
     function save(Request $request)
     {
@@ -62,12 +68,17 @@ class ProductController extends Controller
     function edit($prd_id)
     {
         // $product = DB::table('Product')->find($prd_id);
-        $product = Product::findOrFail($prd_id);
-        // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
-        if ($product == null) {
-            return redirect()->route('error');
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            $product = Product::findOrFail($prd_id);
+            // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
+            if ($product == null) {
+                return redirect()->route('error');
+            }
+            return view('admin/product.edit', ['product' => $product]);
+        } else {
+            return view('error/khong-co-quyen-admin');
         }
-        return view('admin/product.edit', ['product' => $product]);
     }
 
     function update(Request $request, $prd_id)

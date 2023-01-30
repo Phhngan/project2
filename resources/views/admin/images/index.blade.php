@@ -36,6 +36,7 @@
         </td>
         <td>
             <a class="btn btn-outline-secondary" href="{{url('/admin/images/'.$image->img_id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-outline-secondary" href="{{url('/admin/images/'.$image->img_id.'/delete')}}" role="button">Xóa</a>
         </td>
     </tr>
     @empty
