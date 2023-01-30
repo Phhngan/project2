@@ -36,7 +36,7 @@
                     <p>{{$salesInvoice->sal_note}}</p>
                 </td>             
                 <td>
-                    <a class="btn btn-outline-secondary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id)}}" role="button">Xem chi tiết</a> 
+                    <a class="btn btn-primary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id)}}" role="button">Xem chi tiết</a> 
                 </td>
             </tr>
         @empty

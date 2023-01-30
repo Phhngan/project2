@@ -4,7 +4,7 @@
 
 @section('style')
 .danhmuc-sp{
-  height: 500px;
+  height: 1100px;
 }
 body{
   background-color: #EBECFE;
@@ -20,7 +20,7 @@ body{
     @if($product->prd_discount > 0)
     <div class="column-sales">
       <div class="card">
-        <img src="{{$product->img_url}}" style="height:298px" id="zoom">
+        <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
         <div class="khuyen-mai">
           <p><strong>- {{$product->prd_discount}}%</strong></p>
         </div>
@@ -38,7 +38,7 @@ body{
     @else
     <div class="column-product">
       <div class="card">
-        <img src="{{$product->img_url}}" style="height:298px" id="zoom">
+        <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
         <br>
         <h4>{{$product->prd_name}}</h4>
         <p class="price">{{number_format($product->prd_price).' VND'}}</p>

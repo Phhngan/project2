@@ -54,6 +54,30 @@ class ImportInvoicesDatabase extends Seeder
                     'imp_date' => '2022/11/03',
                     'imp_total' => 300000,
                 ],
+                [
+                    'unit_id' => 1,
+                    'use_id' => 1,
+                    'imp_date' => '2023/01/01',
+                    'imp_total' => 1740000,
+                ],
+                [
+                    'unit_id' => 2,
+                    'use_id' => 1,
+                    'imp_date' => '2023/01/15',
+                    'imp_total' => 3500000,
+                ],
+                [
+                    'unit_id' => 3,
+                    'use_id' => 1,
+                    'imp_date' => '2023/01/15',
+                    'imp_total' => 1980000,
+                ],
+                [
+                    'unit_id' => 3,
+                    'use_id' => 1,
+                    'imp_date' => '2023/01/20',
+                    'imp_total' => 1000000,
+                ],
             ]
         );
     }

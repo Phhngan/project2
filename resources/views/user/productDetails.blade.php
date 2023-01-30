@@ -96,14 +96,15 @@ to {opacity:1 ;}
       </div>
     </div>
     <div class="col">
-      <h3>{{$product->prd_name}}</h3>
       <br>
       @if($product->prd_discount == 0)
+      <h3>{{$product->prd_name}}</h3><br>
       <h4 class="price-details">Giá bán: <span> {{number_format($product->prd_price).' VND'}}</span></h4>
       @else
-      <h4 class="price-details">Giảm giá: <span> {{$product->prd_discount.'%'}}</span></h4>
-      <h4 class="price-details">Giá gốc: <span> {{number_format($product->prd_price).' VND'}}</span></h4>
-      <h4 class="price-details">Giá bán: <span> {{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</span></h4>
+      <h3>{{$product->prd_name}} <span style="background-color:red; color:white;font-size:20px;padding:8px 5px 8px 3px; border-radius:10px;margin-left:10px"> <strong>- {{$product->prd_discount}}%</strong></span></h3>
+      <br>
+      <h4 class="price-details" style="color:#3E526D">Giá gốc: <span id="old-price"> {{number_format($product->prd_price).' VND'}}</span></h4>
+      <h4 class="price-details">Giá bán: <span id="new-price"> {{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</span></h4>
       @endif
 
       <!-- <form id='form-quantity' method='POST' class='quantity' action='#'>
@@ -180,7 +181,7 @@ to {opacity:1 ;}
       @if($randomProduct->prd_discount > 0)
       <div class="column-sales">
         <div class="card">
-          <img src="{{$randomProduct->img_url}}" style="height:298px" id="zoom">
+          <img src="{{$randomProduct->img_url}}" style="height:290px;width:290px" id="zoom">
           <div class="khuyen-mai">
             <p><strong>- {{$randomProduct->prd_discount}}%</strong></p>
           </div>
@@ -201,7 +202,7 @@ to {opacity:1 ;}
       @else
       <div class="column-product">
         <div class="card">
-          <img src="{{$randomProduct->img_url}}" style="height:298px" id="zoom">
+          <img src="{{$randomProduct->img_url}}" style="height:290px;width:290px" id="zoom">
           <br>
           <h4>{{$randomProduct->prd_name}}</h4>
           <p class="price">{{number_format($randomProduct->prd_price).' VND'}}</p>

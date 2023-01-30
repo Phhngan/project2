@@ -61,7 +61,13 @@ class ImagesController extends Controller
             if ($image == null) {
                 return redirect()->route('error');
             }
-            return view('admin/images.edit', ['image' => $image]);
+            $images = DB::table('Images')
+            ->join('Products', 'Products.prd_id', '=', 'Images.prd_id')
+            ->select('Images.*', 'Products.prd_name')
+            ->where('Images.img_id', $image->img_id)
+            ->get();
+            return view('admin/images.edit', ['images' => $images]);
+            // return view('admin/images.edit', ['image' => $image]);
         } else {
             return view('error/khong-co-quyen-admin');
         }

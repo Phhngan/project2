@@ -15,9 +15,19 @@
         <br>
         <input name="imageRole" type="text" class="form-control" placeholder="Role">
         <br>
-        <label for="imageURL">Mã sản phẩm:</label>
+        <label for="productId">Tên sản phẩm:</label>
         <br>
-        <input name="productId" type="number" class="form-control" placeholder="Mã sản phẩm">
+    <?php
+             $products = DB::table('Products')
+                ->select('Products.*')
+                ->get();
+          ?>
+	<select class="form-control" name="productId" required>
+    <option value="" selected="selected">----Chọn sản phẩm----</option>
+			@foreach($products as $product)
+    <option value="{{ $product->prd_id }}">{{ $product->prd_name }}</option>
+    @endforeach
+	</select>
         <br>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
     </form>

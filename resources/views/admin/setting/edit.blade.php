@@ -25,13 +25,13 @@
     <br>
     <!-- <input value="" name="gender" type="text" class="form-control" placeholder="Giới tính"> -->
 
-<select class="form-control" id="" name="gender" required>
-  <option value="{{$user->use_gender}}" selected="selected">----<?php
+                <select class="form-control" id="" name="gender" required>
+                <option value="{{$user->use_gender}}" selected="selected">----<?php
                     if ($user->use_gender == 1){echo "Nam";
                     }else
                       echo "Nữ";
                   ?>----</option>
-<option value="1">Nam</option>
+                <option value="1">Nam</option>
                   <option value="2">Nữ</option>
 
                   </select>
@@ -48,10 +48,10 @@
                 ->get();
           ?>
 	<select class="form-control" id="" name="province" required>
-  <option value="{{ $user->pro_id  }}" selected="selected">----{{ $user->pro_name }}----</option>
+    <option value="{{ $user->pro_id  }}" selected="selected">----{{ $user->pro_name }}----</option>
 			@foreach($provinces as $province)
-<option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
-@endforeach
+    <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
+    @endforeach
 	</select>
     <br>
     <label for="district">Quận/huyện:</label>

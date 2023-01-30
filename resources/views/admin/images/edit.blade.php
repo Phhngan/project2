@@ -4,6 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật ảnh</h1>
+@foreach($images as $image)
 <form action="{{url('admin/images/'.$image->img_id.'/edit')}}" method="POST">
     @csrf
     @method('put')
@@ -16,12 +17,22 @@
     <br>
     <input value="{{ $image->img_role  }}" name="imageRole" type="text" class="form-control" placeholder="Role ảnh">
     <br>
-    <label for="imageURL">Mã sản phẩm:</label>
-    <br>
-    <input value="{{ $image->prd_id }}" name="productId" type="number" class="form-control" placeholder="Mã sản phẩm">
+    <label for="productId">Tên sản phẩm:</label>
+        <br>
+    <?php
+             $products = DB::table('Products')
+                ->select('Products.*')
+                ->get();
+          ?>
+	<select class="form-control" name="productId" required>
+    <option value="{{$image->prd_id}}" selected="selected">----{{$image->prd_name}}----</option>
+			@foreach($products as $product)
+    <option value="{{ $product->prd_id }}">{{ $product->prd_name }}</option>
+    @endforeach
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>
+@endforeach
 @endsection
 
 @section('js')

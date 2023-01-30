@@ -5,9 +5,9 @@
 @section('content')
 <br>
 <h3>Hóa đơn số: {{$importInvoice->imp_id}}</h3>
-<br><br>
-<a class="btn btn-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/create')}}" role="button">+ Thêm sản phẩm</a>
 <br>
+<a class="btn btn-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/create')}}" role="button">+ Thêm sản phẩm</a>
+<br><br>
 <table class="table">
     <tr>
         <th>Mã sản phẩm</th>

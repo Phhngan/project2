@@ -47,6 +47,41 @@ class ImagesDatabase extends Seeder
                     'img_role' => 1,
                     'prd_id' => 6,
                 ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP7/doman_mi_ga_cay2.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 7,
+                ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP8/doman_snack_xoan.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 8,
+                ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP10/drink_sua_dua_gang1.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 9,
+                ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP13/drink_soda_nho1.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 10,
+                ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP14/drink_soda_cam.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 11,
+                ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP18/dongot_chocopie_nho.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 12,
+                ],
+                [
+                    'img_url' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP19/dongot_chocopie_chuoi.png?raw=true',
+                    'img_role' => 1,
+                    'prd_id' => 13,
+                ],
             ]
         );
     }

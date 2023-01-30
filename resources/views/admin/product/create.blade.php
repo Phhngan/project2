@@ -17,7 +17,12 @@
         <br>
         <label for="productType">Loại sản phẩm:</label>
         <br>
-        <input name="productType" type="number" class="form-control" placeholder="Loại sản phẩm">
+        <select class="form-control" name="productType" required>
+            <option value="" selected="selected">----Loại sản phẩm----</option>
+            <option value="1">Đồ mặn</option>
+            <option value="2">Đồ ngọt</option>
+            <option value="3">Đồ uống</option>
+            </select>
         <br>
         <label for="productWeigh">Khối lượng:</label>
         <br>

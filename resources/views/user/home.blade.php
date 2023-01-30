@@ -72,7 +72,7 @@
     @if($newProduct->prd_discount > 0)
     <div class="column-sales">
       <div class="card">
-        <img src="{{$newProduct->img_url}}" style="height:298px" id="zoom">
+        <img src="{{$newProduct->img_url}}" style="height:290px;width:290px" id="zoom">
         <div class="khuyen-mai">
           <p><strong>- {{$newProduct->prd_discount}}%</strong></p>
         </div>
@@ -90,7 +90,7 @@
     @else
     <div class="column-product">
       <div class="card">
-        <img src="{{$newProduct->img_url}}" style="height:298px" id="zoom">
+        <img src="{{$newProduct->img_url}}" style="height:290px;width:290px" id="zoom">
         <br>
         <h4>{{$newProduct->prd_name}}</h4>
         <p class="price">{{number_format($newProduct->prd_price).' VND'}}</p>
@@ -119,7 +119,7 @@
     @if($discountProduct->prd_discount > 0)
     <div class="column-sales">
       <div class="card">
-        <img src="{{$discountProduct->img_url}}" style="height:298px" id="zoom">
+        <img src="{{$discountProduct->img_url}}" style="height:290px;width:290px" id="zoom">
         <div class="khuyen-mai">
           <p><strong>- {{$discountProduct->prd_discount}}%</strong></p>
         </div>
@@ -137,7 +137,7 @@
     @else
     <div class="column-product">
       <div class="card">
-        <img src="{{$discountProduct->img_url}}" style="height:298px" id="zoom">
+        <img src="{{$discountProduct->img_url}}" style="height:290px;width:290px" id="zoom">
         <br>
         <h4>{{$discountProduct->prd_name}}</h4>
         <p class="price">{{number_format($discountProduct->prd_price).' VND'}}</p>

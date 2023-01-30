@@ -194,6 +194,7 @@ margin-top: 50px;
   .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
+  height: 535px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -421,7 +422,8 @@ padding: 6px;
   padding: 8px 0;
   position: fixed;
   bottom: 50px;
-  left: 40%
+  left: 40%;
+  z-index: 3;
 }
 
 

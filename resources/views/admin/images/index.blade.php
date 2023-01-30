@@ -22,7 +22,7 @@
             <img src="{{$image->img_url}}" width="100px">
         </td>
         <td>
-            <p>{{$image->img_url}}</p>
+            <a href="{{$image->img_url}}" target="_blank">{{$image->img_url}}</a>
 
         </td>
         <td>
@@ -35,8 +35,8 @@
             <p>{{$image->prd_name}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/images/'.$image->img_id.'/edit')}}" role="button">Sửa</a>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/images/'.$image->img_id.'/delete')}}" role="button">Xóa</a>
+            <a class="btn btn-primary" href="{{url('/admin/images/'.$image->img_id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-outline-danger" href="{{url('/admin/images/'.$image->img_id.'/delete')}}" role="button" style="margin-top:10px">Xóa</a>
         </td>
     </tr>
     @empty

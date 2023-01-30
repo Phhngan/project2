@@ -108,7 +108,7 @@
                   <a href="/products" class="text-white">Sản phẩm</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white">Liên hệ</a>
+                  <a class="text-white">Liên hệ: 0966 8355 87</a>
                 </li>
               </ul>
             </div>
@@ -127,7 +127,7 @@
                   <p class="text-white">Hai Bà Trưng, Hà Nội, Vietnam</p>
                 </li>
                 <li>
-                  <p class="text-white"> 1900 1000
+                  <p class="text-white">
                     Thứ 2 - Chủ nhật: 8:00 - 20:00</p>
                 </li>
               </ul>
@@ -152,7 +152,7 @@
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        <a class="text-white" href="#">Snack</a>
+        <a class="text-white" href="/">Snack</a>
       </div>
       <!-- Copyright -->
     </footer>

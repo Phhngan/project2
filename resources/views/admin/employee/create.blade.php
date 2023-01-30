@@ -22,11 +22,10 @@
         <label for="gender">Giới tính:</label>
         <br>
         <select class="form-control" id="" name="gender" required>
-  <option value="" selected="selected">----Chọn giới tính----</option>
+            <option value="" selected="selected">----Chọn giới tính----</option>
             <option value="1">Nam</option>
             <option value="2">Nữ</option>
-
-                  </select>
+            </select>
         <br>
         <label for="email">Email:</label>
         <br>
