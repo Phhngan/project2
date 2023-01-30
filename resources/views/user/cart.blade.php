@@ -27,12 +27,12 @@ width:300px;
 float:right;
 }
 .text-sp{
-  text-decoration: none;
-  color:black;
+text-decoration: none;
+color:black;
 }
 .text-sp:hover{
-  text-decoration: none;
-  color:#3E526D;
+text-decoration: none;
+color:#3E526D;
 }
 
 @endsection
@@ -98,35 +98,29 @@ float:right;
   <div class="col">
     <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
       <div class="card-body">
+        @forelse($addresses as $address)
         <div class="row">
           <div class="col">
             <h5 class="text-center">Thông tin giao hàng</h5>
           </div>
         </div>
         <hr>
-        @forelse($addresses as $address)
         <form action="{{url('/cart/updateAddress')}}" method="POST">
           @csrf
           @method('put')
           <label for="province" style="float:left;padding-bottom:6px">Tỉnh:</label>
           <br>
-          <!-- <input value="{{ $user->pro_id  }}" name="province" type="text" class="form-control" placeholder="Tỉnh">
-          <br> -->
           <?php
-             $provinces = DB::table('Provinces')
-                ->select('Provinces.*')
-                ->get();
+          $provinces = Illuminate\Support\Facades\DB::table('Provinces')
+            ->select('Provinces.*')
+            ->get();
           ?>
-	<select class="form-control" id="" name="province" required>
-  <option value="{{ $address->pro_id  }}" selected="selected">----{{$address->pro_name}}----</option>
-			@foreach($provinces as $province)
-<option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
-@endforeach
-
-	</select>
-
-
-
+          <select class="form-control" id="" name="province" required>
+            <option value="{{ $address->pro_id  }}" selected="selected">----{{$address->pro_name}}----</option>
+            @foreach($provinces as $province)
+              <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
+            @endforeach
+          </select>
           <label for="district" style="float:left;padding-bottom:6px">Huyện</label>
           <br>
           <input value="{{ $address->sal_district  }}" name="district" type="text" class="form-control" placeholder="Huyện">
@@ -144,8 +138,8 @@ float:right;
         </form>
         @empty
         <tr>
-      <td colspan="3">Xin mời thêm sản phẩm</td>
-    </tr>
+          <td colspan="3">Xin mời thêm sản phẩm</td>
+        </tr>
         @endforelse
       </div>
     </div>
@@ -165,7 +159,8 @@ float:right;
               $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
             }
             ?>
-            {{number_format($price).' VND'}}</p>
+            {{number_format($price).' VND'}}
+          </p>
         </div>
       </div>
       <hr>
@@ -199,10 +194,10 @@ float:right;
         if (val > 0) {
           $input.val(val - 1).change();
         }
-        if(val < 0){
+        if (val < 0) {
           $input = 1;
         }
-        if(val = 0){
+        if (val = 0) {
           $input = 1;
         }
 
