@@ -32,6 +32,9 @@ class CartController extends Controller
                     'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
                 ]
             );
+            DB::table('Carts')->where('use_id', $user->id)->update([
+                'pro_id' => $user->pro_id, 'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
+            ]);
         }
         return back(); 
     }
@@ -48,9 +51,16 @@ class CartController extends Controller
             // ->select('Products.*','Carts.*')
             ->where('Carts.use_id', $user->id)
             ->where('Images.img_role', 1)
+            ->distinct('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
             ->orderByDesc('Carts.car_id')
             ->get();
-        return view('user/cart', ['user' => $user], ['products' => $products]);
+        $addresses = DB::table('Carts')
+            ->select('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
+            ->where('Carts.use_id', $user->id)
+            ->distinct('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
+            ->get();
+        
+        return view('user/cart', ['$addresses' => $addresses], ['products' => $products]);
     }
 
     //update số lượng
@@ -166,7 +176,7 @@ class CartController extends Controller
             foreach ($products as $product) {
                 DB::table('SalesInvoiceDetails')->insert(
                     [
-                        'sal_id' => $invoice->sal_id, 'prd_id' => $product->prd_id, 'sal_quantity' => $product->car_quantity, 
+                        'sal_id' => $invoice->sal_id, 'prd_id' => $product->prd_id, 'sal_quantity' => $product->car_quantity,
                         'sal_price' => $product->prd_price * ((100 - $product->prd_discount) / 100)
                     ]
                 );

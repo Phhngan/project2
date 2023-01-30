@@ -88,9 +88,25 @@ class SalesInvoiceController extends Controller
 
     //continue
     function continue($sal_id)
-    {   
+    {
         $salesInvoice = Salesinvoice::findOrFail($sal_id);
         $sal_status_id = $salesInvoice->sal_status_id;
+        if ($sal_status_id == 1) {
+            $invoices =  DB::table('SalesInvoiceDetails')
+                ->select('SalesInvoiceDetails.*')
+                ->where('sal_id', $sal_id)
+                ->get();
+            foreach ($invoices as $invoice) {
+                $products = DB::table('ImportInvoiceDetails')
+                    ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
+                    ->select('ImportInvoiceDetails.*')
+                    ->where('ImportInvoices')
+                    ->where('prd_id', $invoice->prd_id)
+                    ->orderBy('id')
+                    ->take(1)
+                    ->get();
+            }
+        }
         DB::table('SalesInvoices')->where('sal_id', $sal_id)
             ->update(['sal_status_id' => $sal_status_id + 1]);
         return redirect('admin/salesInvoice/chua-xac-nhan');
@@ -98,7 +114,7 @@ class SalesInvoiceController extends Controller
 
     //cancel
     function cancel($sal_id)
-    {   
+    {
         DB::table('SalesInvoices')->where('sal_id', $sal_id)
             ->update(['sal_status_id' => 5]);
         return redirect('admin/salesInvoice/da-huy');
