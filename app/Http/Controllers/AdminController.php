@@ -114,28 +114,26 @@ class AdminController extends Controller
     //change pass
     function changePass()
     {
-        $user = Auth::user();
-        return view('admin/setting.changePass', ['user' => $user], ['error' => '']);
+        return view('admin/setting.changePass', ['error' => '']);
     }
     function updatePass(Request $request)
     {
         $user = Auth::user();
-        var_dump($user->password);
-        var_dump(Hash::make($user->password));
         $oldPass = $request->get('oldPass');
         $newPass1 = $request->get('newPass1');
         $newPass2 = $request->get('newPass2');
-        var_dump(Hash::make($oldPass));
+        $a = Hash::check($oldPass, $user->password);
+        // dd($oldPass);
+        // dd($newPass2);
         if (Hash::check($oldPass, $user->password)) {
-            // if (Hash::make($oldPass) == $user->password) {
             if ($newPass1 == $newPass2) {
                 DB::table('Users')->where('id', $user->id)->update(['password' => Hash::make($newPass1)]);
                 return redirect('login');
             } else {
-                return view('admin/setting.changePass', ['user' => $user], ['error' => 'Mật khẩu mới không trùng nhau']);
+                return view('admin/setting.changePass', ['error' => 'Mật khẩu mới không trùng nhau']);
             }
         } else {
-            return view('admin/setting.changePass', ['user' => $user], ['error' => 'Mật khẩu không chính xác']);
+            return view('admin/setting.changePass', ['error' => 'Mật khẩu không chính xác']);
         }
     }
 }

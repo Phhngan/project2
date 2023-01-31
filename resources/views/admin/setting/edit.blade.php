@@ -43,7 +43,7 @@
     <label for="province">Tỉnh thành:</label>
     <br>
     <?php
-             $provinces = DB::table('Provinces')
+             $provinces = Illuminate\Support\Facades\DB::table('Provinces')
                 ->select('Provinces.*')
                 ->get();
           ?>

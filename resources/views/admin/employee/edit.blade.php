@@ -20,7 +20,7 @@
     <label for="position">Vị trí công việc:</label>
     <br>
         <?php
-             $positions = DB::table('PositionTypes')
+             $positions = Illuminate\Support\Facades\DB::table('PositionTypes')
                 ->select('PositionTypes.*')
                 ->get();
           ?>

@@ -81,7 +81,6 @@ border-radius: 10px;
     @foreach($provinces as $province)
     <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
     @endforeach
-
   </select>
   <br>
   <label for="district">Quận/huyện:</label>

@@ -10,7 +10,7 @@
         <label for="unitId">Đơn vị cung cấp:</label>
         <br>
         <?php
-             $supplyunits = DB::table('Supplyunits')
+             $supplyunits = Illuminate\Support\Facades\DB::table('Supplyunits')
                 ->select('Supplyunits.*')
                 ->get();
           ?>
@@ -24,7 +24,7 @@
         <label for="userId">Người nhập:</label>
         <br>
         <?php
-             $users = DB::table('Users')
+             $users = Illuminate\Support\Facades\DB::table('Users')
                 ->select('Users.*')->where('Users.pos_id', '>', 1)
                 ->get();
           ?>

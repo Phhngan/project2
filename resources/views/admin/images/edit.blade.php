@@ -20,7 +20,7 @@
     <label for="productId">Tên sản phẩm:</label>
         <br>
     <?php
-             $products = DB::table('Products')
+             $products = Illuminate\Support\Facades\DB::table('Products')
                 ->select('Products.*')
                 ->get();
           ?>

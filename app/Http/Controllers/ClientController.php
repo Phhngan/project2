@@ -60,24 +60,26 @@ class ClientController extends Controller
     //change pass
     function changePass()
     {
-        $user = Auth::user();
-        return view('user/clientInfo.changPass', ['user' => $user], ['error' => '']);
+        // $user = Auth::user();
+        return view('user/clientInfo.changePass', ['error' => '']);
     }
-    function updatePass(Request $request, $id)
+    function updatePass(Request $request)
     {
         $user = Auth::user();
         $oldPass = $request->get('oldPass');
         $newPass1 = $request->get('newPass1');
         $newPass2 = $request->get('newPass2');
-        if ($oldPass == $user->password) {
+        // $a = Hash::check($oldPass, $user->password);
+        // dd($a);
+        if (Hash::check($oldPass, $user->password)) {
             if ($newPass1 == $newPass2) {
-                DB::table('Users')->where('id', $id)->update(['password' => Hash::make($newPass1)]);
+                DB::table('Users')->where('id', $user->id)->update(['password' => Hash::make($newPass1)]);
                 return redirect('login');
             } else {
-                return view('user/clientInfo.changPass', ['user' => $user], ['error' => 'Mật khẩu mới không trùng nhau']);
+                return view('user/clientInfo.changePass', ['error' => 'Mật khẩu mới không trùng nhau']);
             }
         } else {
-            return view('user/clientInfo.changPass', ['user' => $user], ['error' => 'Mật khẩu không chính xác']);
+            return view('user/clientInfo.changePass', ['error' => 'Mật khẩu không chính xác']);
         }
     }
 

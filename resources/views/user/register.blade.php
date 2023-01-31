@@ -70,35 +70,41 @@ margin-left: 0px;
       <input name="phone" type="phone" class="form-control" id="phone">
     </div>
     <div class="mb-3">
+      <label for="province" class="form-label">Tỉnh: </label>
+      <?php
+      $provinces = Illuminate\Support\Facades\DB::table('Provinces')
+        ->select('Provinces.*')
+        ->get();
+      ?>
+      <select class="form-control" id="" name="province" required>
+        <option value="" selected="selected">----Chọn tỉnh thành----</option>
+        @foreach($provinces as $province)
+        <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
+        @endforeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="district" class="form-label">Quận: </label>
+      <input name="district" type="text" class="form-control" id="district" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="town" class="form-label">Huyện: </label>
+      <input name="town" type="text" class="form-control" id="town" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="detail" class="form-label">Địa chỉ chi tiết: </label>
+      <input name="detail" type="text" class="form-control" id="detail" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mật khẩu: </label>
       <input name="password" type="password" class="form-control" id="exampleInputPassword1">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword2" class="form-label">Nhập lại mật khẩu: </label>
-      <input name="password2" type="password2" class="form-control" id="exampleInputPassword2" >
+      <input name="password2" type="password" class="form-control" id="exampleInputPassword2">
     </div>
     <p class="error-noti">{{$error}}</p>
     <br>
-    <!-- <div class="mb-3">
-      <label for="city" class="form-label">Tỉnh/thành:</label>
-      <select class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
-        <option value="" selected>Chọn tỉnh thành</option>
-      </select>
-
-      <label for="district" class="form-label">Quận/huyện: </label>
-      <select class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm">
-        <option value="" selected>Chọn quận huyện</option>
-      </select>
-
-      <label for="ward" class="form-label">Phường xã: </label>
-      <select class="form-select form-select-sm mb-3" id="ward" aria-label=".form-select-sm">
-        <option value="" selected>Chọn phường xã</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="address" class="form-label">Địa chỉ cụ thể (số nhà, tên đường)</label>
-      <input type="address" class="form-control" id="adsress">
-    </div> -->
     <button type="submit" class="btn-dangki">Đăng kí</button>
     <div class="mb-3">
       <a>Đã có tài khoản?</a>

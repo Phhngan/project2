@@ -62,8 +62,8 @@ margin-left: 0px;
             <input name="password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword2" class="form-label">Nhập lại mật khẩu mới: </label>
-            <input name="password2" type="password2" class="form-control" id="exampleInputPassword2">
+            <label for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu mới: </label>
+            <input name="password2" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <p class="error-noti">{{$error}}</p>
         <br>

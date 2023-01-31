@@ -20,15 +20,16 @@ class ForgetPassController extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
         $password2 = $request->get('password2');
-        $user = DB::table('Users')->where('email', $email)->where('pos_id', 1)->select('Users.email')->get();
-        if ($user->contains($email)) {
-            // $error = 'Email không trùng khớp';
-            // return view(
-            //     'user.forgetPass',
-            //     ['error' => $error]
-            // );
+        $users = DB::table('Users')->select('Users.email')->get();
+        $check = false;
+        foreach ($users as $user){
+            if ($user->email == $email) {
+                $check = true;
+            }
+        }
+        if ($check == true) {
             if ($password2 == $password) {
-                DB::table('Users')->where('email', $email)->where('pos_id', 1)->update(
+                DB::table('Users')->where('email', $email)->update(
                     ['password' => Hash::make($password)]
                 );
                 return redirect('login');

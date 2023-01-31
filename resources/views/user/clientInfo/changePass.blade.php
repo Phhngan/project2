@@ -58,15 +58,15 @@ margin-left: 0px;
     <div class="form-group">
         <div class="mb-3">
             <label for="oldPass" class="form-label">Nhập mật khẩu cũ: </label>
-            <input name="oldPass" type="oldPass" class="form-control" id="oldPass" placeholder="Mật khẩu cũ">
+            <input name="oldPass" type="password" class="form-control" id="oldPass" placeholder="Mật khẩu cũ">
         </div>
         <div class="mb-3">
             <label for="newPass1" class="form-label">Mật khẩu mới: </label>
-            <input name="newPass1" type="newPass1" class="form-control" placeholder="Mật khẩu mới">
+            <input name="newPass1" type="password" class="form-control" placeholder="Mật khẩu mới">
         </div>
         <div class="mb-3">
             <label for="newPass2" class="form-label">Nhập lại mật khẩu mới: </label>
-            <input name="newPass2" type="newPass2" class="form-control" placeholder="Nhập lại mật khẩu mới">
+            <input name="newPass2" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
         </div>
         <p class="error-noti">{{$error}}</p>
         <br>

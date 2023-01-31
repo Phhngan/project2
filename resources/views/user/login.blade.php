@@ -58,8 +58,7 @@ padding: 50px;
             <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>
-        <br>
-        <a>{{$error}}</a>
+        <p class="error-noti">{{$error}}</p>
         <br>
         <button type="submit" class="btn-dangnhap">Submit</button>
         <div class="mb-3">

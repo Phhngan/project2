@@ -25,7 +25,7 @@ class ProductsDatabase extends Seeder
                     'prd_weigh' => 500,
                     'prd_source' => 'Việt Nam',
                     'prd_price' => 95000,
-                    'prd_discount' => 0,
+                    'prd_discount' => 15,
                     'prd_description' => 'Khô gà được lựa chọn từ những miếng thịt gà tươi thơm ngon. Sản xuất dựa trên công nghệ hiện đại đảm bảo an toàn vệ sinh thực phẩm.',
                 ],
                 [
@@ -35,7 +35,7 @@ class ProductsDatabase extends Seeder
                     'prd_weigh' => 300,
                     'prd_source' => 'Việt Nam',
                     'prd_price' => 50000,
-                    'prd_discount' => 0,
+                    'prd_discount' => 5,
                     'prd_description' => 'Món cơm cháy chà bông giòn rụm, hòa quyện cùng chà bông mặn mặn, ngọt ngọt rất hấp dẫn. Sản xuất dựa trên công nghệ hiện đại đảm bảo an toàn vệ sinh thực phẩm.',
                 ],
                 [
@@ -75,7 +75,7 @@ class ProductsDatabase extends Seeder
                     'prd_weigh' => 200,
                     'prd_source' => 'Pháp',
                     'prd_price' => 96000,
-                    'prd_discount' => 0,
+                    'prd_discount' => 15,
                     'prd_description' => 'Cách dùng: Có thể dùng ngay, nước có ga Coca-Cola sẽ ngon hơn khi uống lạnh hoặc pha chế các loại đồ uống như cocktail.',
                 ],
                 [
@@ -99,17 +99,17 @@ class ProductsDatabase extends Seeder
                     'prd_description' => 'Thành phần: Lúa mì mỹ, đường, dầu thực vật (dầu cọ từ malaysia), nước, muối tinh, glucose, chất điều chỉnh độ axit, bột ớt, hương liệu tổng hợp (hương vị Gim, hương vị creacker),...',
                 ],
                 [
-                    'prd_code' => 'SP10',
+                    'prd_code' => 'SP9',
                     'prd_name' => 'Sữa Dưa Gang Binggrae (lốc 6 hộp)',
                     'prd_type_id' => 3,
                     'prd_weigh' => 200,
                     'prd_source' => 'Hàn Quốc',
                     'prd_price' => 135000,
-                    'prd_discount' => 0,
+                    'prd_discount' => 13,
                     'prd_description' => 'Đơn giản bởi Sữa dưa gang mang đến cho bạn một cảm giác nhẹ nhàng với vị ngọt dịu. Sản phẩm phù hợp cho mọi lứa tuổi đặc biệt là người lớn tuổi và trẻ em trên 1 tuổi',
                 ],
                 [
-                    'prd_code' => 'SP13',
+                    'prd_code' => 'SP10',
                     'prd_name' => 'Soda nho Chupa Chups',
                     'prd_type_id' => 3,
                     'prd_weigh' => 345,
@@ -119,7 +119,7 @@ class ProductsDatabase extends Seeder
                     'prd_description' => 'Thành phần: Nước có ga, xi-rô fructose, đường, axit citric, nước ép nho đen, kali citrate... Bảo quản: Nơi khô ráo, thoáng mát và tránh ánh nắng mặt trời',
                 ],
                 [
-                    'prd_code' => 'SP14',
+                    'prd_code' => 'SP11',
                     'prd_name' => 'Soda cam Chupa Chups',
                     'prd_type_id' => 3,
                     'prd_weigh' => 345,
@@ -129,7 +129,7 @@ class ProductsDatabase extends Seeder
                     'prd_description' => 'Thành phần: Nước có ga, xi rô ngô, chiết xuất cam, kẹo cao su Ả Rập (E414), vitamin C, hương cam, hương nhân tạo (cam)...',
                 ],
                 [
-                    'prd_code' => 'SP18',
+                    'prd_code' => 'SP12',
                     'prd_name' => 'Bánh chocopie nho Lotte (hộp 12 cái)',
                     'prd_type_id' => 2,
                     'prd_weigh' => 216,
@@ -139,13 +139,13 @@ class ProductsDatabase extends Seeder
                     'prd_description' => 'Thành phần: Kem sữa, kem thực vật, đường, bột whey protein, bột mì, siro tinh bột, siro nho mẫu đơn shine muscat, dầu đã qua chế biến, dầu ăn hỗn hợp, nước tinh khiết, chất lỏng trứng, chất lỏng sorbitol, cô đặc nho, glycerin, muối tinh,...',
                 ],
                 [
-                    'prd_code' => 'SP19',
+                    'prd_code' => 'SP13',
                     'prd_name' => 'Bánh chocopie kem chuối Orion (hộp 12 cái)',
                     'prd_type_id' => 2,
                     'prd_weigh' => 444,
                     'prd_source' => 'Hàn Quốc',
                     'prd_price' => 105000,
-                    'prd_discount' => 0,
+                    'prd_discount' => 8,
                     'prd_description' => 'Thành phần: Bột mì, kem chuối trắng, đường, xi-rô ngô, chất lỏng toàn bộ trứng, sữa bột nguyên chất, chuối nghiền, gelatin, maltodextrin, kem sữa bột, chất điều chỉnh độ chua, muối, bột màu vàng của cây sơn chi, kẹo cao su xanthan,...',
                 ],
             ]
