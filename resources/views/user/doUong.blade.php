@@ -3,9 +3,7 @@
 @section('title','Đồ uống')
 
 @section('style')
-.danhmuc-sp{
-  height: 1100px;
-}
+
 body{
   background-color: #EBECFE;
 }
@@ -55,6 +53,7 @@ body{
     <h3>Không có sản phẩm </h3>
     @endforelse
 </div>
+{{ $products->links() }}
 @endsection
 
 @section('js')

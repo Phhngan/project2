@@ -7,7 +7,8 @@
 <br>
 <a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm</a>
 <br><br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
@@ -16,6 +17,7 @@
         <th>Giá bán</th>
         <th>Hành động</th>
     </tr>
+</thead>
     @forelse($products as $product)
     <tr>
         <td>
@@ -58,4 +60,5 @@
     </tr>
     @endforelse
 </table>
+{{ $products->links() }}
 @endsection

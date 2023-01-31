@@ -42,5 +42,5 @@
     </tr>
     @endforelse
 </table>
-
+{{ $products->links() }}
 @endsection

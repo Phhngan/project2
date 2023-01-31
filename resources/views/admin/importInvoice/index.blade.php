@@ -44,4 +44,5 @@
             </tr>
         @endforelse
     </table>
+    {{ $importInvoices->links() }}
 @endsection

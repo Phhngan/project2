@@ -17,7 +17,7 @@ class ProductController extends Controller
         $products = DB::table('Products')
             ->join('ProductTypes', 'Products.prd_type_id', '=', 'ProductTypes.prd_type_id')
             ->select('Products.*', 'ProductTypes.prd_type')
-            ->get();
+            ->paginate(8);
 
         // Tra ve view -> view se render ra man hinh
         return view('admin/product.index', ['products' => $products]);

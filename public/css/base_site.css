@@ -242,6 +242,8 @@ margin-top: 50px;
     width: 25%;
     padding: 10px;
     height: 300px;
+    display: table;
+    margin-bottom: 20px;
     }
     
     /* Clear floats after the columns */
@@ -276,6 +278,8 @@ margin-top: 50px;
     width: 25%;
     padding: 10px;
     height: 300px;
+    display: table;
+    margin-bottom: 20px;
     }
 
     #zoom {
@@ -443,4 +447,19 @@ padding: 6px;
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+
+
+.quantity-in-cart{
+  width: 24px;
+  background-color: red;
+  color: white;
+  position: absolute;
+  text-align: center;
+  border-radius: 50px;
+  right: 118px;
+  top: 59px;
+  height: 24px;
+  font-size: 13px;
+  padding: 1px;
 }

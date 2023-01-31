@@ -23,7 +23,29 @@ table {
 
   .column-dashboard {
     float: left;
-    width: 28%!important;
+    width: 20%!important;
     padding: 10px;
     margin-left: 50px;
     }
+
+    .qty {
+      width: 65px;
+      height: 25px;
+      text-align: center;
+      padding-bottom: 18px;
+      padding-top: 12px;
+      }
+      
+      input.qtyplus, input.qtyminus{
+      width:26px;
+      height:26px;
+      padding-bottom: 30px;
+      background-color: #A8B3D0;
+      border-style: none;
+      }
+
+      .column-nho {
+        float: left;
+        padding: 10px;
+        margin-left: 50px;
+        }

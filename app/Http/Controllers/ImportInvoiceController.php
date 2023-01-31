@@ -17,7 +17,7 @@ class ImportInvoiceController extends Controller
             ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
             ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
             ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name')->orderByDesc('ImportInvoices.imp_id')
-            ->get();
+            ->paginate(6);
         return view('admin/importInvoice.index', ['importInvoices' => $importInvoices]);
     }
 

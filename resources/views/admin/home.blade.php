@@ -25,7 +25,7 @@
     </a>
   </div>
 
-  <div class="small-box bg-gradient-warning column-dashboard">
+  <div class="small-box bg-gradient-info column-dashboard">
     <div class="inner">
       <h3>
         <?php
@@ -38,7 +38,7 @@
       <p>Đơn hàng chưa duyệt</p>
     </div>
     <div class="icon">
-      <i class="fa fa-hourglass-end"></i>
+      <i class="fas fa-wheelchair"></i> 
     </div>
     <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
       Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
@@ -47,7 +47,7 @@
 
   <div class="small-box bg-gradient-warning column-dashboard">
     <div class="inner">
-      <h3>
+      <h3 style="color:white">
         <?php
         $quantity3 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
           ->where('prd_status_id', '=', 2)
@@ -57,7 +57,7 @@
         echo $quantity3;
         ?>
       </h3>
-      <p>Sản phẩm gần hết hạn</p>
+      <p style="color:white">Sản phẩm gần hết hạn</p>
     </div>
     <div class="icon">
       <i class="fa fa-hourglass-end"></i>
@@ -91,18 +91,31 @@
 </div>
 <hr>
 <h3 class="text-center">Doanh thu theo tháng</h3>
-<label for="province">Năm:</label>
+<div class="row">
+
+<div class="col-nho"style="width:80px">
+<label for="year">Năm:</label>
+</div>
+
+<div class="col-nho" style="width:150px">
 <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
   <input type='button' value='-' class='qtyminus minus' field='quantity' />
   <input type='number' name='quantity' min='2022' max='{{$yearNow}}' value='{{$year}}' class='qty' />
   <input type='button' value='+' class='qtyplus plus' field='quantity' />
-  <br>
+</div>
+
+<div class="col-nho" style="width:200px;margin-top:2px">
   <button type="submit" class="btn btn-primary">Cập nhật</button>
+</div>
+
 </form>
 <div>
+</div>
+
   <canvas id="myChart"></canvas>
 </div>
 
+<!-- Pie Chart -->
 <br>
 <hr><br>
 <div class="row">
@@ -116,6 +129,8 @@
     <div id="piechart2" style="align:center"></div>
   </div>
 </div>
+<hr>
+<!-- Best Seller -->
 
 
 @endsection

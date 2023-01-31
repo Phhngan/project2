@@ -3,9 +3,7 @@
 @section('title','Đồ ngọt')
 
 @section('style')
-.danhmuc-sp{
-  height: 600px;
-}
+
 body{
   background-color: #EBECFE;
 }
