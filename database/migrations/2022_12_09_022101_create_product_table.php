@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('prd_source')->nullable();
             $table->integer('prd_price');
             $table->integer('prd_discount');
-            $table->string('prd_description')->nullable();
+            $table->mediumText('prd_description')->nullable();
             $table->timestamps();
 
             $table->foreign('prd_type_id')->references('prd_type_id')->on('ProductTypes');

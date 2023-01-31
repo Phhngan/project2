@@ -31,10 +31,10 @@ class ClientController extends Controller
         //     ->get();
         $user = Auth::user();
         $users = DB::table('Users')
-        ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-        ->select('Users.*', 'Provinces.pro_name')
-        ->where('Users.id', $user->id)
-        ->get();
+            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
+            ->select('Users.*', 'Provinces.pro_name')
+            ->where('Users.id', $user->id)
+            ->get();
         return view('user/clientInfo.edit', ['users' => $users]);
     }
     function update(Request $request)
@@ -113,8 +113,15 @@ class ClientController extends Controller
     //Huy don
     function cancel($sal_id)
     {
-        DB::table('SalesInvoices')->where('sal_id', $sal_id)
-            ->update(['sal_status_id' => 5]);
-        return redirect('client/invoices');
+        $invoices = DB::table('SalesInvoices')->where('sal_id', $sal_id)->select('SalesInvoices.*')->get();
+        foreach ($invoices as $invoice) {
+            if ($invoice->sal_status_id == 5) {
+                return view('error/don-huy');
+            } else {
+                DB::table('SalesInvoices')->where('sal_id', $sal_id)
+                    ->update(['sal_status_id' => 5]);
+                return redirect('client/invoices');
+            }
+        }
     }
 }

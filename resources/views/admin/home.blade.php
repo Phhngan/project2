@@ -128,23 +128,27 @@
   const ctx = document.getElementById('myChart');
   <?php
   for ($i = 0; $i < 12; $i++) {
+    if ($i < 9) {
+      $a = '0'.$i+1;
+    } else {
+      $a = $i+1;
+    }
     $sales[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
       ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
       ->where('SalesInvoices.sal_status_id', '<', 5)
       ->where('SalesInvoices.sal_status_id', '>', 1)
-      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $i + 1 . '-' . '%')
+      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $a . '-' . '%')
       ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
       ->sum('SalesInvoiceDetails.sal_price');
     $imports[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
       ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
       ->where('SalesInvoices.sal_status_id', '<', 5)
       ->where('SalesInvoices.sal_status_id', '>', 1)
-      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $i + 1 . '-' . '%')
+      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $a . '-' . '%')
       ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
       ->sum('SalesInvoiceDetails.imp_price');
     $revenues[$i] = $sales[$i] - $imports[$i];
   }
-  // dd($revenues)
   ?>
   new Chart(ctx, {
     type: 'bar',
@@ -153,17 +157,20 @@
       datasets: [
         {
           label: 'Tổng tiền bán ra',
-          data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>, <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>],
+          data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>, 
+            <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>],
           borderWidth: 1
         },
         {
           label: 'Tổng tiền nhập vào',
-          data: [<?php echo $imports[0] ?>, <?php echo $imports[1] ?>, <?php echo $imports[2] ?>, <?php echo $imports[3] ?>, <?php echo $imports[4] ?>, <?php echo $imports[5] ?>, <?php echo $imports[6] ?>, <?php echo $imports[7] ?>, <?php echo $imports[8] ?>, <?php echo $imports[9] ?>, <?php echo $imports[10] ?>, <?php echo $imports[11] ?>],
+          data: [<?php echo $imports[0] ?>, <?php echo $imports[1] ?>, <?php echo $imports[2] ?>, <?php echo $imports[3] ?>, <?php echo $imports[4] ?>, <?php echo $imports[5] ?>, 
+            <?php echo $imports[6] ?>, <?php echo $imports[7] ?>, <?php echo $imports[8] ?>, <?php echo $imports[9] ?>, <?php echo $imports[10] ?>, <?php echo $imports[11] ?>],
           borderWidth: 1
         },
         {
           label: 'Tổng tiền lãi',
-          data: [<?php echo $revenues[0] ?>, <?php echo $revenues[1] ?>, <?php echo $revenues[2] ?>, <?php echo $revenues[3] ?>, <?php echo $revenues[4] ?>, <?php echo $revenues[5] ?>, <?php echo $revenues[6] ?>, <?php echo $revenues[7] ?>, <?php echo $revenues[8] ?>, <?php echo $revenues[9] ?>, <?php echo $revenues[10] ?>, <?php echo $revenues[11] ?>],
+          data: [<?php echo $revenues[0] ?>, <?php echo $revenues[1] ?>, <?php echo $revenues[2] ?>, <?php echo $revenues[3] ?>, <?php echo $revenues[4] ?>, <?php echo $revenues[5] ?>, 
+            <?php echo $revenues[6] ?>, <?php echo $revenues[7] ?>, <?php echo $revenues[8] ?>, <?php echo $revenues[9] ?>, <?php echo $revenues[10] ?>, <?php echo $revenues[11] ?>],
           borderWidth: 1
         },
       ]
@@ -244,10 +251,9 @@
         ?>
       ],
     ]);
-    <?php $total1 = $num1 + $num2 + $num3 + $num4 + $num5 ?>
     // Optional; add a title and set the width and height of the chart
     var options = {
-      'title': 'Tổng số sản phẩm',
+      'title': 'Tổng số sản phẩm: '+<?php echo $num1+$num2+$num3+$num4+$num5 ?>,
       'width': 550,
       'height': 400
     };
@@ -317,7 +323,7 @@
 
     // Optional; add a title and set the width and height of the chart
     var options = {
-      'title': 'Tổng số đơn hàng',
+      'title': 'Tổng số đơn hàng: '+<?php echo $num6+$num7+$num8+$num9+$num10 ?>,
       'width': 550,
       'height': 400
     };

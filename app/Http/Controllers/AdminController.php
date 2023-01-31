@@ -26,29 +26,22 @@ class AdminController extends Controller
         var_dump($year);
         return redirect('admin/home/' . $year);
     }
-    // function updateYear(Request $request)
-    // {
-    //     $year = $request->get('quantity');
-    //     dd($year);
-    //     return redirect('admin/home/'.$year);
-    // }
     function viewHome($year)
     {
-        // for ($i = 0; $i < 12; $i++) {
-        //     $sales[$i] = DB::table('SalesInvoiceDetails')
-        //         ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
-        //         ->where('SalesInvoices.sal_status_id', '<', 5)
-        //         ->where('SalesInvoices.sal_status_id', '>', 1)
-        //         ->where('SalesInvoices.sal_date', 'like', '%' . '-'. $i+1 .'-'. '%')
-        //         ->where('SalesInvoices.sal_date', 'like', '%' . $year. '%')
-        //         // ->where(date('Y', $timestamp = strtotime('sal_date')), '=', $year) 
-        //         // ->where((int)date('Y', $timestamp = strtotime('SalesInvoices.sal_date')), '=', $i + 1)
-        //         ->sum('SalesInvoiceDetails.sal_price');
-        // }
-        // var_dump($sales);
-        // dd();
+        // $products = DB::table('SalesInvoiceDetails')
+        //     ->select('SalesInvoiceDetails.prd_id')
+        //     // ->distinct()
+        //     ->sum('SalesInvoiceDetails.sal_quantity');
+            // ->get();
+        // dd($products);
         $date = getdate();
         $yearNow = $date['year'];
+        // $monthNow = $date['mon'];
+        // $dayNow = $date['mday'];
+        // var_dump($yearNow);
+        // var_dump($monthNow);
+        // var_dump($dayNow);
+        // dd();
         return view('admin/home')->with('year', $year)->with('yearNow', $yearNow);
     }
 
