@@ -76,7 +76,7 @@ padding: 20px;
 
   <div class="col">
 
-    <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
+    <div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
       <div class="card-body">
         @forelse($locations as $location)
         <div class="row">
@@ -125,7 +125,7 @@ padding: 20px;
 
   <div class="col">
 
-    <div class="card mb-4" id="card-client">
+    <div class="card mb-4" id="card-client" style="height:auto">
       <div class="card-body">
 
         <div class="row">

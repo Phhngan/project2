@@ -101,7 +101,7 @@ color:#3E526D;
 
 <div class="row">
   <div class="col">
-    <div class="card mb-4" id="card-client" style="background-color:#EBECFE">
+    <div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
       <div class="card-body">
         @forelse($addresses as $address)
         <div class="row">
@@ -149,7 +149,7 @@ color:#3E526D;
       </div>
     </div>
   </div>
-  <div class="card mb-4" id="card-client">
+  <div class="card mb-4" id="card-client" style="height:auto">
     <div class="card-body">
 
       <div class="row">
