@@ -164,7 +164,7 @@ to {opacity:1 ;}
   <div class="product-description">
     <hr>
     <h4 class="section-details">MÔ TẢ SẢN PHẨM</h4>
-    <p>{{$product->prd_description}}</p>
+    <?php echo $product->prd_description?>
 
   </div>
   <hr>
