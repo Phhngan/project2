@@ -38,12 +38,12 @@
             <p>{{$product->imp_expiryDate}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Chuyển</a>
+            <a class="btn btn-outline-primary" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Chuyển</a>
         </td>
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sach rong</td>
+        <td colspan="3">Danh sách rỗng</td>
     </tr>
     @endforelse
 </table>

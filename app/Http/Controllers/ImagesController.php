@@ -15,7 +15,7 @@ class ImagesController extends Controller
         $images = DB::table('Images')
             ->join('Products', 'Images.prd_id', '=', 'Products.prd_id')
             ->select('Images.*', 'Products.prd_name', 'Products.prd_code')
-            ->paginate(4);
+            ->get();
         return view('admin/images.index', ['images' => $images]);
     }
 

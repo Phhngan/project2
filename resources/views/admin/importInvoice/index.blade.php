@@ -6,7 +6,8 @@
 <br>
     <a class="btn btn-primary" href="{{url('/admin/importInvoice/create')}}" role="button">+ Thêm hóa đơn nhập</a>
     <br><br>
-    <table class="table">
+    <table class="table" id="myTable">
+        <thead>
         <tr>
             <th>Mã hóa đơn</th>
             <th>Đơn vị cung cấp</th>
@@ -15,6 +16,7 @@
             <th>Nhân viên nhập hàng</th>
             <th>Hành động</th>
         </tr>
+        </thead>
         @forelse($importInvoices as $importInvoice)
             <tr>
                 <td>
@@ -44,5 +46,4 @@
             </tr>
         @endforelse
     </table>
-    {{ $importInvoices->links() }}
 @endsection

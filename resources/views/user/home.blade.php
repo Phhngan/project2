@@ -23,9 +23,15 @@
 
     <div class="leftcolumn">
       <section class="slideShow">
-        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true" style="width:100%">
-        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack2.jpg?raw=true" style="width:100%">
+        <a href="#order-now">
         <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack1.jpg?raw=true" style="width:100%">
+        </a>
+        <a href="/products">
+        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack2.png?raw=true" style="width:100%">
+        </a>
+        <a href="/products">
+        <img class="mySlides" src="https://github.com/Phhngan/snack_images/blob/master/silder/snack3.jpg?raw=true" style="width:100%">
+        </a>
       </section>
     </div>
 
@@ -65,7 +71,7 @@
 <!-- San pham moi -->
 <div class="sp-moi">
   <div class="cf-title" style="padding-top: 25px">
-  <h3>SẢN PHẨM MỚI NHẤT</h3>
+  <h3 id="order-now">SẢN PHẨM MỚI NHẤT</h3>
 </div>
   <div class="row">
     @forelse($newProducts as $newProduct)
@@ -106,6 +112,7 @@
     @empty
     <h3>Không có sản phẩm </h3>
     @endforelse
+    <a class="xem-them" href="/products" role="button">Xem thêm</a>
   </div>
 </div>
 
@@ -154,6 +161,7 @@
     <h3>Không có sản phẩm </h3>
     @endforelse
   </div>
+  <a class="xem-them" href="/products" role="button">Xem thêm</a>
 </div>
 <!-- phản hồi khách hàng -->
 <div class="phan-hoi-khach-hang" style="background-color:#EBECFE;height:350px;margin-bottom:50px">
@@ -193,19 +201,19 @@
   </div>
 
   <div class="row" id="row-nhan-hang">
-    <div class="column" id="ten-nhan-hang">
+    <div class="column nhan-hang-hover" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca" style="width:100%">
     </div>
-    <div class="column" id="ten-nhan-hang">
+    <div class="column nhan-hang-hover" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo" style="width:100%">
     </div>
-    <div class="column" id="ten-nhan-hang">
+    <div class="column nhan-hang-hover" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/pocky2.jpg?raw=true" alt="pocky" style="width:100%">
     </div>
-    <div class="column" id="ten-nhan-hang">
+    <div class="column nhan-hang-hover" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/coca.png?raw=true" alt="co-ca" style="width:100%">
     </div>
-    <div class="column" id="ten-nhan-hang">
+    <div class="column nhan-hang-hover" id="ten-nhan-hang">
       <img src="https://github.com/Phhngan/snack_images/blob/master/nhan-hang/oreo.png?raw=true" alt="oreo" style="width:100%">
     </div>
   </div>

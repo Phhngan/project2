@@ -106,7 +106,7 @@ class MenuController extends Controller
                 ->where('Images.img_role', 1)
                 ->where('prd_name', 'like', '%' . $search . '%')
                 ->select('Products.*', 'Images.img_url')
-                ->get();
+                ->paginate(8);
             return view('user/search')->with('products', $products);
         } else {
             return redirect(('products'));

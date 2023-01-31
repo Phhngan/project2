@@ -52,6 +52,7 @@ background-color: #EBECFE;
     <h3>Không có sản phẩm </h3>
     @endforelse
 </div>
+{{ $products->links() }}
 @endsection
 
 @section('js')

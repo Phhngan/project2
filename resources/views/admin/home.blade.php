@@ -38,7 +38,7 @@
       <p>Đơn hàng chưa duyệt</p>
     </div>
     <div class="icon">
-      <i class="fas fa-wheelchair"></i>
+      <i class="fa fa-cubes"></i>
     </div>
     <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
       Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
@@ -69,8 +69,8 @@
 
   <div class="small-box bg-gradient-danger column-dashboard">
     <div class="inner">
-      <h3>
-        <?php
+      <h3 style="color:white">
+      <?php
         $quantity4 = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
           ->where('prd_status_id', '=', 3)
           ->select('ImportInvoiceDetails.imp_expiryDate')
@@ -78,10 +78,11 @@
           ->count();
         echo $quantity4;
         ?>
-        <p>Sản phẩm hết hạn</p>
+      </h3>
+      <p style="color:white">Sản phẩm hết hạn</p>
     </div>
     <div class="icon">
-      <i class="fa fa-cubes"></i>
+      <i class="fas fa-wheelchair"></i>
     </div>
     <a href="/admin/productStatus/het-han" class="small-box-footer">
       Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
@@ -118,18 +119,18 @@
 <!-- Pie Chart -->
 <br>
 <hr><br>
-<div class="row">
-  <div class="col">
+<div class="row" style="background-color:#CED7FD;border-radius:5px;padding-bottom:20px">
+  <div class="col"><br>
     <h3 class="text-center">Trạng thái sản phẩm</h3>
-    <div id="piechart1" style="align:center"></div>
+    <div id="piechart1" style="align:center;margin-left:20px"></div>
   </div>
 
-  <div class="col">
+  <div class="col"><br>
     <h3 class="text-center">Trạng thái đơn hàng</h3>
-    <div id="piechart2" style="align:center"></div>
+    <div id="piechart2" style="align:center;margin-left:20px"></div>
   </div>
 </div>
-<hr>
+<hr><br>
 <!-- Best Seller -->
 
 

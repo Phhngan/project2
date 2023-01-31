@@ -126,11 +126,12 @@ color:#3E526D;
             <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
             @endforeach
           </select>
-          <label for="district" style="float:left;padding-bottom:6px">Huyện</label>
+          <br>
+          <label for="district" style="float:left;padding-bottom:6px">Quận/Huyện</label>
           <br>
           <input value="{{ $address->sal_district  }}" name="district" type="text" class="form-control" placeholder="Huyện">
           <br>
-          <label for="town" style="float:left;padding-bottom:6px">Xã:</label>
+          <label for="town" style="float:left;padding-bottom:6px">Phường/Xã:</label>
           <br>
           <input value="{{ $address->sal_town  }}" name="town" type="text" class="form-control" placeholder="Xã">
           <br>

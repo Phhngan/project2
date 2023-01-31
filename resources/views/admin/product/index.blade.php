@@ -17,7 +17,7 @@
         <th>Giá bán</th>
         <th>Hành động</th>
     </tr>
-</thead>
+    </thead>
     @forelse($products as $product)
     <tr>
         <td>
@@ -60,5 +60,4 @@
     </tr>
     @endforelse
 </table>
-{{ $products->links() }}
 @endsection

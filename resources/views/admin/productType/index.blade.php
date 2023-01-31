@@ -6,12 +6,14 @@
 <br>
 <a class="btn btn-primary" href="{{url('admin/productType/create')}}" role="button">+ Thêm loại sản phẩm</a>
 <br><br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th>Mã</th>
         <th>Loại sản phẩm</th>
         <th>Hành động</th>
     </tr>
+    </thead>
     @forelse($productTypes as $productType)
     <tr>
         <td>

@@ -7,7 +7,8 @@
 <a class="btn btn-primary" href="{{url('admin/images/create')}}" role="button">+ Thêm ảnh</a>
 <br>
 <br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th>Ảnh</th>
         <th>URL ảnh</th>
@@ -16,6 +17,7 @@
         <th>Tên sản phẩm</th>
         <th>Hành động</th>
     </tr>
+    </thead>
     @forelse($images as $image)
     <tr>
         <td>
@@ -45,5 +47,4 @@
     </tr>
     @endforelse
 </table>
-{{ $images->links() }}
 @endsection
