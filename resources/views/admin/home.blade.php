@@ -38,7 +38,7 @@
       <p>Đơn hàng chưa duyệt</p>
     </div>
     <div class="icon">
-      <i class="fas fa-wheelchair"></i> 
+      <i class="fas fa-wheelchair"></i>
     </div>
     <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
       Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
@@ -93,24 +93,24 @@
 <h3 class="text-center">Doanh thu theo tháng</h3>
 <div class="row">
 
-<div class="col-nho"style="width:80px">
-<label for="year">Năm:</label>
-</div>
+  <div class="col-nho" style="width:80px">
+    <label for="year">Năm:</label>
+  </div>
 
-<div class="col-nho" style="width:150px">
-<form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
-  <input type='button' value='-' class='qtyminus minus' field='quantity' />
-  <input type='number' name='quantity' min='2022' max='{{$yearNow}}' value='{{$year}}' class='qty' />
-  <input type='button' value='+' class='qtyplus plus' field='quantity' />
-</div>
+  <div class="col-nho" style="width:150px">
+    <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
+      <input type='button' value='-' class='qtyminus minus' field='quantity' />
+      <input type='number' name='quantity' min='2022' max='{{$yearNow}}' value='{{$year}}' class='qty' />
+      <input type='button' value='+' class='qtyplus plus' field='quantity' />
+  </div>
 
-<div class="col-nho" style="width:200px;margin-top:2px">
-  <button type="submit" class="btn btn-primary">Cập nhật</button>
-</div>
+  <div class="col-nho" style="width:200px;margin-top:2px">
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+  </div>
 
-</form>
-<div>
-</div>
+  </form>
+  <div>
+  </div>
 
   <canvas id="myChart"></canvas>
 </div>
@@ -144,48 +144,66 @@
   <?php
   for ($i = 0; $i < 12; $i++) {
     if ($i < 9) {
-      $a = '0'.$i+1;
+      $month = '0' . $i + 1;
     } else {
-      $a = $i+1;
+      $month = $i + 1;
     }
-    $sales[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
+    $invoices = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
       ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
       ->where('SalesInvoices.sal_status_id', '<', 5)
       ->where('SalesInvoices.sal_status_id', '>', 1)
-      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $a . '-' . '%')
+      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $month . '-' . '%')
       ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
-      ->sum('SalesInvoiceDetails.sal_price');
-    $imports[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
-      ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
-      ->where('SalesInvoices.sal_status_id', '<', 5)
-      ->where('SalesInvoices.sal_status_id', '>', 1)
-      ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $a . '-' . '%')
-      ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
-      ->sum('SalesInvoiceDetails.imp_price');
-    $revenues[$i] = $sales[$i] - $imports[$i];
+      ->select('SalesInvoiceDetails.*')
+      ->get();
+    $sales[$i] = 0;
+    $imports[$i] = 0;
+    $revenues[$i] = 0;
+    foreach ($invoices as $invoice) {
+      $sales[$i] = $sales[$i] + ($invoice->sal_price * $invoice->sal_quantity);
+      $imports[$i] = $imports[$i] + ($invoice->imp_price * $invoice->sal_quantity);
+      $revenues[$i] = $sales[$i] - $imports[$i];
+    }
+    // $sales[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
+    //   ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+    //   ->where('SalesInvoices.sal_status_id', '<', 5)
+    //   ->where('SalesInvoices.sal_status_id', '>', 1)
+    //   ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $month . '-' . '%')
+    //   ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
+    //   ->sum('SalesInvoiceDetails.sal_price * SalesInvoiceDetails.sal_quantity');
+    // $imports[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
+    //   ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+    //   ->where('SalesInvoices.sal_status_id', '<', 5)
+    //   ->where('SalesInvoices.sal_status_id', '>', 1)
+    //   ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $month . '-' . '%')
+    //   ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
+    //   ->sum('SalesInvoiceDetails.imp_price', '*', 'SalesInvoiceDetails.sal_quantity');
+    // $revenues[$i] = $sales[$i] - $imports[$i];
   }
   ?>
   new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-      datasets: [
-        {
+      datasets: [{
           label: 'Tổng tiền bán ra',
-          data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>, 
-            <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>],
+          data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>,
+            <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>
+          ],
           borderWidth: 1
         },
         {
           label: 'Tổng tiền nhập vào',
-          data: [<?php echo $imports[0] ?>, <?php echo $imports[1] ?>, <?php echo $imports[2] ?>, <?php echo $imports[3] ?>, <?php echo $imports[4] ?>, <?php echo $imports[5] ?>, 
-            <?php echo $imports[6] ?>, <?php echo $imports[7] ?>, <?php echo $imports[8] ?>, <?php echo $imports[9] ?>, <?php echo $imports[10] ?>, <?php echo $imports[11] ?>],
+          data: [<?php echo $imports[0] ?>, <?php echo $imports[1] ?>, <?php echo $imports[2] ?>, <?php echo $imports[3] ?>, <?php echo $imports[4] ?>, <?php echo $imports[5] ?>,
+            <?php echo $imports[6] ?>, <?php echo $imports[7] ?>, <?php echo $imports[8] ?>, <?php echo $imports[9] ?>, <?php echo $imports[10] ?>, <?php echo $imports[11] ?>
+          ],
           borderWidth: 1
         },
         {
           label: 'Tổng tiền lãi',
-          data: [<?php echo $revenues[0] ?>, <?php echo $revenues[1] ?>, <?php echo $revenues[2] ?>, <?php echo $revenues[3] ?>, <?php echo $revenues[4] ?>, <?php echo $revenues[5] ?>, 
-            <?php echo $revenues[6] ?>, <?php echo $revenues[7] ?>, <?php echo $revenues[8] ?>, <?php echo $revenues[9] ?>, <?php echo $revenues[10] ?>, <?php echo $revenues[11] ?>],
+          data: [<?php echo $revenues[0] ?>, <?php echo $revenues[1] ?>, <?php echo $revenues[2] ?>, <?php echo $revenues[3] ?>, <?php echo $revenues[4] ?>, <?php echo $revenues[5] ?>,
+            <?php echo $revenues[6] ?>, <?php echo $revenues[7] ?>, <?php echo $revenues[8] ?>, <?php echo $revenues[9] ?>, <?php echo $revenues[10] ?>, <?php echo $revenues[11] ?>
+          ],
           borderWidth: 1
         },
       ]
@@ -268,7 +286,7 @@
     ]);
     // Optional; add a title and set the width and height of the chart
     var options = {
-      'title': 'Tổng số sản phẩm: '+<?php echo $num1+$num2+$num3+$num4+$num5 ?>,
+      'title': 'Tổng số sản phẩm: ' + <?php echo $num1 + $num2 + $num3 + $num4 + $num5 ?>,
       'width': 550,
       'height': 400
     };
@@ -338,7 +356,7 @@
 
     // Optional; add a title and set the width and height of the chart
     var options = {
-      'title': 'Tổng số đơn hàng: '+<?php echo $num6+$num7+$num8+$num9+$num10 ?>,
+      'title': 'Tổng số đơn hàng: ' + <?php echo $num6 + $num7 + $num8 + $num9 + $num10 ?>,
       'width': 550,
       'height': 400
     };
