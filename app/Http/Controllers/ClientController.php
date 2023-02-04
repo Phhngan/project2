@@ -115,12 +115,12 @@ class ClientController extends Controller
     {
         $invoices = DB::table('SalesInvoices')->where('sal_id', $sal_id)->select('SalesInvoices.*')->get();
         foreach ($invoices as $invoice) {
-            if ($invoice->sal_status_id == 5) {
-                return view('error/don-huy');
-            } else {
+            if ($invoice->sal_status_id == 1) {
                 DB::table('SalesInvoices')->where('sal_id', $sal_id)
                     ->update(['sal_status_id' => 5]);
                 return redirect('client/invoices');
+            } else {
+                return view('error/don-huy');
             }
         }
     }
