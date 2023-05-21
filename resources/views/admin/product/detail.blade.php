@@ -47,7 +47,11 @@
             <p>{{$product->prd_description}}</p>
         </td>
     </tr>
-    </td>
+    <tr>
+        <th>Hành động: </th>
+        <td>
+            <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
+        </td>
     </tr>
 
 </table>

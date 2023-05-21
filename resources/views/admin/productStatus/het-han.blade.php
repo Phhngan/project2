@@ -38,7 +38,7 @@
             <p>{{$product->imp_expiryDate}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-primary" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Chuyển</a>
+            <a class="btn btn-outline-primary" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
         </td>
     </tr>
     @empty

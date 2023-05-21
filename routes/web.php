@@ -190,9 +190,15 @@ Route::get("/admin/salesInvoice/thanh-cong", [SalesInvoiceController::class, 'th
 Route::get("/admin/salesInvoice/da-huy", [SalesInvoiceController::class, 'daHuy']);
 // Chi tiết hóa đơn
 Route::get("/admin/salesInvoice/{sal_id}", [SalesInvoiceController::class, 'show']);
-//Chuyển
-Route::get("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
-Route::put("/admin/salesInvoice/{sal_id}/continue", [SalesInvoiceController::class, 'continue']);
+//Xác nhận hóa đơn
+Route::get("/admin/salesInvoice/{sal_id}/xacnhan", [SalesInvoiceController::class, 'xacnhan']);
+Route::put("/admin/salesInvoice/{sal_id}/xacnhan", [SalesInvoiceController::class, 'xacnhan']);
+//Giao hàng
+Route::get("/admin/salesInvoice/{sal_id}/giaohang", [SalesInvoiceController::class, 'giaohang']);
+Route::put("/admin/salesInvoice/{sal_id}/giaohang", [SalesInvoiceController::class, 'giaohang']);
+//Hoàn thành
+Route::get("/admin/salesInvoice/{sal_id}/hoanthanh", [SalesInvoiceController::class, 'hoanthanh']);
+Route::put("/admin/salesInvoice/{sal_id}/hoanthanh", [SalesInvoiceController::class, 'hoanthanh']);
 //Huy
 Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
