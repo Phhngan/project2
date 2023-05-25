@@ -28,20 +28,8 @@ class AdminController extends Controller
     }
     function viewHome($year)
     {
-        // $products = DB::table('SalesInvoiceDetails')
-        //     ->select('SalesInvoiceDetails.prd_id')
-        //     // ->distinct()
-        //     ->sum('SalesInvoiceDetails.sal_quantity');
-            // ->get();
-        // dd($products);
         $date = getdate();
         $yearNow = $date['year'];
-        // $monthNow = $date['mon'];
-        // $dayNow = $date['mday'];
-        // var_dump($yearNow);
-        // var_dump($monthNow);
-        // var_dump($dayNow);
-        // dd();
         return view('admin/home')->with('year', $year)->with('yearNow', $yearNow);
     }
 

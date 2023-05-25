@@ -37,7 +37,7 @@
                 </td>             
                 <td>
                     <a class="btn btn-primary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id)}}" role="button">Xem chi tiết</a> 
-                    <a class="btn btn-success" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/continue')}}" role="button">Chuyển</a>
+                    <a class="btn btn-success" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/hoanthanh')}}" role="button">Hoàn thành</a>
                 </td>
             </tr>
         @empty
