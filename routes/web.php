@@ -271,3 +271,8 @@ Route::get("/success", [CartController::class, 'success']);
 Route::get('/chua-dang-nhap', function () {
     return view('error.chua-dang-nhap');
 });
+
+//tin tức
+Route::get('/tintuc', function () {
+    return view('user.tintuc');
+});

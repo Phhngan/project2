@@ -30,8 +30,8 @@
         </a>
       </div>
       <div class="column-2">
-        <form class="example" action="/action_page.php">
-          <input type="text" placeholder="Search" name="search">
+        <form METHOD="GET" class="example" action="{{url('/search')}}">
+          <input type="text" placeholder="Search" name="searchText">
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
       </div>
@@ -67,14 +67,16 @@
   </nav>
   <!-- header-bottom -->
   
-  <nav class="header-bottom" style="margin-bottom:0px">
+  <nav class="header-bottom">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
     <a href="/products" class="bot-item">Tất cả sản phẩm</a>
     <a href="/doMan" class="bot-item">Đồ mặn</a>
     <a href="/doNgot" class="bot-item">Đồ ngọt</a>
     <a href="/doUong" class="bot-item">Đồ uống</a>
+    <a href="/tintuc" class="bot-item">Tin tức</a>
   </nav>
+
 <div class="row">
   <div class="sidebar-client">
   @yield('sidebar-client')

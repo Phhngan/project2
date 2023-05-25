@@ -42,7 +42,7 @@
         <br>
         <label for="productDescription">Mô tả:</label>
         <br>
-        <input name="productDescription" type="text" class="form-control" placeholder="Mô tả">
+        <textarea id="editor" name="productDescription" type="text" class="form-control" placeholder="Mô tả"></textarea>
         <br>
 
         <button type="submit" class="btn btn-primary">Thêm mới</button>

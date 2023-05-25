@@ -193,7 +193,7 @@ to {opacity:1 ;}
           <a class="price" id="old-price">{{number_format($randomProduct->prd_price).' VND'}}</a>
           <a class="price" id="new-price">{{number_format($randomProduct->prd_price * (100 - $randomProduct->prd_discount)/100).' VND'}}</a>
           <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-
+          
           <div class="popup" onclick="addToCart()">
             <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
             <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>

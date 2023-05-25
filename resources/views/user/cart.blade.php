@@ -150,9 +150,23 @@ color:#3E526D;
       </div>
     </div>
   </div>
+
+<div class="col">
   <div class="card mb-4" id="card-client" style="height:auto">
     <div class="card-body">
+      <div class="row">
+      <label for="note" style="float:left;padding-bottom:6px">Ghi chú:</label>
+          <br>
+          <input  name="note" type="text" class="form-control" placeholder="Ghi chú" style="height:100px">
+          <br><br>
+          <button type="submit" class="btn btn-primary" style="float:left;width:90px;margin-top:10px">Cập nhật</button>
+          <br>
+      </div>
+    </div>
+  </div>
 
+  <div class="card mb-4" id="card-client" style="height:auto">
+    <div class="card-body">
       <div class="row">
         <div class="col-sm-6">
           <p class="mb-0">Tổng tiền:</p>
@@ -176,7 +190,7 @@ color:#3E526D;
     </div>
   </div>
 
-
+</div>
 
 </div>
 </div>
