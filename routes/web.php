@@ -278,7 +278,31 @@ Route::get('/chua-dang-nhap', function () {
     return view('error.chua-dang-nhap');
 });
 
+////// Phần thêm đồ án tốt nghiệp
+
 //tin tức
 Route::get('/tintuc', function () {
     return view('user.tintuc');
+});
+
+//ADMIN tin tức
+Route::get('/admin/tintuc', function () {
+    return view('admin.news.index');
+});
+
+Route::get('/admin/tintuc/create', function () {
+    return view('admin.news.create');
+});
+
+Route::get('/admin/tintuc/edit', function () {
+    return view('admin.news.edit');
+});
+
+Route::get('/admin/tintuc/detail', function () {
+    return view('admin.news.detail');
+});
+
+// sản phẩm yêu thích
+Route::get('/client/favorite', function () {
+    return view('user.clientInfo.favorite');
 });

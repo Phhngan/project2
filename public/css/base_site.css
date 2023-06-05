@@ -56,14 +56,19 @@ form.example::after {
     float: inherit;
 }
 
-.dang-nhap,
-.dang-ki {
+.dang-nhap{
     float: inherit;
     color: white;
-    font-family: "Times New Roman", Times, serif;
     text-decoration: none;
     font-size: 17px;
-    margin-top:30px;
+    margin-top:21px;
+    background-color: #5168A1;
+    padding: 10px;
+    border-radius: 20px;
+}
+.dang-nhap:hover {
+  background-color: white;
+  color: #5168A1;
 }
 
 .cart {
@@ -77,10 +82,15 @@ form.example::after {
     overflow: hidden;
 }
 
-.header-bottom {
+.header-bottom-base {
   background-color: #5168A1;
   overflow: hidden;
-  margin-bottom:25px;
+  margin-bottom: 25px;
+}
+
+.header-bottom-client {
+  background-color: #5168A1;
+  overflow: hidden;
 }
 
 .bot-item {
@@ -111,32 +121,38 @@ text-decoration: none;
 margin-top: 50px;
 }
 
-/* Create four equal columns that floats next to each other */
+/* equal columns that floats next to each other */
 .header .column-1  {
   float: left;
   width: 20%;
   padding: 10px;
-  height: 120px; /* Should be removed. Only for demonstration */
+  height: 120px;
 }
 .header .column-2  {
   float: left;
   width: 55%;
   padding: 10px;
-  height: 120px; /* Should be removed. Only for demonstration */
+  height: 120px;
 }
 .header .column-3  {
   float: left;
-  width: 12%;
+  width: 10%;
   padding: 10px;
-  height: 120px; /* Should be removed. Only for demonstration */
+  height: 120px; 
 }
 .header .column-4  {
   float: left;
-  width: 13%;
+  width: 8%;
   padding: 10px;
-  height: 120px; /* Should be removed. Only for demonstration */
+  height: 120px;
 }
 
+.header .column-5  {
+  float: left;
+  width: 7%;
+  padding: 10px;
+  height: 120px; 
+}
 .dangnhap-dangki:hover .logout {display: block;}
 
 
@@ -307,6 +323,7 @@ margin-top: 50px;
       display: block;
       color: black;
       padding: 18px;
+      margin-right: -12px;
       text-decoration: none;
     }
      
@@ -457,8 +474,8 @@ padding: 6px;
   position: absolute;
   text-align: center;
   border-radius: 50px;
-  right: 118px;
-  top: 59px;
+  right: 148px;
+  top: 62px;
   height: 24px;
   font-size: 13px;
   padding: 1px;

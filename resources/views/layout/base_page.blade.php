@@ -36,8 +36,7 @@
       <div class="column-3">
         @if(Auth::check() == false)
         <div class="dangnhap-dangki">
-          <a href="/login" class="dang-nhap"> Đăng nhập /</a>
-          <a href="/register" class="dang-ki"> Đăng ký </a>
+          <a href="/login" class="dang-nhap"> Đăng nhập</a>
           @else
           <div class="dangnhap-dangki">
             <a href="/client" class="dang-nhap"> {{Auth::user()->name}} </a>
@@ -60,13 +59,19 @@
         </div>
           </a>
         </div>
+        
+        <div class="column-5">
+        <a class="navbar-brand" href="/client/favorite">
+          <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+        </a>
+      </div>
         @endif
 
       </div>
   </nav>
   <!-- header-bottom -->
 
-  <nav class="header-bottom">
+  <nav class="header-bottom-base">
     <a href="/home" class="bot-item">Trang chủ</a>
     <a href="/gioi-thieu" class="bot-item">Giới thiệu</a>
     <a href="/products" class="bot-item">Tất cả sản phẩm</a>
