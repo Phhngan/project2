@@ -22,10 +22,7 @@ border-style: none;
 .card{
 max-width:600px;
 }
-.btn-mua-hang{
-width:300px;
-float:right;
-}
+
 .luu-y{
 background-color:#EC8F9E;
 height:80px;
@@ -190,15 +187,32 @@ padding: 20px;
           </div>
         </div>
         <hr>
-        <a class="btn btn-primary btn-mua-hang" href="/success" role="button">Mua hàng</a>
+
+        <a href="/success" role="button">
+        <button class="btn btn-primary" type="button" style="height: 40px;"> Mua hàng với ZaloPay <img src="https://github.com/Phhngan/snack_images/blob/master/icon/zaloPay.png?raw=true" height ="25" /></button>
+        </a>
+        <a href="/success" role="button">
+        <button class="btn btn-primary" type="button" style="height: 40px;"> Mua hàng với ví điện tử MoMo <img src="https://github.com/Phhngan/snack_images/blob/master/icon/MoMo_Logo.png?raw=true" height ="25" /></button>
+        </a>
         <a class="btn btn-warning" href="/cart" role="button">Quay lại giỏ hàng</a>
       </div>
     </div>
 
-
-
   </div>
 </div>
+
+<div class="card mb-4" id="card-client" style="height:auto">
+    <div class="card-body">
+      <div class="row">
+      <label for="note" style="float:left;padding-bottom:6px">Ghi chú:</label>
+          <br>
+          <input  name="note" type="text" class="form-control" placeholder="Ghi chú" style="height:100px">
+          <br><br>
+          <button type="submit" class="btn btn-primary" style="float:left;width:90px;margin-top:10px">Cập nhật</button>
+          <br>
+      </div>
+    </div>
+            </div>
 
 <div class="luu-y">
   <h6 class="text-center">Quý khách vui lòng kiểm tra kỹ thông tin, địa chỉ nhận hàng. Sau khi nhấn mua hàng, quý khách sẽ nhận được cuộc gọi xác nhận từ Snack.</h6>

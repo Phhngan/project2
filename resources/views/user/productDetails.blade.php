@@ -95,6 +95,7 @@ to {opacity:1 ;}
         <img src="{{$product->img_url}}" style="height:450px">
       </div>
     </div>
+    
     <div class="col">
       <br>
       @if($product->prd_discount == 0)
@@ -110,11 +111,12 @@ to {opacity:1 ;}
       <h4 class="price-details">Giá bán: <span id="new-price"> {{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</span></h4>
       @endif
 
-      <!-- <form id='form-quantity' method='POST' class='quantity' action='#'>
+      <form id='form-quantity' method='POST' class='quantity' action='#'>
         <input type='button' value='-' class='qtyminus minus' field='quantity' />
         <input type='text' name='quantity' value='1' class='qty' />
         <input type='button' value='+' class='qtyplus plus' field='quantity' />
-      </form> -->
+      </form>
+
       <p style="margin:10px 0px 25px 20px;background-color:#FFECEC;padding:6px;border-radius:5px;display:inline-flex">Còn lại:
         <?php
         $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
@@ -194,6 +196,7 @@ to {opacity:1 ;}
           <a class="price" id="new-price">{{number_format($randomProduct->prd_price * (100 - $randomProduct->prd_discount)/100).' VND'}}</a>
           <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
           
+
           <div class="popup" onclick="addToCart()">
             <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
             <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
@@ -232,7 +235,7 @@ to {opacity:1 ;}
 
 @section('js')
 @parent
-<!-- <script>
+<script>
   jQuery(document).ready(($) => {
     $('.quantity').on('click', '.plus', function(e) {
       let $input = $(this).prev('input.qty');
@@ -249,7 +252,7 @@ to {opacity:1 ;}
         }
       });
   });
-</script> -->
+</script>
 
 <script>
   // When the user clicks on div, open the popup

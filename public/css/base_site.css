@@ -506,3 +506,8 @@ padding: 6px;
   cursor: pointer;
   filter: grayscale(50%);
 }
+
+.region{
+  height:20px;
+  font-weight: bold;
+}

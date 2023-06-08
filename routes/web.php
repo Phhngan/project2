@@ -306,3 +306,8 @@ Route::get('/admin/tintuc/detail', function () {
 Route::get('/client/favorite', function () {
     return view('user.clientInfo.favorite');
 });
+
+// bài viết
+Route::get('/bai-viet-1', function () {
+    return view('user./bai-viet');
+});
