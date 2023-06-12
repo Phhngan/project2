@@ -64,7 +64,6 @@ class CartController extends Controller
             ->distinct()
             ->select('Carts.pro_id', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress', 'Provinces.pro_name')
             ->where('Carts.use_id', $user->id)
-
             ->get();
         // dd($addresses);
         return view('user/cart', ['addresses' => $addresses], ['products' => $products]);

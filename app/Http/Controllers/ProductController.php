@@ -15,9 +15,8 @@ class ProductController extends Controller
     {
         // Lay du lieu
         $products = DB::table('Products')
-            ->join('ProductTypes', 'Products.prd_type_id', '=', 'ProductTypes.prd_type_id')
-            ->select('Products.*', 'ProductTypes.prd_type')
-            ->orderBy('prd_id')
+            ->select('Products.*')
+            ->orderByDesc('prd_id')
             ->get();
         // Tra ve view -> view se render ra man hinh
         return view('admin/product.index', ['products' => $products]);

@@ -17,15 +17,13 @@ return new class extends Migration
             $table->increments('prd_id');
             $table->string('prd_code');
             $table->string('prd_name');
-            $table->unsignedInteger('prd_type_id');
+            $table->integer('prd_type_id');
             $table->integer('prd_weigh');
             $table->string('prd_source')->nullable();
             $table->integer('prd_price');
             $table->integer('prd_discount');
             $table->mediumText('prd_description')->nullable();
             $table->timestamps();
-
-            $table->foreign('prd_type_id')->references('prd_type_id')->on('ProductTypes');
         });
     }
 

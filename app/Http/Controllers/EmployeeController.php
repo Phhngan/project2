@@ -15,14 +15,13 @@ class EmployeeController extends Controller
     {
         // $users= User::where('pos_id', '>', 1)->get();
         $users = DB::table('Users')
-            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
-            ->select('Users.*', 'PositionTypes.pos_name')
+            ->select('Users.*')
             ->where('Users.pos_id', '>', 1)
             ->get();
         return view('admin/employee.index', ['users' => $users]);
     }
 
-    //Tao moi   
+    //Tao moi
     function create()
     {
         $user = Auth::user();
@@ -36,40 +35,34 @@ class EmployeeController extends Controller
     {
         $use_lastName = $request->get('lastName');
         $name = $request->get('firstName');
-        $use_birth = $request->get('birth');
         $use_gender = $request->get('gender');
         $email = $request->get('email');
         $use_phone = $request->get('phone');
         $password = $request->get('password');
         $pos_id = $request->get('position');
-        // DB::table('Users')->insert(
-        //     ['use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth,
-        //     'use_gender' => $use_gender, 'email' => $email, 'use_phone' => $use_phone,
-        //     'password' => Hash::make($password), 'pos_id' => $pos_id,]
-        // );
-        \App\Models\User::factory()->create(
+
+        User::factory()->create(
             [
                 'use_lastName' => $use_lastName,
                 'name' => $name,
-                'use_birth' => $use_birth,
                 'use_gender' => $use_gender,
                 'email' => $email,
                 'use_phone' => $use_phone,
                 'password' => Hash::make($password),
-                'pos_id' => $pos_id
+                'pos_id' => $pos_id,
+                'use_gold' => 0
             ]
         );
         return redirect('admin/employee');
     }
 
-    //Sua 
+    //Sua
     function edit($id)
     {
         $user = Auth::user();
         if ($user->pos_id == 2) {
             $users = DB::table('Users')
-                ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
-                ->select('Users.*', 'PositionTypes.pos_name')
+                ->select('Users.*')
                 ->where('Users.id', $id)
                 ->get();
             return view('admin/employee.edit', ['users' => $users]);

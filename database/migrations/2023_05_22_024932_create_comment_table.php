@@ -13,20 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Carts', function (Blueprint $table) {
-            $table->increments('car_id');
+        Schema::create('Comments', function (Blueprint $table) {
+            $table->increments('com_id');
             $table->unsignedInteger('use_id');
             $table->unsignedInteger('prd_id');
-            $table->integer('car_quantity');
-            $table->unsignedInteger('pro_id');
-            $table->string('sal_district');
-            $table->string('sal_town');
-            $table->string('sal_detailAddress');
+            $table->integer('com_rate');
+            $table->unsignedInteger('sal_id');
+            $table->string('com_detail')->nullable();
+            $table->date('com_date');
             $table->timestamps();
 
             $table->foreign('use_id')->references('id')->on('Users');
             $table->foreign('prd_id')->references('prd_id')->on('Products');
-            $table->foreign('pro_id')->references('pro_id')->on('Provinces');
+            $table->foreign('sal_id')->references('sal_id')->on('SalesInvoices');
         });
     }
 
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Carts');
+        Schema::dropIfExists('Comments');
     }
 };

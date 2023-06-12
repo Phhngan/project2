@@ -9,7 +9,7 @@
     @csrf
     @method('put')
     <br>
-    <label for="email">Mật khẩu:</label>
+    <label for="email">Email:</label>
     <br>
     <input value="{{ $user->email  }}" name="email" type="text" class="form-control" placeholder="Email">
     <br>
@@ -19,17 +19,32 @@
     <br>
     <label for="position">Vị trí công việc:</label>
     <br>
-        <?php
-             $positions = Illuminate\Support\Facades\DB::table('PositionTypes')
-                ->select('PositionTypes.*')
-                ->get();
-          ?>
-	<select class="form-control" id="" name="position" required>
-  <option value="{{$user->pos_id}}" selected="selected">----{{$user->pos_name}}----</option>
-			@foreach($positions as $position)
-<option value="{{ $position->pos_id}}">{{ $position->pos_name}}</option>
-@endforeach
-</select>
+    <?php
+    $position = '';
+    if ($user->pos_id == 2) {
+        $position = "Quản lý tổng";
+    }
+    if ($user->pos_id == 3) {
+        $position = "Nhân viên kho";
+    }
+    if ($user->pos_id == 4) {
+        $position = "Nhân viên thu ngân";
+    }
+    if ($user->pos_id == 5) {
+        $position = "Nhân viên tiếp thị";
+    }
+    if ($user->pos_id == 6) {
+        $position = "Nhân viên gói hàng";
+    }
+    ?>
+    <select class="form-control" id="" name="position" required>
+        <option value="{{$user->pos_id}}" selected="selected">----{{$position}}----</option>
+        <option value="2">Quản lý tổng</option>
+        <option value="3">Nhân viên kho</option>
+        <option value="4">Nhân viên thu ngân</option>
+        <option value="5">Nhân viên tiếp thị</option>
+        <option value="6">Nhân viên gói hàng</option>
+    </select>
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>

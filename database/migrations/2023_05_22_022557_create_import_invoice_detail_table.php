@@ -20,13 +20,12 @@ return new class extends Migration
             $table->integer('imp_quantity');
             $table->integer('imp_price');
             $table->date('imp_expiryDate');
-            $table->unsignedInteger('prd_status_id');
+            $table->integer('prd_status_id');
             $table->integer('imp_quantity_left');
             $table->timestamps();
 
             $table->foreign('imp_id')->references('imp_id')->on('ImportInvoices');
             $table->foreign('prd_id')->references('prd_id')->on('Products');
-            $table->foreign('prd_status_id')->references('prd_status_id')->on('ProductStatuss');
         });
     }
 

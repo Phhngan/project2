@@ -14,9 +14,7 @@ class ClientController extends Controller
     {
         $userAuth = Auth::user();
         $users = DB::table('Users')
-            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
-            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-            ->select('Users.*', 'Provinces.pro_name')
+            ->select('Users.*')
             ->where('Users.id', $userAuth->id)
             ->get();
         return view('user.clientInfo.profile', ['users' => $users]);
@@ -88,9 +86,8 @@ class ClientController extends Controller
     {
         $user = Auth::user();
         $invoices =  DB::table('SalesInvoices')
-            ->join('SalesInvoiceStatuss', 'SalesInvoices.sal_status_id', '=', 'SalesInvoiceStatuss.sal_status_id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'SalesInvoiceStatuss.sal_status', 'Provinces.pro_name')
+            // ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
+            ->select('SalesInvoices.*')
             ->where('SalesInvoices.use_id', $user->id)
             ->where('SalesInvoices.sal_status_id', '<', 5)
             ->orderBy('SalesInvoices.sal_status_id')

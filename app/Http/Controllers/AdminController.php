@@ -48,9 +48,7 @@ class AdminController extends Controller
     {
         $userAuth = Auth::user();
         $users = DB::table('Users')
-            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
-            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-            ->select('Users.*', 'PositionTypes.pos_name', 'Provinces.pro_name')
+            ->select('Users.*')
             ->where('Users.id', $userAuth->id)
             ->get();
         // dd($users);
@@ -66,8 +64,7 @@ class AdminController extends Controller
         //     ->where('Users.id', $id)
         //     ->get();
         $users = DB::table('Users')
-            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-            ->select('Users.*', 'Provinces.pro_name')
+            ->select('Users.*')
             ->where('Users.id', $user->id)
             ->get();
         return view('admin/setting/edit', ['users' => $users]);

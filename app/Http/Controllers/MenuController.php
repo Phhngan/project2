@@ -54,9 +54,8 @@ class MenuController extends Controller
     function show($prd_id)
     {
         $products = DB::table('Products')
-            ->join('ProductTypes', 'Products.prd_type_id', '=', 'ProductTypes.prd_type_id')
             ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'ProductTypes.prd_type', 'Images.img_url')
+            ->select('Products.*', 'Images.img_url')
             ->where('Products.prd_id', $prd_id)
             ->get();
 

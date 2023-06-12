@@ -15,10 +15,6 @@
     <br>
     <input name="firstName" type="text" class="form-control" placeholder="Tên">
     <br>
-    <label for="birth">Ngày sinh:</label>
-    <br>
-    <input name="birth" type="date" class="form-control" placeholder="Ngày sinh">
-    <br>
     <label for="gender">Giới tính:</label>
     <br>
     <select class="form-control" id="" name="gender" required>
@@ -41,16 +37,13 @@
     <br>
     <label for="position">Vị trí công việc:</label>
     <br>
-    <?php
-    $positions = Illuminate\Support\Facades\DB::table('PositionTypes')
-        ->select('PositionTypes.*')
-        ->get();
-    ?>
     <select class="form-control" id="" name="position" required>
         <option value="" selected="selected">----Chọn vị trí----</option>
-        @foreach($positions as $position)
-        <option value="{{ $position->pos_id}}">{{ $position->pos_name}}</option>
-        @endforeach
+        <option value="2">Quản lý tổng</option>
+        <option value="3">Nhân viên kho</option>
+        <option value="4">Nhân viên thu ngân</option>
+        <option value="5">Nhân viên tiếp thị</option>
+        <option value="6">Nhân viên gói hàng</option>
     </select>
     <br>
     <button type="submit" class="btn btn-primary">Thêm mới</button>

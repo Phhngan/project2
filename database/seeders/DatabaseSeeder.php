@@ -20,18 +20,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call((ProductTypesDatabase::class));
+        $this->call((ShipsDatabase::class));
         $this->call((ProductsDatabase::class));
         $this->call((ImagesDatabase::class));
-        $this->call((ProductStatussDatabase::class));
         $this->call((SupplyUnitsDatabase::class));
-        $this->call((PositionTypesDatabase::class));
-        $this->call((RegionsDatabase::class));
-        $this->call((ProvincesDatabase::class));
         $this->call((UsersDatabase::class));
         $this->call((ImportInvoicesDatabase::class));
         $this->call((ImportInvoiceDetailsDatabase::class));
-        $this->call((SalesInvoiceStatussDatabase::class));
+        $this->call((VouchersDatabase::class));
         $this->call((SalesInvoicesDatabase::class));
         $this->call((SalesInvoiceDetailsDatabase::class));
     }

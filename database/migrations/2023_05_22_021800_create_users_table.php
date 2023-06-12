@@ -17,24 +17,17 @@ return new class extends Migration
             $table->increments('id');
             $table->string('use_lastName');
             $table->string('name');
-            $table->date('use_birth')->nullable();
             $table->integer('use_gender')->nullable();
             $table->string('email')->unique();
             $table->string('use_phone');
-            $table->unsignedInteger('pro_id')->nullable();
-            $table->string('use_district')->nullable();
-            $table->string('use_town')->nullable();
             $table->string('use_detailAddress')->nullable();
             $table->string('password');
-            $table->unsignedInteger('pos_id');
-            
+            $table->integer('pos_id');
+            $table->integer('use_gold');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('pro_id')->references('pro_id')->on('Provinces');
-            $table->foreign('pos_id')->references('pos_id')->on('PositionTypes');
-
         });
     }
 
