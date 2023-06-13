@@ -4,21 +4,21 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật tiền ship</h1>
-<form action="{{url('/admin/ship/'.$reg_id.'/edit')}}" method="POST">
+<form action="{{url('/admin/ship/'.$ship_id.'/edit')}}" method="POST">
     @csrf
     @method('put')
     <br>
     <label for="ship">Tiền ship:</label>
     <br>
-    <input value="{{ $region->reg_ship }}" name="ship" type="number" class="form-control" placeholder="Tiền ship">
+    <input value="{{ $ship->ship_price }}" name="ship" type="number" class="form-control" placeholder="Tiền ship">
     <br>
     <label for="shipExtra">Phí ship extra:</label>
     <br>
-    <input value="{{ $region->reg_ship_extra }}" name="shipExtra" type="number" class="form-control" placeholder="Phí ship extra">
+    <input value="{{ $ship->ship_extra }}" name="shipExtra" type="number" class="form-control" placeholder="Phí ship extra">
     <br>
     <label for="shipTime">Thời gian ship:</label>
     <br>
-    <input value="{{ $region->reg_ship_time }}" name="shipTime" type="number" class="form-control" placeholder="Thời gian ship">
+    <input value="{{ $ship->ship_time }}" name="shipTime" type="number" class="form-control" placeholder="Thời gian ship">
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>

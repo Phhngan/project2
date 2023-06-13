@@ -9,14 +9,14 @@
 <br><br>
 <table class="table" id="myTable">
     <thead>
-    <tr>
-        <th>Mã sản phẩm</th>
-        <th>Sản phẩm</th>
-        <th>Loại sản phẩm</th>
-        <th>Số lượng</th>
-        <th>Giá bán</th>
-        <th>Hành động</th>
-    </tr>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Sản phẩm</th>
+            <th>Loại sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá bán</th>
+            <th>Hành động</th>
+        </tr>
     </thead>
     @forelse($products as $product)
     <tr>
@@ -28,7 +28,15 @@
 
         </td>
         <td>
-            <p>{{$product->prd_type}}</p>
+            <p>
+                <?php
+                $type = '';
+                if ($product->prd_type_id == 1) $type = 'Đồ mặn';
+                if ($product->prd_type_id == 2) $type = 'Đồ ngọt';
+                if ($product->prd_type_id == 3) $type = 'Đồ uống';
+                echo $type
+                ?>
+            </p>
         </td>
         <td>
             <p>

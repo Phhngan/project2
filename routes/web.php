@@ -135,7 +135,7 @@ Route::post("/admin/supplyUnit/create", [SupplyUnitController::class, 'save']);
 // Sửa đơn vị cung cấp
 Route::get("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'edit']);
 Route::put("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'update']);
-// Xoa 
+// Xoa
 // Route::delete("admin/supplyUnit/{unit_id}/delete", [SupplyUnitController::class, 'delete']);
 
 // HÓA ĐƠN NHẬP HÀNG
@@ -147,7 +147,7 @@ Route::post("/admin/importInvoice/create", [ImportInvoiceController::class, 'sav
 // Sửa 1 hóa đơn
 Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'edit']);
 Route::put("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'update']);
-// Xoa 
+// Xoa
 Route::delete("/admin/importInvoice/{imp_id}/delete", [ImportInvoiceController::class, 'delete']);
 // Xem chi tiết 1 hóa đơn
 Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceDetailController::class, 'index']);
@@ -163,9 +163,9 @@ Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailC
 // SHIP
 // Xem tất cả
 Route::get("/admin/ship", [ShipController::class, 'index']);
-// Sửa 
-Route::get("/admin/ship/{reg_id}/edit", [ShipController::class, 'edit']);
-Route::put("/admin/ship/{reg_id}/edit", [ShipController::class, 'update']);
+// Sửa
+Route::get("/admin/ship/{ship_id}/edit", [ShipController::class, 'edit']);
+Route::put("/admin/ship/{ship_id}/edit", [ShipController::class, 'update']);
 
 // NHÂN VIÊN
 // Xem tất cẩ nhân viên
@@ -205,13 +205,13 @@ Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class
 
 
 /*--------------------------------------------------------------------------*/
-//login 
+//login
 Route::get('/login', [LoginController::class, 'viewLogin']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-//register 
+//register
 Route::get("/register", [RegisterController::class, 'viewRegister']);
 Route::post("/register", [RegisterController::class, 'register']);
 

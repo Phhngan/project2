@@ -20,15 +20,31 @@ class Product extends Model
         'prd_description'
     ];
 
-    public function productType(){
-        return $this->belongsTo(Producttype::class, 'prd_type_id', 'prd_type_id');
-    }
-
-    public function importInvoiceDetail(){
+    public function importInvoiceDetail()
+    {
         return $this->hasMany(Importinvoicedetail::class, 'prd_id', 'prd_id');
     }
-    
-    public function salesInvoiceDetail(){
+
+    public function salesInvoiceDetail()
+    {
         return $this->hasMany(Salesinvoicedetail::class, 'prd_id', 'prd_id');
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'prd_id', 'prd_id');
+    }
+
+    public function image()
+    {
+        return $this->hasMany(Image::class, 'prd_id', 'prd_id');
+    }
+    public function favoriteProduct()
+    {
+        return $this->hasMany(Favoriteproduct::class, 'prd_id', 'prd_id');
+    }
+    public function comment()
+    {
+        return $this->hasMany(Comment::class, 'prd_id', 'prd_id');
     }
 }

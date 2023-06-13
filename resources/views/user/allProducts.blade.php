@@ -10,42 +10,60 @@ background-color: #EBECFE;
 
 @section('content')
 <div class="cf-title">
-  <h3>Tất cả sản phẩm</h3>
+    <h3>Tất cả sản phẩm</h3>
 </div>
 <div class="row danhmuc-sp">
-@forelse($products as $product)
+    @forelse($products as $product)
     @if($product->prd_discount > 0)
     <div class="column-sales">
-      <div class="card">
-        <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
-        <div class="khuyen-mai">
-          <p><strong>- {{$product->prd_discount}}%</strong></p>
+        <div class="card">
+            <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
+            <div class="khuyen-mai">
+                <p><strong>- {{$product->prd_discount}}%</strong></p>
+            </div>
+            <br>
+            <h4 class="ten-sp">{{$product->prd_name}}</h4>
+            <a class="price" id="old-price">{{number_format($product->prd_price).' VND'}}</a>
+            <a class="price" id="new-price">{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</a>
+            <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+            <?php
+            $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+                ->where('prd_status_id', '<', 3)
+                ->sum('ImportInvoiceDetails.imp_quantity_left');
+            ?>
+            @if($quantity != 0)
+            <div class="popup" onclick="addToCart()">
+                <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+            </div>
+            @else
+            <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+            @endif
         </div>
-        <br>
-        <h4 class="ten-sp">{{$product->prd_name}}</h4>
-        <a class="price" id="old-price">{{number_format($product->prd_price).' VND'}}</a>
-        <a class="price" id="new-price">{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</a>
-        <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <div class="popup" onclick="addToCart()">
-        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
-            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
-          </div>
-      </div>
     </div>
     @else
     <div class="column-product">
-      <div class="card">
-        <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
-        <br>
-        <h4>{{$product->prd_name}}</h4>
-        <p class="price">{{number_format($product->prd_price).' VND'}}</p>
-        <br>
-        <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-        <div class="popup" onclick="addToCart()">
-        <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
-            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
-          </div>
-      </div>
+        <div class="card">
+            <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
+            <br>
+            <h4>{{$product->prd_name}}</h4>
+            <p class="price">{{number_format($product->prd_price).' VND'}}</p>
+            <br>
+            <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+            <?php
+            $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+                ->where('prd_status_id', '<', 3)
+                ->sum('ImportInvoiceDetails.imp_quantity_left');
+            ?>
+            @if($quantity != 0)
+            <div class="popup" onclick="addToCart()">
+                <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+            </div>
+            @else
+            <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+            @endif
+        </div>
     </div>
     @endif
     @empty
@@ -58,9 +76,9 @@ background-color: #EBECFE;
 @section('js')
 @parent
 <script>
-function addToCart() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
+    function addToCart() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
 </script>
 @endsection

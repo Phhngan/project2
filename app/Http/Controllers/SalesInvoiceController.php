@@ -16,8 +16,7 @@ class SalesInvoiceController extends Controller
         // $salesInvoices = Salesinvoice::where('sal_status_id', 1)->get();
         $salesInvoices = DB::table('SalesInvoices')
             ->join('Users', 'SalesInvoices.use_id', '=', 'Users.id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
+            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name')
             ->where('sal_status_id', 1)
             ->get();
         return view('admin/salesInvoice.chua-xac-nhan', ['salesInvoices' => $salesInvoices]);
@@ -29,8 +28,7 @@ class SalesInvoiceController extends Controller
         // $salesInvoices = Salesinvoice::where('sal_status_id', 2)->get();
         $salesInvoices = DB::table('SalesInvoices')
             ->join('Users', 'SalesInvoices.use_id', '=', 'Users.id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
+            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name')
             ->where('sal_status_id', 2)
             ->get();
         return view('admin/salesInvoice.da-xac-nhan', ['salesInvoices' => $salesInvoices]);
@@ -42,8 +40,7 @@ class SalesInvoiceController extends Controller
         // $salesInvoices = Salesinvoice::where('sal_status_id', 3)->get();
         $salesInvoices = DB::table('SalesInvoices')
             ->join('Users', 'SalesInvoices.use_id', '=', 'Users.id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
+            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name')
             ->where('sal_status_id', 3)
             ->get();
         return view('admin/salesInvoice.ship-hang', ['salesInvoices' => $salesInvoices]);
@@ -55,8 +52,7 @@ class SalesInvoiceController extends Controller
         // $salesInvoices = Salesinvoice::where('sal_status_id', 4)->get();
         $salesInvoices = DB::table('SalesInvoices')
             ->join('Users', 'SalesInvoices.use_id', '=', 'Users.id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
+            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name')
             ->where('sal_status_id', 4)
             ->orderByDesc('sal_id')
             ->get();
@@ -69,8 +65,7 @@ class SalesInvoiceController extends Controller
         // $salesInvoices = Salesinvoice::where('sal_status_id', 5)->get();
         $salesInvoices = DB::table('SalesInvoices')
             ->join('Users', 'SalesInvoices.use_id', '=', 'Users.id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name', 'Provinces.pro_name')
+            ->select('SalesInvoices.*', 'Users.use_lastName', 'Users.name')
             ->where('sal_status_id', 5)
             ->orderByDesc('sal_id')
             ->get();
@@ -149,9 +144,6 @@ class SalesInvoiceController extends Controller
     {
         $user = Auth::user();
         if ($user->pos_id == 2 || $user->pos_id == 4) {
-            // $salesInvoice = Salesinvoice::findOrFail($sal_id);
-            // $sal_status_id = $salesInvoice->sal_status_id;
-            // if ($sal_status_id == 1) {
             $invoices =  DB::table('SalesInvoiceDetails')
                 ->select('SalesInvoiceDetails.*')
                 ->where('sal_id', $sal_id)
@@ -203,7 +195,7 @@ class SalesInvoiceController extends Controller
     function giaohang($sal_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 4 ||$user->pos_id == 5) {
+        if ($user->pos_id == 2 || $user->pos_id == 4 || $user->pos_id == 5) {
             DB::table('SalesInvoices')->where('sal_id', $sal_id)
                 ->update(['sal_status_id' => 3]);
             return redirect('admin/salesInvoice/ship-hang');
@@ -216,7 +208,7 @@ class SalesInvoiceController extends Controller
     function hoanthanh($sal_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 4 ||$user->pos_id == 5) {
+        if ($user->pos_id == 2 || $user->pos_id == 4 || $user->pos_id == 5) {
             DB::table('SalesInvoices')->where('sal_id', $sal_id)
                 ->update(['sal_status_id' => 4]);
             return redirect('admin/salesInvoice/thanh-cong');

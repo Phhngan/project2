@@ -18,15 +18,16 @@ return new class extends Migration
             $table->unsignedInteger('use_id');
             $table->unsignedInteger('prd_id');
             $table->integer('car_quantity');
-            $table->unsignedInteger('pro_id');
-            $table->string('sal_district');
-            $table->string('sal_town');
-            $table->string('sal_detailAddress');
+            $table->unsignedInteger('ship_id')->nullable();
+            $table->string('car_province')->nullable();
+            $table->string('car_district')->nullable();
+            $table->string('car_town')->nullable();
+            $table->string('car_detailAddress')->nullable();
             $table->timestamps();
 
             $table->foreign('use_id')->references('id')->on('Users');
             $table->foreign('prd_id')->references('prd_id')->on('Products');
-            $table->foreign('pro_id')->references('pro_id')->on('Provinces');
+            $table->foreign('ship_id')->references('ship_id')->on('Ships');
         });
     }
 

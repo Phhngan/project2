@@ -20,16 +20,13 @@ class User extends Authenticatable
     protected $fillable = [
         'use_lastName',
         'name',
-        'use_birth',
         'use_gender',
         'email',
         'use_phone',
-        'pro_id',
-        'use_district',
-        'use_town',
         'use_detailAddress',
         'password',
         'pos_id',
+        'use_gold'
     ];
 
     /**
@@ -51,19 +48,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function positionType(){
-        return $this->belongsTo(Positiontype::class, 'pos_id', 'pos_id');
-    }
-
-    public function province(){
-        return $this->belongsTo(Province::class, 'pro_id', 'pro_id');
-    }
-
-    public function importInvoice(){
+    public function importInvoice()
+    {
         return $this->hasMany(Importinvoice::class, 'id', 'use_id');
     }
 
-    public function salesInvoice(){
+    public function salesInvoice()
+    {
         return $this->hasMany(Salesinvoice::class, 'id', 'use_id');
+    }
+
+    public function favoriteProduct()
+    {
+        return $this->hasMany(Favoriteproduct::class, 'id', 'use_id');
+    }
+    public function comment()
+    {
+        return $this->hasMany(Comment::class, 'id', 'use_id');
+    }
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'id', 'use_id');
     }
 }

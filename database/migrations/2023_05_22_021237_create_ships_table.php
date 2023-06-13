@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('PositionTypes', function (Blueprint $table) {
-            $table->increments('pos_id');
-            $table->string('pos_name');
+        Schema::create('Ships', function (Blueprint $table) {
+            $table->increments('ship_id');
+            $table->integer('ship_price');
+            $table->integer('ship_extra');
+            $table->integer('ship_time');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PositionTypes');
+        Schema::dropIfExists('Ships');
     }
 };

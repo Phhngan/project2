@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Regions', function (Blueprint $table) {
-            $table->increments('reg_id');
-            $table->string('reg_name');
-            $table->integer('reg_ship');
-            $table->integer('reg_ship_extra');
-            $table->integer('reg_ship_time');
+        Schema::create('FavoriteProducts', function (Blueprint $table) {
+            $table->increments('fav_id');
+            $table->unsignedInteger('use_id');
+            $table->unsignedInteger('prd_id');
             $table->timestamps();
+
+            $table->foreign('use_id')->references('id')->on('Users');
+            $table->foreign('prd_id')->references('prd_id')->on('Products');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Regions');
+        Schema::dropIfExists('favorite_product');
     }
 };

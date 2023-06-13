@@ -14,9 +14,7 @@ class ClientController extends Controller
     {
         $userAuth = Auth::user();
         $users = DB::table('Users')
-            ->join('PositionTypes', 'Users.pos_id', '=', 'PositionTypes.pos_id')
-            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-            ->select('Users.*', 'Provinces.pro_name')
+            ->select('Users.*')
             ->where('Users.id', $userAuth->id)
             ->get();
         return view('user.clientInfo.profile', ['users' => $users]);
@@ -25,14 +23,9 @@ class ClientController extends Controller
     //update profile
     function edit()
     {
-        // $user = DB::table('Users')
-        //     ->select('Users.*')
-        //     ->where('Users.id', $id)
-        //     ->get();
         $user = Auth::user();
         $users = DB::table('Users')
-            ->join('Provinces', 'Users.pro_id', '=', 'Provinces.pro_id')
-            ->select('Users.*', 'Provinces.pro_name')
+            ->select('Users.*')
             ->where('Users.id', $user->id)
             ->get();
         return view('user/clientInfo.edit', ['users' => $users]);
@@ -41,18 +34,18 @@ class ClientController extends Controller
     {
         $use_lastName = $request->get('lastName');
         $name = $request->get('firstName');
-        $use_birth = $request->get('birth');
         $use_gender = $request->get('gender');
         $use_phone = $request->get('phone');
-        $pro_id = $request->get('province');
-        $use_district = $request->get('district');
-        $use_town = $request->get('town');
-        $use_detailAddress = $request->get('detailAddress');
+        $province = $request->get('province');
+        $district = $request->get('district');
+        $town = $request->get('town');
+        $detailAddress = $request->get('detailAddress');
+        $use_detailAddress = $detailAddress . ' - ' . $town . ' - ' . $district . ' - ' . $province;
         $user = Auth::user();
         DB::table('Users')->where('id', $user->id)
             ->update([
-                'use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
-                'pro_id' => $pro_id, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress
+                'use_lastName' => $use_lastName, 'name' => $name, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
+                'use_detailAddress' => $use_detailAddress
             ]);
         return redirect('client');
     }
@@ -69,8 +62,6 @@ class ClientController extends Controller
         $oldPass = $request->get('oldPass');
         $newPass1 = $request->get('newPass1');
         $newPass2 = $request->get('newPass2');
-        // $a = Hash::check($oldPass, $user->password);
-        // dd($a);
         if (Hash::check($oldPass, $user->password)) {
             if ($newPass1 == $newPass2) {
                 DB::table('Users')->where('id', $user->id)->update(['password' => Hash::make($newPass1)]);
@@ -88,9 +79,8 @@ class ClientController extends Controller
     {
         $user = Auth::user();
         $invoices =  DB::table('SalesInvoices')
-            ->join('SalesInvoiceStatuss', 'SalesInvoices.sal_status_id', '=', 'SalesInvoiceStatuss.sal_status_id')
-            ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*', 'SalesInvoiceStatuss.sal_status', 'Provinces.pro_name')
+            // ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
+            ->select('SalesInvoices.*')
             ->where('SalesInvoices.use_id', $user->id)
             ->where('SalesInvoices.sal_status_id', '<', 5)
             ->orderBy('SalesInvoices.sal_status_id')
