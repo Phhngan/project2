@@ -55,8 +55,8 @@
        <br>
         <label for="productDescription">Mô tả:</label>
         <br>
-        <input value="{{ $product->prd_description  }}" name="productDescription" type="text" class="form-control"
-               placeholder="Mô tả">
+        <textarea id="editor" value="" name="productDescription" type="text" class="form-control"
+               placeholder="Mô tả">{{ $product->prd_description  }}</textarea>
         <br>
         <button type="submit" class="btn btn-primary">Cập nhật</button>
     </form>

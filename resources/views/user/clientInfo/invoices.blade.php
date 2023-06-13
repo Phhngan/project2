@@ -14,6 +14,7 @@ background-color:#EBECFE;
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
 <a class="active" href="/client/invoices">Đơn hàng</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
@@ -48,7 +49,7 @@ background-color:#EBECFE;
             <p>{{number_format($invoice->sal_total).' VND'}}</p>
         </td>
         <td>
-            <p>{{$invoice->sal_detailAddress}}</p>
+            <p>{{$invoice->sal_detailAddress}} - {{$invoice->sal_town}} - {{$invoice->sal_district}} - {{$invoice->sal_province}}</p>
         </td>
         <td>
             <p>{{$invoice->sal_note}}</p>

@@ -19,6 +19,7 @@ border-radius: 10px;
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a class="active" href="/client/edit">Sửa thông tin</a>
 <a href="/client/invoices">Đơn hàng</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
@@ -27,76 +28,71 @@ border-radius: 10px;
 @section('content-info')
 <br>
 <div class="cf-title">
-  <h3>Cập nhật thông tin khách hàng</h3>
+    <h3>Cập nhật thông tin khách hàng</h3>
 </div>
 <br>
 @foreach($users as $user)
 <form class="edit-info" action="{{url('client/edit')}}" method="POST">
-  @csrf
-  @method('put')
-  <br>
-  <label for="lastName">Họ:</label>
-  <br>
-  <input value="{{ $user->use_lastName }}" name="lastName" type="text" class="form-control" placeholder="Họ">
-  <br>
-  <label for="firstName">Tên:</label>
-  <br>
-  <input value="{{ $user->name }}" name="firstName" type="text" class="form-control" placeholder="Tên">
-  <br>
-  <label for="birth">Ngày sinh:</label>
-  <br>
-  <input value="{{ $user->use_birth }}" name="birth" type="date" class="form-control" placeholder="Ngày sinh">
-  <br>
-  <label for="gender">Giới tính:</label>
-  <br>
-  <!-- <input value="" name="gender" type="text" class="form-control" placeholder="Giới tính"> -->
+    @csrf
+    @method('put')
+    <br>
+    <label for="lastName">Họ:</label>
+    <br>
+    <input value="{{ $user->use_lastName }}" name="lastName" type="text" class="form-control" placeholder="Họ">
+    <br>
+    <label for="firstName">Tên:</label>
+    <br>
+    <input value="{{ $user->name }}" name="firstName" type="text" class="form-control" placeholder="Tên">
+    <br>
+    <label for="gender">Giới tính:</label>
+    <br>
+    <select class="form-control" id="" name="gender" required>
+        <option value="{{$user->use_gender}}" selected="selected">
+            ----<?php
+                if ($user->use_gender == 1) {
+                    echo "Nam";
+                } else
+                    echo "Nữ";
+                ?>----
+        </option>
+        <option value="1">Nam</option>
+        <option value="2">Nữ</option>
+    </select>
+    <br>
+    <label for="phone">Số điện thoại:</label>
+    <br>
+    <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
+    <br>
+    <div>
+        <label for="province">Tỉnh thành:</label>
+        <select class="form-control" id="city" name="province" required>
+            <option value="" selected>Chọn tỉnh thành</option>
+        </select>
 
-  <select class="form-control" id="" name="gender" required>
-    <option value="{{$user->use_gender}}" selected="selected">
-      ----<?php
-          if ($user->use_gender == 1) {
-            echo "Nam";
-          } else
-            echo "Nữ";
-          ?>----
-    </option>
-    <option value="1">Nam</option>
-    <option value="2">Nữ</option>
+        <br>
+        <label for="district">Quận/huyện:</label>
+        <br>
+        <select class="form-control" id="district" name="district" required>
+            <option value="" selected>Chọn quận huyện</option>
+        </select>
 
-  </select>
-
-  <br>
-  <label for="phone">Số điện thoại:</label>
-  <br>
-  <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
-  <br>
-  <label for="province">Tỉnh thành:</label>
-  <?php
-  $provinces = Illuminate\Support\Facades\DB::table('Provinces')
-    ->select('Provinces.*')
-    ->get();
-  ?>
-  <select class="form-control" id="" name="province" required>
-    <option value="{{ $user->pro_id  }}" selected="selected">----{{ $user->pro_name }}----</option>
-    @foreach($provinces as $province)
-    <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
-    @endforeach
-  </select>
-  <br>
-  <label for="district">Quận/huyện:</label>
-  <br>
-  <input value="{{ $user->use_district}}" name="district" type="text" class="form-control" placeholder="Quận/huyện">
-  <br>
-  <label for="town">Phường/xã:</label>
-  <br>
-  <input value="{{ $user->use_town}}" name="town" type="text" class="form-control" placeholder="Phường/xã">
-  <br>
-  <label for="detailAddress">Địa chỉ cụ thể:</label>
-  <br>
-  <input value="{{ $user->use_detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
-  <br>
-  <button type="submit" class="btn btn-primary">Cập nhật</button>
-  <br><br>
+        <br>
+        <label for="town">Phường/xã:</label>
+        <br>
+        <select class="form-control" id="ward" name="town" required>
+            <option value="" selected>Chọn phường xã</option>
+        </select>
+        <br>
+    </div>
+    <!-- <label for="town">Thông tin ship hàng:</label> -->
+    <!-- <div class="region" id="region" name="region"></div>
+    <br> -->
+    <label for="detailAddress">Địa chỉ cụ thể:</label>
+    <br>
+    <input value="" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+    <br>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <br><br>
 </form>
 @endforeach
 
@@ -107,13 +103,89 @@ border-radius: 10px;
 @section('js')
 @parent
 <script>
-  ClassicEditor
-    .create(document.querySelector('#editor'))
-    .then(editor => {
-      console.log(editor);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var citis = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+    };
+    var promise = axios(Parameter);
+    promise.then(function(result) {
+        renderCity(result.data);
+    });
+
+    function renderCity(data) {
+        for (const x of data) {
+            var opt = document.createElement('option');
+            opt.value = x.Name;
+            opt.text = x.Name;
+            opt.setAttribute('data-id', x.Id);
+            citis.options.add(opt);
+        }
+        citis.onchange = function() {
+            district.length = 1;
+            ward.length = 1;
+            if (this.options[this.selectedIndex].dataset.id != "") {
+                const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
+
+                // In tên miền vào phần tử HTML có id là "region"
+                const cityCode = parseInt(result[0].Id);
+                const region = getRegionFromCityCode(cityCode);
+                document.getElementById("region").innerText = `${region}`;
+
+                for (const k of result[0].Districts) {
+                    var opt = document.createElement('option');
+                    opt.value = k.Name;
+                    opt.text = k.Name;
+                    opt.setAttribute('data-id', k.Id);
+                    district.options.add(opt);
+                }
+            }
+        };
+        district.onchange = function() {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === citis.options[citis.selectedIndex].dataset.id);
+            if (this.options[this.selectedIndex].dataset.id != "") {
+                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.options[this.selectedIndex].dataset.id)[0].Wards;
+
+                for (const w of dataWards) {
+                    var opt = document.createElement('option');
+                    opt.value = w.Name;
+                    opt.text = w.Name;
+                    opt.setAttribute('data-id', w.Id);
+                    wards.options.add(opt);
+                }
+            }
+        };
+    }
+    //
+    function getRegionFromCityCode(cityCode) {
+        if (cityCode == 1) {
+            return 'Hà Nội';
+        } else if (cityCode >= 2 && cityCode <= 38) {
+            return 'Miền Bắc';
+        } else if (cityCode >= 39 && cityCode <= 46) {
+            return 'Miền Trung';
+        } else if (cityCode >= 48 && cityCode <= 96) {
+            return 'Miền Nam';
+        } else {
+            return 'Không xác định';
+        }
+    }
+</script>
+
 @endsection

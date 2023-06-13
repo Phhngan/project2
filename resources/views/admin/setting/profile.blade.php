@@ -87,7 +87,7 @@
                 <p class="mb-0">Địa chỉ</p>
             </div>
             <div class="col-sm-9">
-                <p class="text-muted mb-0">{{$user->use_detailAddress}}</p>
+                <p class="text-muted mb-0">{{$user->use_detailAddress}} - {{$user->use_town}} - {{$user->use_district}} - {{$user->use_province}}</p>
             </div>
         </div>
 

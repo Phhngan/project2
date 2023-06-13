@@ -20,7 +20,10 @@ return new class extends Migration
             $table->integer('sal_total');
             $table->unsignedInteger('vou_id')->nullable();
             $table->unsignedInteger('ship_id');
-            $table->string('sal_detailAddress');
+            $table->string('sal_province');
+            $table->string('sal_district');
+            $table->string('sal_town');
+            $table->string('sal_detailAddress')->nullable();
             $table->integer('sal_status_id');
             $table->string('sal_note')->nullable();
             $table->timestamps();

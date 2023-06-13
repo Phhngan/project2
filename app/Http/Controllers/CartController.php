@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,12 +20,13 @@ class CartController extends Controller
         } else {
             $carts = DB::table('Carts')
                 ->where('Carts.prd_id', $prd_id)
+                ->where('Carts.use_id', $user->id)
                 ->get();
             $number = count($carts);
             // dd($number);
             if ($number == 1) {
                 foreach ($carts as $cart) {
-                    DB::table('Carts')->where('prd_id', $prd_id)
+                    DB::table('Carts')->where('prd_id', $prd_id)->where('Carts.use_id', $user->id)
                         ->update([
                             'car_quantity' => $cart->car_quantity + 1
                         ]);
@@ -32,13 +34,13 @@ class CartController extends Controller
             } else {
                 DB::table('Carts')->insert(
                     [
-                        'use_id' => $user->id, 'prd_id' => $prd_id, 'car_quantity' => 1, 'pro_id' => $user->pro_id,
-                        'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
+                        'use_id' => $user->id, 'prd_id' => $prd_id, 'car_quantity' => 1
                     ]
                 );
-                DB::table('Carts')->where('use_id', $user->id)->update([
-                    'pro_id' => $user->pro_id, 'sal_district' => $user->use_district, 'sal_town' => $user->use_town, 'sal_detailAddress' => $user->use_detailAddress,
-                ]);
+                DB::table('Carts')->where('Carts.use_id', $user->id)
+                    ->update([
+                        'ship_id' => null, 'car_detailAddress' => null, 'car_town' => null, 'car_district' => null, 'car_province' => null
+                    ]);
             }
             return back();
         }
@@ -48,25 +50,20 @@ class CartController extends Controller
     function showCart()
     {
         $user = Auth::user();
-        // dd($user->id);
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
             ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')
             ->select('Products.*', 'Carts.*', 'Images.img_url')
-            // ->select('Products.*','Carts.*')
             ->where('Carts.use_id', $user->id)
             ->where('Images.img_role', 1)
-            // ->distinct('pro_id', 'sal_district', 'sal_town', 'sal_detailAddress')
             ->orderByDesc('Carts.car_id')
             ->get();
         $addresses = DB::table('Carts')
-            ->join('Provinces', 'Carts.pro_id', '=', 'Provinces.pro_id')
             ->distinct()
-            ->select('Carts.pro_id', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress', 'Provinces.pro_name')
+            ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
             ->where('Carts.use_id', $user->id)
             ->get();
-        // dd($addresses);
-        return view('user/cart', ['addresses' => $addresses], ['products' => $products]);
+        return view('user/cart', ['products' => $products], ['addresses' => $addresses]);
     }
 
     //update số lượng
@@ -92,12 +89,25 @@ class CartController extends Controller
     function updateAddress(Request $request)
     {
         $user = Auth::user();
-        $pro_id = $request->get('province');
-        $sal_district = $request->get('district');
-        $sal_town = $request->get('town');
-        $sal_detailAddress = $request->get('detailAddress');
+        $car_province = $request->get('province');
+        $car_district = $request->get('district');
+        $car_town = $request->get('town');
+        $car_detailAddress = $request->get('detailAddress');
+        $url = 'https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json';
+        $regions = json_decode(file_get_contents($url));
+        $id = 0;
+        foreach ($regions as $region) {
+            if ($car_province == $region->Name) {
+                $id = $region->Id;
+            }
+        }
+        if ($id == 1) $ship = 1;
+        if ($id >= 2 && $id <= 38) $ship = 2;
+        if ($id >= 39 && $id <= 46) $ship = 3;
+        if ($id >= 48 && $id <= 96) $ship = 4;
         DB::table('Carts')->where('use_id', $user->id)->update([
-            'pro_id' => $pro_id, 'sal_district' => $sal_district, 'sal_town' => $sal_town, 'sal_detailAddress' => $sal_detailAddress,
+            'car_detailAddress' => $car_detailAddress, 'car_province' => $car_province, 'car_district' => $car_district, 'car_town' => $car_town,
+            'ship_id' => $ship
         ]);
         return redirect('/cart');
     }
@@ -115,8 +125,7 @@ class CartController extends Controller
             ->orderByDesc('Carts.car_id')
             ->get();
         $locations = DB::table('Carts')
-            ->join('Provinces', 'Carts.pro_id', '=', 'Provinces.pro_id')
-            ->select('Provinces.pro_name', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress')
+            ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress',)
             ->where('Carts.use_id', $user->id)
             ->distinct()
             ->get();
@@ -136,30 +145,29 @@ class CartController extends Controller
             ->orderByDesc('Carts.car_id')
             ->get();
         $locations = DB::table('Carts')
-            ->select('Carts.pro_id', 'Carts.sal_district', 'Carts.sal_town', 'Carts.sal_detailAddress')
+            ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
             ->where('Carts.use_id', $user->id)
             ->distinct()
             ->get();
         $price = 0;
-        $pro_id = 0;
+        $ship_id = 0;
         $weigh = 0;
         foreach ($products as $product) {
-            $pro_id = $product->pro_id;
+            $ship_id = $product->ship_id;
             $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
             $weigh = $weigh + ($product->prd_weigh * $product->car_quantity);
         }
-        $ships = DB::table('Provinces')
-            ->join('Regions', 'Provinces.reg_id', '=', 'Regions.reg_id')
-            ->select('Regions.*')
-            ->where('Provinces.pro_id', $pro_id)
+        $ships = DB::table('Ships')
+            ->select('Ships.*')
+            ->where('Ships.ship_id', $ship_id)
             ->get();
         $shipMoney = 0;
         foreach ($ships as $ship) {
             if ($weigh <= 2000) {
-                $shipMoney = $ship->reg_ship;
+                $shipMoney = $ship->ship_price;
             } else {
                 $weighDiffer = $weigh - 2000;
-                $shipMoney = $ship->reg_ship + $ship->reg_ship_extra * ($weighDiffer / 200);
+                $shipMoney = $ship->ship_price + $ship->ship_extra * ($weighDiffer / 200);
             }
         }
         // $today = getdate();
@@ -167,8 +175,8 @@ class CartController extends Controller
         foreach ($locations as $location) {
             DB::table('SalesInvoices')->insert(
                 [
-                    'use_id' => $user->id, 'sal_date' => $today, 'sal_total' => $price + $shipMoney, 'pro_id' => $location->pro_id,
-                    'sal_district' => $location->sal_district, 'sal_town' => $location->sal_town, 'sal_detailAddress' => $location->sal_detailAddress,
+                    'use_id' => $user->id, 'sal_date' => $today, 'sal_total' => $price + $shipMoney, 'ship_id' => $ship_id, 'sal_province' => $location->car_province,
+                    'sal_district' => $location->car_district, 'sal_town' => $location->car_town, 'sal_detailAddress' => $location->car_detailAddress,
                     'sal_status_id' => 1
                 ]
             );

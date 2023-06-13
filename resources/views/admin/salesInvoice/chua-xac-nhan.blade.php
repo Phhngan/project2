@@ -30,7 +30,7 @@
             <p>{{number_format($salesInvoice->sal_total).' VND'}}</p>
         </td>
         <td>
-            <p>{{$salesInvoice->sal_detailAddress}}</p>
+            <p>{{$salesInvoice->sal_detailAddress}} - {{$salesInvoice->sal_town}} - {{$salesInvoice->sal_district}} - {{$salesInvoice->sal_province}}</p>
         </td>
         <td>
             <p>{{$salesInvoice->sal_note}}</p>

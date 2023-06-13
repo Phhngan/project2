@@ -15,6 +15,7 @@ margin-right:10px;
 
 @section('sidebar-client')
 <a class="active" href="/client">Thông tin khách hàng</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
 <a href="/client/invoices">Đơn hàng</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
@@ -80,7 +81,7 @@ margin-right:10px;
                 <p class="mb-0">Địa chỉ</p>
             </div>
             <div class="col-sm-9">
-                <p class="text-muted mb-0">{{$user->use_detailAddress}}</p>
+                <p class="text-muted mb-0">{{$user->use_detailAddress}} - {{$user->use_town}} - {{$user->use_district}} - {{$user->use_province}}</p>
             </div>
         </div>
         @empty

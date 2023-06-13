@@ -44,7 +44,7 @@
     <tr>
         <th>Mô tả: </th>
         <td>
-            <p>{{$product->prd_description}}</p>
+            <p>{!!$product->prd_description!!}</p>
         </td>
     </tr>
     <tr>

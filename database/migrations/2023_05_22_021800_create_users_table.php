@@ -20,6 +20,9 @@ return new class extends Migration
             $table->integer('use_gender')->nullable();
             $table->string('email')->unique();
             $table->string('use_phone');
+            $table->string('use_province')->nullable();
+            $table->string('use_district')->nullable();
+            $table->string('use_town')->nullable();
             $table->string('use_detailAddress')->nullable();
             $table->string('password');
             $table->integer('pos_id');

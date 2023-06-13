@@ -390,6 +390,12 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Quản lí tin tức',
+            'url' => '/admin/tintuc',
+            'icon' => 'fa fa-book',
+        ],
+
         ['header' => 'account_settings'],
         
         [
