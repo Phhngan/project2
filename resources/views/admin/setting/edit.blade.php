@@ -76,13 +76,13 @@
     <br>
     <label for="town">Phường/xã:</label>
     <br>
-    <select class="form-control" id="ward">
+    <select class="form-control" id="town">
     <option value="" selected>Chọn phường xã</option>
     </select>
     <br>
     </div>    
 
-    <label for="detailAddress">Địa chỉ cụ thể:</label>
+    <label for="detailAddress">Thôn/Đường/Số nhà:</label>
     <br>
     <input value="{{ $user->use_detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
     <br>
