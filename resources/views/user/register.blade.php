@@ -113,9 +113,6 @@ margin-left: 0px;
     </select>
 </div>    
 
-<div class="region mb-3" id="region"></div>
-
-
     <div class="mb-3">
       <label for="detail" class="form-label">Địa chỉ chi tiết: </label>
       <input name="detail" type="text" class="form-control" id="detail" aria-describedby="emailHelp">
@@ -215,11 +212,6 @@ function renderCity(data) {
     if(this.options[this.selectedIndex].dataset.id != ""){
       const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
 
-// In tên miền vào phần tử HTML có id là "region"
-      const cityCode = parseInt(result[0].Id);
-      const region = getRegionFromCityCode(cityCode);
-      document.getElementById("region").innerText = `Bạn đang ở: ${region}`;
-
       for (const k of result[0].Districts) {
 		var opt = document.createElement('option');
 		 opt.value = k.Name;
@@ -245,20 +237,5 @@ function renderCity(data) {
     }
   };
 }
-//
-function getRegionFromCityCode(cityCode) {
-  if (cityCode == 1) {
-    return 'Hà Nội';
-  } else if (cityCode >= 2 && cityCode <= 38) {
-    return 'Miền Bắc';
-  } else if (cityCode >= 39 && cityCode <= 46) {
-    return 'Miền Trung';
-  } else if (cityCode >= 48 && cityCode <= 96) {
-    return 'Miền Nam';
-  } else {
-    return 'Không xác định';
-  }
-}
-
 	</script>
 @endsection

@@ -151,9 +151,7 @@ color:#3E526D;
           <select class="form-control" id="ward">
           <option value="" selected>Chọn phường xã</option>
           </select>
-
-          <div class="region" id="region"></div>
-
+          <br>
           <label for="detailAddress" style="float:left;padding-bottom:6px">Địa chỉ cụ thể:</label>
           <br>
           <input value="{{ $address->sal_detailAddress  }}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
@@ -259,11 +257,6 @@ function renderCity(data) {
     if(this.options[this.selectedIndex].dataset.id != ""){
       const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
 
-// In tên miền vào phần tử HTML có id là "region"
-      const cityCode = parseInt(result[0].Id);
-      const region = getRegionFromCityCode(cityCode);
-      document.getElementById("region").innerText = `Bạn đang ở: ${region}`;
-
       for (const k of result[0].Districts) {
 		var opt = document.createElement('option');
 		 opt.value = k.Name;
@@ -289,20 +282,5 @@ function renderCity(data) {
     }
   };
 }
-//
-function getRegionFromCityCode(cityCode) {
-  if (cityCode == 1) {
-    return 'Hà Nội';
-  } else if (cityCode >= 2 && cityCode <= 38) {
-    return 'Miền Bắc';
-  } else if (cityCode >= 39 && cityCode <= 46) {
-    return 'Miền Trung';
-  } else if (cityCode >= 48 && cityCode <= 96) {
-    return 'Miền Nam';
-  } else {
-    return 'Không xác định';
-  }
-}
-
 	</script>
 @endsection
