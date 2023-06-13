@@ -50,6 +50,18 @@ class CartController extends Controller
     function showCart()
     {
         $user = Auth::user();
+        $checks = DB::table('Carts')
+            ->select('Carts.*')
+            ->where('Carts.use_id', $user->id)
+            ->get();
+        foreach ($checks as $check) {
+            $quantity = DB::table('ImportInvoiceDetails')->where('prd_id', $check->prd_id)
+                ->where('prd_status_id', '<', 3)
+                ->sum('ImportInvoiceDetails.imp_quantity_left');
+            if ($quantity == 0) {
+                DB::table('Carts')->where('car_id', $check->car_id)->delete();
+            }
+        }
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
             ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')

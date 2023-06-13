@@ -87,9 +87,9 @@ border-radius: 10px;
     <!-- <label for="town">Thông tin ship hàng:</label> -->
     <!-- <div class="region" id="region" name="region"></div>
     <br> -->
-    <label for="detailAddress">Địa chỉ cụ thể:</label>
+    <label for="detailAddress">Thôn/Đường/Số nhà:</label>
     <br>
-    <input value="" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+    <input value="" name="detailAddress" type="text" class="form-control" placeholder="">
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
     <br><br>
@@ -142,10 +142,10 @@ border-radius: 10px;
             if (this.options[this.selectedIndex].dataset.id != "") {
                 const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
 
-                // In tên miền vào phần tử HTML có id là "region"
-                const cityCode = parseInt(result[0].Id);
-                const region = getRegionFromCityCode(cityCode);
-                document.getElementById("region").innerText = `${region}`;
+                // // In tên miền vào phần tử HTML có id là "region"
+                // const cityCode = parseInt(result[0].Id);
+                // const region = getRegionFromCityCode(cityCode);
+                // document.getElementById("region").innerText = `${region}`;
 
                 for (const k of result[0].Districts) {
                     var opt = document.createElement('option');
@@ -173,19 +173,19 @@ border-radius: 10px;
         };
     }
     //
-    function getRegionFromCityCode(cityCode) {
-        if (cityCode == 1) {
-            return 'Hà Nội';
-        } else if (cityCode >= 2 && cityCode <= 38) {
-            return 'Miền Bắc';
-        } else if (cityCode >= 39 && cityCode <= 46) {
-            return 'Miền Trung';
-        } else if (cityCode >= 48 && cityCode <= 96) {
-            return 'Miền Nam';
-        } else {
-            return 'Không xác định';
-        }
-    }
+    // function getRegionFromCityCode(cityCode) {
+    //     if (cityCode == 1) {
+    //         return 'Hà Nội';
+    //     } else if (cityCode >= 2 && cityCode <= 38) {
+    //         return 'Miền Bắc';
+    //     } else if (cityCode >= 39 && cityCode <= 46) {
+    //         return 'Miền Trung';
+    //     } else if (cityCode >= 48 && cityCode <= 96) {
+    //         return 'Miền Nam';
+    //     } else {
+    //         return 'Không xác định';
+    //     }
+    // }
 </script>
 
 @endsection

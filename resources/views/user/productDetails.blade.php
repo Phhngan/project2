@@ -123,10 +123,12 @@ to {opacity:1 ;}
                 echo $quantity;
                 ?> sản phẩm
             </p>
+            @if($quantity != 0)
             <div class="action popup" onclick="addToCart()">
                 <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
             </div>
+            @endif
             <br>
             <div class="product-about">
                 <hr>
@@ -202,13 +204,19 @@ to {opacity:1 ;}
                     <a class="price" id="old-price">{{number_format($randomProduct->prd_price).' VND'}}</a>
                     <a class="price" id="new-price">{{number_format($randomProduct->prd_price * (100 - $randomProduct->prd_discount)/100).' VND'}}</a>
                     <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
-
+                    <?php
+                    $quantity = App\Models\Importinvoicedetail::where('prd_id', $randomProduct->prd_id)
+                        ->where('prd_status_id', '<', 3)
+                        ->sum('ImportInvoiceDetails.imp_quantity_left');
+                    ?>
+                    @if($quantity != 0)
                     <div class="popup" onclick="addToCart()">
                         <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
-
-                    <!-- <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a> -->
+                    @else
+                    <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                    @endif
                 </div>
             </div>
             @else
@@ -220,11 +228,19 @@ to {opacity:1 ;}
                     <p class="price">{{number_format($randomProduct->prd_price).' VND'}}</p>
                     <br>
                     <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
+                    <?php
+                    $quantity = App\Models\Importinvoicedetail::where('prd_id', $randomProduct->prd_id)
+                        ->where('prd_status_id', '<', 3)
+                        ->sum('ImportInvoiceDetails.imp_quantity_left');
+                    ?>
+                    @if($quantity != 0)
                     <div class="popup" onclick="addToCart()">
                         <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
-
+                    @else
+                    <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                    @endif
                 </div>
             </div>
             @endif

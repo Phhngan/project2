@@ -142,7 +142,7 @@ color:#3E526D;
                         <option value="" selected>---{{$town}}---</option>
                     </select>
                     <br>
-                    <label for="detailAddress" style="float:left;padding-bottom:6px">Địa chỉ cụ thể:</label>
+                    <label for="detailAddress" style="float:left;padding-bottom:6px">Thôn/Đường/Số nhà</label>
                     <br>
                     <input value="{{$detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="">
                     <br>

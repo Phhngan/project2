@@ -100,7 +100,7 @@ margin-left: 0px;
         </div>
 
         <div class="mb-3">
-            <label for="detail" class="form-label">Địa chỉ chi tiết: </label>
+            <label for="detail" class="form-label">Thôn/Đường/Số nhà: </label>
             <input name="detailAddress" type="text" class="form-control" id="detail" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
