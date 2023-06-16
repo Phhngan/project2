@@ -1,4 +1,9 @@
-.body {font-family: sans-serif;}
+.body {
+  font-family: sans-serif;
+}
+html{
+  overflow-x: hidden;
+}
 .header {
     background-color: #A8B3D0;
     height: 120px;
@@ -505,4 +510,24 @@ padding: 6px;
 .nhan-hang-hover:hover{
   cursor: pointer;
   filter: grayscale(50%);
+}
+
+.voucher-selector{
+  border: 1px solid #ccc;
+}
+.name-voucher{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  font-weight: bold;
+}
+.voucher-checkbox{
+margin-left: 50px;
+}
+.voucher-container{
+  position: relative;
+  text-align: center;
+  color: white;
 }

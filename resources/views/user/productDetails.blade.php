@@ -83,6 +83,15 @@ from {opacity: 0;}
 to {opacity:1 ;}
 }
 
+.details{
+    position: relative;
+}
+.add-favorite{
+    position: absolute;
+    top:0px;
+    right:70px;
+}
+
 @endsection
 
 @section('content')
@@ -95,7 +104,7 @@ to {opacity:1 ;}
                 <img src="{{$product->img_url}}" style="height:450px">
             </div>
         </div>
-        <div class="col">
+        <div class="col details">
             <br>
             @if($product->prd_discount == 0)
             <h3>{{$product->prd_name}}</h3><br>
@@ -115,7 +124,8 @@ to {opacity:1 ;}
         <input type='text' name='quantity' value='1' class='qty' />
         <input type='button' value='+' class='qtyplus plus' field='quantity' />
       </form> -->
-            <p style="margin:10px 0px 25px 20px;background-color:#FFECEC;padding:6px;border-radius:5px;display:inline-flex">Còn lại:
+
+            <p style="margin:10px 0px 25px 0px;background-color:#FFECEC;padding:6px;border-radius:5px;display:inline-flex">Còn lại:
                 <?php
                 $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
                     ->where('prd_status_id', '<', 3)
@@ -124,11 +134,18 @@ to {opacity:1 ;}
                 ?> sản phẩm
             </p>
             @if($quantity != 0)
-            <div class="action popup" onclick="addToCart()">
+            <div class="action popup" onclick="addToCart()" style="width: fit-content;">
                 <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
             </div>
             @endif
+
+            <div class="add-favorite">
+            <a href="/client/favorite">
+                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+            </a> 
+            </div>
+
             <br>
             <div class="product-about">
                 <hr>
@@ -184,6 +201,21 @@ to {opacity:1 ;}
     @empty
     <h3>Không có sản phẩm </h3>
     @endforelse
+
+    <!-- đánh giá -->
+    <div class="product-ratting">
+        <hr>
+        <h4 class="">ĐÁNH GIÁ CỦA NGƯỜI DÙNG</h4>
+        <div class="ratting-star">
+
+        </div>
+        <div class="comments">
+            
+        </div>
+    </div>
+    <hr>
+    <br>
+
     <!-- San pham gợi ý -->
     <div class="sp-goi-y">
         <div class="cf-title" style="padding-top: 25px">

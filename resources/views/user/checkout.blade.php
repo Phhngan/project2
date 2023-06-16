@@ -71,60 +71,56 @@ padding: 20px;
 
 <div class="row">
 
-    <div class="col">
-
-        <div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
-            <div class="card-body">
-                @forelse($locations as $location)
-                <div class="row">
-                    <div class="col">
-                        <h5 class="text-center">Thông tin giao hàng</h5>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-sm-5">
-                        <p class="mb-0">Họ và tên</p>
-                    </div>
-                    <div class="col-sm-7">
-                        <p class="text-muted mb-0">{{Auth::user()->use_lastName}} {{Auth::user()->name}}</p>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-sm-5">
-                        <p class="mb-0">Số điện thoại</p>
-                    </div>
-                    <div class="col-sm-7">
-                        <p class="text-muted mb-0">{{Auth::user()->use_phone}}</p>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-sm-5">
-                        <p class="mb-0">Địa chỉ chi tiết</p>
-                    </div>
-                    <div class="col-sm-7">
-                        <p class="text-muted mb-0">{{$location->car_detailAddress}}, {{$location->car_town}}, {{$location->car_district}}, {{$location->car_province}}</p>
-                    </div>
-                </div>
-                @empty
-                <tr>
-                    <td colspan="3">Không có sản phẩm</td>
-                </tr>
-                @endforelse
+<div class="col">
+<div class="card mb-4" id="card-client" style="height:auto">
+    <div class="card-body">
+        <div class="row">
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center">Chọn voucher</h5>
             </div>
+        </div><hr>
+        <form style="overflow:scroll; height: 300px;overflow-x: hidden;" action="">
+            <div class="voucher-selector">
+            <div class="voucher-container">
+            <img class="voucher-img" src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/voucher-icon.png" height="100" />
+            <label for="voucher1" class="name-voucher">Giảm 50%</label>
+            <input class="voucher-checkbox" type="radio" id="voucher1" name="voucher" value="">
+            </div>
+            </div>
+
+            <div class="voucher-selector">
+            <div class="voucher-container">
+            <img class="voucher-img" src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/voucher-icon.png" height="100" />
+            <label for="voucher1" class="name-voucher">Giảm 50%</label>
+            <input class="voucher-checkbox" type="radio" id="voucher1" name="voucher" value="">
+            </div>
+            </div>
+
+            <div class="voucher-selector">
+            <div class="voucher-container">
+            <img class="voucher-img" src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/voucher-icon.png" height="100" />
+            <label for="voucher1" class="name-voucher">Giảm 50%</label>
+            <input class="voucher-checkbox" type="radio" id="voucher1" name="voucher" value="">
+            </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
+</form> 
         </div>
     </div>
+</div>
+</div>
 
     <div class="col">
 
         <div class="card mb-4" id="card-client" style="height:auto">
             <div class="card-body">
-
+            <div class="row">
+            <div class="col">
+                <h5 class="text-center">Thanh toán</h5>
+            </div>
+        </div><hr>
                 <div class="row">
                     <div class="col-sm-6">
                         <p class="mb-0">Giá thành:</p>
@@ -203,6 +199,58 @@ padding: 20px;
     </div>
 </div>
 
+<div class="row">
+
+<div class="col">
+
+<div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
+    <div class="card-body">
+        @forelse($locations as $location)
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center">Thông tin giao hàng</h5>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-5">
+                <p class="mb-0">Họ và tên</p>
+            </div>
+            <div class="col-sm-7">
+                <p class="text-muted mb-0">{{Auth::user()->use_lastName}} {{Auth::user()->name}}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-5">
+                <p class="mb-0">Số điện thoại</p>
+            </div>
+            <div class="col-sm-7">
+                <p class="text-muted mb-0">{{Auth::user()->use_phone}}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-5">
+                <p class="mb-0">Địa chỉ chi tiết</p>
+            </div>
+            <div class="col-sm-7">
+                <p class="text-muted mb-0">{{$location->car_detailAddress}}, {{$location->car_town}}, {{$location->car_district}}, {{$location->car_province}}</p>
+            </div>
+        </div>
+        @empty
+        <tr>
+            <td colspan="3">Không có sản phẩm</td>
+        </tr>
+        @endforelse
+    </div>
+</div>
+</div>
+
+<div class="col">
 <div class="card mb-4" id="card-client" style="height:auto">
     <div class="card-body">
         <div class="row">
@@ -214,6 +262,9 @@ padding: 20px;
             <br>
         </div>
     </div>
+</div>
+</div>
+
 </div>
 
 <div class="luu-y">
