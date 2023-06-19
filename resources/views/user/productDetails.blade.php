@@ -91,6 +91,41 @@ to {opacity:1 ;}
     top:0px;
     right:70px;
 }
+.ratting-star{
+    background-color: #CED7FD;
+    height:60px;
+    width:280px;
+    border-radius:25px;
+    padding-top: 14px;
+    padding-left: 85px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.customer-cmt{
+    height: 155px;
+    margin-top:20px;
+}
+.card-cmt {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #CED7FD;
+    border-radius:10px;
+    padding: 20px;
+  }
+
+.leftcolumn {
+    margin-left: 120px;
+    float: left;
+    width: 10%;
+}
+
+.rightcolumn {
+    float: left;
+    width: 70%;
+}
+.time{
+    color:grey;
+}
 
 @endsection
 
@@ -203,16 +238,79 @@ to {opacity:1 ;}
     @endforelse
 
     <!-- đánh giá -->
-    <div class="product-ratting">
-        <hr>
-        <h4 class="">ĐÁNH GIÁ CỦA NGƯỜI DÙNG</h4>
-        <div class="ratting-star">
-
+<div class="product-ratting">
+        <div class="cf-title">
+            <h3>Đánh giá của người dùng</h3>
         </div>
-        <div class="comments">
-            
-        </div>
+            <!-- RATE SAO -->
+    <div class="ratting-star">
+            <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">3.5/5</span>
+        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">
     </div>
+            <!-- ĐÁNH GIÁ -->
+        <div class="customer-cmt">
+            <div class="leftcolumn">
+                <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
+            </div>
+            <div class="rightcolumn">
+                <div class="card-cmt">
+                    <div class="row">
+                        <h4>Phạm Hà Ngân</h4>
+                    </div>
+                    <div class="row">
+                    <p class="time">16/04/2023</p>
+                    </div>
+                    <div class="row">
+                    <p>hello hello</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="customer-cmt">
+            <div class="leftcolumn">
+                <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
+            </div>
+            <div class="rightcolumn">
+                <div class="card-cmt">
+                    <div class="row">
+                        <h4>Phạm Hà Ngân</h4>
+                    </div>
+                    <div class="row">
+                    <p class="time">16/04/2023</p>
+                    </div>
+                    <div class="row">
+                    <p>hello hello</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="customer-cmt">
+            <div class="leftcolumn">
+                <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
+            </div>
+            <div class="rightcolumn">
+                <div class="card-cmt">
+                    <div class="row">
+                        <h4>Phạm Hà Ngân</h4>
+                    </div>
+                    <div class="row">
+                    <p class="time">16/04/2023</p>
+                    </div>
+                    <div class="row">
+                    <p>hello hello</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+</div>
+
     <hr>
     <br>
 

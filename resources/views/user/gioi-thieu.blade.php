@@ -37,6 +37,13 @@
   padding: 20px;
 }
 
+.icon-gioithieu{
+  font-size: 50px;
+  display:flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  color: #5168A1;
+}
 
 #gioi-thieu {
   display: block;
@@ -68,17 +75,17 @@ cho gia đình với những thiết bị cao cấp, an toàn và tiện lợi..
 
 <div class="row">
     <div class="col-4">
-    <i class="fas fa-weight-hanging"></i>
+    <i class="fas fa-weight-hanging icon-gioithieu"></i>
     <h3 class="text-center">Thấu hiểu khách hàng</h3>
     <p class="text-center">Luôn luôn lắng nghe, thấu hiểu khách hàng muốn gì, cần gì và hiểu được những điều mà khách hàng muốn truyền tải để mang đến những sản phẩm tốt nhất.</p>
 </div>
 <div class="col-4">
-<i class="fas fa-heart"></i>
+<i class="fas fa-heart icon-gioithieu"></i>
 <h3 class="text-center">Chu đáo tận tình</h3>
 <p class="text-center">Tư vấn rõ ràng sản phẩm về thông tin, chế độ bảo hành… Tận tâm chăm sóc khách hàng từ những điều nhỏ nhặt nhất. Sẵn sàng phục vụ 24/7 khi khách hàng cần.</p>
 </div>
 <div class="col-4">
-<i class="fas fa-handshake"></i>
+<i class="fas fa-handshake icon-gioithieu"></i>
 <h3 class="text-center">Đồng Hành Cùng Khách Hàng</h3>
 <p class="text-center">Là người bạn đồng hành đáng tin cậy của khách hàng từ khi tiếp cận sản phẩm, đến việc giải quyết kịp thời các vấn đề khách hàng gặp phải trong quá trình sử dụng.</p>
 </div>
