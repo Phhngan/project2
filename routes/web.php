@@ -273,6 +273,12 @@ Route::put("/cart/updateAddress", [CartController::class, 'updateAddress']);
 Route::get("/checkOut", [CartController::class, 'showCheckOut']);
 Route::get("/success", [CartController::class, 'success']);
 
+// Favourite
+Route::get("/{prd_id}/addFavorite", [MenuController::class, 'addFavorite']);
+Route::get("/{prd_id}/deleteFavorite", [MenuController::class, 'deleteFavorite']);
+Route::get("/client/favorite", [MenuController::class, 'showFavorite']);
+Route::delete("/client/favorite/{prd_id}/delete", [MenuController::class, 'delete']);
+
 //test
 Route::get('/chua-dang-nhap', function () {
     return view('error.chua-dang-nhap');
@@ -300,11 +306,6 @@ Route::get('/admin/tintuc/edit', function () {
 
 Route::get('/admin/tintuc/detail', function () {
     return view('admin.news.detail');
-});
-
-// sản phẩm yêu thích
-Route::get('/client/favorite', function () {
-    return view('user.clientInfo.favorite');
 });
 
 // bài viết

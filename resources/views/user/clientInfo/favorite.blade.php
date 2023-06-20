@@ -25,7 +25,7 @@ color:#3E526D;
 @section('content-info')
 <br>
 <div class="cf-title">
-  <h3>Sản phẩm yêu thích</h3>
+    <h3>Sản phẩm yêu thích</h3>
 </div>
 
 <div class="item-products">
@@ -37,28 +37,33 @@ color:#3E526D;
             <th>Giá</th>
             <th>Hành động</th>
         </tr>
-
+        @forelse($products as $product)
         <tr>
             <td>
-                <p>SP1</p>
+                <p>{{$product->prd_code}}</p>
             </td>
             <td>
-                <img src="https://github.com/Phhngan/snack_images/blob/master/do-man/doman_comchay.png?raw=true" style="height:100px">
+                <img src="{{$product->img_url}}" style="height:100px">
             </td>
             <td>
-                <a href="" class="text-sp">Cơm cháy chà bông</a>
+                <a href="" class="text-sp">{{$product->prd_name}}</a>
             </td>
             <td>
-                <p>40.000 VND</p>
+                <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
             </td>
             <td>
-                <form method="POST" action="">
+                <form method="POST" action="{{url('/client/favorite/'.$product->prd_id.'/delete')}}">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Xóa</button>
                 </form>
             </td>
         </tr>
+        @empty
+        <tr>
+            <td colspan="3">Chưa có sản phẩm yêu thích</td>
+        </tr>
+        @endforelse
     </table>
 </div>
 

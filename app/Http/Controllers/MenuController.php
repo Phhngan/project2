@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
@@ -110,5 +111,51 @@ class MenuController extends Controller
         } else {
             return redirect(('products'));
         }
+    }
+
+    // add favorite
+    function addFavorite($prd_id)
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            DB::table('FavoriteProducts')->insert(
+                [
+                    'use_id' => $user->id, 'prd_id' => $prd_id
+                ]
+            );
+        }
+        return back();
+    }
+
+    // show favorite
+    function showFavorite()
+    {
+        $user = Auth::user();
+        $products = DB::table('FavoriteProducts')
+            ->join('Products', 'FavoriteProducts.prd_id', '=', 'Products.prd_id')
+            ->join('Images', 'FavoriteProducts.prd_id', '=', 'Images.prd_id')
+            ->select('Products.*', 'FavoriteProducts.*', 'Images.img_url')
+            ->where('FavoriteProducts.use_id', $user->id)
+            ->where('Images.img_role', 1)
+            ->orderByDesc('FavoriteProducts.fav_id')
+            ->get();
+        return view('user/clientInfo.favorite', ['products' => $products]);
+    }
+
+    //delete favorite
+    function delete($prd_id)
+    {
+        $user = Auth::user();
+        DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
+        return back();
+    }
+
+    function deleteFavorite($prd_id)
+    {
+        $user = Auth::user();
+        DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
+        return back();
     }
 }

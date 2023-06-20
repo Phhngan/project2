@@ -84,47 +84,47 @@ to {opacity:1 ;}
 }
 
 .details{
-    position: relative;
+position: relative;
 }
 .add-favorite{
-    position: absolute;
-    top:0px;
-    right:70px;
+position: absolute;
+top:0px;
+right:70px;
 }
 .ratting-star{
-    background-color: #CED7FD;
-    height:60px;
-    width:280px;
-    border-radius:25px;
-    padding-top: 14px;
-    padding-left: 85px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+background-color: #CED7FD;
+height:60px;
+width:280px;
+border-radius:25px;
+padding-top: 14px;
+padding-left: 85px;
+margin-left: auto;
+margin-right: auto;
+position: relative;
 }
 .customer-cmt{
-    height: 155px;
-    margin-top:20px;
+height: 155px;
+margin-top:20px;
 }
 .card-cmt {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: #CED7FD;
-    border-radius:10px;
-    padding: 20px;
-  }
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+background-color: #CED7FD;
+border-radius:10px;
+padding: 20px;
+}
 
 .leftcolumn {
-    margin-left: 120px;
-    float: left;
-    width: 10%;
+margin-left: 120px;
+float: left;
+width: 10%;
 }
 
 .rightcolumn {
-    float: left;
-    width: 70%;
+float: left;
+width: 70%;
 }
 .time{
-    color:grey;
+color:grey;
 }
 
 @endsection
@@ -174,13 +174,32 @@ to {opacity:1 ;}
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
             </div>
             @endif
-
+            <?php
+            $user = Illuminate\Support\Facades\Auth::user();
+            $number = App\Models\Favoriteproduct::where('prd_id', $product->prd_id)
+                ->where('use_id', $user->id)
+                ->count();
+            ?>
+            @if($number == 0)
             <div class="add-favorite">
-            <a href="/client/favorite">
-                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
-            </a> 
+                <a href="/{{$product->prd_id}}/addFavorite">
+                    <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/un-heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+                </a>
             </div>
-
+            @else
+            <div class="add-favorite">
+                <!-- <a href="/client/favorite/{{$product->prd_id}}/delete" method="DELETE">
+                    <form method="POST" action="">
+                        @csrf
+                        @method('delete')
+                        <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+                    </form>
+                </a> -->
+                <a href="/{{$product->prd_id}}/deleteFavorite">
+                    <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+                </a>
+            </div>
+            @endif
             <br>
             <div class="product-about">
                 <hr>
@@ -238,20 +257,20 @@ to {opacity:1 ;}
     @endforelse
 
     <!-- đánh giá -->
-<div class="product-ratting">
+    <div class="product-ratting">
         <div class="cf-title">
             <h3>Đánh giá của người dùng</h3>
         </div>
-            <!-- RATE SAO -->
-    <div class="ratting-star">
+        <!-- RATE SAO -->
+        <div class="ratting-star">
             <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">3.5/5</span>
-        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">
-    </div>
-            <!-- ĐÁNH GIÁ -->
+            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
+            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
+            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
+            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">
+            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">
+        </div>
+        <!-- ĐÁNH GIÁ -->
         <div class="customer-cmt">
             <div class="leftcolumn">
                 <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
@@ -262,10 +281,10 @@ to {opacity:1 ;}
                         <h4>Phạm Hà Ngân</h4>
                     </div>
                     <div class="row">
-                    <p class="time">16/04/2023</p>
+                        <p class="time">16/04/2023</p>
                     </div>
                     <div class="row">
-                    <p>hello hello</p>
+                        <p>hello hello</p>
                     </div>
                 </div>
             </div>
@@ -281,14 +300,14 @@ to {opacity:1 ;}
                         <h4>Phạm Hà Ngân</h4>
                     </div>
                     <div class="row">
-                    <p class="time">16/04/2023</p>
+                        <p class="time">16/04/2023</p>
                     </div>
                     <div class="row">
-                    <p>hello hello</p>
+                        <p>hello hello</p>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <div class="customer-cmt">
             <div class="leftcolumn">
@@ -300,16 +319,16 @@ to {opacity:1 ;}
                         <h4>Phạm Hà Ngân</h4>
                     </div>
                     <div class="row">
-                    <p class="time">16/04/2023</p>
+                        <p class="time">16/04/2023</p>
                     </div>
                     <div class="row">
-                    <p>hello hello</p>
+                        <p>hello hello</p>
                     </div>
                 </div>
             </div>
-        </div> 
-        
-</div>
+        </div>
+
+    </div>
 
     <hr>
     <br>
