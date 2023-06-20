@@ -76,20 +76,20 @@ border-radius: 10px;
             <option value="" selected>Chọn quận huyện</option>
         </select>
 
-<br>
-<label for="town">Phường/xã:</label>
-<br>
-<select class="form-control" id="town" required>
-<option value="" selected>Chọn phường xã</option>
-</select>
-<br>
-</div>    
-  <label for="detailAddress">Thôn/Đường/Số nhà:</label>
-  <br>
-  <input value="" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
-  <br>
-  <button type="submit" class="btn btn-primary">Cập nhật</button>
-  <br><br>
+        <br>
+        <label for="town">Phường/xã:</label>
+        <br>
+        <select class="form-control" id="ward" name="town" required>
+            <option value="" selected>Chọn phường xã</option>
+        </select>
+        <br>
+    </div>
+    <label for="detailAddress">Thôn/Đường/Số nhà:</label>
+    <br>
+    <input value="" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+    <br>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <br><br>
 </form>
 @endforeach
 
@@ -139,32 +139,31 @@ border-radius: 10px;
             if (this.options[this.selectedIndex].dataset.id != "") {
                 const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
 
-      for (const k of result[0].Districts) {
-		var opt = document.createElement('option');
-		 opt.value = k.Name;
-		 opt.text = k.Name;
-		 opt.setAttribute('data-id', k.Id);
-		 district.options.add(opt);
-      }
-    }
-  };
-  district.onchange = function () {
-    ward.length = 1;
-    const dataCity = data.filter((n) => n.Id === citis.options[citis.selectedIndex].dataset.id);
-    if (this.options[this.selectedIndex].dataset.id != "") {
-      const dataWards = dataCity[0].Districts.filter(n => n.Id === this.options[this.selectedIndex].dataset.id)[0].Wards;
+                for (const k of result[0].Districts) {
+                    var opt = document.createElement('option');
+                    opt.value = k.Name;
+                    opt.text = k.Name;
+                    opt.setAttribute('data-id', k.Id);
+                    district.options.add(opt);
+                }
+            }
+        };
+        district.onchange = function() {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === citis.options[citis.selectedIndex].dataset.id);
+            if (this.options[this.selectedIndex].dataset.id != "") {
+                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.options[this.selectedIndex].dataset.id)[0].Wards;
 
-      for (const w of dataWards) {
-		var opt = document.createElement('option');
-		 opt.value = w.Name;
-		 opt.text = w.Name;
-		 opt.setAttribute('data-id', w.Id);
-		 wards.options.add(opt);
-      }
+                for (const w of dataWards) {
+                    var opt = document.createElement('option');
+                    opt.value = w.Name;
+                    opt.text = w.Name;
+                    opt.setAttribute('data-id', w.Id);
+                    wards.options.add(opt);
+                }
+            }
+        };
     }
-  };
-}
-
-	</script>
+</script>
 
 @endsection

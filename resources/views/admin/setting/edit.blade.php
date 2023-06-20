@@ -36,23 +36,24 @@
     <br>
     <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
     <br>
-
     <div>
         <label for="province">Tỉnh thành:</label>
-        <select class="form-control" id="city" name="province">
-            <option value="" selected>---Chọn tỉnh thành---</option>
+        <select class="form-control" id="city" name="province" required>
+            <option value="" selected>Chọn tỉnh thành</option>
         </select>
+
         <br>
         <label for="district">Quận/huyện:</label>
         <br>
-        <select class="form-control" id="district" name="district">
-            <option value="" selected>---Chọn quận huyện---</option>
+        <select class="form-control" id="district" name="district" required>
+            <option value="" selected>Chọn quận huyện</option>
         </select>
+
         <br>
         <label for="town">Phường/xã:</label>
         <br>
-        <select class="form-control" id="town" name="town">
-            <option value="" selected>---Chọn phường xã---</option>
+        <select class="form-control" id="ward" name="town" required>
+            <option value="" selected>Chọn phường xã</option>
         </select>
         <br>
     </div>

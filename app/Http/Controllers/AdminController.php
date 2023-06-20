@@ -74,7 +74,6 @@ class AdminController extends Controller
         $user = Auth::user();
         $use_lastName = $request->get('lastName');
         $name = $request->get('firstName');
-        $use_birth = $request->get('birth');
         $use_gender = $request->get('gender');
         $use_phone = $request->get('phone');
         $use_province = $request->get('province');
@@ -83,8 +82,8 @@ class AdminController extends Controller
         $use_detailAddress = $request->get('detailAddress');
         DB::table('Users')->where('id', $user->id)
             ->update([
-                'use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
-                'pro_id' => $use_province, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress
+                'use_lastName' => $use_lastName, 'name' => $name, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
+                'use_province' => $use_province, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress
             ]);
         return redirect('admin/profile');
     }

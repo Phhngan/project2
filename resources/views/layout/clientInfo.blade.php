@@ -11,6 +11,7 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('css/base_site.css')}}">
     <link rel="shortcut icon" type="image/png" href="https://github.com/Phhngan/snack_images/blob/master/logo/logo1.png?raw=true"/>
+    <script src="https://kit.fontawesome.com/9826eb958a.js" crossorigin="anonymous"></script>
     @yield('css-link')
     <style>
 @yield('style');
