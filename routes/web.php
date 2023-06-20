@@ -311,3 +311,8 @@ Route::get('/client/favorite', function () {
 Route::get('/bai-viet-1', function () {
     return view('user./bai-viet');
 });
+
+// đánh giá
+Route::get('/client/invoices/ratting', function () {
+    return view('user.clientInfo.ratting');
+});

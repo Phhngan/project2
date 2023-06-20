@@ -37,46 +37,23 @@
     <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
     <br>
 
-    <!-- <label for="province">Tỉnh thành:</label>
-    <br>
-    <?php
-    $provinces = Illuminate\Support\Facades\DB::table('Provinces')
-        ->select('Provinces.*')
-        ->get();
-    ?>
-    <select class="form-control" id="" name="province" required>
-        <option value="{{ $user->pro_id  }}" selected="selected">----{{ $user->pro_name }}----</option>
-        @foreach($provinces as $province)
-        <option value="{{ $province->pro_id }}">{{ $province->pro_name }}</option>
-        @endforeach
-    </select>
-    <br>
-    <label for="district">Quận/huyện:</label>
-    <br>
-    <input value="{{ $user->use_district}}" name="district" type="text" class="form-control" placeholder="Quận/huyện">
-    <br>
-    <label for="town">Phường/xã:</label>
-    <br>
-    <input value="{{ $user->use_town}}" name="town" type="text" class="form-control" placeholder="Phường/xã">
-    <br> -->
-
         <div>
     <label for="province">Tỉnh thành:</label>
-    <select class="form-control" id="city">
+    <select class="form-control" id="city" name="province" required>
     <option value="" selected>Chọn tỉnh thành</option>           
     </select>
 
     <br>
     <label for="district">Quận/huyện:</label>
     <br>
-    <select class="form-control" id="district">
+    <select class="form-control" id="district" name="district" required>
     <option value="" selected>Chọn quận huyện</option>
     </select>
 
     <br>
     <label for="town">Phường/xã:</label>
     <br>
-    <select class="form-control" id="town">
+    <select class="form-control" id="ward" name="town" required>
     <option value="" selected>Chọn phường xã</option>
     </select>
     <br>

@@ -64,25 +64,25 @@ border-radius: 10px;
     <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
     <br>
     <div>
-        <label for="province">Tỉnh thành:</label>
-        <select class="form-control" id="city" name="province" required>
-            <option value="" selected>Chọn tỉnh thành</option>
-        </select>
+    <label for="province">Tỉnh thành:</label>
+    <select class="form-control" id="city" name="province" required>
+    <option value="" selected>Chọn tỉnh thành</option>           
+    </select>
 
-        <br>
-        <label for="district">Quận/huyện:</label>
-        <br>
-        <select class="form-control" id="district" name="district" required>
-            <option value="" selected>Chọn quận huyện</option>
-        </select>
+    <br>
+    <label for="district">Quận/huyện:</label>
+    <br>
+    <select class="form-control" id="district" name="district" required>
+    <option value="" selected>Chọn quận huyện</option>
+    </select>
 
-<br>
-<label for="town">Phường/xã:</label>
-<br>
-<select class="form-control" id="town" required>
-<option value="" selected>Chọn phường xã</option>
-</select>
-<br>
+    <br>
+    <label for="town">Phường/xã:</label>
+    <br>
+    <select class="form-control" id="ward" name="town" required>
+    <option value="" selected>Chọn phường xã</option>
+    </select>
+    <br>   
 </div>    
   <label for="detailAddress">Thôn/Đường/Số nhà:</label>
   <br>
