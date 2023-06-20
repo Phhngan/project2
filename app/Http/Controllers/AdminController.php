@@ -77,14 +77,14 @@ class AdminController extends Controller
         $use_birth = $request->get('birth');
         $use_gender = $request->get('gender');
         $use_phone = $request->get('phone');
-        $pro_id = $request->get('province');
+        $use_province = $request->get('province');
         $use_district = $request->get('district');
         $use_town = $request->get('town');
         $use_detailAddress = $request->get('detailAddress');
         DB::table('Users')->where('id', $user->id)
             ->update([
                 'use_lastName' => $use_lastName, 'name' => $name, 'use_birth' => $use_birth, 'use_gender' => $use_gender, 'use_phone' => $use_phone,
-                'pro_id' => $pro_id, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress
+                'pro_id' => $use_province, 'use_district' => $use_district, 'use_town' => $use_town, 'use_detailAddress' => $use_detailAddress
             ]);
         return redirect('admin/profile');
     }

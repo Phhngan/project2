@@ -94,7 +94,7 @@ padding-bottom:6px;
                 ?>
                 @if($quantity != 0)
                 <div class="popup" onclick="addToCart()">
-                    <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}addCart" role="button">Thêm vào giỏ</a>
+                    <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                 </div>
                 @else
