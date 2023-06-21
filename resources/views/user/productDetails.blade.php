@@ -87,9 +87,25 @@ to {opacity:1 ;}
 position: relative;
 }
 .add-favorite{
-position: absolute;
-top:0px;
-right:70px;
+    position: absolute;
+    top:50px;
+    right:70px;
+}
+.hide {
+    display: none;
+    position: absolute;
+    top: 130px;
+    right: -15px;
+    opacity: 0.5;
+    border-radius: 3px;
+}
+    
+.add-favorite:hover + .hide {
+  display: block;
+  background-color: black;
+  color: white;
+  width: fit-content;
+  
 }
 .ratting-star{
 background-color: #CED7FD;
@@ -186,6 +202,7 @@ color:grey;
                     <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/un-heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
                 </a>
             </div>
+            <div class="hide">Thêm vào sản phẩm yêu thích</div>
             @else
             <div class="add-favorite">
                 <!-- <a href="/client/favorite/{{$product->prd_id}}/delete" method="DELETE">
@@ -199,6 +216,7 @@ color:grey;
                     <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
                 </a>
             </div>
+            <div class="hide">Đã có trong sản phẩm yêu thích</div>
             @endif
             <br>
             <div class="product-about">
@@ -364,7 +382,7 @@ color:grey;
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
                     @else
-                    <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                    <a class="btn-add-to-cart" href="" role="button" style="background-color: red">Hết hàng</a>
                     @endif
                 </div>
             </div>
@@ -388,7 +406,7 @@ color:grey;
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
                     @else
-                    <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                    <a class="btn-add-to-cart" href="" role="button" style="background-color: red">Hết hàng</a>
                     @endif
                 </div>
             </div>

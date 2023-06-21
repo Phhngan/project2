@@ -301,12 +301,6 @@ return [
         ],
 
         [
-            'text' => 'Loại sản phẩm',
-            'url' => 'admin/productType',
-            'icon' => 'fa fa-eye',
-        ],
-
-        [
             'text' => 'Trạng thái sản phẩm',
             'icon' => 'fa fa-hourglass-end',
             'url' => 'admin/productStatus',

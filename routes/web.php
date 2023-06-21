@@ -322,3 +322,8 @@ Route::get('/bai-viet-1', function () {
 Route::get('/client/invoices/ratting', function () {
     return view('user.clientInfo.ratting');
 });
+
+// đánh giá 1 sản phẩm
+Route::get('/client/invoices/rattingSP', function () {
+    return view('user.clientInfo.rattingSP');
+});
