@@ -39,28 +39,28 @@
     <div>
         <label for="province">Tỉnh thành:</label>
         <select class="form-control" id="city" name="province" required>
-            <option value="" selected>Chọn tỉnh thành</option>
+            <option value="" selected>---{{$user->use_province}}---</option>
         </select>
 
         <br>
         <label for="district">Quận/huyện:</label>
         <br>
         <select class="form-control" id="district" name="district" required>
-            <option value="" selected>Chọn quận huyện</option>
+            <option value="" selected>---{{$user->use_district}}---</option>
         </select>
 
         <br>
         <label for="town">Phường/xã:</label>
         <br>
         <select class="form-control" id="ward" name="town" required>
-            <option value="" selected>Chọn phường xã</option>
+            <option value="" selected>--- {{$user->use_town}}---</option>
         </select>
         <br>
     </div>
 
     <label for="detailAddress">Thôn/Đường/Số nhà:</label>
     <br>
-    <input value="" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+    <input value="{{$user->use_detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
     <br><br>

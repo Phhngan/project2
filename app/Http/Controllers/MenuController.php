@@ -15,7 +15,7 @@ class MenuController extends Controller
             ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
             ->where('prd_type_id', 1)->where('Images.img_role', 1)
             ->select('Products.*', 'Images.img_url')
-            ->get();
+            ->paginate(8);
         return view('user/doMan', ['products' => $products]);
     }
 
@@ -26,7 +26,7 @@ class MenuController extends Controller
             ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
             ->where('prd_type_id', 2)->where('Images.img_role', 1)
             ->select('Products.*', 'Images.img_url')
-            ->get();
+            ->paginate(8);
         return view('user/doNgot', ['products' => $products]);
     }
 

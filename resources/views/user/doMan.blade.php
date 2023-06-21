@@ -38,7 +38,7 @@ background-color: #EBECFE;
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
             </div>
             @else
-            <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+            <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
             @endif
         </div>
     </div>
@@ -62,7 +62,7 @@ background-color: #EBECFE;
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
             </div>
             @else
-            <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+            <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
             @endif
         </div>
     </div>
@@ -71,6 +71,7 @@ background-color: #EBECFE;
     <h3>Không có sản phẩm </h3>
     @endforelse
 </div>
+{{ $products->links() }}
 @endsection
 
 @section('js')

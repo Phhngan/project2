@@ -280,14 +280,45 @@ color:grey;
             <h3>Đánh giá của người dùng</h3>
         </div>
         <!-- RATE SAO -->
-        <div class="ratting-star">
+        <!-- <div class="ratting-star">
             <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">3.5/5</span>
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">
-        </div>
+        </div> -->
+
+        <div class="ratting-star">
+    <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">
+        <?php
+        // Retrieve the selected rating from the session
+        session_start();
+        // $_SESSION['selected_rating'] = 3.5;
+        $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
+        echo $selectedRating . '/5';
+        ?>
+    </span>
+    <!-- Render the star images based on the selected rating -->
+    <?php
+    if ($selectedRating !== null) {
+        $fullStars = floor($selectedRating);
+        $halfStar = ($selectedRating - $fullStars) >= 0.5;
+        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+
+        for ($i = 0; $i < $fullStars; $i++) {
+            echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">';
+        }
+        if ($halfStar) {
+            echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">';
+        }
+        for ($i = 0; $i < $emptyStars; $i++) {
+            echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">';
+        }
+    }
+    ?>
+</div>
+
         <!-- ĐÁNH GIÁ -->
         <div class="customer-cmt">
             <div class="leftcolumn">
@@ -382,7 +413,7 @@ color:grey;
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
                     @else
-                    <a class="btn-add-to-cart" href="" role="button" style="background-color: red">Hết hàng</a>
+                    <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
                     @endif
                 </div>
             </div>
@@ -406,7 +437,7 @@ color:grey;
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
                     @else
-                    <a class="btn-add-to-cart" href="" role="button" style="background-color: red">Hết hàng</a>
+                    <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
                     @endif
                 </div>
             </div>

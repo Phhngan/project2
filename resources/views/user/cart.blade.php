@@ -145,7 +145,7 @@ color:#3E526D;
                     <label for="detailAddress" style="float:left;padding-bottom:6px">Thôn/Đường/Số nhà</label>
                     <br>
                     <input value="{{$detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="">
-                    <br>
+                    <br>                   
                     <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
                     <br>
                 </form>
@@ -154,6 +154,7 @@ color:#3E526D;
                     <td colspan="3">Xin mời thêm sản phẩm</td>
                 </tr>
                 @endforelse
+
             </div>
         </div>
     </div>

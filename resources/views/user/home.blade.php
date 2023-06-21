@@ -98,7 +98,7 @@ padding-bottom:6px;
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                 </div>
                 @else
-                <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
                 @endif
             </div>
         </div>
@@ -122,7 +122,7 @@ padding-bottom:6px;
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                 </div>
                 @else
-                <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
                 @endif
             </div>
         </div>
@@ -164,7 +164,7 @@ padding-bottom:6px;
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                 </div>
                 @else
-                <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
                 @endif
             </div>
         </div>
@@ -188,7 +188,7 @@ padding-bottom:6px;
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                 </div>
                 @else
-                <a class="btn-add-to-cart" href="" role="button">Hết hàng</a>
+                <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
                 @endif
             </div>
         </div>

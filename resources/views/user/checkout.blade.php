@@ -167,16 +167,16 @@ padding: 20px;
                         </div>
                     </div>
                     <hr>
-                    <form style=" height: 80px;overflow-x: hidden;" action="checkOut/updateGold" method='PUT'>
+                    <form style=" height: 150px;overflow-x: hidden;" action="checkOut/updateGold" method='PUT'>
                         <label for="use-xu" class="">Bạn đang có {{$user->use_gold}} <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true" style="width:22px;"></label>
                         <br>
                         <label for="use-xu" class="">Sử dụng:
-                            <input name="gold" value="{{$gold}}" min='0' max='{{$user->use_gold}}' type="text" class="form-control" placeholder="" style="height:10px">
+                            <input name="gold" value="{{$gold}}" min='0' max='{{$user->use_gold}}' type="number" class="form-control" placeholder="" style="height:40px;width: 100px;">
                         </label>
                         <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
                     </form>
                     <hr>
-                    <form style="overflow:scroll; height: 285px;overflow-x: hidden;" action="checkOut/updateVoucher" method='PUT'>
+                    <form style="overflow:scroll; height: 222px;overflow-x: hidden;" action="checkOut/updateVoucher" method='PUT'>
                         @if ($countVoucher == 1)
                         <?php
                         $today = date('Y-m-d');
@@ -320,12 +320,12 @@ padding: 20px;
 
                 <form action="{{url('/VNPay')}}" method="POST">
                     @csrf
-                    <button class="btn btn-primary" name="redirect" type="submit" style="height: 40px;"> Mua hàng với ví điện tử VNPay <img src="https://github.com/Phhngan/snack_images/blob/master/icon/zaloPay.png?raw=true" height="25" /></button>
+                    <button class="btn btn-primary" name="redirect" type="submit" style="height: 40px;"> Mua hàng với ví điện tử VNPay <img src="https://github.com/Phhngan/snack_images/blob/master/icon/vnpay.png?raw=true" height="25" /></button>
                 </form>
-                <form action="{{url('/Momo')}}" method="POST">
+                <!-- <form action="{{url('/Momo')}}" method="POST">
                     @csrf
                     <button class="btn btn-primary" name="payUrl" type="submit" style="height: 40px;"> Mua hàng với ví điện tử MoMo <img src="https://github.com/Phhngan/snack_images/blob/master/icon/MoMo_Logo.png?raw=true" height="25" /></button>
-                </form>
+                </form> -->
                 <a class="btn btn-warning" href="/cart" role="button">Quay lại giỏ hàng</a>
             </div>
         </div>
