@@ -70,130 +70,155 @@ padding: 20px;
 </div>
 
 <div class="row">
+    <div class="col">
+        <div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
+            <div class="card-body">
+                @forelse($locations as $location)
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-center">Thông tin giao hàng</h5>
+                    </div>
+                </div>
+                <hr>
 
-<div class="col">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p class="mb-0">Họ và tên</p>
+                    </div>
+                    <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{Auth::user()->use_lastName}} {{Auth::user()->name}}</p>
+                    </div>
+                </div>
+                <hr>
 
-<div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
-    <div class="card-body">
-        @forelse($locations as $location)
-        <div class="row">
-            <div class="col">
-                <h5 class="text-center">Thông tin giao hàng</h5>
-            </div>
-        </div>
-        <hr>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p class="mb-0">Số điện thoại</p>
+                    </div>
+                    <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{Auth::user()->use_phone}}</p>
+                    </div>
+                </div>
+                <hr>
 
-        <div class="row">
-            <div class="col-sm-5">
-                <p class="mb-0">Họ và tên</p>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p class="mb-0">Địa chỉ chi tiết</p>
+                    </div>
+                    <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{$location->car_detailAddress}}, {{$location->car_town}}, {{$location->car_district}}, {{$location->car_province}}</p>
+                    </div>
+                </div>
+                @empty
+                <tr>
+                    <td colspan="3">Không có sản phẩm</td>
+                </tr>
+                @endforelse
             </div>
-            <div class="col-sm-7">
-                <p class="text-muted mb-0">{{Auth::user()->use_lastName}} {{Auth::user()->name}}</p>
-            </div>
-        </div>
-        <hr>
-
-        <div class="row">
-            <div class="col-sm-5">
-                <p class="mb-0">Số điện thoại</p>
-            </div>
-            <div class="col-sm-7">
-                <p class="text-muted mb-0">{{Auth::user()->use_phone}}</p>
-            </div>
-        </div>
-        <hr>
-
-        <div class="row">
-            <div class="col-sm-5">
-                <p class="mb-0">Địa chỉ chi tiết</p>
-            </div>
-            <div class="col-sm-7">
-                <p class="text-muted mb-0">{{$location->car_detailAddress}}, {{$location->car_town}}, {{$location->car_district}}, {{$location->car_province}}</p>
-            </div>
-        </div>
-        @empty
-        <tr>
-            <td colspan="3">Không có sản phẩm</td>
-        </tr>
-        @endforelse
-    </div>
-</div>
-</div>
-
-<div class="col">
-<div class="card mb-4" id="card-client" style="height:auto">
-    <div class="card-body">
-        <div class="row">
-            <label for="note" style="float:left;padding-bottom:6px">Ghi chú:</label>
-            <br>
-            <input name="note" type="text" class="form-control" placeholder="Ghi chú" style="height:100px">
-            <br><br>
-            <button type="submit" class="btn btn-primary" style="float:left;width:90px;margin-top:10px">Cập nhật</button>
-            <br>
         </div>
     </div>
-</div>
-</div>
-
+    <?php
+    $user = Illuminate\Support\Facades\Auth::user();
+    foreach ($locations as $location) {
+        if ($location->car_note == null) {
+            $note = '';
+        } else {
+            $note = $location->car_note;
+        }
+        if ($location->vou_id == null) {
+            $vouID = 0;
+        } else {
+            $vouID = $location->vou_id;
+        }
+        if ($location->car_gold == null) {
+            $gold = 0;
+        } else {
+            $gold = $location->car_gold;
+        }
+    }
+    ?>
+    <div class="col">
+        <div class="card mb-4" id="card-client" style="height:auto">
+            <div class="card-body">
+                <div class="row">
+                    <form id='form-note' method='PUT' class='note' action='checkOut/updateNote'>
+                        <label for="note" style="float:left;padding-bottom:6px">Ghi chú:</label>
+                        <br>
+                        <input name="note" value="{{$note}}" type="text" class="form-control" placeholder="Ghi chú" style="height:100px">
+                        <br><br>
+                        <button type="submit" class="btn btn-primary" style="float:left;width:90px;margin-top:10px">Cập nhật</button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
 
-<div class="col">
-<div class="card mb-4" id="card-client" style="height:auto">
-    <div class="card-body">
-        <div class="row">
-        <div class="row">
-            <div class="col">
-                <h5 class="text-center">Chọn voucher</h5>
+    <div class="col">
+        <div class="card mb-4" id="card-client" style="height:auto">
+            <div class="card-body">
+                <div class="row">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="text-center">Chọn voucher</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <form style=" height: 80px;overflow-x: hidden;" action="checkOut/updateGold" method='PUT'>
+                        <label for="use-xu" class="">Bạn đang có {{$user->use_gold}} <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true" style="width:22px;"></label>
+                        <br>
+                        <label for="use-xu" class="">Sử dụng:
+                            <input name="gold" value="{{$gold}}" min='0' max='{{$user->use_gold}}' type="text" class="form-control" placeholder="" style="height:10px">
+                        </label>
+                        <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
+                    </form>
+                    <hr>
+                    <form style="overflow:scroll; height: 285px;overflow-x: hidden;" action="checkOut/updateVoucher" method='PUT'>
+                        @if ($countVoucher == 1)
+                        <?php
+                        $today = date('Y-m-d');
+                        $vouchers = Illuminate\Support\Facades\DB::table('Vouchers')
+                            ->select('Vouchers.*')
+                            ->where('Vouchers.vou_day', $today)
+                            ->get();
+                        foreach ($vouchers as $voucher) {
+                            $vou_image = $voucher->vou_image;
+                            $vou_title = $voucher->vou_title;
+                            $vou_id = $voucher->vou_id;
+                        }
+                        ?>
+                        <div class="voucher-selector">
+                            <div class="voucher-container">
+                                <img class="voucher-img" src="{{$vou_image}}" height="100" />
+                                <label for="voucher1" class="name-voucher">{{$vou_title}}</label>
+                                <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="{{$vou_id}}">
+                            </div>
+                        </div>
+                        @else
+                        <tr>
+                            <td colspan="3">Không có voucher thích hợp</td>
+                        </tr>
+                        @endif
+                        <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
+                    </form>
+                </div>
             </div>
-        </div><hr>
-        <form style=" height: 80px;overflow-x: hidden;" action="">
-            <label for="use-xu" class="">Sử dụng 50,000 <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true"  style="width:22px;"></label>
-            <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
-            </form>
-        <hr>
-        <form style="overflow:scroll; height: 285px;overflow-x: hidden;" action="">
-            <div class="voucher-selector">
-            <div class="voucher-container">
-            <img class="voucher-img" src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/voucher-icon.png" height="100" />
-            <label for="voucher1" class="name-voucher">Giảm 50%</label>
-            <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="">
-            </div>
-            </div>
-
-            <div class="voucher-selector">
-            <div class="voucher-container">
-            <img class="voucher-img" src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/voucher-icon.png" height="100" />
-            <label for="voucher1" class="name-voucher">Giảm 50%</label>
-            <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="">
-            </div>
-            </div>
-
-            <div class="voucher-selector">
-            <div class="voucher-container">
-            <img class="voucher-img" src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/voucher-icon.png" height="100" />
-            <label for="voucher1" class="name-voucher">Giảm 50%</label>
-            <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="">
-            </div>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
-</form> 
         </div>
     </div>
-</div>
-</div>
 
     <div class="col">
 
         <div class="card mb-4" id="card-client" style="height:auto">
             <div class="card-body">
-            <div class="row">
-            <div class="col">
-                <h5 class="text-center">Thanh toán</h5>
-            </div>
-        </div><hr>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-center">Thanh toán</h5>
+                    </div>
+                </div>
+                <hr>
                 <div class="row">
                     <div class="col-sm-6">
                         <p class="mb-0">Giá thành:</p>
@@ -247,17 +272,34 @@ padding: 20px;
 
                 <div class="row">
                     <div class="col-sm-6">
-                        <p class="mb-0">Giảm:</p>
+                        <p class="mb-0">Giảm xu:</p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="text-muted mb-0"> - 50,000 VND
-                            <!-- <?php
-                            $price = 0;
-                            foreach ($products as $product) {
-                                $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
+                        <p class="text-muted mb-0">- {{$gold}} </p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="mb-0">Mã giảm giá:</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="text-muted mb-0">-
+                            <?php
+                            if ($vouID == 0) {
+                                $discount = 0;
+                            } else {
+                                $vous = Illuminate\Support\Facades\DB::table('Vouchers')
+                                    ->select('Vouchers.*')
+                                    ->where('Vouchers.vou_id', $vouID)
+                                    ->get();
+                                foreach ($vous as $vou) {
+                                    $discount = $vou->vou_discount;
+                                }
                             }
+                            echo $discount;
                             ?>
-                            {{number_format($price).' VND'}} -->
                         </p>
                     </div>
                 </div>
@@ -269,20 +311,21 @@ padding: 20px;
                     </div>
                     <div class="col-sm-6">
                         <p class="text-muted mb-0">
-                            <?php
-                            ?>
-                            {{number_format($shipMoney + $price).' VND'}}
+                            <input type="hidden" value="{{$shipMoney + $price}}" name="total">
+                            {{number_format($shipMoney + $price - $gold - $discount).' VND'}}
                         </p>
                     </div>
                 </div>
                 <hr>
 
-                <a href="/success" role="button">
-                    <button class="btn btn-primary" type="button" style="height: 40px;"> Mua hàng với ZaloPay <img src="https://github.com/Phhngan/snack_images/blob/master/icon/zaloPay.png?raw=true" height="25" /></button>
-                </a>
-                <a href="/success" role="button">
-                    <button class="btn btn-primary" type="button" style="height: 40px;"> Mua hàng với ví điện tử MoMo <img src="https://github.com/Phhngan/snack_images/blob/master/icon/MoMo_Logo.png?raw=true" height="25" /></button>
-                </a>
+                <form action="{{url('/VNPay')}}" method="POST">
+                    @csrf
+                    <button class="btn btn-primary" name="redirect" type="submit" style="height: 40px;"> Mua hàng với ví điện tử VNPay <img src="https://github.com/Phhngan/snack_images/blob/master/icon/zaloPay.png?raw=true" height="25" /></button>
+                </form>
+                <form action="{{url('/Momo')}}" method="POST">
+                    @csrf
+                    <button class="btn btn-primary" name="payUrl" type="submit" style="height: 40px;"> Mua hàng với ví điện tử MoMo <img src="https://github.com/Phhngan/snack_images/blob/master/icon/MoMo_Logo.png?raw=true" height="25" /></button>
+                </form>
                 <a class="btn btn-warning" href="/cart" role="button">Quay lại giỏ hàng</a>
             </div>
         </div>
@@ -299,18 +342,18 @@ padding: 20px;
 @section('js')
 @parent
 <script>
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      // Uncheck all checkboxes
-      checkboxes.forEach(cb => {
-        cb.checked = false;
-      });
-      
-      // Check the clicked checkbox
-      checkbox.checked = true;
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            // Uncheck all checkboxes
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+            });
+
+            // Check the clicked checkbox
+            checkbox.checked = true;
+        });
     });
-  });
 </script>
 @endsection

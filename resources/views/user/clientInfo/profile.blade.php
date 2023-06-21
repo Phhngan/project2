@@ -92,7 +92,7 @@ margin-right:10px;
                 <p class="mb-0">Số xu bạn có: </p>
             </div>
             <div class="col-sm-9">
-                <p class="text-muted mb-0">50,000 <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true"  style="width:22px;"></p>
+                <p class="text-muted mb-0">{{$user->use_gold}} <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true" style="width:22px;"></p>
             </div>
         </div>
         @empty

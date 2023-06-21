@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('Vouchers', function (Blueprint $table) {
             $table->increments('vou_id');
-            $table->integer('vou_type');
             $table->date('vou_day');
             $table->string('vou_title');
             $table->integer('vou_discount');
             $table->string('vou_image');
-            $table->mediumText('vou_detail')->nullable();
             $table->integer('vou_min');
         });
     }

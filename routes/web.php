@@ -271,7 +271,12 @@ Route::delete("/cart/{car_id}/delete", [CartController::class, 'delete']);
 Route::get("/cart/updateAddress", [CartController::class, 'updateAddress']);
 Route::put("/cart/updateAddress", [CartController::class, 'updateAddress']);
 Route::get("/checkOut", [CartController::class, 'showCheckOut']);
+Route::get("/checkOut/updateNote", [CartController::class, 'updateNote']);
+Route::get("/checkOut/updateGold", [CartController::class, 'updateGold']);
+Route::get("/checkOut/updateVoucher", [CartController::class, 'updateVoucher']);
 Route::get("/success", [CartController::class, 'success']);
+Route::post("/VNPay", [CartController::class, 'vnpay']);
+Route::post("/Momo", [CartController::class, 'momo']);
 
 // Favourite
 Route::get("/{prd_id}/addFavorite", [MenuController::class, 'addFavorite']);

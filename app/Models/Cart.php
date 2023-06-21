@@ -14,7 +14,10 @@ class Cart extends Model
         'prd_id',
         'car_quantity',
         'ship_id',
-        'sal_detailAddress'
+        'sal_detailAddress',
+        'car_note',
+        'vou_id',
+        'car_gold'
     ];
 
     public function product()
@@ -30,5 +33,10 @@ class Cart extends Model
     public function ship()
     {
         return $this->belongsTo(Ship::class, 'ship_id', 'ship_id');
+    }
+
+    public function voucher()
+    {
+        return $this->belongsTo(Voucher::class, 'vou_id', 'vou_id');
     }
 }
