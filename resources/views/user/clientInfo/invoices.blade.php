@@ -17,6 +17,7 @@ background-color:#EBECFE;
 <a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
 <a class="active" href="/client/invoices">Đơn hàng</a>
+<a href="/client/ratting">Đánh giá</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
@@ -78,7 +79,7 @@ background-color:#EBECFE;
             <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" onclick="cancelOrder()" role="button">Hủy đơn</a>
             @else
             <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
-            <a class="btn btn-warning" href="/client/invoices/ratting" role="button">Đánh giá</a>
+            <a class="btn btn-warning" href="/client/ratting" role="button">Đánh giá</a>
             @endif
         </td>
     </tr>

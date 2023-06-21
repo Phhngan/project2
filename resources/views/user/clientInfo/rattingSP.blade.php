@@ -145,7 +145,8 @@ form .btn button:hover{
 <a href="/client">Thông tin khách hàng</a>
 <a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
-<a class="active" href="/client/invoices">Đơn hàng</a>
+<a href="/client/invoices">Đơn hàng</a>
+<a class="active" href="/client/ratting">Đánh giá</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
@@ -199,7 +200,7 @@ form .btn button:hover{
 <div id="selected-rating"></div>
 
 <br>
-<a class="btn btn-warning" href="/client/invoices/ratting" role="button" style="display: flex;width: fit-content;margin-left: auto;margin-right: auto;"><i class="fa-sharp fa-solid fa-arrow-left" style="padding:5px 12px 5px 5px"></i>Đánh giá các sản phẩm khác</a>
+<a class="btn btn-warning" href="/client/ratting" role="button" style="display: flex;width: fit-content;margin-left: auto;margin-right: auto;"><i class="fa-sharp fa-solid fa-arrow-left" style="padding:5px 12px 5px 5px"></i>Đánh giá các sản phẩm khác</a>
 <br>
 @endsection
 

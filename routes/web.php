@@ -319,7 +319,7 @@ Route::get('/bai-viet-1', function () {
 });
 
 // đánh giá
-Route::get('/client/invoices/ratting', function () {
+Route::get('/client/ratting', function () {
     return view('user.clientInfo.ratting');
 });
 

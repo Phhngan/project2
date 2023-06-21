@@ -19,6 +19,7 @@ margin-right:10px;
 <a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
 <a href="/client/invoices">Đơn hàng</a>
+<a href="/client/ratting">Đánh giá</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
