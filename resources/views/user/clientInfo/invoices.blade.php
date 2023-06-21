@@ -8,8 +8,50 @@ position: fixed;
 bottom:10px;
 right:10px;
 background-color:#EBECFE;
-
 }
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none; /* Hide the popup by default */
+}
+
+.popup-content {
+    background-color: #CED7FD;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 498px;
+    height: 150px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-buttons {
+  margin-top: 20px;
+}
+
+.popup-button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background-color: #ddd;
+}
+
 @endsection
 
 @section('sidebar-client')
@@ -77,6 +119,17 @@ background-color:#EBECFE;
             @if($invoice->sal_status_id == 1)
             <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
             <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" onclick="cancelOrder()" role="button">Hủy đơn</a>
+
+            <!-- <a class="btn btn-danger" onclick="cancelOrder()" role="button">Hủy đơn</a>
+            <div id="cancelPopup" class="popup-container">
+            <div class="popup-content">
+                <p><strong>Bạn có muốn hủy đơn hàng?</strong></p>
+                <div class="popup-buttons">
+                <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
+                <button class="popup-button" style="color:white;background-color:red" onclick="DeleteOrder()" href="{{ url('/client/invoices/'.$invoice->sal_id.'/cancel') }}">Delete</button>
+                </div>
+            </div>
+            </div> -->
             @else
             <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
             <a class="btn btn-warning" href="/client/ratting" role="button">Đánh giá</a>
@@ -98,6 +151,48 @@ background-color:#EBECFE;
 
 @section('js')
 @parent
+<!-- <script>
+function DeleteOrder(button) {
+    var invoiceId = $(button).data('invoice_id');
+  $.ajax({
+    url: '/client/invoices/' + invoiceId + '/cancel',
+    method: 'DELETE', // Or 'DELETE' if you want to use the DELETE method
+    dataType: 'json',
+    success: function(response) {
+      // Handle the success response here
+      // For example, update the UI or show a success message
+      console.log('Product deleted successfully');
+    },
+    error: function(xhr, status, error) {
+      // Handle the error response here
+      // For example, show an error message or log the error
+      console.error('Error deleting product:', error);
+    }
+  });
+
+  // Close the popup after the delete action is initiated
+  closePopup();
+}
+</script>
+<script>
+function cancelOrder() {
+  var confirmationPopup = document.getElementById("cancelPopup");
+  confirmationPopup.style.display = "block";
+}
+
+function closePopup() {
+  var confirmationPopup = document.getElementById("cancelPopup");
+  confirmationPopup.style.display = "none";
+}
+
+var cancel = document.getElementById('cancelPopup');
+window.onclick = function(event) {
+  if (event.target == cancel) {
+    cancel.style.display = "none";
+  }
+}
+</script> -->
+
 <script>
     function cancelOrder() {
         alert("Bạn đã hủy đơn!");

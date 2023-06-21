@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{url('css/base_site.css')}}">
     <link rel="shortcut icon" type="image/png" href="https://github.com/Phhngan/snack_images/blob/master/logo/logo1.png?raw=true"/>
     <script src="https://kit.fontawesome.com/9826eb958a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @yield('css-link')
     <style>
 @yield('style');
