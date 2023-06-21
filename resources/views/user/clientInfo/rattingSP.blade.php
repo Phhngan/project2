@@ -173,15 +173,15 @@ form .btn button:hover{
         <div class="edit">EDIT</div>
     </div>
       <div class="star-widget">
-        <input type="radio" name="rate" id="rate-5">
+        <input type="radio" name="rate" id="rate-5" value="5">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
+        <input type="radio" name="rate" id="rate-4" value="4">
         <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
+        <input type="radio" name="rate" id="rate-3" value="3">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
+        <input type="radio" name="rate" id="rate-2" value="2">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
+        <input type="radio" name="rate" id="rate-1" value="1">
         <label for="rate-1" class="fas fa-star"></label>
         <form action="#">
           <header></header>
@@ -195,9 +195,12 @@ form .btn button:hover{
     </div>
 </div>
 
+<!-- test lấy số sao -->
+<div id="selected-rating"></div>
+
 <br>
 <a class="btn btn-warning" href="/client/invoices/ratting" role="button" style="display: flex;width: fit-content;margin-left: auto;margin-right: auto;"><i class="fa-sharp fa-solid fa-arrow-left" style="padding:5px 12px 5px 5px"></i>Đánh giá các sản phẩm khác</a>
-
+<br>
 @endsection
 
 @section('js')
@@ -217,5 +220,25 @@ form .btn button:hover{
         return false;
       }
     </script>
+
+<script>
+    const ratingForm = document.getElementById('rating-form');
+    const ratingInputs = document.querySelectorAll('input[name="rate"]');
+    let selectedRating = null;
+    const selectedRatingElement = document.getElementById('selected-rating');
+
+    ratingInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            selectedRating = input.value;
+            selectedRatingElement.textContent = `Selected rating: ${selectedRating}`;
+        });
+    });
+
+    ratingForm.addEventListener('submit', event => {
+        event.preventDefault();
+
+        console.log('Selected rating:', selectedRating);
+    });
+</script>
 
 @endsection
