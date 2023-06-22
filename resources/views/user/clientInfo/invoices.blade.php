@@ -10,46 +10,46 @@ right:10px;
 background-color:#EBECFE;
 }
 .popup-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  display: none; /* Hide the popup by default */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+display: none; /* Hide the popup by default */
 }
 
 .popup-content {
-    background-color: #CED7FD;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    width: 498px;
-    height: 150px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+background-color: #CED7FD;
+padding: 20px;
+border-radius: 5px;
+text-align: center;
+width: 498px;
+height: 150px;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 
 .popup-buttons {
-  margin-top: 20px;
+margin-top: 20px;
 }
 
 .popup-button {
-  margin: 0 10px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+margin: 0 10px;
+padding: 8px 16px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
 }
 
 .popup-button:hover {
-  background-color: #ddd;
+background-color: #ddd;
 }
 
 @endsection
@@ -59,7 +59,7 @@ background-color:#EBECFE;
 <a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
 <a class="active" href="/client/invoices">Đơn hàng</a>
-<a href="/client/ratting">Đánh giá</a>
+<a href="/client/comment">Đánh giá</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
@@ -132,7 +132,7 @@ background-color:#EBECFE;
             </div> -->
             @else
             <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
-            <a class="btn btn-warning" href="/client/ratting" role="button">Đánh giá</a>
+            <a class="btn btn-warning" href="{{url('/client/invoices/'.$invoice->sal_id.'/ratting')}}" role="button">Đánh giá</a>
             @endif
         </td>
     </tr>

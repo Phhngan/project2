@@ -87,25 +87,25 @@ to {opacity:1 ;}
 position: relative;
 }
 .add-favorite{
-    position: absolute;
-    top:50px;
-    right:70px;
+position: absolute;
+top:50px;
+right:70px;
 }
 .hide {
-    display: none;
-    position: absolute;
-    top: 130px;
-    right: -15px;
-    opacity: 0.5;
-    border-radius: 3px;
+display: none;
+position: absolute;
+top: 130px;
+right: -15px;
+opacity: 0.5;
+border-radius: 3px;
 }
-    
+
 .add-favorite:hover + .hide {
-  display: block;
-  background-color: black;
-  color: white;
-  width: fit-content;
-  
+display: block;
+background-color: black;
+color: white;
+width: fit-content;
+
 }
 .ratting-star{
 background-color: #CED7FD;
@@ -192,32 +192,45 @@ color:grey;
             @endif
             <?php
             $user = Illuminate\Support\Facades\Auth::user();
-            $number = App\Models\Favoriteproduct::where('prd_id', $product->prd_id)
-                ->where('use_id', $user->id)
-                ->count();
+            if ($user == null) {
+                $number = -1;
+            } else {
+                $number = App\Models\Favoriteproduct::where('prd_id', $product->prd_id)
+                    ->where('use_id', $user->id)
+                    ->count();
+            }
             ?>
-            @if($number == 0)
-            <div class="add-favorite">
-                <a href="/{{$product->prd_id}}/addFavorite">
-                    <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/un-heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
-                </a>
-            </div>
-            <div class="hide">Thêm vào sản phẩm yêu thích</div>
-            @else
-            <div class="add-favorite">
-                <!-- <a href="/client/favorite/{{$product->prd_id}}/delete" method="DELETE">
-                    <form method="POST" action="">
-                        @csrf
-                        @method('delete')
+            <?php
+            if ($number == -1) {
+            ?>
+                <div class="add-favorite">
+                    <p>
                         <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
-                    </form>
-                </a> -->
-                <a href="/{{$product->prd_id}}/deleteFavorite">
-                    <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
-                </a>
-            </div>
-            <div class="hide">Đã có trong sản phẩm yêu thích</div>
-            @endif
+                    </p>
+                </div>
+                <?php
+            } else {
+                if ($number == 0) {
+                ?>
+                    <div class="add-favorite">
+                        <a href="/{{$product->prd_id}}/addFavorite">
+                            <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/un-heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+                        </a>
+                    </div>
+                    <div class="hide">Thêm vào sản phẩm yêu thích</div>
+                <?php
+                } else {
+                ?>
+                    <div class="add-favorite">
+                        <a href="/{{$product->prd_id}}/deleteFavorite">
+                            <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+                        </a>
+                    </div>
+                    <div class="hide">Đã có trong sản phẩm yêu thích</div>
+            <?php
+                }
+            }
+            ?>
             <br>
             <div class="product-about">
                 <hr>
@@ -290,34 +303,35 @@ color:grey;
         </div> -->
 
         <div class="ratting-star">
-    <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">
-        <?php
-        // Retrieve the selected rating from the session
-        session_start();
-        // $_SESSION['selected_rating'] = 3.5;
-        $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
-        echo $selectedRating . '/5';
-        ?>
-    </span>
-    <!-- Render the star images based on the selected rating -->
-    <?php
-    if ($selectedRating !== null) {
-        $fullStars = floor($selectedRating);
-        $halfStar = ($selectedRating - $fullStars) >= 0.5;
-        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+            <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">
+                <?php
+                // Retrieve the selected rating from the session
+                session_start();
+                // $_SESSION['selected_rating'] = 3.5;
+                $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
+                $selectedRating = 3;
+                echo $selectedRating . '/5';
+                ?>
+            </span>
+            <!-- Render the star images based on the selected rating -->
+            <?php
+            if ($selectedRating !== null) {
+                $fullStars = floor($selectedRating);
+                $halfStar = ($selectedRating - $fullStars) >= 0.5;
+                $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
 
-        for ($i = 0; $i < $fullStars; $i++) {
-            echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">';
-        }
-        if ($halfStar) {
-            echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">';
-        }
-        for ($i = 0; $i < $emptyStars; $i++) {
-            echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">';
-        }
-    }
-    ?>
-</div>
+                for ($i = 0; $i < $fullStars; $i++) {
+                    echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">';
+                }
+                if ($halfStar) {
+                    echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">';
+                }
+                for ($i = 0; $i < $emptyStars; $i++) {
+                    echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">';
+                }
+            }
+            ?>
+        </div>
 
         <!-- ĐÁNH GIÁ -->
         <div class="customer-cmt">

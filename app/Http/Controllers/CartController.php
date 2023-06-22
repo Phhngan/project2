@@ -285,8 +285,9 @@ class CartController extends Controller
             }
         }
         $total = $price + $shipMoney - $gold - $discount;
-        $code = DB::table('SalesInvoices')
-            ->max('SalesInvoices.sal_id');
+        // $code = DB::table('SalesInvoices')
+        //     ->max('SalesInvoices.sal_id');
+        $code = rand(1, 99999999);
 
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://127.0.0.1:8000/success";

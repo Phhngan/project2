@@ -17,6 +17,7 @@ use App\Http\Controllers\ForgetPassController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RateController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -253,6 +254,9 @@ Route::get("/client/invoices/{sal_id}/details", [ClientController::class, 'detai
 //Huy don
 Route::get("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel']);
 Route::put("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel']);
+//rating
+Route::get("/client/invoices/{sal_id}/ratting", [RateController::class, 'all']);
+Route::get("/client/invoices/{id}/rattingSP", [RateController::class, 'detail']);
 
 //profile admin
 Route::get("/admin/profile", [AdminController::class, 'profile']);
@@ -316,14 +320,4 @@ Route::get('/admin/tintuc/detail', function () {
 // bài viết
 Route::get('/bai-viet-1', function () {
     return view('user./bai-viet');
-});
-
-// đánh giá
-Route::get('/client/ratting', function () {
-    return view('user.clientInfo.ratting');
-});
-
-// đánh giá 1 sản phẩm
-Route::get('/client/invoices/rattingSP', function () {
-    return view('user.clientInfo.rattingSP');
 });

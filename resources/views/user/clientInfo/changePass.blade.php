@@ -43,15 +43,15 @@ margin-left: 0px;
 <a href="/client">Thông tin khách hàng</a>
 <a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
-  <a href="/client/invoices">Đơn hàng</a>
-  <a href="/client/ratting">Đánh giá</a>
-  <a class="active" href="/client/changePass">Đổi mật khẩu</a>
+<a href="/client/invoices">Đơn hàng</a>
+<a href="/client/comment">Đánh giá</a>
+<a class="active" href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
 @section('content-info')
 <br>
 <div class="cf-title">
-  <h3>Đổi mật khẩu</h3>
+    <h3>Đổi mật khẩu</h3>
 </div>
 
 <form class="register" action="{{url('client/changePass')}}" method="POST">
