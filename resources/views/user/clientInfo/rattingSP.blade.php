@@ -43,7 +43,7 @@ text-decoration: underline;
 display: none;
 }
 .star-widget label{
-font-size: 20px;
+font-size: 22px;
 color: #444;
 padding: 3px;
 float: right;
@@ -82,20 +82,23 @@ input:checked ~ form{
 display: block;
 }
 form header{
-width: 100%;
+width: 280px;
 font-size: 18px;
 color: #fe7;
 font-weight: 500;
 margin: 5px 0 20px 0;
-text-align: center;
+<!-- text-align: center; -->
 transition: all 0.2s ease;
 }
 form .textarea{
 height: 100px;
 width: 100%;
 overflow: hidden;
+display: flex!important;
+border: 1px solid #F4CCCD;
+background: #F4CCCD;
 }
-form .textarea textarea{
+<!-- form .textarea input{
 height: 100%;
 width: 100%;
 outline: none;
@@ -105,10 +108,7 @@ background: #F4CCCD;
 padding: 10px;
 font-size: 17px;
 resize: none;
-}
-.textarea textarea:focus{
-border-color: #F4CCCD;
-}
+} -->
 form .btn{
 height: 45px;
 width: 100%;
@@ -187,12 +187,8 @@ justify-content:center;
         <label for="rate-1" class="fas fa-star"></label>
         <form action="#">
             <header></header>
-            <br>
             <input id="selected-rating" name="star" type="text">
-            <br>
-            <div class="textarea">
-                <input cols="30" placeholder="Đánh giá của bạn" name="comment" type="text">
-            </div>
+                <input cols="30" class="textarea" placeholder="Đánh giá của bạn" name="comment" type="text">
             <div class="btn">
                 <button type="submit">Đánh giá</button>
             </div>

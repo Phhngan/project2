@@ -335,61 +335,72 @@ color:grey;
 
         <!-- ĐÁNH GIÁ -->
         <div class="customer-cmt">
-            <div class="leftcolumn">
-                <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
-            </div>
-            <div class="rightcolumn">
-                <div class="card-cmt">
-                    <div class="row">
-                        <h4>Phạm Hà Ngân</h4>
-                    </div>
-                    <div class="row">
-                        <p class="time">16/04/2023</p>
-                    </div>
-                    <div class="row">
-                        <p>hello hello</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="leftcolumn">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
+    </div>
+    <div class="rightcolumn">
+        <div class="card-cmt">
+            <div class="row">
+                <h4>Phạm Hà Ngân</h4>
+                <div class="rating">
+                    <?php
+                    // Retrieve the rating value for this customer comment
+                    $customerRating = 4; // Example rating value
 
-        <div class="customer-cmt">
-            <div class="leftcolumn">
-                <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
-            </div>
-            <div class="rightcolumn">
-                <div class="card-cmt">
-                    <div class="row">
-                        <h4>Phạm Hà Ngân</h4>
-                    </div>
-                    <div class="row">
-                        <p class="time">16/04/2023</p>
-                    </div>
-                    <div class="row">
-                        <p>hello hello</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    // Validate the rating value to ensure it falls within the valid range (1-5)
+                    $customerRating = max(1, min(5, $customerRating));
 
-        <div class="customer-cmt">
-            <div class="leftcolumn">
-                <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
-            </div>
-            <div class="rightcolumn">
-                <div class="card-cmt">
-                    <div class="row">
-                        <h4>Phạm Hà Ngân</h4>
-                    </div>
-                    <div class="row">
-                        <p class="time">16/04/2023</p>
-                    </div>
-                    <div class="row">
-                        <p>hello hello</p>
-                    </div>
+                    // Render the star images based on the rating value
+                    for ($i = 1; $i <= 5; $i++) {
+                        $starImage = ($i <= $customerRating) ? 'star' : 'star-none';
+                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/' . $starImage . '.png?raw=true" alt="Star" width="18" height="18">';
+                    }
+                    ?>
                 </div>
             </div>
+            <div class="row">
+                <p class="time" style="padding-top:10px;">16/04/2023</p>
+            </div>
+            <div class="row">
+                <p>hello hello</p>
+            </div>
         </div>
+    </div>
+</div><br><br>
+
+<div class="customer-cmt">
+    <div class="leftcolumn">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
+    </div>
+    <div class="rightcolumn">
+        <div class="card-cmt">
+            <div class="row">
+                <h4>Phạm Hà Ngân</h4>
+                <div class="rating">
+                    <?php
+                    // Retrieve the rating value for this customer comment
+                    $customerRating = 4; // Example rating value
+
+                    // Validate the rating value to ensure it falls within the valid range (1-5)
+                    $customerRating = max(1, min(5, $customerRating));
+
+                    // Render the star images based on the rating value
+                    for ($i = 1; $i <= 5; $i++) {
+                        $starImage = ($i <= $customerRating) ? 'star' : 'star-none';
+                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/' . $starImage . '.png?raw=true" alt="Star" width="18" height="18">';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="row">
+                <p class="time" style="padding-top:10px;">16/04/2023</p>
+            </div>
+            <div class="row">
+                <p>hello hello</p>
+            </div>
+        </div>
+    </div>
+</div><br><br>
 
     </div>
 

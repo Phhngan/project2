@@ -34,7 +34,7 @@
       <div class="column-2">
         <form METHOD="GET" class="example" action="{{url('/search')}}">
           <input type="text" placeholder="Search" name="searchText">
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" class="btn btn-primary" style="margin-top:0px;">Search</button>
         </form>
       </div>
       <div class="column-3">
