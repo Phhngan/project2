@@ -271,7 +271,6 @@ color:grey;
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="product-description">
@@ -282,10 +281,6 @@ color:grey;
     </div>
     <hr>
     <br>
-
-    @empty
-    <h3>Không có sản phẩm </h3>
-    @endforelse
 
     <!-- đánh giá -->
     <div class="product-ratting">
@@ -301,107 +296,106 @@ color:grey;
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">
             <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">
         </div> -->
-
-        <div class="ratting-star">
-            <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">
+        <?php
+        $user = Illuminate\Support\Facades\Auth::user();
+        // foreach ($products as $product) {
+        //     $prd_id = $product->prd_id;
+        // }
+        $countComment = Illuminate\Support\Facades\DB::table('Comments')
+            ->select('Comments.*')
+            ->where('Comments.prd_id', $product->prd_id)
+            ->count();
+        $totalStar = Illuminate\Support\Facades\DB::table('Comments')
+            ->where('Comments.prd_id', $product->prd_id)
+            ->average('Comments.com_rate');
+        if ($countComment != 0) {
+        ?>
+            <div class="ratting-star">
+                <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">
+                    <?php
+                    // Retrieve the selected rating from the session
+                    // session_start();
+                    // $_SESSION['selected_rating'] = 3.5;
+                    // $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
+                    $selectedRating = $totalStar;
+                    echo $selectedRating . '/5';
+                    ?>
+                </span>
+                <!-- Render the star images based on the selected rating -->
                 <?php
-                // Retrieve the selected rating from the session
-                session_start();
-                // $_SESSION['selected_rating'] = 3.5;
-                $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
-                $selectedRating = 3;
-                echo $selectedRating . '/5';
+                if ($selectedRating !== null) {
+                    $fullStars = floor($selectedRating);
+                    $halfStar = ($selectedRating - $fullStars) >= 0.5;
+                    $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+
+                    for ($i = 0; $i < $fullStars; $i++) {
+                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">';
+                    }
+                    if ($halfStar) {
+                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">';
+                    }
+                    for ($i = 0; $i < $emptyStars; $i++) {
+                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">';
+                    }
+                }
                 ?>
-            </span>
-            <!-- Render the star images based on the selected rating -->
+            </div>
+            <!-- ĐÁNH GIÁ -->
             <?php
-            if ($selectedRating !== null) {
-                $fullStars = floor($selectedRating);
-                $halfStar = ($selectedRating - $fullStars) >= 0.5;
-                $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-
-                for ($i = 0; $i < $fullStars; $i++) {
-                    echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">';
-                }
-                if ($halfStar) {
-                    echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">';
-                }
-                for ($i = 0; $i < $emptyStars; $i++) {
-                    echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">';
-                }
-            }
+            $comments = Illuminate\Support\Facades\DB::table('Comments')
+                ->select('Comments.*')
+                ->where('Comments.prd_id', $product->prd_id)
+                ->get();
+            foreach ($comments as $comment) {
+                $userComments = Illuminate\Support\Facades\DB::table('Users')
+                    ->select('Users.*')
+                    ->where('Users.id', $comment->use_id)
+                    ->get();
             ?>
-        </div>
+                <div class="customer-cmt">
+                    <div class="leftcolumn">
+                        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
+                    </div>
+                    <div class="rightcolumn">
+                        <div class="card-cmt">
+                            <div class="row">
+                                <h4>
+                                    <?php
+                                    foreach ($userComments as $userComment) {
+                                    ?>
+                                        {{$userComment->use_lastName}} {{$userComment->name}}
+                                    <?php } ?>
+                                </h4>
+                                <div class="rating">
+                                    <?php
+                                    // Retrieve the rating value for this customer comment
+                                    $customerRating = $comment->com_rate; // Example rating value
 
-        <!-- ĐÁNH GIÁ -->
-        <div class="customer-cmt">
-    <div class="leftcolumn">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
-    </div>
-    <div class="rightcolumn">
-        <div class="card-cmt">
-            <div class="row">
-                <h4>Phạm Hà Ngân</h4>
-                <div class="rating">
-                    <?php
-                    // Retrieve the rating value for this customer comment
-                    $customerRating = 4; // Example rating value
+                                    // Validate the rating value to ensure it falls within the valid range (1-5)
+                                    $customerRating = max(1, min(5, $customerRating));
 
-                    // Validate the rating value to ensure it falls within the valid range (1-5)
-                    $customerRating = max(1, min(5, $customerRating));
-
-                    // Render the star images based on the rating value
-                    for ($i = 1; $i <= 5; $i++) {
-                        $starImage = ($i <= $customerRating) ? 'star' : 'star-none';
-                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/' . $starImage . '.png?raw=true" alt="Star" width="18" height="18">';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="row">
-                <p class="time" style="padding-top:10px;">16/04/2023</p>
-            </div>
-            <div class="row">
-                <p>hello hello</p>
-            </div>
-        </div>
-    </div>
-</div><br><br>
-
-<div class="customer-cmt">
-    <div class="leftcolumn">
-        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/customer-ava.png?raw=true" height="70">
-    </div>
-    <div class="rightcolumn">
-        <div class="card-cmt">
-            <div class="row">
-                <h4>Phạm Hà Ngân</h4>
-                <div class="rating">
-                    <?php
-                    // Retrieve the rating value for this customer comment
-                    $customerRating = 4; // Example rating value
-
-                    // Validate the rating value to ensure it falls within the valid range (1-5)
-                    $customerRating = max(1, min(5, $customerRating));
-
-                    // Render the star images based on the rating value
-                    for ($i = 1; $i <= 5; $i++) {
-                        $starImage = ($i <= $customerRating) ? 'star' : 'star-none';
-                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/' . $starImage . '.png?raw=true" alt="Star" width="18" height="18">';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="row">
-                <p class="time" style="padding-top:10px;">16/04/2023</p>
-            </div>
-            <div class="row">
-                <p>hello hello</p>
-            </div>
-        </div>
-    </div>
-</div><br><br>
-
+                                    // Render the star images based on the rating value
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        $starImage = ($i <= $customerRating) ? 'star' : 'star-none';
+                                        echo '<img src="https://github.com/Phhngan/snack_images/blob/master/ratting/' . $starImage . '.png?raw=true" alt="Star" width="18" height="18">';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="time" style="padding-top:10px;">{{$comment->com_date}}</p>
+                            </div>
+                            <div class="row">
+                                <p>{{$comment->com_detail}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><br><br>
+            <?php } ?>
+        <?php } else { ?>
+            <p>Chưa có đánh giá</p>
+            <br><br>
+        <?php } ?>
     </div>
 
     <hr>
@@ -472,9 +466,10 @@ color:grey;
             @endforelse
         </div>
     </div>
-
-
 </div>
+@empty
+<h3>Không có sản phẩm </h3>
+@endforelse
 
 @endsection
 

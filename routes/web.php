@@ -257,6 +257,7 @@ Route::put("/client/invoices/{sal_id}/cancel", [ClientController::class, 'cancel
 //rating
 Route::get("/client/invoices/{sal_id}/ratting", [RateController::class, 'all']);
 Route::get("/client/invoices/{id}/rattingSP", [RateController::class, 'detail']);
+Route::get("/client/invoices/{id}/updateRatting", [RateController::class, 'update']);
 
 //profile admin
 Route::get("/admin/profile", [AdminController::class, 'profile']);

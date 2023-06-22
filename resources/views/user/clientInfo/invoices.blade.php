@@ -56,8 +56,8 @@ background-color: #ddd;
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
-<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a class="active" href="/client/invoices">Đơn hàng</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
@@ -115,10 +115,12 @@ background-color: #ddd;
             </p>
         </td>
         <td>
-            @if($invoice->sal_status_id == 1)
-            <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
-            <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" onclick="cancelOrder()" role="button">Hủy đơn</a>
-
+            <?php
+            if ($invoice->sal_status_id == 1) {
+            ?>
+                <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
+                <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" onclick="cancelOrder()" role="button">Hủy đơn</a>
+            <?php } ?>
             <!-- <a class="btn btn-danger" onclick="cancelOrder()" role="button">Hủy đơn</a>
             <div id="cancelPopup" class="popup-container">
             <div class="popup-content">
@@ -129,10 +131,32 @@ background-color: #ddd;
                 </div>
             </div>
             </div> -->
-            @else
-            <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
-            <a class="btn btn-warning" href="{{url('/client/invoices/'.$invoice->sal_id.'/ratting')}}" role="button">Đánh giá</a>
-            @endif
+            <?php
+            if ($invoice->sal_status_id == 4) {
+                $countInvoice = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
+                    ->select('SalesInvoiceDetails.*')
+                    ->where('SalesInvoiceDetails.sal_id', $invoice->sal_id)
+                    ->count();
+                $countComment = Illuminate\Support\Facades\DB::table('Comments')
+                    ->select('Comments.*')
+                    ->where('Comments.sal_id', $invoice->sal_id)
+                    ->count();
+                if ($countComment < $countInvoice) {
+            ?>
+                    <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
+                    <a class="btn btn-warning" href="{{url('/client/invoices/'.$invoice->sal_id.'/ratting')}}" role="button">Đánh giá</a>
+                <?php
+                } else {
+                ?>
+                    <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
+                    <p class="btn btn-warning">Đã đánh giá</p>
+            <?php }
+            } ?>
+            <?php
+            if ($invoice->sal_status_id > 1 && $invoice->sal_status_id < 4) {
+            ?>
+                <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
+            <?php } ?>
         </td>
     </tr>
     @empty

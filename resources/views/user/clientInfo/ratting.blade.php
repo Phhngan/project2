@@ -9,9 +9,9 @@
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
-<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
-<a class="active" href="/client/invoices">Đơn hàng</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
+<a href="/client/invoices">Đơn hàng</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
@@ -44,9 +44,27 @@
         <td>
             <p>{{number_format($invoiceDetail->sal_price).' VND'}}</p>
         </td>
-        <td>
-            <a class="btn btn-warning" href="{{url('/client/invoices/'.$invoiceDetail->id.'/rattingSP')}}" role="button">Đánh giá</a>
-        </td>
+        <?php
+        $user = Illuminate\Support\Facades\Auth::user();
+        $count = Illuminate\Support\Facades\DB::table('Comments')
+            ->select('Comments.*',)
+            ->where('Comments.use_id', $user->id)
+            ->where('Comments.prd_id', $invoiceDetail->prd_id)
+            ->where('Comments.sal_id', $invoiceDetail->sal_id)
+            ->count();
+        // dd($count);
+        if ($count == 0) {
+        ?>
+            <td>
+                <a class="btn btn-warning" href="{{url('/client/invoices/'.$invoiceDetail->id.'/rattingSP')}}" role="button">Đánh giá</a>
+            </td>
+        <?php
+        } else {
+        ?>
+            <td>
+                <p class="btn btn-warning">Đã đánh giá</p>
+            </td>
+        <?php } ?>
     </tr>
     @empty
     <tr>

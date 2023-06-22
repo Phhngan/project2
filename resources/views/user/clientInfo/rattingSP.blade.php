@@ -143,10 +143,9 @@ justify-content:center;
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
-<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/invoices">Đơn hàng</a>
-<a class="active" href="/client/comment">Đánh giá</a>
 <a href="/client/changePass">Đổi mật khẩu</a>
 @endsection
 
@@ -169,7 +168,7 @@ justify-content:center;
 <br>
 <!-- Ratting -->
 <div class="container-post" id="popup-ratting">
-    <h5>Đánh giá của bạn:</h5>
+    <h5>Đánh giá để nhận xu:</h5>
     <div class="post">
         <div class="text">Thanks for rating us!</div>
         <div class="edit">EDIT</div>
@@ -185,10 +184,12 @@ justify-content:center;
         <label for="rate-2" class="fas fa-star"></label>
         <input type="radio" name="rate" id="rate-1" value="1">
         <label for="rate-1" class="fas fa-star"></label>
-        <form action="#">
+        <form action="{{url('client/invoices/'.$invoiceDetail->id.'/updateRatting')}}" method='PUT'>
             <header></header>
-            <input id="selected-rating" name="star" type="text">
-                <input cols="30" class="textarea" placeholder="Đánh giá của bạn" name="comment" type="text">
+            <!-- <div id="selected-rating" name="star"></div> -->
+            <input cols="30" class="textarea" placeholder="Đánh giá sao" name="star" value="" type="hidden" id="star">
+            <br>
+            <input cols="30" class="textarea" placeholder="Đánh giá của bạn" name="comment" type="text">
             <div class="btn">
                 <button type="submit">Đánh giá</button>
             </div>
@@ -229,15 +230,16 @@ justify-content:center;
     const ratingForm = document.getElementById('rating-form');
     const ratingInputs = document.querySelectorAll('input[name="rate"]');
     let selectedRating = null;
-    const selectedRatingElement = document.getElementById('selected-rating');
+    // const selectedRatingElement = document.getElementById('selected-rating');
 
     ratingInputs.forEach(input => {
         input.addEventListener('change', () => {
-            selectedRating = input.value;
-            selectedRatingElement.textContent = `Selected rating: ${selectedRating}`;
+            // selectedRating = input.value;
+            // selectedRatingElement.innerText = selectedRating;
+            document.getElementById('star').value = input.value;
+            // selectedRatingElement.innerText = Number(selectedRating) + Number(1);
         });
     });
-
     ratingForm.addEventListener('submit', event => {
         event.preventDefault();
 

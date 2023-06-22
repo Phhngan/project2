@@ -41,8 +41,8 @@ margin-left: 0px;
 
 @section('sidebar-client')
 <a href="/client">Thông tin khách hàng</a>
-<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/edit">Sửa thông tin</a>
+<a href="/client/favorite">Sản phẩm yêu thích</a>
 <a href="/client/invoices">Đơn hàng</a>
 <a class="active" href="/client/changePass">Đổi mật khẩu</a>
 @endsection
