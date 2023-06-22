@@ -167,15 +167,16 @@ padding: 20px;
                         </div>
                     </div>
                     <hr>
-                    <form style=" height: 150px;overflow-x: hidden;" action="checkOut/updateGold" method='PUT'>
-                        <label for="use-xu" class="">Bạn đang có {{$user->use_gold}} <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true" style="width:22px;"></label>
+                    <form style="height: 150px; overflow-x: hidden;" action="checkOut/updateGold" method="PUT" onsubmit="return validateGold()">
+                        <label for="use-xu">Bạn đang có {{$user->use_gold}} <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true" style="width:22px;"></label>
                         <br>
-                        <label for="use-xu" class="">Sử dụng:
-                            <input name="gold" value="{{$gold}}" min='0' max='{{$user->use_gold}}' type="number" class="form-control" placeholder="" style="height:40px;width: 100px;">
+                        <label for="use-xu">Sử dụng:
+                            <input name="gold" id="gold-input" value="{{$gold}}" min="0" max="{{$user->use_gold}}" type="number" class="form-control" placeholder="" style="height:40px;width: 100px;">
                         </label>
                         <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
                     </form>
                     <hr>
+
                     <form style="overflow:scroll; height: 222px;overflow-x: hidden;" action="checkOut/updateVoucher" method='PUT'>
                         @if ($countVoucher == 1)
                         <?php
@@ -355,5 +356,18 @@ padding: 20px;
             checkbox.checked = true;
         });
     });
+</script>
+<script>
+    function validateGold() {
+        var goldInput = document.getElementById("gold-input");
+        var goldValue = parseInt(goldInput.value);
+
+        if (goldValue % 100 !== 0) {
+            alert("Số xu sử dụng phải chia hết cho 100.");
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
+    }
 </script>
 @endsection

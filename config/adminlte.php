@@ -389,6 +389,11 @@ return [
             'url' => '/admin/tintuc',
             'icon' => 'fa fa-book',
         ],
+        [
+            'text' => 'Quản lí mã giảm giá',
+            'url' => '/admin/voucher',
+            'icon' => 'fa fa-shopping-bag',
+        ],
 
         ['header' => 'account_settings'],
         

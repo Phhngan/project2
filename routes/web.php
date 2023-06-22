@@ -322,3 +322,17 @@ Route::get('/admin/tintuc/detail', function () {
 Route::get('/bai-viet-1', function () {
     return view('user./bai-viet');
 });
+
+// voucher admin
+Route::get('/admin/voucher/', function () {
+    return view('admin.voucher.index');
+});
+Route::get('/admin/voucher/create', function () {
+    return view('admin.voucher.create');
+});
+Route::get('/admin/voucher/edit', function () {
+    return view('admin.voucher.edit');
+});
+Route::get('/admin/voucher/detail', function () {
+    return view('admin.voucher.detail');
+});

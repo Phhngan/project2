@@ -21,8 +21,9 @@
             <p>{{$product->prd_code}}</p>
         </td>
         <td>
-            <p>{{$product->prd_name}}</p>
-
+            <a href="{{url('/admin/products/'.$product->prd_id)}}" style="text-decoration:none;color:black;">
+                <p>{{$product->prd_name}}</p>
+            </a>
         </td>
         <td>
             <p>
