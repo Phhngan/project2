@@ -156,7 +156,6 @@ padding: 20px;
 </div>
 
 <div class="row">
-
     <div class="col">
         <div class="card mb-4" id="card-client" style="height:auto">
             <div class="card-body">

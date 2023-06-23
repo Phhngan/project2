@@ -39,9 +39,15 @@
             <p>{{number_format($voucher->vou_min).' VND'}}</p>
         </td>
         <td>
-            <a class="btn btn-primary" href="{{url('/admin/voucher/'.$voucher->vou_id.'/edit')}}" role="button">Sửa</a>
-            <!-- <a class="btn btn-outline-secondary" href="{{url('admin/voucher/detail')}}" role="button">Xem chi tiết</a> -->
-            <br>
+            <?php
+            $today = date_create();
+            $vouDay = date_create($voucher->vou_day);
+            $compare = intval(date_diff($vouDay, $today)->format("%R%a"));
+            if ($compare < 0) {
+            ?>
+                <a class="btn btn-primary" href="{{url('/admin/voucher/'.$voucher->vou_id.'/edit')}}" role="button">Sửa</a>
+                <br>
+            <?php  } ?>
         </td>
     </tr>
     @empty

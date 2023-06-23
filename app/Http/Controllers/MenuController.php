@@ -158,4 +158,6 @@ class MenuController extends Controller
         DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
         return back();
     }
+
+    //
 }

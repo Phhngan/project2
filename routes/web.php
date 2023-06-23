@@ -209,14 +209,14 @@ Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class
 //Quản lý tin tức
 //Xem tất cả
 Route::get("/admin/news", [NewController::class, 'index']);
-//Chi tiết
-Route::get("/admin/news/{new_id}", [NewController::class, 'show']);
 //Tạo
 Route::get("/admin/news/create", [NewController::class, 'create']);
 Route::post("/admin/news/create", [NewController::class, 'save']);
 // Sửa
 Route::get("/admin/news/{new_id}/edit", [NewController::class, 'edit']);
 Route::put("/admin/news/{new_id}/edit", [NewController::class, 'update']);
+//Chi tiết
+Route::get("/admin/news/{new_id}", [NewController::class, 'show']);
 
 //Quản lý voucher
 //Xem tất cả

@@ -202,9 +202,6 @@ justify-content:center;
     <td colspan="3">Danh sach rong</td>
 </tr>
 @endforelse
-<br>
-<a class="btn btn-warning" href="/client/ratting" role="button" style="display: flex;width: fit-content;margin-left: auto;margin-right: auto;"><i class="fa-sharp fa-solid fa-arrow-left" style="padding:5px 12px 5px 5px"></i>Đánh giá các sản phẩm khác</a>
-<br>
 
 @endsection
 

@@ -38,7 +38,11 @@
         </tr>
         @empty
         <tr>
-            <td>Danh sách rỗng</td><td></td><td></td><td></td><td></td>
+            <td>Danh sách rỗng</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         @endforelse
     </tbody>

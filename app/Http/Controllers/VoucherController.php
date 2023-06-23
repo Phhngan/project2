@@ -14,7 +14,7 @@ class VoucherController extends Controller
     {
         $vouchers = DB::table('Vouchers')
             ->select('Vouchers.*')
-            ->orderByDesc('vou_id')
+            ->orderByDescƯ('Vouchers.vou_id')
             ->get();
         return view('admin/voucher.index', ['vouchers' => $vouchers]);
     }
