@@ -17,7 +17,9 @@ use App\Http\Controllers\ForgetPassController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\NewController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Util\Html5EntityDecoder;
 
@@ -204,6 +206,27 @@ Route::put("/admin/salesInvoice/{sal_id}/hoanthanh", [SalesInvoiceController::cl
 Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 
+//Quản lý tin tức
+//Xem tất cả
+Route::get("/admin/news", [NewController::class, 'index']);
+//Chi tiết
+Route::get("/admin/news/{new_id}", [NewController::class, 'show']);
+//Tạo
+Route::get("/admin/news/create", [NewController::class, 'create']);
+Route::post("/admin/news/create", [NewController::class, 'save']);
+// Sửa
+Route::get("/admin/news/{new_id}/edit", [NewController::class, 'edit']);
+Route::put("/admin/news/{new_id}/edit", [NewController::class, 'update']);
+
+//Quản lý voucher
+//Xem tất cả
+Route::get("/admin/voucher", [VoucherController::class, 'index']);
+//Tạo
+Route::get("/admin/voucher/create", [VoucherController::class, 'create']);
+Route::post("/admin/voucher/create", [VoucherController::class, 'save']);
+// Sửa
+Route::get("/admin/voucher/{vou_id}/edit", [VoucherController::class, 'edit']);
+Route::put("/admin/voucher/{vou_id}/edit", [VoucherController::class, 'update']);
 
 /*--------------------------------------------------------------------------*/
 //login
@@ -294,45 +317,12 @@ Route::get('/chua-dang-nhap', function () {
     return view('error.chua-dang-nhap');
 });
 
-////// Phần thêm đồ án tốt nghiệp
-
 //tin tức
 Route::get('/tintuc', function () {
     return view('user.tintuc');
 });
 
-//ADMIN tin tức
-Route::get('/admin/tintuc', function () {
-    return view('admin.news.index');
-});
-
-Route::get('/admin/tintuc/create', function () {
-    return view('admin.news.create');
-});
-
-Route::get('/admin/tintuc/edit', function () {
-    return view('admin.news.edit');
-});
-
-Route::get('/admin/tintuc/detail', function () {
-    return view('admin.news.detail');
-});
-
 // bài viết
 Route::get('/bai-viet-1', function () {
     return view('user./bai-viet');
-});
-
-// voucher admin
-Route::get('/admin/voucher/', function () {
-    return view('admin.voucher.index');
-});
-Route::get('/admin/voucher/create', function () {
-    return view('admin.voucher.create');
-});
-Route::get('/admin/voucher/edit', function () {
-    return view('admin.voucher.edit');
-});
-Route::get('/admin/voucher/detail', function () {
-    return view('admin.voucher.detail');
 });

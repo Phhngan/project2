@@ -4,33 +4,44 @@
 
 @section('content')
 <br>
-<a class="btn btn-primary" href="{{url('admin/tintuc/create')}}" role="button">+ Thêm bài viết</a>
+<a class="btn btn-primary" href="{{url('admin/news/create')}}" role="button">+ Thêm bài viết</a>
 <br><br>
 <table class="table" id="myTable">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Tên bài viết</th>
-        <th>Ngày viết</th>
-        <th>Hành động</th>
-    </tr>
+        <tr>
+            <th>ID</th>
+            <th>Tên bài viết</th>
+            <th>Ảnh</th>
+            <th>Ngày viết</th>
+            <th>Hành động</th>
+        </tr>
     </thead>
-    <tr>
-        <td>
-            <p>1</p>
-        </td>
-        <td>
-            <p>Quốc tế thiếu nhi</p>
-        </td>
-        <td>
-            <p>02/06/2023</p>
-        </td>
-        <td>
-            <a class="btn btn-primary" href="{{url('admin/tintuc/edit')}}" role="button">Sửa</a>
-            <a class="btn btn-outline-secondary" href="{{url('admin/tintuc/detail')}}" role="button">Xem chi tiết</a>
-            <br>
-        </td>
-    </tr>
-
+    <tbody>
+        @forelse($news as $new)
+        <tr>
+            <td>
+                <p>{{$new->new_id}}</p>
+            </td>
+            <td>
+                <p>{{$new->new_title}}</p>
+            </td>
+            <td>
+                <img src="{{$new->new_image}}" width="100px">
+            </td>
+            <td>
+                <p>{{$new->new_day}}</p>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="{{url('admin/news/'.$new->new_id.'/edit')}}" role="button">Sửa</a>
+                <a class="btn btn-outline-secondary" href="{{url('admin/news/'.$new->new_id)}}" role="button">Xem chi tiết</a>
+                <br>
+            </td>
+        </tr>
+        @empty
+        <tr>
+            <td colspan="3">Danh sach rong</td>
+        </tr>
+        @endforelse
+    </tbody>
 </table>
 @endsection

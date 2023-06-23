@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('News', function (Blueprint $table) {
             $table->increments('new_id');
+            $table->string('new_title');
             $table->date('new_day');
             $table->string('new_image');
             $table->mediumText('new_content');

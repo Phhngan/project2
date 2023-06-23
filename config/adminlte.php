@@ -286,7 +286,7 @@ return [
             'topnav_right' => true,
         ],
         // Sidebar items:
-        
+
         [
             'text' => 'Dashboard',
             'url' => 'admin/home',
@@ -357,7 +357,7 @@ return [
             'icon' => 'fa fa-id-card',
         ],
 
-          [
+        [
             'text' => 'Hóa đơn bán hàng',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
@@ -386,7 +386,7 @@ return [
 
         [
             'text' => 'Quản lí tin tức',
-            'url' => '/admin/tintuc',
+            'url' => '/admin/news',
             'icon' => 'fa fa-book',
         ],
         [
@@ -396,7 +396,7 @@ return [
         ],
 
         ['header' => 'account_settings'],
-        
+
         [
             'text' => 'profile',
             'url' => 'admin/profile',
@@ -415,8 +415,8 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
 
-        
-        
+
+
     ],
     /*
     |--------------------------------------------------------------------------
