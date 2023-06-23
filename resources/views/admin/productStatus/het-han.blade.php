@@ -44,7 +44,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sách rỗng</td>
+        <td colspan="5">Danh sách rỗng</td>
     </tr>
     @endforelse
 </table>

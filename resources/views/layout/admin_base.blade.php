@@ -15,8 +15,5 @@
 $(document).ready( function () {
     $('#myTable').DataTable();
 } );
-// $('#myTable').dataTable( {
-//     "paging": false
-// } );
 </script>
 @endsection

@@ -34,14 +34,14 @@
             <td>
                 <a class="btn btn-primary" href="{{url('admin/news/'.$new->new_id.'/edit')}}" role="button">Sửa</a>
                 <a class="btn btn-outline-secondary" href="{{url('admin/news/'.$new->new_id)}}" role="button">Xem chi tiết</a>
-                <br>
             </td>
         </tr>
         @empty
         <tr>
-            <td colspan="3">Danh sach rong</td>
+            <td>Danh sách rỗng</td><td></td><td></td><td></td><td></td>
         </tr>
         @endforelse
     </tbody>
 </table>
+
 @endsection
