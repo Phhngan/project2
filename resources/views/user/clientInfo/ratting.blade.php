@@ -62,7 +62,7 @@
         } else {
         ?>
             <td>
-                <p class="btn btn-warning">Đã đánh giá</p>
+                <p class="btn btn-success" disabled>Đã đánh giá</p>
             </td>
         <?php } ?>
     </tr>

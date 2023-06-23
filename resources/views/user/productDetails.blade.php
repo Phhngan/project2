@@ -318,7 +318,7 @@ color:grey;
                     // $_SESSION['selected_rating'] = 3.5;
                     // $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
                     $selectedRating = $totalStar;
-                    echo $selectedRating . '/5';
+                    echo number_format($selectedRating, 1) . '/5';
                     ?>
                 </span>
                 <!-- Render the star images based on the selected rating -->
@@ -345,7 +345,7 @@ color:grey;
             $comments = Illuminate\Support\Facades\DB::table('Comments')
                 ->select('Comments.*')
                 ->where('Comments.prd_id', $product->prd_id)
-                ->get();
+                ->paginate(3);
             foreach ($comments as $comment) {
                 $userComments = Illuminate\Support\Facades\DB::table('Users')
                     ->select('Users.*')
@@ -359,13 +359,13 @@ color:grey;
                     <div class="rightcolumn">
                         <div class="card-cmt">
                             <div class="row">
-                                <h4>
+                                <h5>
                                     <?php
                                     foreach ($userComments as $userComment) {
                                     ?>
                                         {{$userComment->use_lastName}} {{$userComment->name}}
                                     <?php } ?>
-                                </h4>
+                                </h5>
                                 <div class="rating">
                                     <?php
                                     // Retrieve the rating value for this customer comment
@@ -383,21 +383,24 @@ color:grey;
                                 </div>
                             </div>
                             <div class="row">
-                                <p class="time" style="padding-top:10px;">{{$comment->com_date}}</p>
+                                <p class="time" style="padding-top:8px;">{{$comment->com_date}}</p>
                             </div>
                             <div class="row">
                                 <p>{{$comment->com_detail}}</p>
                             </div>
                         </div>
                     </div>
-                </div><br><br>
+                </div>
+                <br><br><br>
             <?php } ?>
+            {{ $comments->links() }}
         <?php } else { ?>
-            <p>Chưa có đánh giá</p>
+            <br>
+            <h5 class="text-center">Chưa có đánh giá</h5>
+            <img src="https://github.com/Phhngan/snack_images/blob/master/icon/anxiety.png?raw=true" width="100px" style="display:flex;margin:25px auto auto auto;">
             <br><br>
         <?php } ?>
     </div>
-
     <hr>
     <br>
 
@@ -432,7 +435,7 @@ color:grey;
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
                     @else
-                    <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
+                    <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
                     @endif
                 </div>
             </div>
@@ -456,7 +459,7 @@ color:grey;
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                     </div>
                     @else
-                    <a class="btn-add-to-cart" role="button" style="background-color:red;">Hết hàng</a>
+                    <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
                     @endif
                 </div>
             </div>

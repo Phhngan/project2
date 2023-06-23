@@ -75,7 +75,7 @@ background-color: #ddd;
         <th>Mã hóa đơn</th>
         <th>Ngày đặt</th>
         <th>Tổng tiền</th>
-        <th width="520px">Địa chỉ</th>
+        <th width="400px">Địa chỉ</th>
         <th>Ghi chú</th>
         <th>Trạng thái</th>
         <th>Hành động</th>
@@ -154,7 +154,7 @@ background-color: #ddd;
                 } else {
                 ?>
                     <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
-                    <p class="btn btn-warning">Đã đánh giá</p>
+                    <p class="btn btn-success" disabled>Đã đánh giá</p>
             <?php }
             } ?>
             <?php

@@ -154,7 +154,10 @@ justify-content:center;
 <div class="cf-title">
     <h3>Đánh giá đơn hàng</h3>
 </div>
-<br>
+<div class="alert alert-info" role="alert">
+  Xem chính sách nhận xu <a href="/chinh-sach#Xu" target="_blank">tại đây</a>
+</div>
+
 @forelse($invoiceDetails as $invoiceDetail)
 <div class="rattingSP">
     <a href="{{url('/'.$invoiceDetail->prd_id.'/productDetails')}}" target="_blank" style="color:black;text-decoration:none;">

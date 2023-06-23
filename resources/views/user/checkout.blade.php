@@ -162,7 +162,7 @@ padding: 20px;
                 <div class="row">
                     <div class="row">
                         <div class="col">
-                            <h5 class="text-center">Chọn voucher</h5>
+                            <h5 class="text-center">Chọn voucher <a href="/chinh-sach#Xu" target="_blank"><i class="fa-regular fa-circle-question" style="color: #7389b0;"></i></a></h5>
                         </div>
                     </div>
                     <hr>

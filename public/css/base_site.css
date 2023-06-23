@@ -531,3 +531,18 @@ margin-left: 50px;
   text-align: center;
   color: white;
 }
+
+.quantity-in-fav{
+  width: 24px;
+    background-color: pink;
+    color: red;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    right: 34px;
+    top: 62px;
+    height: 24px;
+    font-size: 13px;
+    padding: 1px;
+    font-weight: bold;
+}

@@ -11,7 +11,50 @@ color:black;
 text-decoration: none;
 color:#3E526D;
 }
+.popup-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+display: none; /* Hide the popup by default */
+}
 
+.popup-content {
+background-color: #CED7FD;
+padding: 20px;
+border-radius: 5px;
+text-align: center;
+width: 498px;
+height: 150px;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.popup-buttons {
+margin-top: 20px;
+display: flex;
+justify-content: center;
+}
+
+.popup-button {
+margin: 0 10px;
+padding: 8px 16px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.popup-button:hover {
+background-color: #ddd;
+}
 @endsection
 
 @section('sidebar-client')
@@ -52,11 +95,25 @@ color:#3E526D;
                 <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
             </td>
             <td>
-                <form method="POST" action="{{url('/client/favorite/'.$product->prd_id.'/delete')}}">
+                <!-- <form method="POST" action="{{url('/client/favorite/'.$product->prd_id.'/delete')}}">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Xóa</button>
+                </form> -->
+                <a class="btn btn-danger" onclick="deleteFav()" role="button">Xóa <i class="fa-solid fa-heart-circle-xmark" style="color: #ffffff;"></i></i></a>
+            <div id="favPopup" class="popup-container">
+            <div class="popup-content">
+                <p><strong>Sản phẩm sẽ bị xóa khỏi Sản phẩm yêu thích. Tiếp tục?</strong></p>
+                <div class="popup-buttons">
+                <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
+                <form method="POST" action="{{url('/client/favorite/'.$product->prd_id.'/delete')}}">
+                    @csrf
+                    @method('delete')
+                <button class="popup-button" style="color:white;background-color:red">Xóa</button>
                 </form>
+                </div>
+            </div>
+            </div>
             </td>
         </tr>
         @empty
@@ -71,5 +128,22 @@ color:#3E526D;
 
 @section('js')
 @parent
+<script>
+function deleteFav() {
+  var confirmationPopup = document.getElementById("favPopup");
+  confirmationPopup.style.display = "block";
+}
 
+function closePopup() {
+  var confirmationPopup = document.getElementById("favPopup");
+  confirmationPopup.style.display = "none";
+}
+
+var cancel = document.getElementById('favPopup');
+window.onclick = function(event) {
+  if (event.target == cancel) {
+    cancel.style.display = "none";
+  }
+}
+</script>
 @endsection

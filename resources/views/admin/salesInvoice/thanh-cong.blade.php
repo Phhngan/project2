@@ -10,7 +10,7 @@
         <th>Khách hàng</th>
         <th>Ngày đặt</th>
         <th>Tổng tiền</th>
-        <th>Địa chỉ</th>
+        <th width="350px">Địa chỉ</th>
         <th>Ghi chú</th>
         <th>Hành động</th>
     </tr>

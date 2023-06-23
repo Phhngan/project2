@@ -87,11 +87,26 @@
         <img src="https://github.com/Phhngan/snack_images/blob/master/trang-tin-tuc/Snack-gioithieu.png?raw=true"  style="width:100%;">
       </a>
       <div class="post-text">
-        <a href="/bai-viet-1" style="color: white;text-decoration: none">Xem thêm </a>
+        <a href="/gioi-thieu" style="color: white;text-decoration: none">Xem thêm </a>
       </div>
         <br>
       <p style="font-size:15px; margin-left: 0px; opacity: 0.8;">Snack là website cung cấp các sản phẩm nhập khẩu trực tiếp từ Châu Âu, Mỹ, Đức, Hàn, Nhật...</p>
     </div>
+
+    <div class="card-tt">
+      <div class="cf-title">
+      <h2>Chính sách mua hàng</h2>
+      </div>
+      <a href="/chinh-sach">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/trang-tin-tuc/policy.png?raw=true"  style="height:150px;width:100%;object-fit:cover;">
+      </a>
+      <div class="post-text">
+        <a href="/chinh-sach" style="color: white;text-decoration: none">Xem thêm </a>
+      </div>
+        <br>
+      <p style="font-size:15px; margin-left: 0px; opacity: 0.8;">Các Chính Sách,Quy Định Chung Khi Mua Hàng và cách sử dụng xu</p>
+    </div>
+
     <div class="card-tt">
       <h3>Follow Me</h3>
       <p>Some text..</p>

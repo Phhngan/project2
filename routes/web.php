@@ -326,3 +326,8 @@ Route::get('/tintuc', function () {
 Route::get('/bai-viet-1', function () {
     return view('user./bai-viet');
 });
+
+// CHính sách
+Route::get('/chinh-sach', function () {
+    return view('user.chinhSach');
+});

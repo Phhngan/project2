@@ -65,11 +65,23 @@
         </div>
           </a>
         </div>
+
         <div class="column-5">
-        <a class="navbar-brand" href="/client/favorite">
-          <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
-        </a>
-      </div>
+                    <a class="navbar-brand" href="/client/favorite">
+                        <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/icon/heart.png" alt="heart" height="45px" style="margin-top:25px;" class="heart">
+                        <div class="quantity-in-fav">
+                            <?php
+                            $user = Illuminate\Support\Facades\Auth::user();
+                            $quan_fav = Illuminate\Support\Facades\DB::table('Favoriteproducts')
+                                ->select('Favoriteproducts.*')
+                                ->where('Favoriteproducts.use_id', $user->id)
+                                ->count();
+                            ?>
+                            <p><strong><?php echo $quan_fav ?></strong></p>
+                        </div>
+                    </a>
+                </div>
+
     </div>
   </nav>
   <!-- header-bottom -->
