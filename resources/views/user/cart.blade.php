@@ -35,7 +35,7 @@ text-decoration: none;
 color:#3E526D;
 }
 .disabled {
-    pointer-events: none;
+pointer-events: none;
 }
 
 @endsection
@@ -148,7 +148,7 @@ color:#3E526D;
                     <label for="detailAddress" style="float:left;padding-bottom:6px">Thôn/Đường/Số nhà</label>
                     <br>
                     <input value="{{$detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="">
-                    <br>                   
+                    <br>
                     <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
                     <br>
                 </form>
@@ -182,22 +182,29 @@ color:#3E526D;
             </div>
             <hr>
             <?php
-                    $user = Auth::user();
-                    $countCart = Illuminate\Support\Facades\DB::table('Carts')
-                        ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
-                        ->where('Carts.use_id', $user->id)
-                        ->distinct()
-                        ->count();
-                    ?>
+            $user = Illuminate\Support\Facades\Auth::user();
+            $carts = Illuminate\Support\Facades\DB::table('Carts')
+                ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
+                ->where('Carts.use_id', $user->id)
+                ->distinct()
+                ->get();
+            foreach ($carts as $cart) {
+                if ($cart->car_province == null) {
+                    $countCart = 0;
+                } else {
+                    $countCart = 1;
+                }
+            }
+            ?>
             @if(count($products) > 0)
-                @if($countCart != 0)
-                    <a class="btn btn-primary btn-mua-hang" href="/checkOut" role="button">Tiếp tục</a>
-                @else
-                    <a class="btn btn-primary btn-mua-hang disabled" href="/checkOut" role="button">Tiếp tục</a><br><br>
-                    <div class="alert alert-danger" role="alert">
-                        Xin mời điền địa chỉ
-                    </div>
-                @endif
+            @if($countCart != 0)
+            <a class="btn btn-primary btn-mua-hang" href="/checkOut" role="button">Tiếp tục</a>
+            @else
+            <!-- <a class="btn btn-primary btn-mua-hang disabled" href="/checkOut" role="button">Tiếp tục</a><br><br> -->
+            <div class="alert alert-danger" role="alert">
+                Xin mời điền địa chỉ
+            </div>
+            @endif
             @endif
         </div>
     </div>
@@ -294,9 +301,8 @@ color:#3E526D;
         };
     }
 
-    function deleteProduct(){
+    function deleteProduct() {
         alert("Bạn đã xóa sản phẩm trong giỏ hàng!");
     }
-
 </script>
 @endsection
