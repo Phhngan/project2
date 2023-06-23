@@ -18,10 +18,10 @@ class VouchersDatabase extends Seeder
         DB::table('Vouchers')->insert(
             [
                 [
-                    'vou_day' => '2023/04/09',
+                    'vou_day' => '2023/06/24',
                     'vou_title' => 'Giảm 10k cho đơn hàng từ 100k',
                     'vou_discount' => 10000,
-                    'vou_image' => 'https://github.com/Phhngan/snack_images/blob/master/san-pham/SP3/dongot_pocky.png?raw=true',
+                    'vou_image' => 'https://github.com/Phhngan/snack_images/blob/master/icon/voucher-icon.png?raw=true',
                     'vou_min' => 100000
                 ]
 
