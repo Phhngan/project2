@@ -34,6 +34,9 @@ color:black;
 text-decoration: none;
 color:#3E526D;
 }
+.disabled {
+    pointer-events: none;
+}
 
 @endsection
 
@@ -83,7 +86,7 @@ color:#3E526D;
             <td>
                 <!-- <a class="btn btn-success" href="/cart/{{$product->car_id}}/update" role="button">Cập nhật số lượng</a> -->
                 <!-- <a class="btn btn-danger" href="/cart/{{$product->car_id}}/delete" role="button">Xóa</a> -->
-                <form method="POST" action="{{url('/cart/'.$product->car_id.'/delete')}}">
+                <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Xóa</button>
@@ -178,8 +181,23 @@ color:#3E526D;
                 </div>
             </div>
             <hr>
+            <?php
+                    $user = Auth::user();
+                    $countCart = Illuminate\Support\Facades\DB::table('Carts')
+                        ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
+                        ->where('Carts.use_id', $user->id)
+                        ->distinct()
+                        ->count();
+                    ?>
             @if(count($products) > 0)
-            <a class="btn btn-primary btn-mua-hang" href="/checkOut" role="button">Tiếp tục</a>
+                @if($countCart != 0)
+                    <a class="btn btn-primary btn-mua-hang" href="/checkOut" role="button">Tiếp tục</a>
+                @else
+                    <a class="btn btn-primary btn-mua-hang disabled" href="/checkOut" role="button">Tiếp tục</a><br><br>
+                    <div class="alert alert-danger" role="alert">
+                        Xin mời điền địa chỉ
+                    </div>
+                @endif
             @endif
         </div>
     </div>
@@ -275,19 +293,10 @@ color:#3E526D;
             }
         };
     }
-    //
-    // function getRegionFromCityCode(cityCode) {
-    //     if (cityCode == 1) {
-    //         return 'Hà Nội';
-    //     } else if (cityCode >= 2 && cityCode <= 38) {
-    //         return 'Miền Bắc';
-    //     } else if (cityCode >= 39 && cityCode <= 46) {
-    //         return 'Miền Trung';
-    //     } else if (cityCode >= 48 && cityCode <= 96) {
-    //         return 'Miền Nam';
-    //     } else {
-    //         return 'Không xác định';
-    //     }
-    // }
+
+    function deleteProduct(){
+        alert("Bạn đã xóa sản phẩm trong giỏ hàng!");
+    }
+
 </script>
 @endsection
