@@ -38,6 +38,8 @@ transform: translate(-50%, -50%);
 
 .popup-buttons {
 margin-top: 20px;
+display: flex;
+justify-content: center;
 }
 
 .popup-button {
@@ -73,7 +75,7 @@ background-color: #ddd;
         <th>Mã hóa đơn</th>
         <th>Ngày đặt</th>
         <th>Tổng tiền</th>
-        <th>Địa chỉ</th>
+        <th width="520px">Địa chỉ</th>
         <th>Ghi chú</th>
         <th>Trạng thái</th>
         <th>Hành động</th>
@@ -119,18 +121,21 @@ background-color: #ddd;
             if ($invoice->sal_status_id == 1) {
             ?>
                 <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
-                <a class="btn btn-danger" href="{{url('/client/invoices/'.$invoice->sal_id.'/cancel')}}" onclick="cancelOrder()" role="button">Hủy đơn</a>
-            <?php } ?>
-            <!-- <a class="btn btn-danger" onclick="cancelOrder()" role="button">Hủy đơn</a>
+
+                <a class="btn btn-danger" onclick="cancelOrder()" role="button">Hủy đơn</a>
             <div id="cancelPopup" class="popup-container">
             <div class="popup-content">
                 <p><strong>Bạn có muốn hủy đơn hàng?</strong></p>
                 <div class="popup-buttons">
                 <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
-                <button class="popup-button" style="color:white;background-color:red" onclick="DeleteOrder()" href="{{ url('/client/invoices/'.$invoice->sal_id.'/cancel') }}">Delete</button>
+                <form action="{{ url('/client/invoices/'.$invoice->sal_id.'/cancel') }}" method="put">
+                <button class="popup-button" style="color:white;background-color:red">Hủy đơn</button>
+                </form>
                 </div>
             </div>
-            </div> -->
+            </div>
+            <?php } ?>
+
             <?php
             if ($invoice->sal_status_id == 4) {
                 $countInvoice = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
@@ -174,29 +179,6 @@ background-color: #ddd;
 
 @section('js')
 @parent
-<!-- <script>
-function DeleteOrder(button) {
-    var invoiceId = $(button).data('invoice_id');
-  $.ajax({
-    url: '/client/invoices/' + invoiceId + '/cancel',
-    method: 'DELETE', // Or 'DELETE' if you want to use the DELETE method
-    dataType: 'json',
-    success: function(response) {
-      // Handle the success response here
-      // For example, update the UI or show a success message
-      console.log('Product deleted successfully');
-    },
-    error: function(xhr, status, error) {
-      // Handle the error response here
-      // For example, show an error message or log the error
-      console.error('Error deleting product:', error);
-    }
-  });
-
-  // Close the popup after the delete action is initiated
-  closePopup();
-}
-</script>
 <script>
 function cancelOrder() {
   var confirmationPopup = document.getElementById("cancelPopup");
@@ -214,11 +196,5 @@ window.onclick = function(event) {
     cancel.style.display = "none";
   }
 }
-</script> -->
-
-<script>
-    function cancelOrder() {
-        alert("Bạn đã hủy đơn!");
-    }
 </script>
 @endsection
