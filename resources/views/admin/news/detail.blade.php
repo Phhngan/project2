@@ -9,6 +9,6 @@
 <img src="{{$new->new_image}}" width="100px">
 <div class="tintuc">
     <h5>Nội dung:</h5>
-    {{$new->new_content}}
+    {!!$new->new_content!!}
 </div>
 @endsection

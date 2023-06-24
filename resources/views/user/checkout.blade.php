@@ -322,10 +322,10 @@ padding: 20px;
                     @csrf
                     <button class="btn btn-primary" name="redirect" type="submit" style="height: 40px;"> Mua hàng với ví điện tử VNPay <img src="https://github.com/Phhngan/snack_images/blob/master/icon/vnpay.png?raw=true" height="25" /></button>
                 </form>
-                <!-- <form action="{{url('/Momo')}}" method="POST">
+                <form action="{{url('/Momo')}}" method="POST">
                     @csrf
                     <button class="btn btn-primary" name="payUrl" type="submit" style="height: 40px;"> Mua hàng với ví điện tử MoMo <img src="https://github.com/Phhngan/snack_images/blob/master/icon/MoMo_Logo.png?raw=true" height="25" /></button>
-                </form> -->
+                </form>
                 <a class="btn btn-warning" href="/cart" role="button">Quay lại giỏ hàng</a>
             </div>
         </div>

@@ -159,11 +159,13 @@ class CartController extends Controller
             $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
         }
         $today = date('Y-m-d');
+        // dd($today);
         $voucherAlls = DB::table('Vouchers')
             ->select('Vouchers.*')
             ->where('Vouchers.vou_day', $today)
             ->where('Vouchers.vou_min', '<=', $price)
             ->get();
+        // dd($voucherAlls);
         if (count($voucherAlls) > 0) {
             foreach ($voucherAlls as $voucherAll) {
                 $number = DB::table('SalesInvoices')
