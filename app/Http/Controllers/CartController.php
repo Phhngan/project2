@@ -290,7 +290,7 @@ class CartController extends Controller
         $code = rand(1, 99999999);
 
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://127.0.0.1:8000/success";
+        $vnp_Returnurl = "http://127.0.0.1:8000/payment";
         $vnp_TmnCode = "X2E0NQ6E"; //Mã website tại VNPAY
         $vnp_HashSecret = "QAADPQCLFIEWAAUCORDYABVWZHCUGGRM"; //Chuỗi bí mật
 
@@ -448,8 +448,8 @@ class CartController extends Controller
         $orderInfo = "Thanh toán qua MoMo ATM";
         $amount = $total;
         $orderId = time() . "";
-        $redirectUrl = "http://127.0.0.1:8000/success";
-        $ipnUrl = "http://127.0.0.1:8000/success";
+        $redirectUrl = "http://127.0.0.1:8000/payment";
+        $ipnUrl = "http://127.0.0.1:8000/payment";
         $extraData = "";
 
         $requestId = time() . "";
@@ -480,6 +480,34 @@ class CartController extends Controller
         // header('Location: ' . $jsonResult['payUrl']);
     }
 
+    //Sau khi thanh toán
+    function payment(Request $request)
+    {
+        $momo_resultCode = $request->get('resultCode');
+        // dd($momo_resultCode);
+        //1006: hủy, 0: thành công,
+        $vnp_ResponseCode = $request->get('vnp_ResponseCode');
+        // dd($vnp_ResponseCode);
+        //00: thành công, 24: hủy
+        if ($momo_resultCode != null) {
+            if ($momo_resultCode == 1006) {
+                return redirect('/checkOut');
+            }
+            if ($momo_resultCode == 0) {
+                return redirect('/success');
+            }
+        }
+        if ($vnp_ResponseCode != null) {
+            if ($vnp_ResponseCode == "00") {
+                // dd('Thành công');
+                return redirect('/success');
+            }
+            if ($vnp_ResponseCode == "24") {
+                // dd('Hủy');
+                return redirect('/checkOut');
+            }
+        }
+    }
     //Thanh toán thành công
     function success()
     {

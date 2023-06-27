@@ -305,6 +305,7 @@ Route::get("/checkOut/updateVoucher", [CartController::class, 'updateVoucher']);
 Route::get("/success", [CartController::class, 'success']);
 Route::post("/VNPay", [CartController::class, 'vnpay']);
 Route::post("/Momo", [CartController::class, 'momo']);
+Route::get("/payment", [CartController::class, 'payment']);
 
 // Favourite
 Route::get("/{prd_id}/addFavorite", [MenuController::class, 'addFavorite']);
