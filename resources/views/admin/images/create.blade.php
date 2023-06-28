@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="text-center">Thêm ảnh mới</h1>
-    <form action="{{url('admin/images/create')}}" method="POST">
+    <!-- <form action="{{url('admin/images/create')}}" method="POST">
         @csrf
         <br>
         <label for="imageURL">URL ảnh:</label>
@@ -30,7 +30,13 @@
 	</select>
         <br>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
-    </form>
+    </form> -->
+
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+    @csrf
+    <input type="file" name="image"><br><br>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
 @endsection
 
 @section('js')
