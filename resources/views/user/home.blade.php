@@ -107,7 +107,7 @@ padding-bottom:6px;
             <div class="card">
                 <img src="{{$newProduct->img_url}}" style="height:290px;width:290px" id="zoom">
                 <br>
-                <h4>{{$newProduct->prd_name}}</h4>
+                <h4 class="ten-sp">{{$newProduct->prd_name}}</h4>
                 <p class="price">{{number_format($newProduct->prd_price).' VND'}}</p>
                 <br>
                 <a class="btn-detail" href="/{{$newProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>
@@ -173,7 +173,7 @@ padding-bottom:6px;
             <div class="card">
                 <img src="{{$discountProduct->img_url}}" style="height:290px;width:290px" id="zoom">
                 <br>
-                <h4>{{$discountProduct->prd_name}}</h4>
+                <h4 class="ten-sp">{{$discountProduct->prd_name}}</h4>
                 <p class="price">{{number_format($discountProduct->prd_price).' VND'}}</p>
                 <br>
                 <a class="btn-detail" href="/{{$discountProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>

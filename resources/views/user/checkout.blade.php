@@ -275,7 +275,7 @@ padding: 20px;
                         <p class="mb-0">Giảm xu:</p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="text-muted mb-0">- {{$gold}} </p>
+                        <p class="text-muted mb-0">{{number_format($gold).' VND'}}</p>
                     </div>
                 </div>
                 <hr>
@@ -298,8 +298,8 @@ padding: 20px;
                                     $discount = $vou->vou_discount;
                                 }
                             }
-                            echo $discount;
                             ?>
+                            {{number_format($discount).' VND'}}
                         </p>
                     </div>
                 </div>

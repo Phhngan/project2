@@ -48,8 +48,7 @@
         </td>
     </tr>
     <tr>
-        <th>Hành động: </th>
-        <td>
+        <td colspan="2" style="text-align:center;">
             <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
         </td>
     </tr>

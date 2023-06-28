@@ -105,8 +105,8 @@
             <input type='button' value='+' class='qtyplus plus' field='quantity' />
     </div>
 
-    <div class="col-nho" style="width:200px;margin-top:2px">
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <div class="col-nho" style="width:200px;margin-top:-1px">
+        <button type="submit" class="btn btn-primary" style="height: 34px;padding: 0px 10px 0px 10px;">Cập nhật</button>
     </div>
 
     </form>

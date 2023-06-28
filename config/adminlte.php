@@ -370,11 +370,11 @@ return [
                     'url' => 'admin/salesInvoice/da-xac-nhan',
                 ],
                 [
-                    'text' => 'Đã ship hàng',
+                    'text' => 'Đang ship hàng',
                     'url' => 'admin/salesInvoice/ship-hang',
                 ],
                 [
-                    'text' => 'Nhận hàng thành công',
+                    'text' => 'Giao hàng thành công',
                     'url' => 'admin/salesInvoice/thanh-cong',
                 ],
                 [

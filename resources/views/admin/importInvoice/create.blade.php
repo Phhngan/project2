@@ -54,21 +54,18 @@
             <th>Ngày hết hạn</th>
         </tr>  
         <tr>
-            <td style="text-align:center;"><input type=checkbox></td>
-            <td><input name="productId" type="text" class="form-control" placeholder="Mã sản phẩm"></td>
-            <!-- <td><select class="form-control" id="" name="productId" required>
-                <option value="" selected="selected">----Chọn mã sản phẩm----</option>
-            </select></td> -->
-            <td><input name="quantity" type="number" class="form-control" placeholder="Số lượng"></td>
-            <td><input name="price" type="number" class="form-control" placeholder="Giá sản phẩm"></td>
-            <td><input name="expiryDate" type="date" class="form-control" placeholder="Ngày hết hạn"></td>
-        </tr>  
-    </table>  
-    <br>  
-    <input type = button class = "btn btn-success" value = "Thêm sản phẩm" onclick = row()>  
-    <input type = button class = "btn btn-danger" value = "Xóa" onclick = del()>  
+            <td style="text-align:center;"><input type="checkbox"></td>
+            <td><input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm"></td>
+            <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng"></td>
+            <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm"></td>
+            <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn"></td>
+        </tr>
+    </table>
+    <br>
+    <input type="button" class="btn btn-success" value="Thêm sản phẩm" onclick="row()">
+    <input type="button" class="btn btn-danger" value="Xóa" onclick="del()"> 
     <br><br>
-        <button type="submit" class="btn btn-primary">Thêm mới</button>
+        <button type="submit" class="btn btn-primary" onclick="processForm()">Thêm mới</button>
     </form>
 @endsection
 
@@ -89,37 +86,76 @@
     var mytable = document.getElementById("mytable");
     var rows = mytable.rows.length;
     var r = mytable.insertRow(rows);
-
-    r.classList.add("new-row");
-
+    
     var c1 = r.insertCell(0);
     var c2 = r.insertCell(1);
     var c3 = r.insertCell(2);
     var c4 = r.insertCell(3);
     var c5 = r.insertCell(4);
-
+    
     var checkbox = document.createElement("input");
     var maSP = document.createElement("input");
     var quantity = document.createElement("input");
     var price = document.createElement("input");
     var hsd = document.createElement("input");
-
+    
     checkbox.type = "checkbox";
     maSP.type = "text";
-    maSP.placeholder = "Mã sản phẩm";
     quantity.type = "number";
-    quantity.placeholder = "Số lượng";
     price.type = "number";
-    price.placeholder = "Giá sản phẩm";
     hsd.type = "date";
-    hsd.placeholder = "Ngày hết hạn";
-
+    
+    r.className = "new-row"; // Add a CSS class to the row
+    c1.style.textAlign = "center";
+    
+    maSP.name = "productId[]";
+    quantity.name = "quantity[]";
+    price.name = "price[]";
+    hsd.name = "expiryDate[]";
+    
     c1.appendChild(checkbox);
     c2.appendChild(maSP);
     c3.appendChild(quantity);
     c4.appendChild(price);
     c5.appendChild(hsd);
     }
+
+function del() {
+    var mytable = document.getElementById("mytable");
+    var rows = mytable.rows.length;
+    
+    for (var i = rows - 1; i > 0; i--) {
+        if (mytable.rows[i].cells[0].children[0].checked) {
+        mytable.deleteRow(i);
+        }
+    }
+}
+
+function processForm() {
+  var formData = [];
+    var mytable = document.getElementById("mytable");
+    var rows = mytable.rows.length;
+    
+    for (var i = 1; i < rows; i++) {
+        var row = mytable.rows[i];
+        var productId = row.cells[1].getElementsByTagName("input")[0].value;
+        var quantity = row.cells[2].getElementsByTagName("input")[0].value;
+        var price = row.cells[3].getElementsByTagName("input")[0].value;
+        var expiryDate = row.cells[4].getElementsByTagName("input")[0].value;
+        
+        var data = {
+        productId: productId,
+        quantity: quantity,
+        price: price,
+        expiryDate: expiryDate
+        };
+        
+        formData.push(data);
+    }
+    
+    // Process the form data
+    console.log(formData);
+}
 
     function del()  
     {  

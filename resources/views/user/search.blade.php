@@ -37,7 +37,7 @@ background-color: #EBECFE;
       <div class="card">
         <img src="{{$product->img_url}}" style="height:290px;width:290px" id="zoom">
         <br>
-        <h4>{{$product->prd_name}}</h4>
+        <h4 class="ten-sp">{{$product->prd_name}}</h4>
         <p class="price">{{number_format($product->prd_price).' VND'}}</p>
         <br>
         <a class="btn-detail" href="/{{$product->prd_id}}/productDetails" role="button">Xem chi tiết</a>

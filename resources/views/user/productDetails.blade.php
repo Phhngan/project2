@@ -444,7 +444,7 @@ color:grey;
                 <div class="card">
                     <img src="{{$randomProduct->img_url}}" style="height:290px;width:290px" id="zoom">
                     <br>
-                    <h4>{{$randomProduct->prd_name}}</h4>
+                    <h4 class="ten-sp">{{$randomProduct->prd_name}}</h4>
                     <p class="price">{{number_format($randomProduct->prd_price).' VND'}}</p>
                     <br>
                     <a class="btn-detail" href="/{{$randomProduct->prd_id}}/productDetails" role="button">Xem chi tiết</a>

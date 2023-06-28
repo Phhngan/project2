@@ -326,3 +326,13 @@ Route::get("/news/{new_id}", [NewController::class, 'newsShow']);
 Route::get('/chinh-sach', function () {
     return view('user.chinhSach');
 });
+
+// sp giảm giá
+Route::get('/sp-giam-gia', function () {
+    return view('user.saleProduct');
+});
+
+// sp mới
+Route::get('/sp-moi', function () {
+    return view('user.newProduct');
+});

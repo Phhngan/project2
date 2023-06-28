@@ -1,8 +1,9 @@
 @extends('layout.base_page')
 
-@section('title','Tất cả sản phẩm')
+@section('title','Sản phẩm mới')
 
 @section('style')
+
 body{
 background-color: #EBECFE;
 }
@@ -10,7 +11,7 @@ background-color: #EBECFE;
 
 @section('content')
 <div class="cf-title">
-    <h3>Tất cả sản phẩm</h3>
+    <h3>Sản phẩm mới</h3>
 </div>
 <div class="row danhmuc-sp">
     @forelse($products as $product)
@@ -76,9 +77,11 @@ background-color: #EBECFE;
 @section('js')
 @parent
 <script>
+    // When the user clicks on div, open the popup
     function addToCart() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
 </script>
+
 @endsection
