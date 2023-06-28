@@ -43,7 +43,7 @@ class ImagesController extends Controller
     }
     function save(Request $request)
     {
-        $img_url = $request->get('imageURL');
+        $img_url = $request->file('image')->store('product');
         $img_role = $request->get('imageRole');
         $prd_id = $request->get('productId');
         DB::table('Images')->insert(
@@ -52,7 +52,7 @@ class ImagesController extends Controller
         return redirect('admin/images');
     }
 
-    //Sua 
+    //Sua
     function edit($img_id)
     {
         $user = Auth::user();
@@ -62,10 +62,10 @@ class ImagesController extends Controller
                 return redirect()->route('error');
             }
             $images = DB::table('Images')
-            ->join('Products', 'Products.prd_id', '=', 'Images.prd_id')
-            ->select('Images.*', 'Products.prd_name')
-            ->where('Images.img_id', $image->img_id)
-            ->get();
+                ->join('Products', 'Products.prd_id', '=', 'Images.prd_id')
+                ->select('Images.*', 'Products.prd_name')
+                ->where('Images.img_id', $image->img_id)
+                ->get();
             return view('admin/images.edit', ['images' => $images]);
             // return view('admin/images.edit', ['image' => $image]);
         } else {
