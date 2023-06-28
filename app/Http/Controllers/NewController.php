@@ -76,4 +76,29 @@ class NewController extends Controller
             ]);
         return redirect('admin/voucher');
     }
+
+    function newsMain()
+    {
+        $day = date('Y-m-j');
+        $dateUp = strtotime('+30 day', strtotime($day));
+        $dateUp = date('Y-m-j', $dateUp);
+        $dateDown = strtotime('-30 day', strtotime($day));
+        $dateDown = date('Y-m-j', $dateDown);
+        $news = DB::table('News')
+            ->select('News.*')
+            ->whereBetween('News.new_day', [$dateDown, $dateUp])
+            ->orderByDesc('new_id')
+            ->get();
+        // dd($news);
+        return view('user.tintuc', ['news' => $news]);
+    }
+    function newsShow($new_id)
+    {
+        $news = DB::table('News')
+            ->select('News.*')
+            ->where('News.new_id', $new_id)
+            ->get();
+        // dd($news);
+        return view('user.bai-viet', ['news' => $news]);
+    }
 }

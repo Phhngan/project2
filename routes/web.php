@@ -319,14 +319,8 @@ Route::get('/chua-dang-nhap', function () {
 });
 
 //tin tức
-Route::get('/tintuc', function () {
-    return view('user.tintuc');
-});
-
-// bài viết
-Route::get('/bai-viet-1', function () {
-    return view('user./bai-viet');
-});
+Route::get("/news", [NewController::class, 'newsMain']);
+Route::get("/news/{new_id}", [NewController::class, 'newsShow']);
 
 // CHính sách
 Route::get('/chinh-sach', function () {
