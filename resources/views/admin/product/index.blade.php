@@ -12,6 +12,7 @@
         <tr>
             <th>Mã sản phẩm</th>
             <th>Sản phẩm</th>
+            <th>Ảnh sản phẩm</th>
             <th>Loại sản phẩm</th>
             <th>Số lượng</th>
             <th>Giá bán</th>
@@ -27,6 +28,9 @@
             <a href="{{url('/admin/products/'.$product->prd_id)}}" style="text-decoration:none;color:black;">
                 <p>{{$product->prd_name}}</p>
             </a>
+        </td>
+        <td>
+            <img src="/storage/{{}}" width="100px">
         </td>
         <td>
             <p>

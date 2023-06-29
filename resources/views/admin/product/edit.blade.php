@@ -18,6 +18,11 @@
         <input value="{{ $product->prd_name  }}" name="productName" type="text" class="form-control"
                placeholder="Tên sản phẩm">
         <br>
+        <label for="image">Ảnh sản phẩm:</label>
+        <br>
+        <img src="/storage/{{$product->product_image}}" width="100px">
+        <input type="file" name="image">
+        <br><br>
         <label for="productType">Loại sản phẩm:</label>
         <br>
         <select class="form-control" name="productType" required>

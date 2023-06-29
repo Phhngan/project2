@@ -11,10 +11,14 @@
     <br>
     <input name="voucherName" type="text" class="form-control" placeholder="Tên Voucher">
     <br>
-    <label for="voucherImage">Link ảnh:</label>
+    <!-- <label for="voucherImage">Link ảnh:</label>
     <br>
-    <input name="voucherImage" type="text" class="form-control" placeholder="Link ảnh">
+        <input name="voucherImage" type="text" class="form-control" placeholder="Link ảnh">
+    <br> -->
+    <label for="voucherImage">Ảnh voucher:</label>
     <br>
+    <input type="file" name="voucherImage">
+    <br><br>
     <label for="voucherDate">Ngày áp dụng:</label>
     <br>
     <input name="voucherDate" type="date" class="form-control" placeholder="Ngày áp dụng">

@@ -12,10 +12,11 @@
     <br>
     <input value="{{$new->new_title}}" name="newsName" type="text" class="form-control" placeholder="Tiêu đề bài viết">
     <br>
-    <label for="newsImage">Link ảnh:</label>
+    <label for="newsImage">Ảnh bài viết:</label>
     <br>
-    <input value="{{$new->new_image}}" name="newsImage" type="text" class="form-control" placeholder="Link ảnh">
-    <br>
+    <img src="/storage/{{$new->new_image}}" width="100px">
+    <input type="file" name="newsImage">
+    <br><br>
     <label for="newsDate">Ngày viết:</label>
     <br>
     <input value="{{$new->new_day}}" name="newsDate" type="date" class="form-control" placeholder="Ngày viết">

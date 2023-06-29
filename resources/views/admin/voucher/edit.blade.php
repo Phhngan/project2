@@ -12,10 +12,13 @@
     <br>
     <input value="{{$voucher->vou_title}}" name="voucherName" type="text" class="form-control" placeholder="Tên Voucher">
     <br>
-    <label for="voucherImage">Link ảnh:</label>
+    <label for="voucherImage">Ảnh voucher:</label>
     <br>
-    <input value="{{$voucher->vou_image}}" name="voucherImage" type="text" class="form-control" placeholder="Link ảnh">
-    <br>
+    <!-- <input value="{{$voucher->vou_image}}" name="voucherImage" type="text" class="form-control" placeholder="Link ảnh">
+    <br> -->
+    <img src="/storage/{{$voucher->vou_image}}" width="100px">
+    <input type="file" name="voucherImage">
+    <br><br>
     <label for="voucherDate">Ngày áp dụng:</label>
     <br>
     <input value="{{$voucher->vou_day}}" name="voucherDate" type="date" class="form-control" placeholder="Ngày áp dụng">

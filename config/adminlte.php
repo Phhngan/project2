@@ -329,12 +329,6 @@ return [
         ],
 
         [
-            'text' => 'Thư viện ảnh',
-            'url' => 'admin/images',
-            'icon' => 'fa fa-camera-retro',
-        ],
-
-        [
             'text' => 'Đơn vị cung cấp',
             'url' => 'admin/supplyUnit',
             'icon' => 'fa fa-building',

@@ -21,11 +21,7 @@
     @forelse($images as $image)
     <tr>
         <td>
-            <img src="{{$image->img_url}}" width="100px">
-
-            <!-- <img src="/storage/MoMo_Logo.png" width="100px">
-            <img src="/storage/{{$image->img_url}}" width="100px"> -->
-
+            <img src="/storage/{{$image->img_url}}" width="100px">
         </td>
         <td>
             <a href="{{$image->img_url}}" target="_blank">{{$image->img_url}}</a>

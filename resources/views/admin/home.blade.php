@@ -5,7 +5,7 @@
 @section('content')
 <div class="row" style="margin-top:25px">
 
-    <div class="small-box bg-gradient-success column-dashboard">
+    <div class="small-box bg-gradient-primary column-dashboard">
         <div class="inner">
             <h3>
                 <?php
@@ -15,12 +15,12 @@
                 echo $quantity1;
                 ?>
             </h3>
-            <p>Đơn hàng thành công</p>
+            <p>Sản phẩm đã bán hết</p>
         </div>
         <div class="icon">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fa fa-times" aria-hidden="true"></i>
         </div>
-        <a href="/admin/salesInvoice/thanh-cong" class="small-box-footer">
+        <a href="/admin/productStatus/ban-het" class="small-box-footer">
             Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
         </a>
     </div>
@@ -96,7 +96,7 @@
     <div class="col-nho" style="width:80px">
         <label for="year">Năm:</label>
     </div>
-    <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
+    <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}" style="display:flex;">
         <div class="col-nho" style="width:150px">
             <input type='button' value='-' class='qtyminus minus' field='quantity' />
             <input type='number' name='quantity' min='2022' max='{{$yearNow}}' value='{{$year}}' class='qty' />
@@ -125,8 +125,38 @@
 </div>
 <hr><br>
 <!-- Best Seller -->
-
-
+<h3 class="text-center">Sản phẩm bán chạy</h3>
+<table class="table table-striped table-hover table-bordered table-primary">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Lượt bán</th>
+        </tr>
+    <thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Cơm</td>
+            <td><img src="/storage/" width="100px"></td>
+            <td>5,000 lượt</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Cơm</td>
+            <td><img src="/storage/" width="100px"></td>
+            <td>5,000 lượt</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Cơm</td>
+            <td><img src="/storage/" width="100px"></td>
+            <td>5,000 lượt</td>
+        </tr>
+    </tbody>
+</table>
+<br>
 @endsection
 
 @section('js')
