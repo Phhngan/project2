@@ -130,7 +130,7 @@ padding-bottom:6px;
         @empty
         <h3>Không có sản phẩm </h3>
         @endforelse
-        <a class="xem-them" href="/sp-moi" role="button">Xem thêm</a>
+        <!-- <a class="xem-them" href="/sp-moi" role="button">Xem thêm</a> -->
     </div>
 </div>
 
@@ -197,7 +197,7 @@ padding-bottom:6px;
         <h3>Không có sản phẩm </h3>
         @endforelse
     </div>
-    <a class="xem-them" href="/sp-giam-gia" role="button">Xem thêm</a>
+    <!-- <a class="xem-them" href="/sp-giam-gia" role="button">Xem thêm</a> -->
 </div>
 <!-- phản hồi khách hàng -->
 <div class="phan-hoi-khach-hang" style="background-color:#EBECFE;height:350px;margin-bottom:50px">

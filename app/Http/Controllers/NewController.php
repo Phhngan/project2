@@ -88,7 +88,7 @@ class NewController extends Controller
             ->select('News.*')
             ->whereBetween('News.new_day', [$dateDown, $dateUp])
             ->orderByDesc('new_id')
-            ->get();
+            ->paginate(2);
         // dd($news);
         return view('user.tintuc', ['news' => $news]);
     }

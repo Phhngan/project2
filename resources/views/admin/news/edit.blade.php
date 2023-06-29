@@ -22,7 +22,7 @@
     <br>
     <label for="newsDescription">Nội dung:</label>
     <br>
-    <textarea id="editor" value="{{$new->new_content}}" name="newsDescription" type="text" class="form-control" placeholder="Nội dung"></textarea>
+    <textarea id="editor" value="{{$new->new_content}}" name="newsDescription" type="text" class="form-control" placeholder="Nội dung">{{$new->new_content}}</textarea>
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>
