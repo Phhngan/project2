@@ -43,8 +43,8 @@ class ImagesController extends Controller
     }
     function save(Request $request)
     {
-        // $img_url = $request->file('image')->store('products');
-        $img_url = $request->file('image')->move('public');
+        // $img_url = $request->file('image')->move('public');
+        $img_url = $request->file('image')->store('public');
         $img_role = $request->get('imageRole');
         $prd_id = $request->get('productId');
         DB::table('Images')->insert(

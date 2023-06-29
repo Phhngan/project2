@@ -37,7 +37,11 @@ color:#3E526D;
 .disabled {
 pointer-events: none;
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 @endsection
 
 @section('content')
@@ -78,6 +82,14 @@ pointer-events: none;
                     <br>
                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                 </form>
+                <!-- <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
+                    <input type='hidden' name='_method' value='PUT'>
+                    <input type='hidden' name='_token' value='{{ csrf_token() }}'>
+                    <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                    <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
+                    <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                    <br>
+                </form> -->
 
             </td>
             <td>
@@ -218,6 +230,50 @@ pointer-events: none;
 
 @section('js')
 @parent
+
+<!-- <script>
+    $(document).ready(function() {
+        // Event listener for minus button
+        $('.qtyminus').click(function() {
+            var productId = $(this).data('field');
+            var quantityInput = $('.quantity-form[data-field="' + productId + '"]').find('.qty');
+            var currentValue = parseInt(quantityInput.val());
+
+            if (currentValue > 1) {
+                quantityInput.val(currentValue - 1);
+                updateQuantity(productId, currentValue - 1);
+            }
+        });
+
+        // Event listener for plus button
+        $('.qtyplus').click(function() {
+            var productId = $(this).data('field');
+            var quantityInput = $('.quantity-form[data-field="' + productId + '"]').find('.qty');
+            var currentValue = parseInt(quantityInput.val());
+            var maxValue = parseInt(quantityInput.attr('max'));
+
+            if (currentValue < maxValue) {
+                quantityInput.val(currentValue + 1);
+                updateQuantity(productId, currentValue + 1);
+            }
+        });
+
+        // Event listener for quantity change
+        $('.qty').change(function() {
+            var productId = $(this).closest('.quantity-form').data('field');
+            var quantity = parseInt($(this).val());
+
+            updateQuantity(productId, quantity);
+        });
+
+        // Function to update quantity
+        function updateQuantity(productId, quantity) {
+            $('.quantity-form[data-field="' + productId + '"]').find('input[name="quantity"]').val(quantity);
+            $('.quantity-form[data-field="' + productId + '"]').submit();
+        }
+    });
+</script> -->
+
 <script>
     jQuery(document).ready(($) => {
         $('.quantity').on('click', '.plus', function(e) {

@@ -18,12 +18,12 @@ display: flex;
 <div class="cf-title">
     <h3>{{$new->new_title}}</h3>
 </div>
-<div class="cf-title">
-    <h3>{{$new->new_day}}</h3>
+<div>
+    <h5 style="text-align:center;">Ngày viết: {{$new->new_day}}</h5>
 </div>
 <img id="banner-tintuc" src="/storage/{{substr($new->new_image, 7)}}">
 <div class="bai-viet">
-    {{$new->new_content}}
+    {!!$new->new_content!!}
 </div>
 @empty
 <h3>Không có tin tức </h3>

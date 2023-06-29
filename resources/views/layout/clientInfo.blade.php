@@ -93,7 +93,7 @@
     <a href="/doMan" class="bot-item">Đồ mặn</a>
     <a href="/doNgot" class="bot-item">Đồ ngọt</a>
     <a href="/doUong" class="bot-item">Đồ uống</a>
-    <a href="/tintuc" class="bot-item">Tin tức</a>
+    <a href="/news" class="bot-item">Tin tức</a>
   </nav>
 
 <div class="row">

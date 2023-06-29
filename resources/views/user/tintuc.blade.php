@@ -59,9 +59,9 @@ opacity: 0.8;
             <div class="post-text">
                 <a href="/news/{{$new->new_id}}" style="color: white;text-decoration: none">Xem thêm </a>
             </div>
-            <p class="short-content">
-                {{$new->new_content}}
-            </p>
+            <div class="short-content">
+                {!!$new->new_content!!}
+            </div>
         </div>
         @empty
         <h3>Không có tin tức </h3>
