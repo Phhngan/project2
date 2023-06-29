@@ -48,7 +48,7 @@ padding: 20px;
         @forelse($products as $product)
         <tr>
             <td>
-                <img src="{{$product->img_url}}" style="height:150px">
+                <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:150px">
             </td>
             <td>
                 <p>{{$product->prd_name}}</p>
@@ -192,7 +192,7 @@ padding: 20px;
                         ?>
                         <div class="voucher-selector">
                             <div class="voucher-container">
-                                <img class="voucher-img" src="{{$vou_image}}" height="100" />
+                                <img class="voucher-img" src="/storage/{{substr($vou_image, 7)}}" height="100" />
                                 <label for="voucher1" class="name-voucher">{{$vou_title}}</label>
                                 <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="{{$vou_id}}">
                             </div>
@@ -285,7 +285,7 @@ padding: 20px;
                         <p class="mb-0">Mã giảm giá:</p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="text-muted mb-0">-
+                        <p class="text-muted mb-0">
                             <?php
                             if ($vouID == 0) {
                                 $discount = 0;

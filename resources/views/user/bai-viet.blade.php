@@ -21,7 +21,7 @@ display: flex;
 <div class="cf-title">
     <h3>{{$new->new_day}}</h3>
 </div>
-<img id="banner-tintuc" src="{{$new->new_image}}">
+<img id="banner-tintuc" src="/storage/{{substr($new->new_image, 7)}}">
 <div class="bai-viet">
     {{$new->new_content}}
 </div>

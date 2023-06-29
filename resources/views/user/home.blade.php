@@ -78,7 +78,7 @@ padding-bottom:6px;
         @if($newProduct->prd_discount > 0)
         <div class="column-sales">
             <div class="card">
-                <img src="{{$newProduct->img_url}}" style="height:290px;width:290px" id="zoom">
+                <img src="/storage/{{substr($newProduct->prd_image, 7)}}" style="height:290px;width:290px" id="zoom">
                 <div class="khuyen-mai">
                     <p><strong>- {{$newProduct->prd_discount}}%</strong></p>
                 </div>
@@ -105,7 +105,7 @@ padding-bottom:6px;
         @else
         <div class="column-product">
             <div class="card">
-                <img src="{{$newProduct->img_url}}" style="height:290px;width:290px" id="zoom">
+                <img src="/storage/{{substr($newProduct->prd_image, 7)}}" style="height:290px;width:290px" id="zoom">
                 <br>
                 <h4 class="ten-sp">{{$newProduct->prd_name}}</h4>
                 <p class="price">{{number_format($newProduct->prd_price).' VND'}}</p>
@@ -144,7 +144,7 @@ padding-bottom:6px;
         @if($discountProduct->prd_discount > 0)
         <div class="column-sales">
             <div class="card">
-                <img src="{{$discountProduct->img_url}}" style="height:290px;width:290px" id="zoom">
+                <img src="/storage/{{substr($discountProduct->prd_image, 7)}}" style="height:290px;width:290px" id="zoom">
                 <div class="khuyen-mai">
                     <p><strong>- {{$discountProduct->prd_discount}}%</strong></p>
                 </div>
@@ -171,7 +171,7 @@ padding-bottom:6px;
         @else
         <div class="column-product">
             <div class="card">
-                <img src="{{$discountProduct->img_url}}" style="height:290px;width:290px" id="zoom">
+                <img src="/storage/{{substr($discountProduct->prd_image, 7)}}" style="height:290px;width:290px" id="zoom">
                 <br>
                 <h4 class="ten-sp">{{$discountProduct->prd_name}}</h4>
                 <p class="price">{{number_format($discountProduct->prd_price).' VND'}}</p>

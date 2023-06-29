@@ -21,7 +21,7 @@ class VouchersDatabase extends Seeder
                     'vou_day' => '2023/06/24',
                     'vou_title' => 'Giảm 10k cho đơn hàng từ 100k',
                     'vou_discount' => 10000,
-                    'vou_image' => 'https://github.com/Phhngan/snack_images/blob/master/icon/voucher-icon.png?raw=true',
+                    'vou_image' => 'public/voucher1.png',
                     'vou_min' => 100000
                 ]
 

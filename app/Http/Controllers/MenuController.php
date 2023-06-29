@@ -12,9 +12,8 @@ class MenuController extends Controller
     function doMan()
     {
         $products = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('prd_type_id', 1)->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')
+            ->where('prd_type_id', 1)
+            ->select('Products.*')
             ->paginate(8);
         return view('user/doMan', ['products' => $products]);
     }
@@ -23,9 +22,8 @@ class MenuController extends Controller
     function doNgot()
     {
         $products = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('prd_type_id', 2)->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')
+            ->where('prd_type_id', 2)
+            ->select('Products.*')
             ->paginate(8);
         return view('user/doNgot', ['products' => $products]);
     }
@@ -34,9 +32,8 @@ class MenuController extends Controller
     function doUong()
     {
         $products = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('prd_type_id', 3)->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')
+            ->where('prd_type_id', 3)
+            ->select('Products.*')
             ->paginate(8);
         return view('user/doUong', ['products' => $products]);
     }
@@ -45,9 +42,7 @@ class MenuController extends Controller
     function allProducts()
     {
         $products = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')->paginate(8);
+            ->select('Products.*')->paginate(8);
         return view('user/allProducts', ['products' => $products]);
     }
 
@@ -55,16 +50,13 @@ class MenuController extends Controller
     function show($prd_id)
     {
         $products = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'Images.img_url')
+            ->select('Products.*')
             ->where('Products.prd_id', $prd_id)
             ->get();
 
         //Sản phẩm khác random
         $randomProducts = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')
+            ->select('Products.*')
             ->inRandomOrder()
             ->take(4)
             ->get();
@@ -76,19 +68,15 @@ class MenuController extends Controller
     {
         //SP mới nhất
         $newProducts = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')
+            ->select('Products.*')
             ->orderByDesc('prd_id')
             ->take(4)
             ->get();
 
         //SP giảm giá
         $discountProducts = DB::table('Products')
-            ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-            ->where('Images.img_role', 1)
-            ->select('Products.*', 'Images.img_url')
-            // ->where('Products.prd_discount', '>', 0)
+            ->select('Products.*')
+            ->where('Products.prd_discount', '>', 0)
             ->orderByDesc('prd_discount')
             ->take(4)
             ->get();
@@ -102,10 +90,8 @@ class MenuController extends Controller
         $search = $request->get('searchText');
         if (!empty($search)) {
             $products = DB::table('Products')
-                ->join('Images', 'Products.prd_id', '=', 'Images.prd_id')
-                ->where('Images.img_role', 1)
                 ->where('prd_name', 'like', '%' . $search . '%')
-                ->select('Products.*', 'Images.img_url')
+                ->select('Products.*')
                 ->paginate(8);
             return view('user/search')->with('products', $products);
         } else {
@@ -135,10 +121,8 @@ class MenuController extends Controller
         $user = Auth::user();
         $products = DB::table('FavoriteProducts')
             ->join('Products', 'FavoriteProducts.prd_id', '=', 'Products.prd_id')
-            ->join('Images', 'FavoriteProducts.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'FavoriteProducts.*', 'Images.img_url')
+            ->select('Products.*', 'FavoriteProducts.*')
             ->where('FavoriteProducts.use_id', $user->id)
-            ->where('Images.img_role', 1)
             ->orderByDesc('FavoriteProducts.fav_id')
             ->get();
         return view('user/clientInfo.favorite', ['products' => $products]);

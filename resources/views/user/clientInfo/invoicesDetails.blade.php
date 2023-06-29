@@ -38,7 +38,7 @@
             <p>{{$invoiceDetail->prd_code}}</p>
         </td>
         <td>
-            <img src="{{$invoiceDetail->img_url}}" width="100px">
+            <img src="/storage/{{substr($invoiceDetail->prd_image, 7)}}" width="100px">
         </td>
         <td>
             <p>{{$invoiceDetail->prd_name}}</p>

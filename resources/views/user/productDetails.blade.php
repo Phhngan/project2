@@ -152,7 +152,7 @@ color:grey;
     <div class="row align-items-start">
         <div class="col">
             <div class="details-img">
-                <img src="{{$product->img_url}}" style="height:450px">
+                <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:450px">
             </div>
         </div>
         <div class="col details">
@@ -287,20 +287,8 @@ color:grey;
         <div class="cf-title">
             <h3>Đánh giá của người dùng</h3>
         </div>
-        <!-- RATE SAO -->
-        <!-- <div class="ratting-star">
-            <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">3.5/5</span>
-            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
-            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
-            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star.png?raw=true" alt="Star" width="30" height="30">
-            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/half-star.png?raw=true" alt="Star" width="30" height="30">
-            <img src="https://github.com/Phhngan/snack_images/blob/master/ratting/star-none.png?raw=true" alt="Star" width="30" height="30">
-        </div> -->
         <?php
         $user = Illuminate\Support\Facades\Auth::user();
-        // foreach ($products as $product) {
-        //     $prd_id = $product->prd_id;
-        // }
         $countComment = Illuminate\Support\Facades\DB::table('Comments')
             ->select('Comments.*')
             ->where('Comments.prd_id', $product->prd_id)
@@ -314,9 +302,6 @@ color:grey;
                 <span style="font-weight: bold;font-size:21px;left:22px;position:absolute;">
                     <?php
                     // Retrieve the selected rating from the session
-                    // session_start();
-                    // $_SESSION['selected_rating'] = 3.5;
-                    // $selectedRating = isset($_SESSION['selected_rating']) ? $_SESSION['selected_rating'] : null;
                     $selectedRating = $totalStar;
                     echo number_format($selectedRating, 1) . '/5';
                     ?>
@@ -415,7 +400,7 @@ color:grey;
             @if($randomProduct->prd_discount > 0)
             <div class="column-sales">
                 <div class="card">
-                    <img src="{{$randomProduct->img_url}}" style="height:290px;width:290px" id="zoom">
+                    <img src="/storage/{{substr($randomProduct->prd_image, 7)}}" style="height:290px;width:290px" id="zoom">
                     <div class="khuyen-mai">
                         <p><strong>- {{$randomProduct->prd_discount}}%</strong></p>
                     </div>
@@ -442,7 +427,7 @@ color:grey;
             @else
             <div class="column-product">
                 <div class="card">
-                    <img src="{{$randomProduct->img_url}}" style="height:290px;width:290px" id="zoom">
+                    <img src="/storage/{{substr($randomProduct->prd_image, 7)}}" style="height:290px;width:290px" id="zoom">
                     <br>
                     <h4 class="ten-sp">{{$randomProduct->prd_name}}</h4>
                     <p class="price">{{number_format($randomProduct->prd_price).' VND'}}</p>

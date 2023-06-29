@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call((ShipsDatabase::class));
         $this->call((ProductsDatabase::class));
-        $this->call((ImagesDatabase::class));
         $this->call((SupplyUnitsDatabase::class));
         $this->call((UsersDatabase::class));
         $this->call((ImportInvoicesDatabase::class));

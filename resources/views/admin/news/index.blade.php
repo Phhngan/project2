@@ -26,7 +26,7 @@
                 <p>{{$new->new_title}}</p>
             </td>
             <td>
-                <img src="{{$new->new_image}}" width="100px">
+                <img src="/storage/{{substr($new->new_image, 7)}}" width="100px">
             </td>
             <td>
                 <p>{{$new->new_day}}</p>

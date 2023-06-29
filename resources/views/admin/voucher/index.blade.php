@@ -27,7 +27,7 @@
             <p>{{$voucher->vou_title}}</p>
         </td>
         <td>
-            <img src="{{$voucher->vou_image}}" width="100px">
+            <img src="/storage/{{substr($voucher->vou_image, 7)}}" width="100px">
         </td>
         <td>
             <p>{{$voucher->vou_day}}</p>

@@ -8,11 +8,11 @@
 <br><br>
 <table class="table" id="myTable">
     <thead>
-    <tr>
-        <th>Mã sản phẩm</th>
-        <th>Sản phẩm</th>
-        <th>Số lượng còn lại</th>
-        <th>Hạn sử dụng</th>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Sản phẩm</th>
+            <th>Số lượng còn lại</th>
+            <th>Hạn sử dụng</th>
     </thead>
     </tr>
     @forelse($products as $product)

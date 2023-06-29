@@ -86,7 +86,7 @@ background-color: #ddd;
                 <p>{{$product->prd_code}}</p>
             </td>
             <td>
-                <img src="{{$product->img_url}}" style="height:100px">
+                <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
             </td>
             <td>
                 <a href="" class="text-sp">{{$product->prd_name}}</a>
@@ -101,19 +101,19 @@ background-color: #ddd;
                     <button type="submit" class="btn btn-danger">Xóa</button>
                 </form> -->
                 <a class="btn btn-danger" onclick="deleteFav()" role="button">Xóa <i class="fa-solid fa-heart-circle-xmark" style="color: #ffffff;"></i></i></a>
-            <div id="favPopup" class="popup-container">
-            <div class="popup-content">
-                <p><strong>Sản phẩm sẽ bị xóa khỏi Sản phẩm yêu thích. Tiếp tục?</strong></p>
-                <div class="popup-buttons">
-                <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
-                <form method="POST" action="{{url('/client/favorite/'.$product->prd_id.'/delete')}}">
-                    @csrf
-                    @method('delete')
-                <button class="popup-button" style="color:white;background-color:red">Xóa</button>
-                </form>
+                <div id="favPopup" class="popup-container">
+                    <div class="popup-content">
+                        <p><strong>Sản phẩm sẽ bị xóa khỏi Sản phẩm yêu thích. Tiếp tục?</strong></p>
+                        <div class="popup-buttons">
+                            <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
+                            <form method="POST" action="{{url('/client/favorite/'.$product->prd_id.'/delete')}}">
+                                @csrf
+                                @method('delete')
+                                <button class="popup-button" style="color:white;background-color:red">Xóa</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
             </td>
         </tr>
         @empty
@@ -129,21 +129,21 @@ background-color: #ddd;
 @section('js')
 @parent
 <script>
-function deleteFav() {
-  var confirmationPopup = document.getElementById("favPopup");
-  confirmationPopup.style.display = "block";
-}
+    function deleteFav() {
+        var confirmationPopup = document.getElementById("favPopup");
+        confirmationPopup.style.display = "block";
+    }
 
-function closePopup() {
-  var confirmationPopup = document.getElementById("favPopup");
-  confirmationPopup.style.display = "none";
-}
+    function closePopup() {
+        var confirmationPopup = document.getElementById("favPopup");
+        confirmationPopup.style.display = "none";
+    }
 
-var cancel = document.getElementById('favPopup');
-window.onclick = function(event) {
-  if (event.target == cancel) {
-    cancel.style.display = "none";
-  }
-}
+    var cancel = document.getElementById('favPopup');
+    window.onclick = function(event) {
+        if (event.target == cancel) {
+            cancel.style.display = "none";
+        }
+    }
 </script>
 @endsection

@@ -3,7 +3,7 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
-{{-- Do du lieu      --}}
+{{-- Do du lieu --}}
 <br>
 <a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm</a>
 <br><br>
@@ -56,11 +56,6 @@
             <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
             <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
             <br>
-            <!-- <form method="POST" action="{{url('admin/products/'.$product->prd_id.'/delete')}}">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form> -->
         </td>
     </tr>
     @empty

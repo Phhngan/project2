@@ -21,7 +21,7 @@ class ShipController extends Controller
     function edit($ship_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 5) {
+        if ($user->pos_id == 2 || $user->pos_id == 6) {
             $ship = Ship::findOrFail($ship_id);
             if ($ship == null) {
                 return redirect()->route('error');

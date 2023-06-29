@@ -84,61 +84,6 @@ class SalesInvoiceController extends Controller
         return view('admin/salesInvoice.details', ['salesInvoiceDetails' => $salesInvoiceDetails], ['sal_id', $sal_id]);
     }
 
-    //continue
-    // function continue($sal_id)
-    // {
-    //     $user = Auth::user();
-    //     if ($user->pos_id == 2 || $user->pos_id == 4) {
-    //         $salesInvoice = Salesinvoice::findOrFail($sal_id);
-    //         $sal_status_id = $salesInvoice->sal_status_id;
-    //         if ($sal_status_id == 1) {
-    //             $invoices =  DB::table('SalesInvoiceDetails')
-    //                 ->select('SalesInvoiceDetails.*')
-    //                 ->where('sal_id', $sal_id)
-    //                 ->get();
-    //             foreach ($invoices as $invoice) {
-    //                 $products = DB::table('ImportInvoiceDetails')
-    //                     ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
-    //                     ->select('ImportInvoiceDetails.*')
-    //                     ->where('prd_status_id', '<', 3)
-    //                     ->where('imp_quantity_left', '>', 0)
-    //                     ->where('prd_id', $invoice->prd_id)
-    //                     ->orderBy('id')
-    //                     ->take(1)
-    //                     ->get();
-    //                 foreach ($products as $product) {
-    //                     if ($product->imp_quantity_left >= $invoice->sal_quantity) {
-    //                         DB::table('ImportInvoiceDetails')->where('id', $product->id)
-    //                             ->update(['imp_quantity_left' => $product->imp_quantity_left - $invoice->sal_quantity]);
-    //                     } else {
-    //                         $left = $invoice->sal_quantity - $product->imp_quantity_left;
-    //                         DB::table('ImportInvoiceDetails')->where('id', $product->id)
-    //                             ->update(['imp_quantity_left' => 0]);
-    //                         $productLefts = DB::table('ImportInvoiceDetails')
-    //                             ->join('ImportInvoices', 'ImportInvoiceDetails.imp_id', '=', 'ImportInvoices.imp_id')
-    //                             ->select('ImportInvoiceDetails.*')
-    //                             ->where('prd_status_id', '<', 3)
-    //                             ->where('imp_quantity_left', '>', 0)
-    //                             ->where('prd_id', $invoice->prd_id)
-    //                             ->orderBy('id')
-    //                             ->take(1)
-    //                             ->get();
-    //                         foreach ($productLefts as $productLeft) {
-    //                             DB::table('ImportInvoiceDetails')->where('id', $productLeft->id)
-    //                                 ->update(['imp_quantity_left' => $productLeft->imp_quantity_left - $left]);
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         DB::table('SalesInvoices')->where('sal_id', $sal_id)
-    //             ->update(['sal_status_id' => $sal_status_id + 1]);
-    //         return redirect('admin/salesInvoice/chua-xac-nhan');
-    //     } else {
-    //         return view('error/khong-co-quyen-admin');
-    //     }
-    // }
-
     //Chuyển xác nhận
     function xacnhan($sal_id)
     {
@@ -195,7 +140,7 @@ class SalesInvoiceController extends Controller
     function giaohang($sal_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 4 || $user->pos_id == 5) {
+        if ($user->pos_id == 2 || $user->pos_id == 4 || $user->pos_id == 6) {
             DB::table('SalesInvoices')->where('sal_id', $sal_id)
                 ->update(['sal_status_id' => 3]);
             return redirect('admin/salesInvoice/ship-hang');
@@ -208,7 +153,7 @@ class SalesInvoiceController extends Controller
     function hoanthanh($sal_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 4 || $user->pos_id == 5) {
+        if ($user->pos_id == 2 || $user->pos_id == 4 || $user->pos_id == 6) {
             DB::table('SalesInvoices')->where('sal_id', $sal_id)
                 ->update(['sal_status_id' => 4]);
             return redirect('admin/salesInvoice/thanh-cong');

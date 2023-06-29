@@ -11,12 +11,12 @@
 <h2 class="text-center">{{ $product->prd_name  }}</h2><br>
 <table class="table">
 
-    <!-- <tr>
-                    <th>Hình ảnh sản phẩm:</th>
-                <td>
-                    <img src="{{ $product->image  }}" width="300px">
-               </td>
-             </tr> -->
+    <tr>
+        <th>Hình ảnh sản phẩm:</th>
+        <td>
+            <img src="/storage/{{substr($product->prd_image, 7)}}" width="300px" alt="">
+        </td>
+    </tr>
     <tr>
         <th>Giá sản phẩm: </th>
         <td>
@@ -48,7 +48,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2" style="text-align:center;">
+        <td colspan=" 2" style="text-align:center;">
             <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
         </td>
     </tr>

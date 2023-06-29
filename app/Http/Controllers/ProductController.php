@@ -16,8 +16,9 @@ class ProductController extends Controller
         // Lay du lieu
         $products = DB::table('Products')
             ->select('Products.*')
-            ->orderByDesc('prd_id')
+            ->orderBy('prd_id')
             ->get();
+        // dd($products);
         // Tra ve view -> view se render ra man hinh
         return view('admin/product.index', ['products' => $products]);
     }
@@ -60,6 +61,9 @@ class ProductController extends Controller
     function show($prd_id)
     {
         $product = Product::findOrFail($prd_id);
+        // var_dump($product->prd_image);
+        // $url = substr($product->prd_image, 7);
+        // dd($url);
         return view('admin/product.detail', ['product' => $product]);
     }
 

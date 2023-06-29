@@ -155,7 +155,7 @@ justify-content:center;
     <h3>Đánh giá đơn hàng</h3>
 </div>
 <div class="alert alert-info" role="alert">
-  Xem chính sách nhận xu <a href="/chinh-sach#Xu" target="_blank">tại đây</a>
+    Xem chính sách nhận xu <a href="/chinh-sach#Xu" target="_blank">tại đây</a>
 </div>
 
 @forelse($invoiceDetails as $invoiceDetail)
@@ -164,7 +164,7 @@ justify-content:center;
         <h4>Sản phẩm: {{$invoiceDetail->prd_name}}</h4>
     </a>
     <br>
-    <img src="{{$invoiceDetail->img_url}}" style="height:400px;">
+    <img src="/storage/{{substr($invoiceDetail->prd_image, 7)}}" style="height:400px;">
     <br>
     <h5>Giá bán: {{number_format($invoiceDetail->sal_price).' VND'}} </h5>
 </div>

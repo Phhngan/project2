@@ -93,26 +93,19 @@
 <hr>
 <h3 class="text-center">Doanh thu theo tháng</h3>
 <div class="row">
-
     <div class="col-nho" style="width:80px">
         <label for="year">Năm:</label>
     </div>
-
-    <div class="col-nho" style="width:150px">
-        <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
+    <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home')}}">
+        <div class="col-nho" style="width:150px">
             <input type='button' value='-' class='qtyminus minus' field='quantity' />
             <input type='number' name='quantity' min='2022' max='{{$yearNow}}' value='{{$year}}' class='qty' />
             <input type='button' value='+' class='qtyplus plus' field='quantity' />
-    </div>
-
-    <div class="col-nho" style="width:200px;margin-top:-1px">
-        <button type="submit" class="btn btn-primary" style="height: 34px;padding: 0px 10px 0px 10px;">Cập nhật</button>
-    </div>
-
+        </div>
+        <div class="col-nho" style="width:200px;margin-top:-1px">
+            <button type="submit" class="btn btn-primary" style="height: 34px;padding: 0px 10px 0px 10px;">Cập nhật</button>
+        </div>
     </form>
-    <div>
-    </div>
-
     <canvas id="myChart"></canvas>
 </div>
 

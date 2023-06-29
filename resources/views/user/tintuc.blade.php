@@ -54,7 +54,7 @@ opacity: 0.8;
             <h2>{{$new->new_title}}</h2>
             <h5>{{$new->new_day}}</h5>
             <a href="/news/{{$new->new_id}}">
-                <img src="{{$new->new_image}}" style="width:60%;display:flex;margin-left:auto;margin-right:auto;">
+                <img src="/storage/{{substr($new->new_image, 7)}}" style="width:60%;display:flex;margin-left:auto;margin-right:auto;">
             </a>
             <div class="post-text">
                 <a href="/news/{{$new->new_id}}" style="color: white;text-decoration: none">Xem thêm </a>

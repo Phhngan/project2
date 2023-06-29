@@ -68,10 +68,8 @@ class CartController extends Controller
         }
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
-            ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'Carts.*', 'Images.img_url')
+            ->select('Products.*', 'Carts.*')
             ->where('Carts.use_id', $user->id)
-            ->where('Images.img_role', 1)
             ->orderByDesc('Carts.car_id')
             ->get();
         $addresses = DB::table('Carts')
@@ -134,10 +132,8 @@ class CartController extends Controller
         $user = Auth::user();
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
-            ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'Carts.*', 'Images.img_url')
+            ->select('Products.*', 'Carts.*')
             ->where('Carts.use_id', $user->id)
-            ->where('Images.img_role', 1)
             ->orderByDesc('Carts.car_id')
             ->get();
         $locations = DB::table('Carts')
@@ -227,10 +223,8 @@ class CartController extends Controller
         $user = Auth::user();
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
-            ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'Carts.*', 'Images.img_url')
+            ->select('Products.*', 'Carts.*')
             ->where('Carts.use_id', $user->id)
-            ->where('Images.img_role', 1)
             ->orderByDesc('Carts.car_id')
             ->get();
         $price = 0;
@@ -382,10 +376,8 @@ class CartController extends Controller
         $user = Auth::user();
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
-            ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'Carts.*', 'Images.img_url')
+            ->select('Products.*', 'Carts.*')
             ->where('Carts.use_id', $user->id)
-            ->where('Images.img_role', 1)
             ->orderByDesc('Carts.car_id')
             ->get();
         $price = 0;
@@ -516,10 +508,8 @@ class CartController extends Controller
         $user = Auth::user();
         $products = DB::table('Carts')
             ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
-            ->join('Images', 'Carts.prd_id', '=', 'Images.prd_id')
-            ->select('Products.*', 'Carts.*', 'Images.img_url')
+            ->select('Products.*', 'Carts.*')
             ->where('Carts.use_id', $user->id)
-            ->where('Images.img_role', 1)
             ->orderByDesc('Carts.car_id')
             ->get();
         $locations = DB::table('Carts')

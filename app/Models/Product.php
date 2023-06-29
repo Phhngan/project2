@@ -17,7 +17,8 @@ class Product extends Model
         'prd_source',
         'prd_price',
         'prd_discount',
-        'prd_description'
+        'prd_description',
+        'prd_image'
     ];
 
     public function importInvoiceDetail()

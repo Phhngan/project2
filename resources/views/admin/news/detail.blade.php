@@ -6,7 +6,8 @@
 
 <h2 class="text-center">Bài viết: {{$new->new_title}}</h2><br>
 <h5 style="color:grey;">Ngày viết: {{$new->new_day}}</h5>
-<img src="{{$new->new_image}}" width="100px">
+<img src="/storage/{{substr($new->new_image, 7)}}" width="100px">
+
 <div class="tintuc">
     <h5>Nội dung:</h5>
     {!!$new->new_content!!}

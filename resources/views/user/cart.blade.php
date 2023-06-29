@@ -60,7 +60,7 @@ pointer-events: none;
                 <p>{{$product->prd_code}}</p>
             </td>
             <td>
-                <img src="{{$product->img_url}}" style="height:100px">
+                <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
             </td>
             <td>
                 <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use stdClass;
 
 class AdminController extends Controller
 {
@@ -30,6 +31,32 @@ class AdminController extends Controller
     {
         $date = getdate();
         $yearNow = $date['year'];
+        $products = DB::table('Products')
+            ->select('Products.*')
+            ->orderBy('prd_id')
+            ->get();
+        $count = count($products);
+        $array = [];
+        foreach ($products as $product) {
+            for ($i = 0; $i < $count; $i++) {
+                if ($i == $product->prd_id - 1) {
+                    $quantity = DB::table('ImportInvoiceDetails')
+                        ->where('prd_id', $product->prd_id)
+                        ->where('prd_status_id', '<', 3)
+                        ->sum('ImportInvoiceDetails.imp_quantity_left');
+                    if ($quantity == 0) {
+                        $array[$i]['quantity'] = $quantity;
+                        $array[$i]['code'] = $product->prd_id;
+                    }
+                }
+            }
+        }
+        if (!$array) {
+            $countArray = 0;
+        } else {
+            $countArray = count($array);
+        }
+        // dd($countArray);
         return view('admin/home')->with('year', $year)->with('yearNow', $yearNow);
     }
 
@@ -59,10 +86,6 @@ class AdminController extends Controller
     function edit()
     {
         $user = Auth::user();
-        // $user = DB::table('Users')
-        //     ->select('Users.*')
-        //     ->where('Users.id', $id)
-        //     ->get();
         $users = DB::table('Users')
             ->select('Users.*')
             ->where('Users.id', $user->id)
@@ -112,5 +135,16 @@ class AdminController extends Controller
         } else {
             return view('admin/setting.changePass', ['error' => 'Mật khẩu không chính xác']);
         }
+    }
+
+    function test()
+    {
+        $products = DB::table('Products')
+            ->join('ImportInvoiceDetails', 'Products.prd_id', '=', 'ImportInvoiceDetails.prd_id')
+            ->select('Products.*')
+            ->where('ImportInvoiceDetails', '<', 3)
+            ->orderBy('prd_id')
+            ->get();
+        dd($products);
     }
 }

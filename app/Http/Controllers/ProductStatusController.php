@@ -18,9 +18,8 @@ class ProductStatusController extends Controller
             ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
             ->where('prd_status_id', 1)
             ->orderBy('prd_id')
-            ->paginate(8);
-        // dd($productCompares);
-        // var_dump($productCompares);
+            // ->paginate(8);
+            ->get();
         foreach ($products as $product) {
             $quantity = Importinvoicedetail::where('prd_id', $product->prd_id)
                 ->where('imp_expiryDate', $product->imp_expiryDate)

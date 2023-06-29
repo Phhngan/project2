@@ -78,26 +78,6 @@ Route::get("/admin/products/{prd_id}/edit", [ProductController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
 Route::put("admin/products/{prd_id}/edit", [ProductController::class, 'update']);
 
-// Xoa 1 san pham
-// Route::delete("admin/products/{prd_id}/delete", [ProductController::class, 'delete']);
-
-
-// LOẠI SẢN PHẨM
-// Xem toàn bộ loại sản phẩm
-Route::get("/admin/productType", [ProductTypeController::class, 'index']);
-
-// Thêm 1 loại sản phẩm : view
-Route::get("/admin/productType/create", [ProductTypeController::class, 'create']);
-// Thêm loại sp => ko có giao diện
-Route::post("/admin/productType/create", [ProductTypeController::class, 'save']);
-
-// Sửa 1 loại sản phẩm : view
-Route::get("/admin/productType/{prd_type_id}/edit", [ProductTypeController::class, 'edit']);
-// cập nhât loại sp => ko có giao diện
-Route::put("/admin/productType/{prd_type_id}/edit", [ProductTypeController::class, 'update']);
-
-// Xoa 1 san pham
-// Route::delete("admin/productType/{prd_type_id}/delete", [ProductTypeController::class, 'delete']);
 
 // TRẠNG THÁI SẢN PHẨM
 // Con han
