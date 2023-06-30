@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Tạo mã giảm giá mới</h1>
-<form action="{{url('admin/voucher/create')}}" method="POST">
+<form action="{{url('admin/voucher/create')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <br>
     <label for="voucherName">Tên Voucher:</label>

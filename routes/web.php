@@ -97,17 +97,17 @@ Route::put("/admin/productStatus/{prd_id}/chuyen", [ProductStatusController::cla
 Route::get("/admin/productStatus/update", [ProductStatusController::class, 'update']);
 Route::put("/admin/productStatus/update", [ProductStatusController::class, 'update']);
 
-// THƯ VIỆN ẢNH
-// Xem tất cả ảnh
-Route::get("/admin/images", [ImagesController::class, 'index']);
-// sửa : view
-Route::get("/admin/images/{img_id}/edit", [ImagesController::class, 'edit']);
-Route::put("/admin/images/{img_id}/edit", [ImagesController::class, 'update']);
-// thêm : view
-Route::get("/admin/images/create", [ImagesController::class, 'create']);
-Route::post("/admin/images/create", [ImagesController::class, 'save']);
-// Xoa 1 anh
-Route::delete("admin/images/{img_id}/delete", [ImagesController::class, 'delete']);
+// // THƯ VIỆN ẢNH
+// // Xem tất cả ảnh
+// Route::get("/admin/images", [ImagesController::class, 'index']);
+// // sửa : view
+// Route::get("/admin/images/{img_id}/edit", [ImagesController::class, 'edit']);
+// Route::put("/admin/images/{img_id}/edit", [ImagesController::class, 'update']);
+// // thêm : view
+// Route::get("/admin/images/create", [ImagesController::class, 'create']);
+// Route::post("/admin/images/create", [ImagesController::class, 'save']);
+// // Xoa 1 anh
+// Route::delete("admin/images/{img_id}/delete", [ImagesController::class, 'delete']);
 
 // ĐƠN VỊ CUNG CẤP
 // Xem tất cả đơn vị cung cấp
@@ -131,17 +131,17 @@ Route::post("/admin/importInvoice/create", [ImportInvoiceController::class, 'sav
 Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'edit']);
 Route::put("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'update']);
 // Xoa
-Route::delete("/admin/importInvoice/{imp_id}/delete", [ImportInvoiceController::class, 'delete']);
+// Route::delete("/admin/importInvoice/{imp_id}/delete", [ImportInvoiceController::class, 'delete']);
 // Xem chi tiết 1 hóa đơn
-Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceDetailController::class, 'index']);
+Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceController::class, 'show']);
 //Thêm chi tiết hóa đơn
-Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'create']);
-Route::post("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
+// Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'create']);
+// Route::post("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
 //Sửa chi tiết hóa đơn
 // Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'edit']);
 // Route::put("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
 //Xoa
-Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailController::class, 'delete']);
+// Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailController::class, 'delete']);
 
 // SHIP
 // Xem tất cả

@@ -9,40 +9,49 @@
     @csrf
     @method('put')
     <br>
-        <label for="unitId">Đơn vị cung cấp:</label>
-        <br>
-        <?php
-             $supplyunits = Illuminate\Support\Facades\DB::table('Supplyunits')
-                ->select('Supplyunits.*')
-                ->get();
-          ?>
-	    <select class="form-control" id="" name="unitId" required>
+    <label for="unitId">Đơn vị cung cấp:</label>
+    <br>
+    <?php
+    $supplyunits = Illuminate\Support\Facades\DB::table('Supplyunits')
+        ->select('Supplyunits.*')
+        ->get();
+    ?>
+    <select class="form-control" id="" name="unitId" required>
         <option value="{{$importInvoice->unit_id}}" selected="selected">----{{ $importInvoice->unit_name }}----</option>
-			@foreach($supplyunits as $supplyunit)
+        @foreach($supplyunits as $supplyunit)
         <option value="{{ $supplyunit->unit_id }}">{{ $supplyunit->unit_name }}</option>
-            @endforeach
-	    </select>
-        <br>
-        <label for="userId">Tên người nhập:</label>
-        <br>
-        <?php
-             $users = Illuminate\Support\Facades\DB::table('Users')
-                ->select('Users.*')->where('Users.pos_id', '>', 1)
-                ->get();
-          ?>
-	    <select class="form-control" id="" name="userId" required>
+        @endforeach
+    </select>
+    <br>
+    <label for="userId">Tên người nhập:</label>
+    <br>
+    <?php
+    $users = Illuminate\Support\Facades\DB::table('Users')
+        ->select('Users.*')->where('Users.pos_id', '>', 1)
+        ->get();
+    ?>
+    <select class="form-control" id="" name="userId" required>
         <option value="{{$importInvoice->unit_id}}" selected="selected">----{{$importInvoice->use_lastName}} {{$importInvoice->name}}----</option>
-			@foreach($users as $user)
+        @foreach($users as $user)
         <option value="{{ $user->id }}">{{ $user->use_lastName }} {{ $user->name }}</option>
-            @endforeach
-	    </select>
-        <br>
-        <label for="importDate">Ngày nhập:</label>
-        <br>
-        <input value="{{$importInvoice->imp_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
-        <br>
-
-        <h5>Danh sách sản phẩm trong hóa đơn:</h5>
+        @endforeach
+    </select>
+    <br>
+    <label for="importDate">Ngày nhập:</label>
+    <br>
+    <input value="{{$importInvoice->imp_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
+    <br>
+    <?php
+    $count = 0;
+    foreach ($importInvoiceDetails as $importInvoiceDetail) {
+        $prdID[$count] = $importInvoiceDetail->prd_id;
+        $impQuantity[$count] = $importInvoiceDetail->imp_quantity;
+        $impPrice[$count] = $importInvoiceDetail->imp_price;
+        $impExpiryDate[$count] = $importInvoiceDetail->imp_expiryDate;
+        $count++;
+    }
+    ?>
+    <h5>Danh sách sản phẩm trong hóa đơn:</h5>
     <table id="mytable">
         <tr>
             <th></th>
@@ -51,13 +60,17 @@
             <th>Giá sản phẩm</th>
             <th>Ngày hết hạn</th>
         </tr>
-        <tr>
-            <td style="text-align:center;"><input type="checkbox"></td>
-            <td><input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm"></td>
-            <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng"></td>
-            <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm"></td>
-            <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn"></td>
-        </tr>
+        <?php
+        for ($i = 0; $i < $count; $i++) {
+        ?>
+            <tr>
+                <td style="text-align:center;"><input type="checkbox"></td>
+                <td><input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm" value="{{$prdID[$i]}}"></td>
+                <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}"></td>
+                <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm" value="{{$impPrice[$i]}}"></td>
+                <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn" value="{{$impExpiryDate[$i]}}"></td>
+            </tr>
+        <?php } ?>
     </table>
     <br>
     <input type="button" class="btn btn-success" value="Thêm sản phẩm" onclick="row()">
@@ -66,12 +79,12 @@
     <button type="submit" class="btn btn-primary" onclick="processForm()">Thêm mới</button>
 </form>
 
-        <!-- <label for="importTotal">Tổng giá trị đơn nhập:</label>
+<!-- <label for="importTotal">Tổng giá trị đơn nhập:</label>
         <br>
         <input value="{{$importInvoice->imp_total}}" name="importTotal" type="number" class="form-control" placeholder="Tổng tiền nhập">
         <br> -->
-        <br>
-    <button type="submit" class="btn btn-primary">Cập nhật</button>
+<br>
+<button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>
 @endforeach
 @endsection
@@ -122,6 +135,16 @@
         quantity.type = "number";
         price.type = "number";
         hsd.type = "date";
+
+        maSP.class = "form-control";
+        quantity.class = "form-control";
+        price.class = "form-control";
+        hsd.class = "form-control";
+
+        maSP.placeholder = "Mã sản phẩm";
+        quantity.placeholder = "Số lượng";
+        price.placeholder = "Giá sản phẩm";
+        hsd.placeholder = "Ngày hết hạn";
 
         r.className = "new-row"; // Add a CSS class to the row
         c1.style.textAlign = "center";

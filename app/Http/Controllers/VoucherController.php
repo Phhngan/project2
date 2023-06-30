@@ -37,7 +37,7 @@ class VoucherController extends Controller
     function update(Request $request, $vou_id)
     {
         $voucherName = $request->get('voucherName');
-        $voucherImage = $request->get('voucherImage');
+        $voucherImage = $request->file('voucherImage')->store('public');
         $voucherDate = $request->get('voucherDate');
         $voucherDiscount = $request->get('voucherDiscount');
         $voucherMin = $request->get('voucherMin');
@@ -61,7 +61,7 @@ class VoucherController extends Controller
     function save(Request $request)
     {
         $voucherName = $request->get('voucherName');
-        $voucherImage = $request->get('voucherImage');
+        $voucherImage = $request->file('voucherImage')->store('public');
         $voucherDate = $request->get('voucherDate');
         $voucherDiscount = $request->get('voucherDiscount');
         $voucherMin = $request->get('voucherMin');
