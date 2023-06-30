@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title','Untitled')</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,6 +14,7 @@
     <link rel="shortcut icon" type="image/png" href="https://github.com/Phhngan/snack_images/blob/master/logo/logo1.png?raw=true"/>
     <script src="https://kit.fontawesome.com/9826eb958a.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     @yield('css-link')
     <style>
 @yield('style');

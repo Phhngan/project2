@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="text-center">Tạo sản phẩm mới</h1>
-    <form action="{{url('admin/products/create')}}" method="POST">
+    <form action="{{url('admin/products/create')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <br>
         <label for="productCode">Mã sản phẩm:</label>
@@ -17,9 +17,10 @@
         <br>
         <label for="productImage">Ảnh sản phẩm:</label>
         <br>
-        <input type="file" name="productImage">
-        <br><br>
-        <img id="imagePreview" src="#" alt="Preview Image" style="display: none;">
+        <input accept="image/*" type="file" id="productImage" name="productImage">
+        <br>
+        <img id="imagePreview" src="#" alt="Preview Image" style="display: none;width: 100px;">
+        <br>
         <label for="productType">Loại sản phẩm:</label>
         <br>
         <select class="form-control" name="productType" required>
@@ -67,7 +68,7 @@
             } );
     </script>
     <script>
-        // Get the file input element
+// Get the file input element
 const input = document.getElementById('productImage');
 
 // Get the image preview element
@@ -98,5 +99,6 @@ input.addEventListener('change', function(e) {
     preview.style.display = 'none';
   }
 });
+
     </script>
 @endsection

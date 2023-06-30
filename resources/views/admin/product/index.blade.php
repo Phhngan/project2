@@ -3,7 +3,6 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
-{{-- Do du lieu --}}
 <br>
 <a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm</a>
 <br><br>
@@ -58,7 +57,7 @@
         </td>
         <td>
             <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
+            <a class="btn btn-outline-success" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
             <br>
         </td>
     </tr>
