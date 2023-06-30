@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Tạo bài viết mới</h1>
-<form action="{{url('admin/news/create')}}" method="POST">
+<form action="{{url('admin/news/create')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <br>
     <label for="newsName">Tiêu đề bài viết:</label>

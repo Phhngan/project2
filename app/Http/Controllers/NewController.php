@@ -37,7 +37,7 @@ class NewController extends Controller
     function save(Request $request)
     {
         $newsName = $request->get('newsName');
-        $newsImage = $request->get('newsImage');
+        $newsImage = $request->file('newsImage')->store('public');
         $newsDate = $request->get('newsDate');
         $newsContent = $request->get('newsContent');
 
@@ -66,7 +66,7 @@ class NewController extends Controller
     function update(Request $request, $new_id)
     {
         $newsName = $request->get('newsName');
-        $newsImage = $request->get('newsImage');
+        $newsImage = $request->file('newsImage')->store('public');
         $newsDate = $request->get('newsDate');
         $newsDescription = $request->get('newsDescription');
 

@@ -100,6 +100,16 @@
         price.type = "number";
         hsd.type = "date";
 
+        maSP.class = "form-control";
+        quantity.class = "form-control";
+        price.class = "form-control";
+        hsd.class = "form-control";
+
+        maSP.placeholder = "Mã sản phẩm";
+        quantity.placeholder = "Số lượng";
+        price.placeholder = "Giá sản phẩm";
+        hsd.placeholder = "Ngày hết hạn";
+
         r.className = "new-row"; // Add a CSS class to the row
         c1.style.textAlign = "center";
 

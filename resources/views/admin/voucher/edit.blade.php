@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật mã giảm giá</h1>
-<form action="{{url('admin/voucher/'.$voucher->vou_id.'/edit')}}" method="POST">
+<form action="{{url('admin/voucher/'.$voucher->vou_id.'/edit')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
     <br>
@@ -16,7 +16,7 @@
     <br>
     <!-- <input value="{{$voucher->vou_image}}" name="voucherImage" type="text" class="form-control" placeholder="Link ảnh">
     <br> -->
-    <img src="/storage/{{$voucher->vou_image}}" width="100px">
+    <img src="/storage/{{substr($voucher->vou_image, 7)}}" width="100px">
     <input type="file" name="voucherImage">
     <br><br>
     <label for="voucherDate">Ngày áp dụng:</label>

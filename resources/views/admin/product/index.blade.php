@@ -29,7 +29,7 @@
             </a>
         </td>
         <td>
-            <img src="/storage/{{}}" width="100px">
+            <img src="/storage/{{substr($product->prd_image, 7)}}" width="100px">
         </td>
         <td>
             <p>

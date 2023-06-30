@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật tin tức</h1>
-<form action="{{url('admin/news/'.$new->new_id.'/edit')}}" method="POST">
+<form action="{{url('admin/news/'.$new->new_id.'/edit')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
     <br>
@@ -14,7 +14,7 @@
     <br>
     <label for="newsImage">Ảnh bài viết:</label>
     <br>
-    <img src="/storage/{{$new->new_image}}" width="100px">
+    <img src="/storage/{{substr($new->new_image, 7)}}" width="100px">
     <input type="file" name="newsImage">
     <br><br>
     <label for="newsDate">Ngày viết:</label>

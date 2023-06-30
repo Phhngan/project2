@@ -85,7 +85,20 @@ class ImportInvoiceController extends Controller
                 ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name', 'Users.use_lastName')
                 ->where('ImportInvoices.imp_id', $importInvoice->imp_id)
                 ->get();
-            return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices]);
+            $importInvoiceDetails = DB::table('ImportInvoiceDetails')
+                ->select('ImportInvoiceDetails.*')
+                ->where('ImportInvoiceDetails.imp_id', $importInvoice->imp_id)
+                ->get();
+            // dd($importInvoiceDetails);
+            // $count = 0;
+            // foreach ($importInvoiceDetails as $importInvoiceDetail) {
+            //     $prdID[$count] = $importInvoiceDetail->prd_id;
+            //     $impQuantity[$count] = $importInvoiceDetail->imp_quantity;
+            //     $impPrice[$count] = $importInvoiceDetail->imp_price;
+            //     $impExpiryDate[$count] = $importInvoiceDetail->imp_expiryDate;
+            //     $count++;
+            // }
+            return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices], ['importInvoiceDetails' => $importInvoiceDetails]);
         } else {
             return view('error/khong-co-quyen-admin');
         }
@@ -95,9 +108,56 @@ class ImportInvoiceController extends Controller
         $unit_id = $request->get('unitId');
         $use_id = $request->get('userId');
         $imp_date = $request->get('importDate');
-        $imp_total = $request->get('importTotal');
+        $prd_id = $request->input('productId');
+        $imp_quantity = $request->get('quantity');
+        $imp_price = $request->get('price');
+        $imp_expiryDate = $request->get('expiryDate');
+        $count = count($prd_id);
+        $total = 0;
+        for ($i = 0; $i < $count; $i++) {
+            $total = $total + ($imp_price[$i] * $imp_quantity[$i]);
+        }
         DB::table('ImportInvoices')->where('imp_id', $imp_id)
-            ->update(['unit_id' => $unit_id, 'use_id' => $use_id, 'imp_date' => $imp_date, 'imp_total' => $imp_total]);
+            ->update(['unit_id' => $unit_id, 'use_id' => $use_id, 'imp_date' => $imp_date, 'imp_total' => $total]);
+        $importInvoiceDetails = DB::table('ImportInvoiceDetails')
+            ->select('ImportInvoiceDetails.*')
+            ->where('ImportInvoiceDetails.imp_id', $imp_id)
+            ->get();
+        $i = 0;
+        foreach ($importInvoiceDetails as $importInvoiceDetail) {
+            DB::table('ImportInvoiceDetails')->where('id', $importInvoiceDetail->id)
+                ->update([
+                    'prd_id' => $prd_id[$i], 'imp_quantity' => $imp_quantity[$i],
+                    'imp_price' => $imp_price[$i], 'imp_expiryDate' => $imp_expiryDate[$i],
+                    'imp_quantity_left' => $imp_quantity[$i]
+                ]);
+            $i++;
+        }
+        if ($count > $i) {
+            for ($t = $i; $t < $count; $t++) {
+                DB::table('ImportInvoiceDetails')->insert(
+                    [
+                        'imp_id' => $imp_id, 'prd_id' => $prd_id[$t], 'imp_quantity' => $imp_quantity[$t],
+                        'imp_price' => $imp_price[$t], 'imp_expiryDate' => $imp_expiryDate[$t], 'prd_status_id' => 1,
+                        'imp_quantity_left' => $imp_quantity[$t],
+                    ]
+                );
+            }
+        }
         return redirect('admin/importInvoice');
+    }
+
+    //chi tiet hoa don
+    function show($imp_id)
+    {
+        $importInvoice = Importinvoice::findOrFail($imp_id);
+        // $importInvoiceDetails = Importinvoicedetail::where('imp_id', $imp_id)->get();
+        $importInvoiceDetails = DB::table('ImportInvoiceDetails')
+            ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
+            ->select('ImportInvoiceDetails.*', 'Products.prd_name', 'Products.prd_code')
+            ->where('ImportInvoiceDetails.imp_id', $imp_id)->orderByDesc('ImportInvoiceDetails.id')
+            ->get();
+        // $importInvoice = Importinvoice::where('imp_id', $imp_id)->get();
+        return view('admin/importInvoice/detail.index', ['importInvoiceDetails' => $importInvoiceDetails], ['importInvoice' => $importInvoice]);
     }
 }

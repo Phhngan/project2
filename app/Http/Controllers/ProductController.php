@@ -16,7 +16,7 @@ class ProductController extends Controller
         // Lay du lieu
         $products = DB::table('Products')
             ->select('Products.*')
-            ->orderBy('prd_id')
+            ->orderByDesc('prd_id')
             ->get();
         // dd($products);
         // Tra ve view -> view se render ra man hinh
@@ -44,12 +44,13 @@ class ProductController extends Controller
         $prd_price = $request->get('productPrice');
         $prd_discount = $request->get('productDiscount');
         $prd_description = $request->get('productDescription');
+        $prd_image = $request->file('productImage')->store('public');
 
         // Insert
         DB::table('Products')->insert(
             [
                 'prd_code' => $prd_code, 'prd_name' => $prd_name, 'prd_type_id' => $prd_type_id, 'prd_weigh' => $prd_weigh, 'prd_source' => $prd_source,
-                'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description,
+                'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description, 'prd_image' => $prd_image
             ]
         );
 
@@ -61,9 +62,6 @@ class ProductController extends Controller
     function show($prd_id)
     {
         $product = Product::findOrFail($prd_id);
-        // var_dump($product->prd_image);
-        // $url = substr($product->prd_image, 7);
-        // dd($url);
         return view('admin/product.detail', ['product' => $product]);
     }
 
@@ -94,11 +92,12 @@ class ProductController extends Controller
         $prd_price = $request->get('productPrice');
         $prd_discount = $request->get('productDiscount');
         $prd_description = $request->get('productDescription');
+        $prd_image = $request->file('image')->store('public');
 
         DB::table('Products')->where('prd_id', $prd_id)
             ->update([
                 'prd_code' => $prd_code, 'prd_name' => $prd_name, 'prd_type_id' => $prd_type_id, 'prd_weigh' => $prd_weigh, 'prd_source' => $prd_source,
-                'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description,
+                'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description, 'prd_image' => $prd_image
             ]);
         return redirect('admin/products');
     }
