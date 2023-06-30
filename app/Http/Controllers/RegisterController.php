@@ -41,7 +41,8 @@ class RegisterController extends Controller
                     'use_town' => $use_town,
                     'use_detailAddress' => $use_detailAddress,
                     'password' => Hash::make($password),
-                    'pos_id' => 1
+                    'pos_id' => 1,
+                    'use_gold' => 1000,
                 ]
             );
             return redirect('login');

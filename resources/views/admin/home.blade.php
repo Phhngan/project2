@@ -134,27 +134,27 @@
             <th>Hình ảnh</th>
             <th>Lượt bán</th>
         </tr>
-    <thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Cơm</td>
-            <td><img src="/storage/" width="100px"></td>
-            <td>5,000 lượt</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Cơm</td>
-            <td><img src="/storage/" width="100px"></td>
-            <td>5,000 lượt</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Cơm</td>
-            <td><img src="/storage/" width="100px"></td>
-            <td>5,000 lượt</td>
-        </tr>
-    </tbody>
+        <thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Cơm</td>
+                <td><img src="/storage/" width="100px"></td>
+                <td>5,000 lượt</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Cơm</td>
+                <td><img src="/storage/" width="100px"></td>
+                <td>5,000 lượt</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Cơm</td>
+                <td><img src="/storage/" width="100px"></td>
+                <td>5,000 lượt</td>
+            </tr>
+        </tbody>
 </table>
 <br>
 @endsection
@@ -188,21 +188,6 @@
             $imports[$i] = $imports[$i] + ($invoice->imp_price * $invoice->sal_quantity);
             $revenues[$i] = $sales[$i] - $imports[$i];
         }
-        // $sales[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
-        //   ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
-        //   ->where('SalesInvoices.sal_status_id', '<', 5)
-        //   ->where('SalesInvoices.sal_status_id', '>', 1)
-        //   ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $month . '-' . '%')
-        //   ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
-        //   ->sum('SalesInvoiceDetails.sal_price * SalesInvoiceDetails.sal_quantity');
-        // $imports[$i] = Illuminate\Support\Facades\DB::table('SalesInvoiceDetails')
-        //   ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
-        //   ->where('SalesInvoices.sal_status_id', '<', 5)
-        //   ->where('SalesInvoices.sal_status_id', '>', 1)
-        //   ->where('SalesInvoices.sal_date', 'like', '%' . '-' . $month . '-' . '%')
-        //   ->where('SalesInvoices.sal_date', 'like', '%' . $year . '%')
-        //   ->sum('SalesInvoiceDetails.imp_price', '*', 'SalesInvoiceDetails.sal_quantity');
-        // $revenues[$i] = $sales[$i] - $imports[$i];
     }
     ?>
     new Chart(ctx, {
