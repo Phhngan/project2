@@ -18,8 +18,8 @@
     <br>
     <label for="image">Ảnh sản phẩm:</label>
     <br>
-    <img src="/storage/{{substr($product->prd_image, 7)}}" width="100px">
-    <input type="file" name="image">
+    <img id="imagePreview" src="/storage/{{substr($product->prd_image, 7)}}" width="200px">
+    <input accept="image/*" type="file" name="image" onchange="previewImage(event)">
     <br><br>
     <label for="productType">Loại sản phẩm:</label>
     <br>
@@ -74,5 +74,17 @@
         .catch(error => {
             console.error(error);
         });
+</script>
+<script>
+  function previewImage(event) {
+    var input = event.target;
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("imagePreview").src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 </script>
 @endsection

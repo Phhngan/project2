@@ -17,9 +17,11 @@
         <br>
         <label for="productImage">Ảnh sản phẩm:</label>
         <br>
-        <input accept="image/*" type="file" name="productImage">
-        <br><br>
-        <img id="imagePreview" src="#" alt="Preview Image" style="display: none;">
+        <input accept="image/*" type="file" id="productImage" name="productImage">
+        <br>
+        <p id="previewText" style="display: none;"><strong>Preview:</strong></p>
+        <img id="imagePreview" src="#" alt="Preview Image" style="display: none;width: 200px;">
+        <br>
         <label for="productType">Loại sản phẩm:</label>
         <br>
         <select class="form-control" name="productType" required>
@@ -71,6 +73,7 @@
     const input = document.getElementById('productImage');
 
     // Get the image preview element
+    const previewText = document.getElementById('previewText')
     const preview = document.getElementById('imagePreview');
 
     // Add an event listener to the file input
@@ -87,7 +90,8 @@
             reader.onload = function() {
                 // Set the image source to the FileReader result
                 preview.src = reader.result;
-                preview.style.display = 'block'; // Show the image preview
+                preview.style.display = 'flex';
+                previewText.style.display = 'block';
             };
 
             // Read the file as a data URL
@@ -96,6 +100,7 @@
             // If no file was selected, hide the image preview
             preview.src = '#';
             preview.style.display = 'none';
+            previewText.style.display = 'none';
         }
     });
 </script>

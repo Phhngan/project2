@@ -14,8 +14,8 @@
     <br>
     <label for="newsImage">Ảnh bài viết:</label>
     <br>
-    <img src="/storage/{{substr($new->new_image, 7)}}" width="100px">
-    <input type="file" name="newsImage">
+    <img id="imagePreview" src="/storage/{{substr($new->new_image, 7)}}" width="200px">
+    <input accept="image/*" type="file" name="newsImage" onchange="previewImage(event)">
     <br><br>
     <label for="newsDate">Ngày viết:</label>
     <br>
@@ -40,5 +40,17 @@
         .catch(error => {
             console.error(error);
         });
+</script>
+<script>
+  function previewImage(event) {
+    var input = event.target;
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("imagePreview").src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 </script>
 @endsection
