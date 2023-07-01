@@ -636,7 +636,7 @@ class CartController extends Controller
                 <p>Ngày đặt hàng: ' . $sal_date . '</p>
                 <p>Tổng tiền đơn hàng: ' . $sal_total . '</p>
                 <p>Địa chỉ: ' . $address . '</p>
-                <p>Theo dõi đơn hàng tại đây: http://127.0.0.1:8000/client/invoices </p>
+                <p>Theo dõi đơn hàng tại đây <a href="http://127.0.0.1:8000/client/invoices">tại đây</a></p>
             ';
 
             $mail->send();

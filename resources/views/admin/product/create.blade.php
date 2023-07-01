@@ -31,7 +31,7 @@
             <option value="3">Đồ uống</option>
             </select>
         <br>
-        <label for="productWeigh">Khối lượng:</label>
+        <label for="productWeigh">Khối lượng (gam):</label>
         <br>
         <input name="productWeigh" type="number" class="form-control" placeholder="Khối lượng">
         <br>
@@ -43,7 +43,7 @@
         <br>
         <input name="productPrice" type="number" class="form-control" placeholder="Giá sản phẩm">
         <br>
-        <label for="productDiscount">Giảm giá:</label>
+        <label for="productDiscount">Giảm giá (%):</label>
         <br>
         <input name="productDiscount" type="number" class="form-control" placeholder="Giảm giá">
         <br>

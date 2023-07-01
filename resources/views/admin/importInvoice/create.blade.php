@@ -43,14 +43,21 @@
     <table id="mytable">
         <tr>
             <th></th>
-            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
             <th>Số lượng</th>
             <th>Giá sản phẩm</th>
             <th>Ngày hết hạn</th>
         </tr>
         <tr>
             <td style="text-align:center;"><input type="checkbox"></td>
-            <td><input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm"></td>
+            <td>
+                <!-- <input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm"> -->
+                <select class="form-control" id="" name="productId[]" required>
+                    <option value="" selected="selected">----Chọn tên sản phẩm----</option>
+                    @foreach($products as $product)
+                    <option value="{{ $product->productId }}">{{ $product->productName}}</option>
+                    @endforeach
+            </td>
             <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng"></td>
             <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm"></td>
             <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn"></td>
@@ -110,7 +117,7 @@
         price.placeholder = "Giá sản phẩm";
         hsd.placeholder = "Ngày hết hạn";
 
-        r.className = "new-row"; // Add a CSS class to the row
+        r.className = "new-row";
         c1.style.textAlign = "center";
 
         maSP.name = "productId[]";

@@ -55,7 +55,7 @@
     <table id="mytable">
         <tr>
             <th></th>
-            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
             <th>Số lượng</th>
             <th>Giá sản phẩm</th>
             <th>Ngày hết hạn</th>
@@ -65,7 +65,14 @@
         ?>
             <tr>
                 <td style="text-align:center;"><input type="checkbox"></td>
-                <td><input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm" value="{{$prdID[$i]}}"></td>
+                <td>
+                    <!-- <input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm" value="{{$prdID[$i]}}"> -->
+                    <select class="form-control" id="" name="productId[]" required>
+                        <option value="" selected="selected">----{{}}----</option>
+                        @foreach($products as $product)
+                        <option value="{{ $product->productId }}">{{ $product->productName}}</option>
+                        @endforeach
+                </td>
                 <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}"></td>
                 <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm" value="{{$impPrice[$i]}}"></td>
                 <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn" value="{{$impExpiryDate[$i]}}"></td>

@@ -5,6 +5,26 @@
 @section('content')
 <div class="row" style="margin-top:25px">
 
+<div class="small-box bg-gradient-info column-dashboard">
+        <div class="inner">
+            <h3>
+                <?php
+                $quantity2 = Illuminate\Support\Facades\DB::table('SalesInvoices')
+                    ->where('sal_status_id', '=', 1)
+                    ->count();
+                echo $quantity2;
+                ?>
+            </h3>
+            <p>Đơn hàng chưa duyệt</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-cubes"></i>
+        </div>
+        <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
+            Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
+        </a>
+    </div>
+
     <div class="small-box bg-gradient-primary column-dashboard">
         <div class="inner">
             <h3>
@@ -21,26 +41,6 @@
             <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <a href="/admin/productStatus/ban-het" class="small-box-footer">
-            Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
-        </a>
-    </div>
-
-    <div class="small-box bg-gradient-info column-dashboard">
-        <div class="inner">
-            <h3>
-                <?php
-                $quantity2 = Illuminate\Support\Facades\DB::table('SalesInvoices')
-                    ->where('sal_status_id', '=', 1)
-                    ->count();
-                echo $quantity2;
-                ?>
-            </h3>
-            <p>Đơn hàng chưa duyệt</p>
-        </div>
-        <div class="icon">
-            <i class="fa fa-cubes"></i>
-        </div>
-        <a href="/admin/salesInvoice/chua-xac-nhan" class="small-box-footer">
             Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
         </a>
     </div>
@@ -82,7 +82,7 @@
             <p style="color:white">Sản phẩm hết hạn</p>
         </div>
         <div class="icon">
-            <i class="fas fa-wheelchair"></i>
+            <i class="fa fa-exclamation-triangle"></i>
         </div>
         <a href="/admin/productStatus/het-han" class="small-box-footer">
             Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
@@ -108,24 +108,20 @@
     </form>
     <canvas id="myChart"></canvas>
 </div>
-
-<!-- Pie Chart -->
-<br>
-<hr><br>
-<div class="row" style="background-color:#CED7FD;border-radius:5px;padding-bottom:20px">
-    <div class="col"><br>
-        <h3 class="text-center">Trạng thái sản phẩm</h3>
-        <div id="piechart1" style="align:center;margin-left:20px"></div>
-    </div>
-
-    <div class="col"><br>
-        <h3 class="text-center">Trạng thái đơn hàng</h3>
-        <div id="piechart2" style="align:center;margin-left:20px"></div>
-    </div>
-</div>
-<hr><br>
+<br><br>
 <!-- Best Seller -->
 <h3 class="text-center">Sản phẩm bán chạy</h3>
+<label for="year">Năm: 2023</label>
+<br>
+<label for="quy">Chọn quý:</label>
+<br>
+    <select style="width:300px" class="form-control" id="quy" name="quy" required>
+        <option value="1" selected>Quý 1 (tháng 1, 2, 3)</option>
+        <option value="2" selected>Quý 2 (tháng 4, 5, 6)</option>
+        <option value="3" selected>Quý 3 (tháng 7, 8, 9)</option>
+        <option value="4" selected>Quý 4 (tháng 10, 11, 12)</option>
+    </select>
+<br>
 <table class="table table-striped table-hover table-bordered table-primary">
     <thead>
         <tr>
@@ -156,7 +152,23 @@
             </tr>
         </tbody>
 </table>
+
+<!-- Pie Chart -->
 <br>
+<hr><br>
+<div class="row" style="background-color:#CED7FD;border-radius:5px;padding-bottom:20px">
+    <div class="col"><br>
+        <h3 class="text-center">Trạng thái sản phẩm</h3>
+        <div id="piechart1" style="align:center;margin-left:20px"></div>
+    </div>
+
+    <div class="col"><br>
+        <h3 class="text-center">Trạng thái đơn hàng</h3>
+        <div id="piechart2" style="align:center;margin-left:20px"></div>
+    </div>
+</div>
+<br>
+
 @endsection
 
 @section('js')
