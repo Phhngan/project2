@@ -68,3 +68,43 @@
     @endforelse
 </table>
 @endsection
+@section('js')
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
+
+<!-- <script>
+$(document).ready( function () {
+    $.fn.dataTable.ext.order.intl('vi');
+
+    $('#myTable').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Vietnamese.json'
+        }
+    });
+} );
+</script> -->
+
+<script>
+  $(document).ready(function() {
+    $('#myTable').DataTable({
+      columnDefs: [
+        {
+          targets: 0, // Assuming the column index is 0
+          type: 'string',
+          orderData: [0],
+          orderDataType: 'dom-text',
+          render: function(data, type, row, meta) {
+            if (type === 'sort') {
+              return data.replace('SP', '') * 1; // Convert "SP1" to numeric value for sorting
+            }
+            return data;
+          }
+        }
+      ],
+      // Enable sorting, search box, and pagination
+      ordering: true,
+      searching: true,
+      paging: true
+    });
+  });
+</script>
+@endsection

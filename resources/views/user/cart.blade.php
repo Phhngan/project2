@@ -75,29 +75,21 @@ input::-webkit-inner-spin-button {
                 ->sum('ImportInvoiceDetails.imp_quantity_left');
             ?>
             <td>
-                <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
+                <!-- <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
                     <input type='button' value='-' class='qtyminus minus' field='quantity' />
                     <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
                     <input type='button' value='+' class='qtyplus plus' field='quantity' />
                     <br>
                     <button type="submit" class="btn btn-primary">Cập nhật</button>
-                </form>
-                <!-- <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
-                    <input type='hidden' name='_method' value='PUT'>
-                    <input type='hidden' name='_token' value='{{ csrf_token() }}'>
-                    <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                    <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
-                    <input type='button' value='+' class='qtyplus plus' field='quantity' />
-                    <br>
                 </form> -->
-
+                <input type='button' value='-' class='qtyminus minus' field='quantity' data-car-id="{{$product->car_id}}" />
+                <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
+                <input type='button' value='+' class='qtyplus plus' field='quantity' data-car-id="{{$product->car_id}}" />
             </td>
             <td>
                 <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
             </td>
             <td>
-                <!-- <a class="btn btn-success" href="/cart/{{$product->car_id}}/update" role="button">Cập nhật số lượng</a> -->
-                <!-- <a class="btn btn-danger" href="/cart/{{$product->car_id}}/delete" role="button">Xóa</a> -->
                 <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
                     @csrf
                     @method('delete')
@@ -110,6 +102,14 @@ input::-webkit-inner-spin-button {
             <td colspan="3">Chưa có sản phẩm trong giỏ hàng</td>
         </tr>
         @endforelse
+        <td colspan="6" style="text-align:center;">
+            <form id="form-quantity" method="POST" action="cart/update">
+                @csrf
+                <input type="hidden" name="car_ids[]" value="">
+                <input type="hidden" name="quantities[]" value="">
+                <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+            </form>
+        </td>
         <br>
     </table>
 </div>
@@ -230,51 +230,59 @@ input::-webkit-inner-spin-button {
 
 @section('js')
 @parent
+<script>
+    // Add event listeners to the minus and plus buttons
+    const minusButtons = document.querySelectorAll('.minus');
+    const plusButtons = document.querySelectorAll('.plus');
+    const updateButton = document.querySelector('.update-quantity');
+    const form = document.getElementById('form-quantity');
+    const carIdInputs = form.querySelectorAll('input[name="car_ids[]"]');
+    const quantityInputs = form.querySelectorAll('input[name="quantities[]"]');
+
+    minusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const quantityInput = this.parentNode.querySelector('.qty');
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+            }
+        });
+    });
+
+    plusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const quantityInput = this.parentNode.querySelector('.qty');
+            const maxQuantity = parseInt(quantityInput.getAttribute('max'));
+            let quantity = parseInt(quantityInput.value);
+            if (quantity < maxQuantity) {
+                quantity++;
+                quantityInput.value = quantity;
+            }
+        });
+    });
+
+    updateButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Clear previous values
+        carIdInputs.forEach(input => input.value = '');
+        quantityInputs.forEach(input => input.value = '');
+
+        // Collect the updated quantities
+        const quantityInputs = document.querySelectorAll('.qty');
+        quantityInputs.forEach((input, index) => {
+            carIdInputs[index].value = input.getAttribute('data-car-id');
+            quantityInputs[index].value = input.value;
+        });
+
+        // Submit the form
+        form.submit();
+    });
+</script>
+
 
 <!-- <script>
-    $(document).ready(function() {
-        // Event listener for minus button
-        $('.qtyminus').click(function() {
-            var productId = $(this).data('field');
-            var quantityInput = $('.quantity-form[data-field="' + productId + '"]').find('.qty');
-            var currentValue = parseInt(quantityInput.val());
-
-            if (currentValue > 1) {
-                quantityInput.val(currentValue - 1);
-                updateQuantity(productId, currentValue - 1);
-            }
-        });
-
-        // Event listener for plus button
-        $('.qtyplus').click(function() {
-            var productId = $(this).data('field');
-            var quantityInput = $('.quantity-form[data-field="' + productId + '"]').find('.qty');
-            var currentValue = parseInt(quantityInput.val());
-            var maxValue = parseInt(quantityInput.attr('max'));
-
-            if (currentValue < maxValue) {
-                quantityInput.val(currentValue + 1);
-                updateQuantity(productId, currentValue + 1);
-            }
-        });
-
-        // Event listener for quantity change
-        $('.qty').change(function() {
-            var productId = $(this).closest('.quantity-form').data('field');
-            var quantity = parseInt($(this).val());
-
-            updateQuantity(productId, quantity);
-        });
-
-        // Function to update quantity
-        function updateQuantity(productId, quantity) {
-            $('.quantity-form[data-field="' + productId + '"]').find('input[name="quantity"]').val(quantity);
-            $('.quantity-form[data-field="' + productId + '"]').submit();
-        }
-    });
-</script> -->
-
-<script>
     jQuery(document).ready(($) => {
         $('.quantity').on('click', '.plus', function(e) {
             let $input = $(this).prev('input.qty');
@@ -298,7 +306,7 @@ input::-webkit-inner-spin-button {
 
             });
     });
-</script>
+</script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
