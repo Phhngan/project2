@@ -71,18 +71,6 @@
 @section('js')
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
 
-<!-- <script>
-$(document).ready( function () {
-    $.fn.dataTable.ext.order.intl('vi');
-
-    $('#myTable').DataTable({
-        language: {
-            url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Vietnamese.json'
-        }
-    });
-} );
-</script> -->
-
 <script>
   $(document).ready(function() {
     $('#myTable').DataTable({
