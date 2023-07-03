@@ -274,7 +274,7 @@ Route::put("/admin/changePass", [AdminController::class, 'updatePass']);
 // CART
 Route::get("/{prd_id}/addCart", [CartController::class, 'addCart']);
 Route::get("/cart", [CartController::class, 'showCart']);
-Route::get("/cart/{car_id}/update", [CartController::class, 'update']);
+Route::get("/cart/update", [CartController::class, 'update']);
 Route::delete("/cart/{car_id}/delete", [CartController::class, 'delete']);
 Route::get("/cart/updateAddress", [CartController::class, 'updateAddress']);
 Route::put("/cart/updateAddress", [CartController::class, 'updateAddress']);

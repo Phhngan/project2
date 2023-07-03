@@ -39,8 +39,8 @@ pointer-events: none;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+-webkit-appearance: none;
+margin: 0;
 }
 @endsection
 
@@ -82,8 +82,9 @@ input::-webkit-inner-spin-button {
                     <br>
                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                 </form> -->
+                <input type="hidden" name="carID[]" value='{{$product->car_id}}'>
                 <input type='button' value='-' class='qtyminus minus' field='quantity' data-car-id="{{$product->car_id}}" />
-                <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
+                <input type='number' name='quantity[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
                 <input type='button' value='+' class='qtyplus plus' field='quantity' data-car-id="{{$product->car_id}}" />
             </td>
             <td>
@@ -103,10 +104,10 @@ input::-webkit-inner-spin-button {
         </tr>
         @endforelse
         <td colspan="6" style="text-align:center;">
-            <form id="form-quantity" method="POST" action="cart/update">
+            <form id="form-quantity" method='PUT' action="cart/update">
                 @csrf
-                <input type="hidden" name="car_ids[]" value="">
-                <input type="hidden" name="quantities[]" value="">
+                <input type="hidden" name="car_ids">
+                <input type="hidden" name="quantities">
                 <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
             </form>
         </td>
@@ -265,12 +266,14 @@ input::-webkit-inner-spin-button {
     updateButton.addEventListener('click', function(e) {
         e.preventDefault();
 
+        carIdInputs = form.querySelectorAll('input[name="car_ids[]"]');
+        quantityInputs = form.querySelectorAll('input[name="quantities[]"]');
         // Clear previous values
         carIdInputs.forEach(input => input.value = '');
         quantityInputs.forEach(input => input.value = '');
 
         // Collect the updated quantities
-        const quantityInputs = document.querySelectorAll('.qty');
+        quantityInputs = document.querySelectorAll('.qty');
         quantityInputs.forEach((input, index) => {
             carIdInputs[index].value = input.getAttribute('data-car-id');
             quantityInputs[index].value = input.value;

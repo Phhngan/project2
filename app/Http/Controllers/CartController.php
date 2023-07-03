@@ -84,14 +84,17 @@ class CartController extends Controller
     }
 
     //update số lượng
-    function update(Request $request, $car_id)
+    function update(Request $request)
     {
-        $car_quantity = $request->get('quantity');
-        // dd($request->get('quantity'));
-        DB::table('Carts')->where('car_id', $car_id)
-            ->update([
-                'car_quantity' => $car_quantity,
-            ]);
+        $car_quantity = $request->get('quantities');
+        $car_id = $request->get('car_ids');
+        var_dump($car_id);
+        var_dump($car_quantity);
+        dd();
+        // DB::table('Carts')->where('car_id', $car_id)
+        //     ->update([
+        //         'car_quantity' => $car_quantity,
+        //     ]);
         return redirect('/cart');
     }
 
