@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Mockery\Undefined;
 use stdClass;
 
 class AdminController extends Controller
@@ -24,40 +26,209 @@ class AdminController extends Controller
         } else {
             $year = $request->get('quantity');
         }
-        var_dump($year);
+        // var_dump($year);
         return redirect('admin/home/' . $year);
     }
-    function viewHome($year)
+
+    function takeTime(Request $request, $year)
+    {
+        if ($request->get('quy') == null) {
+            $timeId = 1;
+        } else {
+            $timeId = $request->get('quy');
+        }
+        return redirect('admin/home/' . $year . '/' . $timeId);
+    }
+    function viewHome($year, $timeId)
     {
         $date = getdate();
         $yearNow = $date['year'];
-        $products = DB::table('Products')
-            ->select('Products.*')
-            ->orderBy('prd_id')
-            ->get();
-        $count = count($products);
-        $array = [];
-        foreach ($products as $product) {
-            for ($i = 0; $i < $count; $i++) {
-                if ($i == $product->prd_id - 1) {
-                    $quantity = DB::table('ImportInvoiceDetails')
-                        ->where('prd_id', $product->prd_id)
-                        ->where('prd_status_id', '<', 3)
-                        ->sum('ImportInvoiceDetails.imp_quantity_left');
-                    if ($quantity == 0) {
-                        $array[$i]['quantity'] = $quantity;
-                        $array[$i]['code'] = $product->prd_id;
-                    }
+        if ($timeId == 1) {
+            $salesInvoices = DB::table('SalesInvoiceDetails')
+                ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->select('SalesInvoiceDetails.prd_id')
+                ->whereBetween('SalesInvoices.sal_date', [$year . '-01-01', $year . '-12-31'])
+                ->distinct()
+                ->get();
+            if (count($salesInvoices) != 0) {
+                foreach ($salesInvoices as $salesInvoice) {
+                    $array[$salesInvoice->prd_id] = DB::table('SalesInvoiceDetails')
+                        ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                        ->whereBetween('SalesInvoices.sal_date', [$year . '-01-01', $year . '-12-31'])
+                        ->where('SalesInvoiceDetails.prd_id', $salesInvoice->prd_id)
+                        ->sum('SalesInvoiceDetails.sal_quantity');
+                    $prd_id[] = $salesInvoice->prd_id;
                 }
+                for ($t = 0; $t < count($prd_id); $t++) {
+                    for ($i = 0; $i < count($prd_id); $i++) {
+                        $quantity = DB::table('SalesInvoiceDetails')
+                            ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                            ->whereBetween('SalesInvoices.sal_date', [$year . '-01-01', $year . '-12-31'])
+                            ->where('SalesInvoiceDetails.prd_id', $prd_id[$i])
+                            ->sum('SalesInvoiceDetails.sal_quantity');
+                        if ($quantity == max($array)) {
+                            $productSort[$t]['prd_id'] = $prd_id[$i];
+                            $productSort[$t]['quantity'] = $quantity;
+                            $id = $prd_id[$i];
+                            $a = $i;
+                        }
+                    }
+                    unset($array[$id]);
+                    $prd_id[$a] = 0;
+                }
+            } else {
+                $productSort = [];
             }
         }
-        if (!$array) {
-            $countArray = 0;
-        } else {
-            $countArray = count($array);
+        if ($timeId == 2) {
+            $salesInvoices = DB::table('SalesInvoiceDetails')
+                ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->select('SalesInvoiceDetails.prd_id')
+                ->whereBetween('SalesInvoices.sal_date', [$year . '-01-01', $year . '-03-31'])
+                ->distinct()
+                ->get();
+            if (count($salesInvoices) != 0) {
+                foreach ($salesInvoices as $salesInvoice) {
+                    $array[$salesInvoice->prd_id] = DB::table('SalesInvoiceDetails')
+                        ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                        ->whereBetween('SalesInvoices.sal_date', [$year . '-01-01', $year . '-03-31'])
+                        ->where('SalesInvoiceDetails.prd_id', $salesInvoice->prd_id)
+                        ->sum('SalesInvoiceDetails.sal_quantity');
+                    $prd_id[] = $salesInvoice->prd_id;
+                }
+                for ($t = 0; $t < count($prd_id); $t++) {
+                    for ($i = 0; $i < count($prd_id); $i++) {
+                        $quantity = DB::table('SalesInvoiceDetails')
+                            ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                            ->whereBetween('SalesInvoices.sal_date', [$year . '-01-01', $year . '-03-31'])
+                            ->where('SalesInvoiceDetails.prd_id', $prd_id[$i])
+                            ->sum('SalesInvoiceDetails.sal_quantity');
+                        if ($quantity == max($array)) {
+                            $productSort[$t]['prd_id'] = $prd_id[$i];
+                            $productSort[$t]['quantity'] = $quantity;
+                            $id = $prd_id[$i];
+                            $a = $i;
+                        }
+                    }
+                    unset($array[$id]);
+                    $prd_id[$a] = 0;
+                }
+            } else {
+                $productSort = [];
+            }
         }
-        // dd($countArray);
-        return view('admin/home')->with('year', $year)->with('yearNow', $yearNow);
+        if ($timeId == 3) {
+            $salesInvoices = DB::table('SalesInvoiceDetails')
+                ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->select('SalesInvoiceDetails.prd_id')
+                ->whereBetween('SalesInvoices.sal_date', [$year . '-04-01', $year . '-06-31'])
+                ->distinct()
+                ->get();
+            if (count($salesInvoices) != 0) {
+                foreach ($salesInvoices as $salesInvoice) {
+                    $array[$salesInvoice->prd_id] = DB::table('SalesInvoiceDetails')
+                        ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                        ->whereBetween('SalesInvoices.sal_date', [$year . '-04-01', $year . '-06-31'])
+                        ->where('SalesInvoiceDetails.prd_id', $salesInvoice->prd_id)
+                        ->sum('SalesInvoiceDetails.sal_quantity');
+                    $prd_id[] = $salesInvoice->prd_id;
+                }
+                for ($t = 0; $t < count($prd_id); $t++) {
+                    for ($i = 0; $i < count($prd_id); $i++) {
+                        $quantity = DB::table('SalesInvoiceDetails')
+                            ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                            ->whereBetween('SalesInvoices.sal_date', [$year . '-04-01', $year . '-06-31'])
+                            ->where('SalesInvoiceDetails.prd_id', $prd_id[$i])
+                            ->sum('SalesInvoiceDetails.sal_quantity');
+                        if ($quantity == max($array)) {
+                            $productSort[$t]['prd_id'] = $prd_id[$i];
+                            $productSort[$t]['quantity'] = $quantity;
+                            $id = $prd_id[$i];
+                            $a = $i;
+                        }
+                    }
+                    unset($array[$id]);
+                    $prd_id[$a] = 0;
+                }
+            } else {
+                $productSort = [];
+            }
+        }
+        if ($timeId == 4) {
+            $salesInvoices = DB::table('SalesInvoiceDetails')
+                ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->select('SalesInvoiceDetails.prd_id')
+                ->whereBetween('SalesInvoices.sal_date', [$year . '-07-01', $year . '-09-30'])
+                ->distinct()
+                ->get();
+            if (count($salesInvoices) != 0) {
+                foreach ($salesInvoices as $salesInvoice) {
+                    $array[$salesInvoice->prd_id] = DB::table('SalesInvoiceDetails')
+                        ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                        ->whereBetween('SalesInvoices.sal_date', [$year . '-07-01', $year . '-09-30'])
+                        ->where('SalesInvoiceDetails.prd_id', $salesInvoice->prd_id)
+                        ->sum('SalesInvoiceDetails.sal_quantity');
+                    $prd_id[] = $salesInvoice->prd_id;
+                }
+                for ($t = 0; $t < count($prd_id); $t++) {
+                    for ($i = 0; $i < count($prd_id); $i++) {
+                        $quantity = DB::table('SalesInvoiceDetails')
+                            ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                            ->whereBetween('SalesInvoices.sal_date', [$year . '-07-01', $year . '-09-30'])
+                            ->where('SalesInvoiceDetails.prd_id', $prd_id[$i])
+                            ->sum('SalesInvoiceDetails.sal_quantity');
+                        if ($quantity == max($array)) {
+                            $productSort[$t]['prd_id'] = $prd_id[$i];
+                            $productSort[$t]['quantity'] = $quantity;
+                            $id = $prd_id[$i];
+                            $a = $i;
+                        }
+                    }
+                    unset($array[$id]);
+                    $prd_id[$a] = 0;
+                }
+            } else {
+                $productSort = [];
+            }
+        }
+        if ($timeId == 5) {
+            $salesInvoices = DB::table('SalesInvoiceDetails')
+                ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->select('SalesInvoiceDetails.prd_id')
+                ->whereBetween('SalesInvoices.sal_date', [$year . '-10-01', $year . '-12-31'])
+                ->distinct()
+                ->get();
+            if (count($salesInvoices) != 0) {
+                foreach ($salesInvoices as $salesInvoice) {
+                    $array[$salesInvoice->prd_id] = DB::table('SalesInvoiceDetails')
+                        ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                        ->whereBetween('SalesInvoices.sal_date', [$year . '-10-01', $year . '-12-31'])
+                        ->where('SalesInvoiceDetails.prd_id', $salesInvoice->prd_id)
+                        ->sum('SalesInvoiceDetails.sal_quantity');
+                    $prd_id[] = $salesInvoice->prd_id;
+                }
+                for ($t = 0; $t < count($prd_id); $t++) {
+                    for ($i = 0; $i < count($prd_id); $i++) {
+                        $quantity = DB::table('SalesInvoiceDetails')
+                            ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                            ->whereBetween('SalesInvoices.sal_date', [$year . '-10-01', $year . '-12-31'])
+                            ->where('SalesInvoiceDetails.prd_id', $prd_id[$i])
+                            ->sum('SalesInvoiceDetails.sal_quantity');
+                        if ($quantity == max($array)) {
+                            $productSort[$t]['prd_id'] = $prd_id[$i];
+                            $productSort[$t]['quantity'] = $quantity;
+                            $id = $prd_id[$i];
+                            $a = $i;
+                        }
+                    }
+                    unset($array[$id]);
+                    $prd_id[$a] = 0;
+                }
+            } else {
+                $productSort = [];
+            }
+        }
+        return view('admin/home')->with('year', $year)->with('yearNow', $yearNow)->with('timeId', $timeId)->with('productSort', $productSort);
     }
 
     function viewAllProduct()

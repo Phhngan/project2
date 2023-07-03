@@ -5,7 +5,7 @@
 @section('content')
 <div class="row" style="margin-top:25px">
 
-<div class="small-box bg-gradient-info column-dashboard">
+    <div class="small-box bg-gradient-info column-dashboard">
         <div class="inner">
             <h3>
                 <?php
@@ -29,10 +29,32 @@
         <div class="inner">
             <h3>
                 <?php
-                $quantity1 = Illuminate\Support\Facades\DB::table('SalesInvoices')
-                    ->where('sal_status_id', '=', 4)
-                    ->count();
-                echo $quantity1;
+                $products = Illuminate\Support\Facades\DB::table('Products')
+                    ->select('Products.*')
+                    ->orderBy('prd_id')
+                    ->get();
+                $count = count($products);
+                $array = [];
+                foreach ($products as $product) {
+                    for ($i = 0; $i < $count; $i++) {
+                        if ($i == $product->prd_id - 1) {
+                            $quantity = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+                                ->where('prd_id', $product->prd_id)
+                                ->where('prd_status_id', '<', 3)
+                                ->sum('ImportInvoiceDetails.imp_quantity_left');
+                            if ($quantity == 0) {
+                                $array[$i]['quantity'] = $quantity;
+                                $array[$i]['code'] = $product->prd_id;
+                            }
+                        }
+                    }
+                }
+                if (!$array) {
+                    $countArray = 0;
+                } else {
+                    $countArray = count($array);
+                }
+                echo $countArray;
                 ?>
             </h3>
             <p>Sản phẩm đã bán hết</p>
@@ -40,7 +62,7 @@
         <div class="icon">
             <i class="fa fa-times" aria-hidden="true"></i>
         </div>
-        <a href="/admin/productStatus/ban-het" class="small-box-footer">
+        <a href="/admin/products" class="small-box-footer">
             Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
         </a>
     </div>
@@ -111,46 +133,70 @@
 <br><br>
 <!-- Best Seller -->
 <h3 class="text-center">Sản phẩm bán chạy</h3>
-<label for="year">Năm: 2023</label>
+<label for="year">Năm: {{$year}}</label>
 <br>
 <label for="quy">Chọn quý:</label>
 <br>
+<form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home/'.$year)}}" style="display:flex;">
     <select style="width:300px" class="form-control" id="quy" name="quy" required>
-        <option value="1" selected>Quý 1 (tháng 1, 2, 3)</option>
-        <option value="2" selected>Quý 2 (tháng 4, 5, 6)</option>
-        <option value="3" selected>Quý 3 (tháng 7, 8, 9)</option>
-        <option value="4" selected>Quý 4 (tháng 10, 11, 12)</option>
+        <option value="{{$timeId}}" selected="selected">----
+            <?php
+            if ($timeId == 1) echo "Cả năm";
+            if ($timeId == 2) echo "Quý 1 (tháng 1, 2, 3)";
+            if ($timeId == 3) echo "Quý 2 (tháng 4, 5, 6)";
+            if ($timeId == 4) echo "Quý 3 (tháng 7, 8, 9)";
+            if ($timeId == 5) echo "Quý 4 (tháng 10, 11, 12)";
+            ?>
+            ----</option>
+        <option value="1">Cả năm</option>
+        <option value="2">Quý 1 (tháng 1, 2, 3)</option>
+        <option value="3">Quý 2 (tháng 4, 5, 6)</option>
+        <option value="4">Quý 3 (tháng 7, 8, 9)</option>
+        <option value="5">Quý 4 (tháng 10, 11, 12)</option>
     </select>
+    <div class="col-nho" style="width:200px;margin-top:-1px">
+        <button type="submit" class="btn btn-primary" style="height: 34px;padding: 0px 10px 0px 10px;">Cập nhật</button>
+    </div>
+</form>
 <br>
 <table class="table table-striped table-hover table-bordered table-primary">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Tên sản phẩm</th>
-            <th>Hình ảnh</th>
-            <th>Lượt bán</th>
-        </tr>
+    <?php
+    if (count($productSort) == 0) {
+    ?>
+        <p>Chưa có đơn hàng</p>
+    <?php
+    } else {
+    ?>
         <thead>
-        <tbody>
             <tr>
-                <td>1</td>
-                <td>Cơm</td>
-                <td><img src="/storage/" width="100px"></td>
-                <td>5,000 lượt</td>
+                <th>#</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Lượt bán</th>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Cơm</td>
-                <td><img src="/storage/" width="100px"></td>
-                <td>5,000 lượt</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Cơm</td>
-                <td><img src="/storage/" width="100px"></td>
-                <td>5,000 lượt</td>
-            </tr>
-        </tbody>
+        </thead>
+        <?php
+        for ($i = 0; $i < 10; $i++) {
+            if ($i == count($productSort)) {
+                break;
+            }
+            $productFinds = Illuminate\Support\Facades\DB::table('Products')
+                ->select('Products.*')
+                ->where('Products.prd_id', $productSort[$i]['prd_id'])
+                ->get();
+            foreach ($productFinds as $productFind) {
+        ?>
+                <tbody>
+                    <tr>
+                        <td>{{$i+1}}</td>
+                        <td>{{$productFind->prd_name}}</td>
+                        <td><img src="/storage/{{substr($productFind->prd_image, 7)}}" width="100px"></td>
+                        <td>{{$productSort[$i]['quantity']}} lượt</td>
+                    </tr>
+                </tbody>
+        <?php }
+        } ?>
+    <?php } ?>
 </table>
 
 <!-- Pie Chart -->

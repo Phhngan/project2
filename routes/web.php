@@ -56,7 +56,8 @@ Route::get('/home', [MenuController::class, 'home']);
 // ADMIN
 //admin home
 Route::get('/admin/home', [AdminController::class, 'takeYear']);
-Route::get('/admin/home/{year}', [AdminController::class, 'viewHome']);
+Route::get('/admin/home/{year}/{timeId}', [AdminController::class, 'viewHome']);
+Route::get('/admin/home/{year}', [AdminController::class, 'takeTime']);
 // Route::get('/updateYear', [AdminController::class, 'updateYear']);
 // Route::put('/updateYear', [AdminController::class, 'updateYear']);
 
