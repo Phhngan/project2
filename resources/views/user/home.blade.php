@@ -14,6 +14,19 @@ margin-right: auto;
 height: 100px;
 padding-bottom:6px;
 }
+.post-text{
+margin-top: 15px;
+text-decoration: none;
+font-weight: bold;
+background-color: #495FB6;
+width: 100px;
+padding: 10px;
+border-radius: 50px;
+text-align: center;
+display: flex;
+margin-left: auto;
+margin-right: auto;
+}
 @endsection
 
 @section('content')
@@ -200,32 +213,18 @@ padding-bottom:6px;
     <!-- <a class="xem-them" href="/sp-giam-gia" role="button">Xem thêm</a> -->
 </div>
 <!-- phản hồi khách hàng -->
-<div class="phan-hoi-khach-hang" style="background-color:#EBECFE;height:350px;margin-bottom:50px">
-    <div class="cf-title" style="padding-top: 25px;padding-bottom:25px">
-        <h3>Phản hồi khách hàng</h3>
+<div class="phan-hoi-khach-hang" style="background-color:#EBECFE;height:455px;margin-bottom:50px;text-align:center;">
+    <div class="cf-title" style="padding-top:25px">
+        <h3>Chính sách mua hàng</h3>
     </div>
-    <section class="slideShow">
-
-        <div class="mySlides1">
-            <img class="customer" src="https://www.assyst.de/cms/upload/sub/digitalisierung/18-F.jpg">
-            <p style="text-align:center"><span style="font-style:italic;font-weight:bold">Chị Hương </span></p>
-            <p style="text-align:center">Đồ ăn nhập khẩu thơm ngon, bổ dưỡng với sự đa dạng mẫu mã, hương vị luôn rất được gia đình tôi ưa chuộng.</p>
-        </div>
-
-        <div class="mySlides1">
-            <img class="customer" src="https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg">
-            <p style="text-align:center"><span style="font-style:italic;font-weight:bold">Anh Justin Nguyen </span></p>
-            <p style="text-align:center">Tôi đã mua hàng ở đây nhiều lần trong thời gian ở Hà Nội.</p>
-            <p style="text-align:center">Ở đây có rất nhiều lựa chọn tuyệt vời cho cả món ăn và thức uống. Quá thú vị, không có từ nào để khen nhiều hơn được nữa!</p>
-        </div>
-
-        <div class="mySlides1">
-            <img class="customer" src="https://www.assyst.de/cms/upload/sub/digitalisierung/7-F.jpg">
-            <p style="text-align:center"><span style="font-style:italic;font-weight:bold">Chị Jenny</span></p>
-            <p style="text-align:center">👍👍👍</p>
-        </div>
-
-    </section>
+            <a href="/chinh-sach">
+                <img src="https://github.com/Phhngan/snack_images/blob/master/trang-tin-tuc/policy.png?raw=true" style="height:250px">
+            </a>
+            <div class="post-text">
+                <a href="/chinh-sach" style="color: white;text-decoration: none">Xem thêm </a>
+            </div>
+            <br>
+            <p style="font-size:15px; margin-left: 0px; opacity: 0.8;">Các Chính Sách,Quy Định Chung Khi Mua Hàng và cách sử dụng xu</p>
 </div>
 
 @endsection
@@ -267,9 +266,7 @@ padding-bottom:6px;
 <script>
     // Automatic Slideshow - change image every 3 seconds
     var myIndex = 0;
-    var newIndex = 0;
     carousel();
-    carousel1();
 
     function carousel() {
         var i;
@@ -283,21 +280,6 @@ padding-bottom:6px;
         }
         x[myIndex - 1].style.display = "block";
         setTimeout(carousel, 3000);
-    }
-
-
-    function carousel1() {
-        var j;
-        var y = document.getElementsByClassName("mySlides1");
-        for (j = 0; j < y.length; j++) {
-            y[j].style.display = "none";
-        }
-        newIndex++;
-        if (newIndex > y.length) {
-            newIndex = 1
-        }
-        y[newIndex - 1].style.display = "block";
-        setTimeout(carousel1, 3000);
     }
 
     // When the user clicks on div, open the popup

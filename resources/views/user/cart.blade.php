@@ -49,70 +49,63 @@ margin: 0;
     <h3>Giỏ hàng</h3>
 </div>
 <div class="item-products">
-    <table class="table">
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình ảnh</th>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Giá</th>
-            <th>Hành động</th>
-        </tr>
-        @forelse($products as $product)
-        <tr>
-            <td>
-                <p>{{$product->prd_code}}</p>
-            </td>
-            <td>
-                <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
-            </td>
-            <td>
-                <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
-            </td>
-            <?php
-            $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
-                ->where('prd_status_id', '<', 3)
-                ->sum('ImportInvoiceDetails.imp_quantity_left');
-            ?>
-            <td>
-                <!-- <form id='form-quantity' method='PUT' class='quantity' action='cart/{{$product->car_id}}/update'>
-                    <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                    <input type='number' name='quantity' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
-                    <input type='button' value='+' class='qtyplus plus' field='quantity' />
-                    <br>
-                    <button type="submit" class="btn btn-primary">Cập nhật</button>
-                </form> -->
-                <input type="hidden" name="carID[]" value='{{$product->car_id}}'>
-                <input type='button' value='-' class='qtyminus minus' field='quantity' data-car-id="{{$product->car_id}}" />
-                <input type='number' name='quantity[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' />
-                <input type='button' value='+' class='qtyplus plus' field='quantity' data-car-id="{{$product->car_id}}" />
-            </td>
-            <td>
-                <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
-            </td>
-            <td>
-                <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-danger">Xóa</button>
-                </form>
-            </td>
-        </tr>
-        @empty
-        <tr>
-            <td colspan="3">Chưa có sản phẩm trong giỏ hàng</td>
-        </tr>
-        @endforelse
-        <td colspan="6" style="text-align:center;">
-            <form id="form-quantity" method='PUT' action="cart/update">
+<table class="table">
+    <tr>
+        <th>Mã sản phẩm</th>
+        <th>Hình ảnh</th>
+        <th>Tên sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+        <th>Hành động</th>
+    </tr>
+    @forelse($products as $product)
+    <tr>
+        <td>
+            <p>{{$product->prd_code}}</p>
+        </td>
+        <td>
+            <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
+        </td>
+        <td>
+            <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
+        </td>
+        <?php
+        $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+            ->where('prd_status_id', '<', 3)
+            ->sum('ImportInvoiceDetails.imp_quantity_left');
+        ?>
+        <td>
+            <input type="hidden" name="car_ids[]" value='{{$product->car_id}}'>
+            <input type='button' value='-' class='qtyminus minus' field='quantity'/>
+            <input type='number' name='quantities[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' data-car-id='{{$product->car_id}}'/>
+            <input type='button' value='+' class='qtyplus plus' field='quantity' />
+        </td>
+        <td>
+            <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
+        </td>
+        <td>
+            <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
                 @csrf
-                <input type="hidden" name="car_ids">
-                <input type="hidden" name="quantities">
-                <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+                @method('delete')
+                <button type="submit" class="btn btn-danger">Xóa</button>
             </form>
         </td>
-        <br>
-    </table>
+    </tr>
+    @empty
+    <tr>
+        <td colspan="3">Chưa có sản phẩm trong giỏ hàng</td>
+    </tr>
+    @endforelse
+    <td colspan="6" style="text-align:center;">
+        <form id="form-quantity" method='PUT' action="cart/update">
+            @csrf
+            <input type="hidden" name="car_ids">
+            <input type="hidden" name="quantities">
+            <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+        </form>
+    </td>
+    <br>
+</table>
 </div>
 
 <div class="row">
@@ -235,10 +228,9 @@ margin: 0;
     // Add event listeners to the minus and plus buttons
     const minusButtons = document.querySelectorAll('.minus');
     const plusButtons = document.querySelectorAll('.plus');
-    const updateButton = document.querySelector('.update-quantity');
     const form = document.getElementById('form-quantity');
-    const carIdInputs = form.querySelectorAll('input[name="car_ids[]"]');
-    const quantityInputs = form.querySelectorAll('input[name="quantities[]"]');
+    const carIdsInput = form.querySelector('input[name="car_ids"]');
+    const quantitiesInput = form.querySelector('input[name="quantities"]');
 
     minusButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -263,24 +255,28 @@ margin: 0;
         });
     });
 
-    updateButton.addEventListener('click', function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        carIdInputs = form.querySelectorAll('input[name="car_ids[]"]');
-        quantityInputs = form.querySelectorAll('input[name="quantities[]"]');
         // Clear previous values
-        carIdInputs.forEach(input => input.value = '');
-        quantityInputs.forEach(input => input.value = '');
+        carIdsInput.value = '';
+        quantitiesInput.value = '';
 
         // Collect the updated quantities
-        quantityInputs = document.querySelectorAll('.qty');
-        quantityInputs.forEach((input, index) => {
-            carIdInputs[index].value = input.getAttribute('data-car-id');
-            quantityInputs[index].value = input.value;
+        const quantityInputs = document.querySelectorAll('.qty');
+        quantityInputs.forEach(input => {
+            const carId = input.getAttribute('data-car-id');
+            const quantity = input.value;
+            carIdsInput.value += carId + ',';
+            quantitiesInput.value += quantity + ',';
         });
 
+        // Remove the trailing comma
+        carIdsInput.value = carIdsInput.value.slice(0, -1);
+        quantitiesInput.value = quantitiesInput.value.slice(0, -1);
+
         // Submit the form
-        form.submit();
+        this.submit();
     });
 </script>
 

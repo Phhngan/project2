@@ -105,7 +105,8 @@ display: block;
 background-color: black;
 color: white;
 width: fit-content;
-
+padding:5px;
+border: 1px solid black;
 }
 .ratting-star{
 background-color: #CED7FD;

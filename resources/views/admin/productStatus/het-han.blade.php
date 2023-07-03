@@ -6,7 +6,8 @@
 {{-- Do du lieu      --}}
 <br><a class="btn btn-primary" href="{{url('admin/productStatus/update')}}" role="button" method="put">Cập nhật</a>
 <br><br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
@@ -14,6 +15,7 @@
         <th>Hạn sử dụng</th>
         <th>Hành động</th>
     </tr>
+    </thead>    
     @forelse($products as $product)
     <tr>
         <td>
@@ -39,7 +41,7 @@
             <p>{{$product->imp_expiryDate}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-primary" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
+            <a class="btn btn-warning" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
         </td>
     </tr>
     @empty

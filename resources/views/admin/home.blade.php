@@ -138,8 +138,8 @@
 <label for="quy">Chọn quý:</label>
 <br>
 <form id='form-quantity' method='PUT' class='quantity' action="{{url('admin/home/'.$year)}}" style="display:flex;">
-    <select style="width:300px" class="form-control" id="quy" name="quy" required>
-        <option value="{{$timeId}}" selected="selected">----
+    <select style="width:250px" class="form-control" id="quy" name="quy" required>
+        <option value="{{$timeId}}" selected="selected">---
             <?php
             if ($timeId == 1) echo "Cả năm";
             if ($timeId == 2) echo "Quý 1 (tháng 1, 2, 3)";
@@ -147,7 +147,7 @@
             if ($timeId == 4) echo "Quý 3 (tháng 7, 8, 9)";
             if ($timeId == 5) echo "Quý 4 (tháng 10, 11, 12)";
             ?>
-            ----</option>
+            ---</option>
         <option value="1">Cả năm</option>
         <option value="2">Quý 1 (tháng 1, 2, 3)</option>
         <option value="3">Quý 2 (tháng 4, 5, 6)</option>
@@ -155,7 +155,7 @@
         <option value="5">Quý 4 (tháng 10, 11, 12)</option>
     </select>
     <div class="col-nho" style="width:200px;margin-top:-1px">
-        <button type="submit" class="btn btn-primary" style="height: 34px;padding: 0px 10px 0px 10px;">Cập nhật</button>
+        <button type="submit" class="btn btn-primary" style="margin-left:20px;">Cập nhật</button>
     </div>
 </form>
 <br>
@@ -169,7 +169,7 @@
     ?>
         <thead>
             <tr>
-                <th>#</th>
+                <th>Xếp thứ</th>
                 <th>Tên sản phẩm</th>
                 <th>Hình ảnh</th>
                 <th>Lượt bán</th>

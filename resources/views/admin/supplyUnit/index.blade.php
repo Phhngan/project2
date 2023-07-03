@@ -35,7 +35,7 @@
         </td>
 
         <td>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/supplyUnit/'.$supplyUnit->unit_id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-outline-primary" href="{{url('/admin/supplyUnit/'.$supplyUnit->unit_id.'/edit')}}" role="button">Sửa</a>
             <br>
             <!-- <form method="POST" action="{{url('admin/supplyUnit/'.$supplyUnit->unit_id.'/delete')}}">
                 @csrf

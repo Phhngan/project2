@@ -6,13 +6,15 @@
 {{-- Do du lieu      --}}
 <br><a class="btn btn-primary" href="{{url('admin/productStatus/update')}}" role="button" method="put">Cập nhật</a>
 <br><br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
         <th>Số lượng còn lại</th>
         <th>Hạn sử dụng</th>
     </tr>
+    </thead>
     @forelse($products as $product)
     <tr>
         <td>
@@ -44,7 +46,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sách rỗng</td>
+        <td>Danh sách rỗng</td><td></td><td></td><td></td>
     </tr>
     @endforelse
 </table>

@@ -5,7 +5,8 @@
 @section('content')
 {{-- Do du lieu      --}}
 <br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th>Mã sản phẩm</th>
         <th>Sản phẩm</th>
@@ -13,6 +14,7 @@
         <th>Hạn sử dụng</th>
         <th>Hành động</th>
     </tr>
+    </thead>
     @forelse($products as $product)
     <tr>
         <td>
@@ -38,7 +40,7 @@
             <p>{{$product->imp_expiryDate}}</p>
         </td>
         <td>
-            <a class="btn btn-outline-secondary" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
+            <a class="btn btn-warning" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
         </td>
     </tr>
     @empty
