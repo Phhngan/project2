@@ -3,6 +3,11 @@
 @section('title','Thêm hóa đơn nhập hàng')
 
 @section('content')
+<?php
+$products = Illuminate\Support\Facades\DB::table('Products')
+    ->select('Products.*')
+    ->get();
+?>
 <h1 class="text-center">Tạo hóa đơn nhập hàng mới</h1>
 <form action="{{url('/admin/importInvoice/create')}}" method="POST">
     @csrf
@@ -55,7 +60,7 @@
                 <select class="form-control" id="" name="productId[]" required>
                     <option value="" selected="selected">----Chọn tên sản phẩm----</option>
                     @foreach($products as $product)
-                    <option value="{{ $product->productId }}">{{ $product->productName}}</option>
+                    <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
                     @endforeach
             </td>
             <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng"></td>

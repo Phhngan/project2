@@ -4,6 +4,11 @@
 
 @section('content')
 <h1 class="text-center">Cập nhật hóa đơn nhập</h1>
+<?php
+$products = Illuminate\Support\Facades\DB::table('Products')
+    ->select('Products.*')
+    ->get();
+?>
 @foreach($importInvoices as $importInvoice)
 <form action="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/edit')}}" method="POST">
     @csrf
@@ -67,10 +72,13 @@
                 <td style="text-align:center;"><input type="checkbox"></td>
                 <td>
                     <!-- <input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm" value="{{$prdID[$i]}}"> -->
+                    <?php
+                    $productPre = App\Models\Product::findOrFail($prdID[$i]);
+                    ?>
                     <select class="form-control" id="" name="productId[]" required>
-                        <option value="" selected="selected">----{{}}----</option>
+                        <option value="{{$prdID[$i]}}" selected="selected">----{{$productPre->prd_name}}----</option>
                         @foreach($products as $product)
-                        <option value="{{ $product->productId }}">{{ $product->productName}}</option>
+                        <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
                         @endforeach
                 </td>
                 <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}"></td>
