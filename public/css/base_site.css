@@ -107,16 +107,10 @@ form.example::after {
     margin-left: 120px;
     padding: 6px;
 }
-
-.header-bottom1 .bot-item:hover{
-    background-color: white;
-    border-radius: 5px;
-    color: #2D1476;
-}
-.header-bottom .bot-item:hover{
+.bot-item:hover{
   background-color: white;
   border-radius: 5px;
-  color: #2D1476;
+  color: #2D1476
 }
 
 .text-white{

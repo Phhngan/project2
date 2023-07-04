@@ -307,3 +307,8 @@ Route::get("/news/{new_id}", [NewController::class, 'newsShow']);
 Route::get('/chinh-sach', function () {
     return view('user.chinhSach');
 });
+
+// nhắc nhở truy cập mail để lấy mật khẩu (khi quên mkhau)
+Route::get('/getPassword', function () {
+    return view('user.getPassword');
+});
