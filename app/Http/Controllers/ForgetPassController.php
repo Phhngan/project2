@@ -30,7 +30,7 @@ class ForgetPassController extends Controller
         if ($check == true) {
             $mail = new MailController();
             $mail->sendPass($email);
-            return redirect('login');
+            return view('user.getPassword');
         } else {
             $error = 'Email không trùng khớp';
             return view(
