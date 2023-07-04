@@ -605,47 +605,8 @@ class CartController extends Controller
             }
         }
         DB::table('Carts')->where('use_id', $user->id)->delete();
-        foreach ($invoices as $invoice) {
-            $sal_id = $invoice->sal_id;
-            $sal_date = $invoice->sal_date;
-            $sal_total = $invoice->sal_total;
-            if ($invoice->sal_detailAddress != null) {
-                $address = $invoice->sal_detailAddress . ' - ' . $invoice->sal_town . ' - ' . $invoice->sal_district . ' - ' . $invoice->sal_province;
-            } else {
-                $address = $invoice->sal_town . ' - ' . $invoice->sal_district . ' - ' . $invoice->sal_province;
-            }
-        }
-        $mail = new PHPMailer(true);
-        try {
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'snackstore0202@gmail.com';
-            $mail->Password   = 'pujsjpcihsekrhmd';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 465;       //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-            //Recipients
-            $mail->setFrom('snackstore0202@gmail.com', 'SnackStore');
-            $mail->addAddress($user->email, $user->use_lastName . ' ' . $user->name);
-            $mail->addAddress('phamhngan2102@gmail.com', 'Quản lý tổng');
-
-            //Content
-            $mail->isHTML(true);
-            $mail->Subject = 'Ordering successfully SnackStore';
-            $mail->Body    = '
-                <p>Đơn hàng số ' . $sal_id . ' đã được đặt hàng thành công.</p>
-                <p>Ngày đặt hàng: ' . $sal_date . '</p>
-                <p>Tổng tiền đơn hàng: ' . $sal_total . '</p>
-                <p>Địa chỉ: ' . $address . '</p>
-                <p>Theo dõi đơn hàng tại đây <a href="http://127.0.0.1:8000/client/invoices">tại đây</a></p>
-            ';
-
-            $mail->send();
-        } catch (Exception $e) {
-            echo ("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
-        }
+        $mail = new MailController();
+        $mail->sendMail();
         return view('user.thank');
     }
 }

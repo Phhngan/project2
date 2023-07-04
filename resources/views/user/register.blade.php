@@ -55,11 +55,11 @@ margin-left: 0px;
     <div class="form-group">
         <div class="mb-3">
             <label for="name" class="form-label">Họ: </label>
-            <input name="lastName" type="name" class="form-control" id="name">
+            <input value="{{$lastName}}" name="lastName" type="name" class="form-control" id="name" required>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Tên: </label>
-            <input name="firstName" type="name" class="form-control" id="name">
+            <input value="{{$firstName}}" name="firstName" type="name" class="form-control" id="name" required>
         </div>
         <div class="mb-3">
             <label for="province" class="form-label">Giới tính:</label>
@@ -71,45 +71,45 @@ margin-left: 0px;
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email: </label>
-            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input value="{{$email}}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Số điện thoại: </label>
-            <input name="phone" type="phone" class="form-control" id="phone">
+            <input value="{{$phone}}" name="phone" type="phone" class="form-control" id="phone" required>
         </div>
 
         <div class="mb-3">
             <label for="province" class="form-label">Tỉnh thành:</label>
-            <select class="form-control" id="city" name="province">
+            <select class="form-control" id="city" name="province" required>
                 <option value="" selected>Chọn tỉnh thành</option>
             </select>
         </div>
 
         <div class="mb-3">
             <label for="district">Quận/huyện:</label>
-            <select class="form-control" id="district" name="district">
+            <select class="form-control" id="district" name="district" required>
                 <option value="" selected>Chọn quận huyện</option>
             </select>
         </div>
 
         <div class="mb-3">
             <label for="town">Phường/xã:</label>
-            <select class="form-control" id="ward" name="town">
+            <select class="form-control" id="ward" name="town" required>
                 <option value="" selected>Chọn phường xã</option>
             </select>
         </div>
 
         <div class="mb-3">
             <label for="detail" class="form-label">Thôn/Đường/Số nhà: </label>
-            <input name="detailAddress" type="text" class="form-control" id="detail" aria-describedby="emailHelp">
+            <input name="detailAddress" type="text" class="form-control" id="detail" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu: </label>
-            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword2" class="form-label">Nhập lại mật khẩu: </label>
-            <input name="password2" type="password" class="form-control" id="exampleInputPassword2">
+            <input name="password2" type="password" class="form-control" id="exampleInputPassword2" required>
         </div>
         <p class="error-noti">{{$error}}</p>
         <br>

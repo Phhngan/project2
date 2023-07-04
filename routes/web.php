@@ -287,6 +287,7 @@ Route::get("/success", [CartController::class, 'success']);
 Route::post("/VNPay", [CartController::class, 'vnpay']);
 Route::post("/Momo", [CartController::class, 'momo']);
 Route::get("/payment", [CartController::class, 'payment']);
+// Route::get("/sendMail", [CartController::class, 'sendMail']);
 
 // Favourite
 Route::get("/{prd_id}/addFavorite", [MenuController::class, 'addFavorite']);

@@ -57,14 +57,14 @@ margin-left: 0px;
             <label for="exampleInputEmail1" class="form-label">Nhập email: </label>
             <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu mới: </label>
             <input name="password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu mới: </label>
             <input name="password2" type="password" class="form-control" id="exampleInputPassword1">
-        </div>
+        </div> -->
         <p class="error-noti">{{$error}}</p>
         <br>
         <button type="submit" class="btn-dangki">Lấy mật khẩu</button>
