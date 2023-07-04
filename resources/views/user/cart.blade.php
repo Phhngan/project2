@@ -49,7 +49,7 @@ margin: 0;
     <h3>Giỏ hàng</h3>
 </div>
 <div class="item-products">
-<table class="table">
+<table class="table" id="cartTable">
     <tr>
         <th>Mã sản phẩm</th>
         <th>Hình ảnh</th>
@@ -231,6 +231,8 @@ margin: 0;
     const form = document.getElementById('form-quantity');
     const carIdsInput = form.querySelector('input[name="car_ids"]');
     const quantitiesInput = form.querySelector('input[name="quantities"]');
+    var carIds = [];
+    var quantities = [];
 
     minusButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -259,26 +261,23 @@ margin: 0;
         e.preventDefault();
 
         // Clear previous values
-        carIdsInput.value = '';
-        quantitiesInput.value = '';
+        carIds.length = 0;
+        quantities.length = 0;
 
         // Collect the updated quantities
         const quantityInputs = document.querySelectorAll('.qty');
         quantityInputs.forEach(input => {
             const carId = input.getAttribute('data-car-id');
             const quantity = input.value;
-            carIdsInput.value += carId + ',';
-            quantitiesInput.value += quantity + ',';
+            carIds.push(carId);
+            quantities.push(quantity);
         });
-
-        // Remove the trailing comma
-        carIdsInput.value = carIdsInput.value.slice(0, -1);
-        quantitiesInput.value = quantitiesInput.value.slice(0, -1);
 
         // Submit the form
         this.submit();
     });
 </script>
+
 
 
 <!-- <script>
