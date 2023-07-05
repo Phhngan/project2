@@ -49,50 +49,60 @@ margin: 0;
     <h3>Giỏ hàng</h3>
 </div>
 <div class="item-products">
-    <table class="table" id="cartTable">
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình ảnh</th>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Giá</th>
-            <th>Hành động</th>
-        </tr>
-        @forelse($products as $product)
-        <tr>
-            <td>
-                <p>{{$product->prd_code}}</p>
-            </td>
-            <td>
-                <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
-            </td>
-            <td>
-                <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
-            </td>
-            <?php
-            $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
-                ->where('prd_status_id', '<', 3)
-                ->sum('ImportInvoiceDetails.imp_quantity_left');
-            ?>
-            <td>
-                <input type="hidden" name="car_ids[]" value='{{$product->car_id}}'>
-                <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                <input type='number' name='quantities[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' data-car-id='{{$product->car_id}}' />
-                <input type='button' value='+' class='qtyplus plus' field='quantity' />
-            </td>
-            <td>
-                <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
-            </td>
-            <td>
-                <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
-                    @csrf
-                    <input type="hidden" name="car_ids">
-                    <input type="hidden" name="quantities">
-                    <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
-                </form>
-            </td>
-            <br>
-    </table>
+    <form id="form-quantity" method='PUT' action="cart/update">
+        @csrf
+        <table class="table" id="cartTable">
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Hành động</th>
+            </tr>
+            @forelse($products as $product)
+            <tr>
+                <td>
+                    <p>{{$product->prd_code}}</p>
+                </td>
+                <td>
+                    <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
+                </td>
+                <td>
+                    <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
+                </td>
+                <?php
+                $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+                    ->where('prd_status_id', '<', 3)
+                    ->sum('ImportInvoiceDetails.imp_quantity_left');
+                ?>
+                <td>
+                    <input type="hidden" name="car_ids[]" value='{{$product->car_id}}'>
+                    <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                    <input type='number' name='quantities[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' data-car-id='{{$product->car_id}}' />
+                    <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                </td>
+                <td>
+                    <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
+                </td>
+                <td>
+                    <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="3">Chưa có sản phẩm trong giỏ hàng</td>
+            </tr>
+            @endforelse
+        </table>
+        <td colspan="6" style="text-align:center;">
+            <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+        </td>
+    </form>
 </div>
 
 <div class="row">
@@ -140,7 +150,7 @@ margin: 0;
                     <br>
                     <label for="detailAddress" style="float:left;padding-bottom:6px">Thôn/Đường/Số nhà</label>
                     <br>
-                    <input value="{{$detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="">
+                    <input value="{{$detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="" required>
                     <br>
                     <button type="submit" class="btn btn-primary" style="float:left;width:90px">Cập nhật</button>
                     <br>
@@ -264,34 +274,6 @@ margin: 0;
         this.submit();
     });
 </script>
-
-
-
-<!-- <script>
-    jQuery(document).ready(($) => {
-        $('.quantity').on('click', '.plus', function(e) {
-            let $input = $(this).prev('input.qty');
-            let val = parseInt($input.val());
-            $input.val(val + 1).change();
-        });
-
-        $('.quantity').on('click', '.minus',
-            function(e) {
-                let $input = $(this).next('input.qty');
-                var val = parseInt($input.val());
-                if (val > 0) {
-                    $input.val(val - 1).change();
-                }
-                if (val < 0) {
-                    $input = 1;
-                }
-                if (val = 0) {
-                    $input = 1;
-                }
-
-            });
-    });
-</script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
