@@ -12,24 +12,32 @@ class ImportInvoiceController extends Controller
     //Hien thi toan bo
     function index()
     {
-        // $importInvoices = Importinvoice::get();
-        $importInvoices = DB::table('ImportInvoices')
-            ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
-            ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
-            ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name')->orderByDesc('ImportInvoices.imp_id')
-            ->orderByDesc('ImportInvoices.imp_id')
-            ->get();
-        return view('admin/importInvoice.index', ['importInvoices' => $importInvoices]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $importInvoices = DB::table('ImportInvoices')
+                ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
+                ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
+                ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name')->orderByDesc('ImportInvoices.imp_id')
+                ->orderByDesc('ImportInvoices.imp_id')
+                ->get();
+            return view('admin/importInvoice.index', ['importInvoices' => $importInvoices]);
+        }
     }
 
     //Tao moi
     function create()
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            return view('admin/importInvoice.create');
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 3) {
+                return view('admin/importInvoice.create');
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function save(Request $request)
@@ -74,33 +82,28 @@ class ImportInvoiceController extends Controller
     function edit($imp_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            $importInvoice = Importinvoice::findOrFail($imp_id);
-            if ($importInvoice == null) {
-                return redirect()->route('error');
-            }
-            $importInvoices = DB::table('ImportInvoices')
-                ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
-                ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
-                ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name', 'Users.use_lastName')
-                ->where('ImportInvoices.imp_id', $importInvoice->imp_id)
-                ->get();
-            $importInvoiceDetails = DB::table('ImportInvoiceDetails')
-                ->select('ImportInvoiceDetails.*')
-                ->where('ImportInvoiceDetails.imp_id', $importInvoice->imp_id)
-                ->get();
-            // dd($importInvoiceDetails);
-            // $count = 0;
-            // foreach ($importInvoiceDetails as $importInvoiceDetail) {
-            //     $prdID[$count] = $importInvoiceDetail->prd_id;
-            //     $impQuantity[$count] = $importInvoiceDetail->imp_quantity;
-            //     $impPrice[$count] = $importInvoiceDetail->imp_price;
-            //     $impExpiryDate[$count] = $importInvoiceDetail->imp_expiryDate;
-            //     $count++;
-            // }
-            return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices], ['importInvoiceDetails' => $importInvoiceDetails]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 3) {
+                $importInvoice = Importinvoice::findOrFail($imp_id);
+                if ($importInvoice == null) {
+                    return redirect()->route('error');
+                }
+                $importInvoices = DB::table('ImportInvoices')
+                    ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
+                    ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
+                    ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name', 'Users.use_lastName')
+                    ->where('ImportInvoices.imp_id', $importInvoice->imp_id)
+                    ->get();
+                $importInvoiceDetails = DB::table('ImportInvoiceDetails')
+                    ->select('ImportInvoiceDetails.*')
+                    ->where('ImportInvoiceDetails.imp_id', $importInvoice->imp_id)
+                    ->get();
+                return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices], ['importInvoiceDetails' => $importInvoiceDetails]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function update(Request $request, $imp_id)
@@ -150,14 +153,17 @@ class ImportInvoiceController extends Controller
     //chi tiet hoa don
     function show($imp_id)
     {
-        $importInvoice = Importinvoice::findOrFail($imp_id);
-        // $importInvoiceDetails = Importinvoicedetail::where('imp_id', $imp_id)->get();
-        $importInvoiceDetails = DB::table('ImportInvoiceDetails')
-            ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
-            ->select('ImportInvoiceDetails.*', 'Products.prd_name', 'Products.prd_code')
-            ->where('ImportInvoiceDetails.imp_id', $imp_id)->orderByDesc('ImportInvoiceDetails.id')
-            ->get();
-        // $importInvoice = Importinvoice::where('imp_id', $imp_id)->get();
-        return view('admin/importInvoice/detail.index', ['importInvoiceDetails' => $importInvoiceDetails], ['importInvoice' => $importInvoice]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $importInvoice = Importinvoice::findOrFail($imp_id);
+            $importInvoiceDetails = DB::table('ImportInvoiceDetails')
+                ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
+                ->select('ImportInvoiceDetails.*', 'Products.prd_name', 'Products.prd_code')
+                ->where('ImportInvoiceDetails.imp_id', $imp_id)->orderByDesc('ImportInvoiceDetails.id')
+                ->get();
+            return view('admin/importInvoice/detail.index', ['importInvoiceDetails' => $importInvoiceDetails], ['importInvoice' => $importInvoice]);
+        }
     }
 }

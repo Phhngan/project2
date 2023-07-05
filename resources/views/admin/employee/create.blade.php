@@ -9,11 +9,11 @@
     <br>
     <label for="lastName">Họ:</label>
     <br>
-    <input name="lastName" type="text" class="form-control" placeholder="Họ">
+    <input name="lastName" type="text" class="form-control" placeholder="Họ" required>
     <br>
     <label for="firstName">Tên:</label>
     <br>
-    <input name="firstName" type="text" class="form-control" placeholder="Tên">
+    <input name="firstName" type="text" class="form-control" placeholder="Tên" required>
     <br>
     <label for="gender">Giới tính:</label>
     <br>
@@ -25,15 +25,15 @@
     <br>
     <label for="email">Email:</label>
     <br>
-    <input name="email" type="text" class="form-control" placeholder="Email">
+    <input name="email" type="text" class="form-control" placeholder="Email" required>
     <br>
     <label for="phone">Số điện thoại:</label>
     <br>
-    <input name="phone" type="text" class="form-control" placeholder="Số điện thoại">
+    <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" required>
     <br>
     <label for="password">Mật khẩu:</label>
     <br>
-    <input name="password" type="text" class="form-control" placeholder="Mật khẩu">
+    <input name="password" type="text" class="form-control" placeholder="Mật khẩu" required>
     <br>
     <label for="position">Vị trí công việc:</label>
     <br>

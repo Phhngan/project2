@@ -11,11 +11,11 @@
     <br>
     <label for="lastName">Họ:</label>
     <br>
-    <input value="{{ $user->use_lastName }}" name="lastName" type="text" class="form-control" placeholder="Họ">
+    <input value="{{ $user->use_lastName }}" name="lastName" type="text" class="form-control" placeholder="Họ" required>
     <br>
     <label for="firstName">Tên:</label>
     <br>
-    <input value="{{ $user->name }}" name="firstName" type="text" class="form-control" placeholder="Tên">
+    <input value="{{ $user->name }}" name="firstName" type="text" class="form-control" placeholder="Tên" required>
     <br>
     <label for="gender">Giới tính:</label>
     <br>
@@ -34,7 +34,7 @@
     <br>
     <label for="phone">Số điện thoại:</label>
     <br>
-    <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại">
+    <input value="{{ $user->use_phone }}" name="phone" type="phone" class="form-control" placeholder="Số điện thoại" required>
     <br>
     <div>
         <label for="province">Tỉnh thành:</label>
@@ -60,7 +60,7 @@
 
     <label for="detailAddress">Thôn/Đường/Số nhà:</label>
     <br>
-    <input value="{{$user->use_detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể">
+    <input value="{{$user->use_detailAddress}}" name="detailAddress" type="text" class="form-control" placeholder="Địa chỉ cụ thể" required>
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
     <br><br>

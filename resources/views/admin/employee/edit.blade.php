@@ -11,11 +11,11 @@
     <br>
     <label for="email">Email:</label>
     <br>
-    <input value="{{ $user->email  }}" name="email" type="text" class="form-control" placeholder="Email">
+    <input value="{{ $user->email  }}" name="email" type="text" class="form-control" placeholder="Email" required>
     <br>
     <label for="password">Mật khẩu:</label>
     <br>
-    <input name="password" type="text" class="form-control" placeholder="Mật khẩu">
+    <input name="password" type="text" class="form-control" placeholder="Mật khẩu" required>
     <br>
     <label for="position">Vị trí công việc:</label>
     <br>

@@ -12,25 +12,34 @@ class VoucherController extends Controller
     //
     function index()
     {
-        $vouchers = DB::table('Vouchers')
-            ->select('Vouchers.*')
-            ->orderByDesc('Vouchers.vou_id')
-            ->get();
-        return view('admin/voucher.index', ['vouchers' => $vouchers]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $vouchers = DB::table('Vouchers')
+                ->select('Vouchers.*')
+                ->orderByDesc('Vouchers.vou_id')
+                ->get();
+            return view('admin/voucher.index', ['vouchers' => $vouchers]);
+        }
     }
 
     function edit($vou_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 5) {
-            $voucher = Voucher::findOrFail($vou_id);
-            // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
-            if ($voucher == null) {
-                return redirect()->route('error');
-            }
-            return view('admin/voucher.edit', ['voucher' => $voucher]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 5) {
+                $voucher = Voucher::findOrFail($vou_id);
+                // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
+                if ($voucher == null) {
+                    return redirect()->route('error');
+                }
+                return view('admin/voucher.edit', ['voucher' => $voucher]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
 
@@ -52,10 +61,14 @@ class VoucherController extends Controller
     function create()
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 5) {
-            return view('admin/voucher.create');
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 5) {
+                return view('admin/voucher.create');
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function save(Request $request)

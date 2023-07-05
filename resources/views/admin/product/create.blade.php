@@ -4,20 +4,20 @@
 
 @section('content')
 <h1 class="text-center">Tạo sản phẩm mới</h1>
-<form action="{{url('admin/products/create')}}" method="POST" enctype="multipart/form-data>
-        @csrf
-        <br>
-        <label for=" productCode">Mã sản phẩm:</label>
+<form action="{{url('admin/products/create')}}" method="POST" enctype="multipart/form-data">
+    @csrf
     <br>
-    <input name="productCode" type="text" class="form-control" placeholder="Mã sản phẩm">
+    <label for=" productCode">Mã sản phẩm:</label>
+    <br>
+    <input name="productCode" type="text" class="form-control" placeholder="Mã sản phẩm" required>
     <br>
     <label for="productName">Tên sản phẩm:</label>
     <br>
-    <input name="productName" type="text" class="form-control" placeholder="Tên sản phẩm">
+    <input name="productName" type="text" class="form-control" placeholder="Tên sản phẩm" required>
     <br>
     <label for="productImage">Ảnh sản phẩm:</label>
     <br>
-    <input accept="image/*" type="file" id="productImage" name="productImage">
+    <input accept="image/*" type="file" id="productImage" name="productImage" required>
     <br>
     <p id="previewText" style="display: none;"><strong>Preview:</strong></p>
     <img id="imagePreview" src="#" alt="Preview Image" style="display: none;width: 200px;">
@@ -33,7 +33,7 @@
     <br>
     <label for="productWeigh">Khối lượng (gam):</label>
     <br>
-    <input name="productWeigh" type="number" class="form-control" placeholder="Khối lượng">
+    <input name="productWeigh" type="number" class="form-control" placeholder="Khối lượng" required>
     <br>
     <label for="productSource">Nguồn gốc:</label>
     <br>
@@ -41,11 +41,11 @@
     <br>
     <label for="productPrice">Giá bán:</label>
     <br>
-    <input name="productPrice" type="number" class="form-control" placeholder="Giá sản phẩm">
+    <input name="productPrice" type="number" class="form-control" placeholder="Giá sản phẩm" required>
     <br>
     <label for="productDiscount">Giảm giá (%):</label>
     <br>
-    <input name="productDiscount" type="number" class="form-control" placeholder="Giảm giá">
+    <input name="productDiscount" type="number" class="form-control" placeholder="Giảm giá" required>
     <br>
     <label for="productDescription">Mô tả:</label>
     <br>

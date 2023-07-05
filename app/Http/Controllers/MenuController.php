@@ -119,29 +119,39 @@ class MenuController extends Controller
     function showFavorite()
     {
         $user = Auth::user();
-        $products = DB::table('FavoriteProducts')
-            ->join('Products', 'FavoriteProducts.prd_id', '=', 'Products.prd_id')
-            ->select('Products.*', 'FavoriteProducts.*')
-            ->where('FavoriteProducts.use_id', $user->id)
-            ->orderByDesc('FavoriteProducts.fav_id')
-            ->get();
-        return view('user/clientInfo.favorite', ['products' => $products]);
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $products = DB::table('FavoriteProducts')
+                ->join('Products', 'FavoriteProducts.prd_id', '=', 'Products.prd_id')
+                ->select('Products.*', 'FavoriteProducts.*')
+                ->where('FavoriteProducts.use_id', $user->id)
+                ->orderByDesc('FavoriteProducts.fav_id')
+                ->get();
+            return view('user/clientInfo.favorite', ['products' => $products]);
+        }
     }
 
     //delete favorite
     function delete($prd_id)
     {
         $user = Auth::user();
-        DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
-        return back();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
+            return back();
+        }
     }
 
     function deleteFavorite($prd_id)
     {
         $user = Auth::user();
-        DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
-        return back();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            DB::table('FavoriteProducts')->where('prd_id', $prd_id)->where('use_id', $user->id)->delete();
+            return back();
+        }
     }
-
-    //
 }

@@ -53,34 +53,38 @@ class CartController extends Controller
     function showCart()
     {
         $user = Auth::user();
-        DB::table('Carts')->where('Carts.use_id', $user->id)
-            ->update([
-                'car_note' => null, 'vou_id' => null, 'car_gold' => null
-            ]);
-        $checks = DB::table('Carts')
-            ->select('Carts.*')
-            ->where('Carts.use_id', $user->id)
-            ->get();
-        foreach ($checks as $check) {
-            $quantity = DB::table('ImportInvoiceDetails')->where('prd_id', $check->prd_id)
-                ->where('prd_status_id', '<', 3)
-                ->sum('ImportInvoiceDetails.imp_quantity_left');
-            if ($quantity == 0) {
-                DB::table('Carts')->where('car_id', $check->car_id)->delete();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            DB::table('Carts')->where('Carts.use_id', $user->id)
+                ->update([
+                    'car_note' => null, 'vou_id' => null, 'car_gold' => null
+                ]);
+            $checks = DB::table('Carts')
+                ->select('Carts.*')
+                ->where('Carts.use_id', $user->id)
+                ->get();
+            foreach ($checks as $check) {
+                $quantity = DB::table('ImportInvoiceDetails')->where('prd_id', $check->prd_id)
+                    ->where('prd_status_id', '<', 3)
+                    ->sum('ImportInvoiceDetails.imp_quantity_left');
+                if ($quantity == 0) {
+                    DB::table('Carts')->where('car_id', $check->car_id)->delete();
+                }
             }
+            $products = DB::table('Carts')
+                ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
+                ->select('Products.*', 'Carts.*')
+                ->where('Carts.use_id', $user->id)
+                ->orderByDesc('Carts.car_id')
+                ->get();
+            $addresses = DB::table('Carts')
+                ->distinct()
+                ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
+                ->where('Carts.use_id', $user->id)
+                ->get();
+            return view('user/cart', ['products' => $products], ['addresses' => $addresses]);
         }
-        $products = DB::table('Carts')
-            ->join('Products', 'Carts.prd_id', '=', 'Products.prd_id')
-            ->select('Products.*', 'Carts.*')
-            ->where('Carts.use_id', $user->id)
-            ->orderByDesc('Carts.car_id')
-            ->get();
-        $addresses = DB::table('Carts')
-            ->distinct()
-            ->select('Carts.car_province', 'Carts.car_district', 'Carts.car_town', 'Carts.car_detailAddress')
-            ->where('Carts.use_id', $user->id)
-            ->get();
-        return view('user/cart', ['products' => $products], ['addresses' => $addresses]);
     }
 
     //update số lượng

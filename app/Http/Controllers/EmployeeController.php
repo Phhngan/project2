@@ -13,22 +13,30 @@ class EmployeeController extends Controller
     //Hien thi toan bo
     function index()
     {
-        // $users= User::where('pos_id', '>', 1)->get();
-        $users = DB::table('Users')
-            ->select('Users.*')
-            ->where('Users.pos_id', '>', 1)
-            ->get();
-        return view('admin/employee.index', ['users' => $users]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $users = DB::table('Users')
+                ->select('Users.*')
+                ->where('Users.pos_id', '>', 1)
+                ->get();
+            return view('admin/employee.index', ['users' => $users]);
+        }
     }
 
     //Tao moi
     function create()
     {
         $user = Auth::user();
-        if ($user->pos_id == 2) {
-            return view('admin/employee.create');
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2) {
+                return view('admin/employee.create');
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function save(Request $request)
@@ -60,14 +68,18 @@ class EmployeeController extends Controller
     function edit($id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2) {
-            $users = DB::table('Users')
-                ->select('Users.*')
-                ->where('Users.id', $id)
-                ->get();
-            return view('admin/employee.edit', ['users' => $users]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2) {
+                $users = DB::table('Users')
+                    ->select('Users.*')
+                    ->where('Users.id', $id)
+                    ->get();
+                return view('admin/employee.edit', ['users' => $users]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function update(Request $request, $id)
@@ -86,11 +98,4 @@ class EmployeeController extends Controller
         }
         return redirect('admin/employee');
     }
-
-    // Xoa 1 sp theo id
-    // function delete($id)
-    // {
-    //     DB::table('Users')->where('id', $id)->delete();
-    //     return redirect('admin/employee');
-    // }
 }

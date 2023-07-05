@@ -99,9 +99,13 @@ margin: 0;
             </tr>
             @endforelse
         </table>
-        <td colspan="6" style="text-align:center;">
-            <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
-        </td>
+        <?php
+        if (count($products) != 0) {
+        ?>
+            <td colspan="6" style="text-align:center;">
+                <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+            </td>
+        <?php } ?>
     </form>
 </div>
 

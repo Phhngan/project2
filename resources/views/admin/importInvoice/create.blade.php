@@ -42,7 +42,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
     <br>
     <label for="importDate">Ngày nhập:</label>
     <br>
-    <input name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
+    <input name="importDate" type="date" class="form-control" placeholder="Ngày nhập" required>
     <br>
     <h5>Thêm sản phẩm vào hóa đơn:</h5>
     <table id="mytable">
@@ -62,9 +62,9 @@ $products = Illuminate\Support\Facades\DB::table('Products')
                     <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
                     @endforeach
             </td>
-            <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng"></td>
-            <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm"></td>
-            <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn"></td>
+            <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" required></td>
+            <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm" required></td>
+            <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn" required></td>
         </tr>
     </table>
     <br>

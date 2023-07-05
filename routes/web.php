@@ -58,27 +58,20 @@ Route::get('/home', [MenuController::class, 'home']);
 Route::get('/admin/home', [AdminController::class, 'takeYear']);
 Route::get('/admin/home/{year}/{timeId}', [AdminController::class, 'viewHome']);
 Route::get('/admin/home/{year}', [AdminController::class, 'takeTime']);
-// Route::get('/updateYear', [AdminController::class, 'updateYear']);
-// Route::put('/updateYear', [AdminController::class, 'updateYear']);
 
 // QUẢN LÍ SẢN PHẨM
-
 // Xem toan bo SP
 Route::get("/admin/products", [ProductController::class, 'index']);
-
 // Them 1 san pham: view
 Route::get("/admin/products/create", [ProductController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
 Route::post("/admin/products/create", [ProductController::class, 'save']);
-
 // Xem 1 san pham
 Route::get("/admin/products/{prd_id}", [ProductController::class, 'show']);
-
 // Sua 1 san pham: view
 Route::get("/admin/products/{prd_id}/edit", [ProductController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
 Route::put("admin/products/{prd_id}/edit", [ProductController::class, 'update']);
-
 
 // TRẠNG THÁI SẢN PHẨM
 // Con han
@@ -98,18 +91,6 @@ Route::put("/admin/productStatus/{prd_id}/chuyen", [ProductStatusController::cla
 Route::get("/admin/productStatus/update", [ProductStatusController::class, 'update']);
 Route::put("/admin/productStatus/update", [ProductStatusController::class, 'update']);
 
-// // THƯ VIỆN ẢNH
-// // Xem tất cả ảnh
-// Route::get("/admin/images", [ImagesController::class, 'index']);
-// // sửa : view
-// Route::get("/admin/images/{img_id}/edit", [ImagesController::class, 'edit']);
-// Route::put("/admin/images/{img_id}/edit", [ImagesController::class, 'update']);
-// // thêm : view
-// Route::get("/admin/images/create", [ImagesController::class, 'create']);
-// Route::post("/admin/images/create", [ImagesController::class, 'save']);
-// // Xoa 1 anh
-// Route::delete("admin/images/{img_id}/delete", [ImagesController::class, 'delete']);
-
 // ĐƠN VỊ CUNG CẤP
 // Xem tất cả đơn vị cung cấp
 Route::get("/admin/supplyUnit", [SupplyUnitController::class, 'index']);
@@ -119,8 +100,6 @@ Route::post("/admin/supplyUnit/create", [SupplyUnitController::class, 'save']);
 // Sửa đơn vị cung cấp
 Route::get("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'edit']);
 Route::put("/admin/supplyUnit/{unit_id}/edit", [SupplyUnitController::class, 'update']);
-// Xoa
-// Route::delete("admin/supplyUnit/{unit_id}/delete", [SupplyUnitController::class, 'delete']);
 
 // HÓA ĐƠN NHẬP HÀNG
 // Xem tất cả hóa đơn
@@ -131,18 +110,8 @@ Route::post("/admin/importInvoice/create", [ImportInvoiceController::class, 'sav
 // Sửa 1 hóa đơn
 Route::get("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'edit']);
 Route::put("/admin/importInvoice/{imp_id}/edit", [ImportInvoiceController::class, 'update']);
-// Xoa
-// Route::delete("/admin/importInvoice/{imp_id}/delete", [ImportInvoiceController::class, 'delete']);
 // Xem chi tiết 1 hóa đơn
 Route::get("/admin/importInvoice/{imp_id}", [ImportInvoiceController::class, 'show']);
-//Thêm chi tiết hóa đơn
-// Route::get("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'create']);
-// Route::post("/admin/importInvoice/{imp_id}/create", [ImportInvoiceDetailController::class, 'save']);
-//Sửa chi tiết hóa đơn
-// Route::get("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'edit']);
-// Route::put("/admin/importInvoice/{imp_id}/{id}/edit", [ImportInvoiceDetailController::class, 'update']);
-//Xoa
-// Route::delete("/admin/importInvoice/{imp_id}/{id}/delete", [ImportInvoiceDetailController::class, 'delete']);
 
 // SHIP
 // Xem tất cả
@@ -184,8 +153,8 @@ Route::put("/admin/salesInvoice/{sal_id}/giaohang", [SalesInvoiceController::cla
 Route::get("/admin/salesInvoice/{sal_id}/hoanthanh", [SalesInvoiceController::class, 'hoanthanh']);
 Route::put("/admin/salesInvoice/{sal_id}/hoanthanh", [SalesInvoiceController::class, 'hoanthanh']);
 //Huy
-Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
-Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
+// Route::get("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
+// Route::put("/admin/salesInvoice/{sal_id}/cancel", [SalesInvoiceController::class, 'cancel']);
 
 //Quản lý tin tức
 //Xem tất cả
@@ -231,10 +200,6 @@ Route::get("/doUong", [MenuController::class, 'doUong']);
 Route::get("/products", [MenuController::class, 'allProducts']);
 // chi tiết sản phẩm
 Route::get("/{prd_id}/productDetails", [MenuController::class, 'show']);
-
-// Route::get('/productDetails', function () {
-//     return view('user.productDetails');
-// });
 
 //search home
 Route::get("/search", [MenuController::class, 'search']);
@@ -287,7 +252,6 @@ Route::get("/success", [CartController::class, 'success']);
 Route::post("/VNPay", [CartController::class, 'vnpay']);
 Route::post("/Momo", [CartController::class, 'momo']);
 Route::get("/payment", [CartController::class, 'payment']);
-// Route::get("/sendMail", [CartController::class, 'sendMail']);
 
 // Favourite
 Route::get("/{prd_id}/addFavorite", [MenuController::class, 'addFavorite']);
@@ -307,9 +271,4 @@ Route::get("/news/{new_id}", [NewController::class, 'newsShow']);
 // CHính sách
 Route::get('/chinh-sach', function () {
     return view('user.chinhSach');
-});
-
-// nhắc nhở truy cập mail để lấy mật khẩu (khi quên mkhau)
-Route::get('/getPassword', function () {
-    return view('user.getPassword');
 });

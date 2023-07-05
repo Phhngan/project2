@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('sal_province');
             $table->string('sal_district');
             $table->string('sal_town');
-            $table->string('sal_detailAddress')->nullable();
+            $table->string('sal_detailAddress');
             $table->integer('sal_status_id');
             $table->string('sal_note')->nullable();
             $table->timestamps();

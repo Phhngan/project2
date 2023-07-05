@@ -10,16 +10,16 @@
     <br>
     <label for="productCode">Mã sản phẩm:</label>
     <br>
-    <input value="{{ $product->prd_code  }}" name="productCode" type="text" class="form-control" placeholder="Mã sản phẩm">
+    <input value="{{ $product->prd_code  }}" name="productCode" type="text" class="form-control" placeholder="Mã sản phẩm" required>
     <br>
     <label for="productName">Tên sản phẩm:</label>
     <br>
-    <input value="{{ $product->prd_name  }}" name="productName" type="text" class="form-control" placeholder="Tên sản phẩm">
+    <input value="{{ $product->prd_name  }}" name="productName" type="text" class="form-control" placeholder="Tên sản phẩm" required>
     <br>
     <label for="image">Ảnh sản phẩm:</label>
     <br>
     <img id="imagePreview" src="/storage/{{substr($product->prd_image, 7)}}" width="200px">
-    <input accept="image/*" type="file" name="image" onchange="previewImage(event)">
+    <input accept="image/*" type="file" name="image" onchange="previewImage(event)" required>
     <br><br>
     <label for="productType">Loại sản phẩm:</label>
     <br>
@@ -41,7 +41,7 @@
     <br>
     <label for="productWeigh">Khối lượng:</label>
     <br>
-    <input value="{{ $product->prd_weigh  }}" name="productWeigh" type="text" class="form-control" placeholder="Khối lượng">
+    <input value="{{ $product->prd_weigh  }}" name="productWeigh" type="text" class="form-control" placeholder="Khối lượng" required>
     <br>
     <label for="productSource">Nguồn gốc:</label>
     <br>
@@ -49,11 +49,11 @@
     <br>
     <label for="productPrice">Giá bán:</label>
     <br>
-    <input value="{{ $product->prd_price  }}" name="productPrice" type="number" class="form-control" placeholder="Giá bán">
+    <input value="{{ $product->prd_price  }}" name="productPrice" type="number" class="form-control" placeholder="Giá bán" required>
     <br>
     <label for="productDiscount">Giảm giá:</label>
     <br>
-    <input value="{{ $product->prd_discount  }}" name="productDiscount" type="text" class="form-control" placeholder="Giảm giá">
+    <input value="{{ $product->prd_discount  }}" name="productDiscount" type="text" class="form-control" placeholder="Giảm giá" required>
     <br>
     <label for="productDescription">Mô tả:</label>
     <br>

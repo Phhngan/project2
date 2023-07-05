@@ -144,7 +144,7 @@ padding: 20px;
                     <form id='form-note' method='PUT' class='note' action='checkOut/updateNote'>
                         <label for="note" style="float:left;padding-bottom:6px">Ghi chú:</label>
                         <br>
-                        <input name="note" value="{{$note}}" type="text" class="form-control" placeholder="Ghi chú" style="height:100px">
+                        <input name="note" value="{{$note}}" type="text" class="form-control" placeholder="Ghi chú" style="height:100px" required>
                         <br><br>
                         <button type="submit" class="btn btn-primary" style="float:left;width:90px;margin-top:10px">Cập nhật</button>
                         <br>
@@ -170,7 +170,7 @@ padding: 20px;
                         <label for="use-xu">Bạn đang có {{$user->use_gold}} <img src="https://github.com/Phhngan/snack_images/blob/master/icon/xu.png?raw=true" style="width:22px;"></label>
                         <br>
                         <label for="use-xu">Sử dụng:
-                            <input name="gold" id="gold-input" value="{{$gold}}" min="0" max="{{$user->use_gold}}" type="number" class="form-control" placeholder="" style="height:40px;width: 100px;">
+                            <input name="gold" id="gold-input" value="{{$gold}}" min="0" max="{{$user->use_gold}}" type="number" class="form-control" placeholder="" style="height:40px;width: 100px;" required>
                         </label>
                         <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
                     </form>

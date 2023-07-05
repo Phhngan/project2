@@ -10,20 +10,20 @@
     <br>
     <label for="newsName">Tiêu đề bài viết:</label>
     <br>
-    <input value="{{$new->new_title}}" name="newsName" type="text" class="form-control" placeholder="Tiêu đề bài viết">
+    <input value="{{$new->new_title}}" name="newsName" type="text" class="form-control" placeholder="Tiêu đề bài viết" required>
     <br>
     <label for="newsImage">Ảnh bài viết:</label>
     <br>
     <img id="imagePreview" src="/storage/{{substr($new->new_image, 7)}}" width="200px">
-    <input accept="image/*" type="file" name="newsImage" onchange="previewImage(event)">
+    <input accept="image/*" type="file" name="newsImage" onchange="previewImage(event)" required>
     <br><br>
     <label for="newsDate">Ngày viết:</label>
     <br>
-    <input value="{{$new->new_day}}" name="newsDate" type="date" class="form-control" placeholder="Ngày viết">
+    <input value="{{$new->new_day}}" name="newsDate" type="date" class="form-control" placeholder="Ngày viết" required>
     <br>
     <label for="newsDescription">Nội dung:</label>
     <br>
-    <textarea id="editor" value="{{$new->new_content}}" name="newsDescription" type="text" class="form-control" placeholder="Nội dung">{{$new->new_content}}</textarea>
+    <textarea id="editor" value="{{$new->new_content}}" name="newsDescription" type="text" class="form-control" placeholder="Nội dung" required>{{$new->new_content}}</textarea>
     <br>
     <button type="submit" class="btn btn-primary">Cập nhật</button>
 </form>

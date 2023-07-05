@@ -12,26 +12,40 @@ class NewController extends Controller
     //
     function index()
     {
-        $news = DB::table('News')
-            ->select('News.*')
-            ->orderByDesc('new_id')
-            ->get();
-        return view('admin/news.index', ['news' => $news]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $news = DB::table('News')
+                ->select('News.*')
+                ->orderByDesc('new_id')
+                ->get();
+            return view('admin/news.index', ['news' => $news]);
+        }
     }
 
     function show($new_id)
     {
-        $new = News::findOrFail($new_id);
-        return view('admin/news.detail', ['new' => $new]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $new = News::findOrFail($new_id);
+            return view('admin/news.detail', ['new' => $new]);
+        }
     }
 
     function create()
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 5) {
-            return view('admin/news.create');
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 5) {
+                return view('admin/news.create');
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function save(Request $request)
@@ -52,15 +66,19 @@ class NewController extends Controller
     function edit($new_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 5) {
-            $new = News::findOrFail($new_id);
-            // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
-            if ($new == null) {
-                return redirect()->route('error');
-            }
-            return view('admin/news.edit', ['new' => $new]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 5) {
+                $new = News::findOrFail($new_id);
+                // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
+                if ($new == null) {
+                    return redirect()->route('error');
+                }
+                return view('admin/news.edit', ['new' => $new]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function update(Request $request, $new_id)

@@ -10,25 +10,37 @@ class RateController extends Controller
 {
     function all($sal_id)
     {
-        $invoiceDetails =  DB::table('SalesInvoiceDetails')
-            ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
-            ->select('SalesInvoiceDetails.*', 'Products.*')
-            ->where('SalesInvoiceDetails.sal_id', $sal_id)
-            ->orderBy('SalesInvoiceDetails.id')
-            ->get();
-        // dd($invoiceDetails);
-        return view('user/clientInfo.ratting', ['invoiceDetails' => $invoiceDetails]);
+        $user = Auth::user();
+        // dd($user);
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $invoiceDetails =  DB::table('SalesInvoiceDetails')
+                ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
+                ->select('SalesInvoiceDetails.*', 'Products.*')
+                ->where('SalesInvoiceDetails.sal_id', $sal_id)
+                ->orderBy('SalesInvoiceDetails.id')
+                ->get();
+            // dd($invoiceDetails);
+            return view('user/clientInfo.ratting', ['invoiceDetails' => $invoiceDetails]);
+        }
     }
 
     function detail($id)
     {
-        $invoiceDetails =  DB::table('SalesInvoiceDetails')
-            ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
-            ->select('SalesInvoiceDetails.*', 'Products.*')
-            ->where('SalesInvoiceDetails.id', $id)
-            ->get();
-        // dd($invoiceDetails);
-        return view('user/clientInfo.rattingSP', ['invoiceDetails' => $invoiceDetails]);
+        $user = Auth::user();
+        // dd($user);
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $invoiceDetails =  DB::table('SalesInvoiceDetails')
+                ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
+                ->select('SalesInvoiceDetails.*', 'Products.*')
+                ->where('SalesInvoiceDetails.id', $id)
+                ->get();
+            // dd($invoiceDetails);
+            return view('user/clientInfo.rattingSP', ['invoiceDetails' => $invoiceDetails]);
+        }
     }
 
     function update(Request $request, $id)

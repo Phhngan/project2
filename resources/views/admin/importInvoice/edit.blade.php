@@ -44,7 +44,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
     <br>
     <label for="importDate">Ngày nhập:</label>
     <br>
-    <input value="{{$importInvoice->imp_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
+    <input value="{{$importInvoice->imp_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập" required>
     <br>
     <?php
     $count = 0;
@@ -81,9 +81,9 @@ $products = Illuminate\Support\Facades\DB::table('Products')
                         <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
                         @endforeach
                 </td>
-                <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}"></td>
-                <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm" value="{{$impPrice[$i]}}"></td>
-                <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn" value="{{$impExpiryDate[$i]}}"></td>
+                <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}" required></td>
+                <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm" value="{{$impPrice[$i]}}" required></td>
+                <td><input name="expiryDate[]" type="date" class="form-control" placeholder="Ngày hết hạn" value="{{$impExpiryDate[$i]}}" required></td>
             </tr>
         <?php } ?>
     </table>

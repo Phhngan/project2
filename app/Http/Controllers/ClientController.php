@@ -12,23 +12,31 @@ class ClientController extends Controller
     //profile admin
     function profile()
     {
-        $userAuth = Auth::user();
-        $users = DB::table('Users')
-            ->select('Users.*')
-            ->where('Users.id', $userAuth->id)
-            ->get();
-        return view('user.clientInfo.profile', ['users' => $users]);
+        $user = Auth::user();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $users = DB::table('Users')
+                ->select('Users.*')
+                ->where('Users.id', $user->id)
+                ->get();
+            return view('user.clientInfo.profile', ['users' => $users]);
+        }
     }
 
     //update profile
     function edit()
     {
         $user = Auth::user();
-        $users = DB::table('Users')
-            ->select('Users.*')
-            ->where('Users.id', $user->id)
-            ->get();
-        return view('user/clientInfo.edit', ['users' => $users]);
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $users = DB::table('Users')
+                ->select('Users.*')
+                ->where('Users.id', $user->id)
+                ->get();
+            return view('user/clientInfo.edit', ['users' => $users]);
+        }
     }
     function update(Request $request)
     {
@@ -53,8 +61,12 @@ class ClientController extends Controller
     //change pass
     function changePass()
     {
-        // $user = Auth::user();
-        return view('user/clientInfo.changePass', ['error' => '']);
+        $user = Auth::user();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            return view('user/clientInfo.changePass', ['error' => '']);
+        }
     }
     function updatePass(Request $request)
     {
@@ -78,15 +90,19 @@ class ClientController extends Controller
     function invoices()
     {
         $user = Auth::user();
-        $invoices =  DB::table('SalesInvoices')
-            // ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
-            ->select('SalesInvoices.*')
-            ->where('SalesInvoices.use_id', $user->id)
-            ->where('SalesInvoices.sal_status_id', '<', 5)
-            ->orderBy('SalesInvoices.sal_status_id')
-            ->orderByDesc('SalesInvoices.sal_id')
-            ->get();
-        return view('user/clientInfo.invoices', ['invoices' => $invoices]);
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $invoices =  DB::table('SalesInvoices')
+                // ->join('Provinces', 'SalesInvoices.pro_id', '=', 'Provinces.pro_id')
+                ->select('SalesInvoices.*')
+                ->where('SalesInvoices.use_id', $user->id)
+                ->where('SalesInvoices.sal_status_id', '<', 5)
+                ->orderBy('SalesInvoices.sal_status_id')
+                ->orderByDesc('SalesInvoices.sal_id')
+                ->get();
+            return view('user/clientInfo.invoices', ['invoices' => $invoices]);
+        }
     }
     function details($sal_id)
     {
@@ -102,14 +118,19 @@ class ClientController extends Controller
     //Huy don
     function cancel($sal_id)
     {
-        $invoices = DB::table('SalesInvoices')->where('sal_id', $sal_id)->select('SalesInvoices.*')->get();
-        foreach ($invoices as $invoice) {
-            if ($invoice->sal_status_id == 1) {
-                DB::table('SalesInvoices')->where('sal_id', $sal_id)
-                    ->update(['sal_status_id' => 5]);
-                return redirect('client/invoices');
-            } else {
-                return view('error/don-huy');
+        $user = Auth::user();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $invoices = DB::table('SalesInvoices')->where('sal_id', $sal_id)->select('SalesInvoices.*')->get();
+            foreach ($invoices as $invoice) {
+                if ($invoice->sal_status_id == 1) {
+                    DB::table('SalesInvoices')->where('sal_id', $sal_id)
+                        ->update(['sal_status_id' => 5]);
+                    return redirect('client/invoices');
+                } else {
+                    return view('error/don-huy');
+                }
             }
         }
     }

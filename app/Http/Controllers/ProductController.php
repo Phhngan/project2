@@ -13,24 +13,30 @@ class ProductController extends Controller
     // Hien thi toan bo
     function index()
     {
-        // Lay du lieu
-        $products = DB::table('Products')
-            ->select('Products.*')
-            ->orderByDesc('prd_id')
-            ->get();
-        // dd($products);
-        // Tra ve view -> view se render ra man hinh
-        return view('admin/product.index', ['products' => $products]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $products = DB::table('Products')
+                ->select('Products.*')
+                ->orderByDesc('prd_id')
+                ->get();
+            return view('admin/product.index', ['products' => $products]);
+        }
     }
 
     // View: Tao san pham
     function create()
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            return view('admin/product.create');
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 3) {
+                return view('admin/product.create');
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function save(Request $request)
@@ -61,24 +67,32 @@ class ProductController extends Controller
     //Xem chi tiết sản phẩm
     function show($prd_id)
     {
-        $product = Product::findOrFail($prd_id);
-        return view('admin/product.detail', ['product' => $product]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $product = Product::findOrFail($prd_id);
+            return view('admin/product.detail', ['product' => $product]);
+        }
     }
 
     // Sửa sản phẩm
     function edit($prd_id)
     {
-        // $product = DB::table('Product')->find($prd_id);
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            $product = Product::findOrFail($prd_id);
-            // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
-            if ($product == null) {
-                return redirect()->route('error');
-            }
-            return view('admin/product.edit', ['product' => $product]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 3) {
+                $product = Product::findOrFail($prd_id);
+                // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
+                if ($product == null) {
+                    return redirect()->route('error');
+                }
+                return view('admin/product.edit', ['product' => $product]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('prd_id');
             $table->integer('com_rate');
             $table->unsignedInteger('sal_id');
-            $table->string('com_detail')->nullable();
+            $table->string('com_detail');
             $table->date('com_date');
             $table->timestamps();
 

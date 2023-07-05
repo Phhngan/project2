@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('prd_source')->nullable();
             $table->integer('prd_price');
             $table->integer('prd_discount');
-            $table->string('prd_image')->nullable();
+            $table->string('prd_image');
             $table->mediumText('prd_description')->nullable();
             $table->timestamps();
         });

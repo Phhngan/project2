@@ -9,7 +9,7 @@
     <br>
     <label for="newsName">Tiêu đề bài viết:</label>
     <br>
-    <input name="newsName" type="text" class="form-control" placeholder="Tiêu đề bài viết">
+    <input name="newsName" type="text" class="form-control" placeholder="Tiêu đề bài viết" required>
     <br>
     <!-- <label for="newsImage">Link ảnh:</label>
         <input name="newsImage" type="text" class="form-control" placeholder="Link ảnh">
@@ -17,18 +17,18 @@
     <br> -->
     <label for="newsImage">Ảnh bài viết:</label>
     <br>
-    <input accept="image/*" type="file" id="newsImage" name="newsImage">
+    <input accept="image/*" type="file" id="newsImage" name="newsImage" required>
     <br>
     <p id="previewText" style="display: none;"><strong>Preview:</strong></p>
     <img id="imagePreview" src="#" alt="Preview Image" style="display: none;width: 200px;">
     <br>
     <label for="newsDate">Ngày viết:</label>
     <br>
-    <input name="newsDate" type="date" class="form-control" placeholder="Ngày viết">
+    <input name="newsDate" type="date" class="form-control" placeholder="Ngày viết" required>
     <br>
     <label for="newsContent">Nội dung:</label>
     <br>
-    <textarea id="editor" name="newsContent" type="text" class="form-control" placeholder="Nội dung"></textarea>
+    <textarea id="editor" name="newsContent" type="text" class="form-control" placeholder="Nội dung" required></textarea>
     <br>
     <button type="submit" class="btn btn-primary">Thêm mới</button>
 </form>

@@ -10,15 +10,15 @@
     <br>
     <label for="oldPass" class="form-label">Nhập mật khẩu cũ: </label>
     <br>
-    <input name="oldPass" type="password" class="form-control" id="oldPass" placeholder="Mật khẩu cũ">
+    <input name="oldPass" type="password" class="form-control" id="oldPass" placeholder="Mật khẩu cũ" required>
     <br>
     <label for="newPass1" class="form-label">Nhập khẩu mới:</label>
     <br>
-    <input name="newPass1" type="password" class="form-control" placeholder="Mật khẩu mới">
+    <input name="newPass1" type="password" class="form-control" placeholder="Mật khẩu mới" required>
     <br>
     <label for="newPass2" class="form-label">Nhập lại khẩu mới:</label>
     <br>
-    <input name="newPass2" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
+    <input name="newPass2" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" required>
     <br>
     <p class="error-noti">{{$error}}</p>
     <br>

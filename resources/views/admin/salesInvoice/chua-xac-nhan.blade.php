@@ -38,7 +38,7 @@
         <td>
             <a class="btn btn-primary" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id)}}" role="button">Xem chi tiết</a>
             <a class="btn btn-success" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/xacnhan')}}" role="button">Xác nhận</a>
-            <a class="btn btn-danger" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/cancel')}}" role="button">Hủy</a>
+            <!-- <a class="btn btn-danger" href="{{url('/admin/salesInvoice/'.$salesInvoice->sal_id.'/cancel')}}" role="button">Hủy</a> -->
         </td>
     </tr>
     @empty

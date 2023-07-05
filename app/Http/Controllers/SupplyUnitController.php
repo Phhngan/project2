@@ -12,18 +12,27 @@ class SupplyUnitController extends Controller
     //Hien thi toan bo
     function index()
     {
-        $supplyUnits = Supplyunit::get();
-        return view('admin/supplyUnit.index', ['supplyUnits' => $supplyUnits]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $supplyUnits = Supplyunit::get();
+            return view('admin/supplyUnit.index', ['supplyUnits' => $supplyUnits]);
+        }
     }
 
     //Tao moi
     function create()
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            return view('admin/supplyUnit.create');
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 3) {
+                return view('admin/supplyUnit.create');
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function save(Request $request)
@@ -45,14 +54,18 @@ class SupplyUnitController extends Controller
     function edit($unit_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            $supplyUnit = Supplyunit::findOrFail($unit_id);
-            if ($supplyUnit == null) {
-                return redirect()->route('error');
-            }
-            return view('admin/supplyUnit.edit', ['supplyUnit' => $supplyUnit]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 3) {
+                $supplyUnit = Supplyunit::findOrFail($unit_id);
+                if ($supplyUnit == null) {
+                    return redirect()->route('error');
+                }
+                return view('admin/supplyUnit.edit', ['supplyUnit' => $supplyUnit]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function update(Request $request, $unit_id)
@@ -69,11 +82,4 @@ class SupplyUnitController extends Controller
         );
         return redirect('admin/supplyUnit');
     }
-
-    // Xoa 1 sp theo id
-    // function delete($unit_id)
-    // {
-    //     DB::table('SupplyUnits')->where('unit_id', $unit_id)->delete();
-    //     return redirect('admin/supplyUnit');
-    // }
 }

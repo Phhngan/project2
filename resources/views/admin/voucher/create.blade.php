@@ -9,30 +9,26 @@
     <br>
     <label for="voucherName">Tên Voucher:</label>
     <br>
-    <input name="voucherName" type="text" class="form-control" placeholder="Tên Voucher">
+    <input name="voucherName" type="text" class="form-control" placeholder="Tên Voucher" required>
     <br>
-    <!-- <label for="voucherImage">Link ảnh:</label>
-    <br>
-        <input name="voucherImage" type="text" class="form-control" placeholder="Link ảnh">
-    <br> -->
     <label for="voucherImage">Ảnh voucher:</label>
     <br>
-    <input accept="image/*" type="file" id="voucherImage" name="voucherImage">
+    <input accept="image/*" type="file" id="voucherImage" name="voucherImage" required>
     <br>
     <p id="previewText" style="display: none;"><strong>Preview:</strong></p>
     <img id="imagePreview" src="#" alt="Preview Image" style="display: none;width: 200px;">
     <br>
     <label for="voucherDate">Ngày áp dụng:</label>
     <br>
-    <input name="voucherDate" type="date" class="form-control" placeholder="Ngày áp dụng">
+    <input name="voucherDate" type="date" class="form-control" placeholder="Ngày áp dụng" required>
     <br>
     <label for="voucherDiscount">Giảm giá:</label>
     <br>
-    <input name="voucherDiscount" type="number" class="form-control" placeholder="Giảm giá">
+    <input name="voucherDiscount" type="number" class="form-control" placeholder="Giảm giá" required>
     <br>
     <label for="voucherMin">Tổng tiền áp dụng:</label>
     <br>
-    <input name="voucherMin" type="number" class="form-control" placeholder="Tổng tiền áp dụng">
+    <input name="voucherMin" type="number" class="form-control" placeholder="Tổng tiền áp dụng" required>
     <br>
     <button type="submit" class="btn btn-primary">Thêm mới</button>
 </form>

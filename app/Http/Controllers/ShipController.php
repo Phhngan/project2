@@ -13,22 +13,31 @@ class ShipController extends Controller
     //Hien thi toan bo
     function index()
     {
-        $ships = Ship::get();
-        return view('admin/ship.index', ['ships' => $ships]);
+        $user = Auth::user();
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
+        } else {
+            $ships = Ship::get();
+            return view('admin/ship.index', ['ships' => $ships]);
+        }
     }
 
     //Sua
     function edit($ship_id)
     {
         $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 6) {
-            $ship = Ship::findOrFail($ship_id);
-            if ($ship == null) {
-                return redirect()->route('error');
-            }
-            return view('admin/ship.edit', ['ship' => $ship], ['ship_id' => $ship_id]);
+        if ($user == null || $user->pos_id == 1) {
+            return redirect()->to("http://127.0.0.1:8000/login");
         } else {
-            return view('error/khong-co-quyen-admin');
+            if ($user->pos_id == 2 || $user->pos_id == 6) {
+                $ship = Ship::findOrFail($ship_id);
+                if ($ship == null) {
+                    return redirect()->route('error');
+                }
+                return view('admin/ship.edit', ['ship' => $ship], ['ship_id' => $ship_id]);
+            } else {
+                return view('error/khong-co-quyen-admin');
+            }
         }
     }
     function update(Request $request, $ship_id)
