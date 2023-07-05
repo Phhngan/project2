@@ -39,7 +39,7 @@
     <br>
     <input name="productSource" type="text" class="form-control" placeholder="Nguồn gốc">
     <br>
-    <label for="productPrice">Giá bán:</label>
+    <label for="productPrice">Giá bán (VND):</label>
     <br>
     <input name="productPrice" type="number" class="form-control" placeholder="Giá sản phẩm" required>
     <br>

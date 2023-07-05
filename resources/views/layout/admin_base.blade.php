@@ -12,8 +12,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
+   let table = new DataTable('#myTable', {
+        language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/vi.json'
+        }
     });
 </script>
 @endsection

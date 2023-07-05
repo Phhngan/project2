@@ -103,7 +103,7 @@ margin: 0;
         if (count($products) != 0) {
         ?>
             <td colspan="6" style="text-align:center;">
-                <button style="margin-left:430px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+                <button style="margin-left:735px;margin-bottom:15px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
             </td>
         <?php } ?>
     </form>

@@ -39,7 +39,7 @@
         <option value="3">Đồ uống</option>
     </select>
     <br>
-    <label for="productWeigh">Khối lượng:</label>
+    <label for="productWeigh">Khối lượng (gam):</label>
     <br>
     <input value="{{ $product->prd_weigh  }}" name="productWeigh" type="text" class="form-control" placeholder="Khối lượng" required>
     <br>
@@ -47,11 +47,11 @@
     <br>
     <input value="{{ $product->prd_source  }}" name="productSource" type="text" class="form-control" placeholder="Nguồn gốc">
     <br>
-    <label for="productPrice">Giá bán:</label>
+    <label for="productPrice">Giá bán (VND):</label>
     <br>
     <input value="{{ $product->prd_price  }}" name="productPrice" type="number" class="form-control" placeholder="Giá bán" required>
     <br>
-    <label for="productDiscount">Giảm giá:</label>
+    <label for="productDiscount">Giảm giá (%):</label>
     <br>
     <input value="{{ $product->prd_discount  }}" name="productDiscount" type="text" class="form-control" placeholder="Giảm giá" required>
     <br>
