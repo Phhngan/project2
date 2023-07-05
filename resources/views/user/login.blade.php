@@ -23,11 +23,13 @@ text-shadow: 2px 2px 5px #7B89E6;
 margin: 25px 200px 0px 200px;
 }
 .btn-dangnhap{
-margin: 0px 200px 0px 200px;
 background-color: #2D1476;
 color: white;
 border-radius: 5px;
-padding: 5px 10px 5px 10px;
+padding: 5px 80px 5px 80px;
+display: flex;
+margin-left: auto;
+margin-right: auto;
 }
 .btn-dangnhap:hover {
 background-color: white;
@@ -37,9 +39,11 @@ a{
 color: black;
 }
 .form-group{
-padding: 50px;
+padding: 20px;
 }
-
+.quen-mk-btn, .dki-btn{
+margin-bottom: 5px;
+}
 @endsection
 
 @section('content')
@@ -60,12 +64,12 @@ padding: 50px;
         </div>
         <p class="error-noti">{{$error}}</p>
         <br>
-        <button type="submit" class="btn-dangnhap">Submit</button>
+        <button type="submit" class="btn-dangnhap">Đăng nhập</button>
         <div class="mb-3">
-            <a class="quen-mat-khau" href="/forgetPass"> Quên mật khẩu </a>
+            <a href="/forgetPass" role="button" class="quen-mk-btn"> Quên mật khẩu </a>
             <br>
-            <a>Chưa có tài khoản?</a>
-            <a href="/register"> Đăng kí </a>
+            <a><strong>Chưa có tài khoản?</strong></a>
+            <a href="/register" role="button" class="dki-btn"> Đăng kí </a>
         </div>
     </div>
 </form>

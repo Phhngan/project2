@@ -558,3 +558,9 @@ margin-left: 50px;
   text-overflow: ellipsis;
   height: 3em;
 }
+
+.bat-buoc{
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+}
