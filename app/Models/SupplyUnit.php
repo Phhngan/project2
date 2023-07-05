@@ -16,7 +16,8 @@ class Supplyunit extends Model
         'unit_phone',
     ];
 
-    public function importInvoice(){
+    public function importInvoice()
+    {
         return $this->hasMany(Importinvoice::class, 'unit_id', 'unit_id');
     }
 }

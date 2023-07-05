@@ -39,7 +39,7 @@ class LoginController extends Controller
             // dd("Dang nhap that bai",);
         }
 
-        // $rs = DB::table('UserInfor')->where('use_email',$use_email)->where('use_password',$use_password)->first();               
+        // $rs = DB::table('UserInfor')->where('use_email',$use_email)->where('use_password',$use_password)->first();
     }
 
     function logout(Request $request)

@@ -17,11 +17,13 @@ class Salesinvoicedetail extends Model
         'imp_price'
     ];
 
-    public function salesInvoice(){
+    public function salesInvoice()
+    {
         return $this->belongsTo(Salesinvoice::class, 'sal_id', 'sal_id');
     }
 
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class, 'prd_id', 'prd_id');
     }
 }

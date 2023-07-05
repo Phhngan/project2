@@ -4,7 +4,7 @@
 
 @section('style')
 .chua-dang-nhap{
-    height: 450px;
+height: 450px;
 }
 
 .btn-dangnhap{
@@ -24,9 +24,9 @@ color: #2D1476;
 
 @section('full-screen-content')
 <div class="chua-dang-nhap"><br>
-<h1 class="text-center"><strong>Đã xảy ra lỗi</strong></h1>
-<h3 class="text-center">Đơn hàng đã được admin xử lý!</h3><br>
-<a href="/home" class="btn-dangnhap">Quay lại trang chủ</a>
+    <h1 class="text-center"><strong>Đã xảy ra lỗi</strong></h1>
+    <h3 class="text-center">Đơn hàng đã được admin xử lý!</h3><br>
+    <a href="/home" class="btn-dangnhap">Quay lại trang chủ</a>
 </div>
 
 

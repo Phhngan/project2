@@ -88,13 +88,15 @@ class CartController extends Controller
     {
         $car_quantity = $request->get('quantities');
         $car_id = $request->get('car_ids');
-        var_dump($car_id);
-        var_dump($car_quantity);
-        dd();
-        // DB::table('Carts')->where('car_id', $car_id)
-        //     ->update([
-        //         'car_quantity' => $car_quantity,
-        //     ]);
+        // var_dump($car_id);
+        // var_dump($car_quantity);
+        dd($car_id);
+        for ($i = 0; $i < count($car_id); $i++) {
+            DB::table('Carts')->where('car_id', $car_id[$i])
+                ->update([
+                    'car_quantity' => $car_quantity[$i],
+                ]);
+        }
         return redirect('/cart');
     }
 

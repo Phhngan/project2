@@ -41,7 +41,7 @@ class SupplyUnitController extends Controller
         return redirect('admin/supplyUnit');
     }
 
-    //Sua 
+    //Sua
     function edit($unit_id)
     {
         $user = Auth::user();

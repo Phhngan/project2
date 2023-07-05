@@ -39,13 +39,13 @@ margin-left: 0px;
     <h1>Vui lòng kiểm tra gmail để lấy lại mật khẩu</h1>
 
 </div>
-    <div class="form-group register">
-        <h5 style="text-align:center;">Bạn có muốn đăng nhập tài khoản khác hay tạo tài khoản mới?</h5>
-        <div class="mb-3" style="display:flex;justify-content:center;padding: 50px;">
-            <a href="/login" role="button" class="btn btn-primary"> Đăng nhập </a>
-            <h5 style="padding-top:5px;">&nbsp;&nbsp; hay &nbsp;&nbsp; </h5>
-            <a href="/register" role="button" class="btn btn-warning"> Đăng ký </a>
-        </div>
+<div class="form-group register">
+    <h5 style="text-align:center;">Bạn có muốn đăng nhập tài khoản khác hay tạo tài khoản mới?</h5>
+    <div class="mb-3" style="display:flex;justify-content:center;padding: 50px;">
+        <a href="/login" role="button" class="btn btn-primary"> Đăng nhập </a>
+        <h5 style="padding-top:5px;">&nbsp;&nbsp; hay &nbsp;&nbsp; </h5>
+        <a href="/register" role="button" class="btn btn-warning"> Đăng ký </a>
     </div>
+</div>
 
 @endsection

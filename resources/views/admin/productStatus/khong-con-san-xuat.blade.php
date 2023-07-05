@@ -7,11 +7,11 @@
 <br>
 <table class="table" id="myTable">
     <thead>
-    <tr>
-        <th>Mã sản phẩm</th>
-        <th>Sản phẩm</th>
-        <th>Số lượng còn lại</th>
-    </tr>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Sản phẩm</th>
+            <th>Số lượng còn lại</th>
+        </tr>
     </thead>
     @forelse($products as $product)
     <tr>
@@ -26,16 +26,17 @@
         <td>
             <p>
                 <?php
-                    $quantity = App\Models\Importinvoicedetail::
-                        where('prd_id', $product->prd_id)
-                        ->sum('ImportInvoiceDetails.imp_quantity_left');
-                    echo $quantity;
+                $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
+                    ->sum('ImportInvoiceDetails.imp_quantity_left');
+                echo $quantity;
                 ?>
             </p>
     </tr>
     @empty
     <tr>
-        <td>Danh sách rỗng</td><td></td><td></td>
+        <td>Danh sách rỗng</td>
+        <td></td>
+        <td></td>
     </tr>
     @endforelse
 </table>

@@ -217,14 +217,14 @@ margin-right: auto;
     <div class="cf-title" style="padding-top:25px">
         <h3>Chính sách mua hàng</h3>
     </div>
-            <a href="/chinh-sach">
-                <img src="https://github.com/Phhngan/snack_images/blob/master/trang-tin-tuc/policy.png?raw=true" style="height:250px">
-            </a>
-            <div class="post-text">
-                <a href="/chinh-sach" style="color: white;text-decoration: none">Xem thêm </a>
-            </div>
-            <br>
-            <p style="font-size:15px; margin-left: 0px; opacity: 0.8;">Các Chính Sách,Quy Định Chung Khi Mua Hàng và cách sử dụng xu</p>
+    <a href="/chinh-sach">
+        <img src="https://github.com/Phhngan/snack_images/blob/master/trang-tin-tuc/policy.png?raw=true" style="height:250px">
+    </a>
+    <div class="post-text">
+        <a href="/chinh-sach" style="color: white;text-decoration: none">Xem thêm </a>
+    </div>
+    <br>
+    <p style="font-size:15px; margin-left: 0px; opacity: 0.8;">Các Chính Sách,Quy Định Chung Khi Mua Hàng và cách sử dụng xu</p>
 </div>
 
 @endsection

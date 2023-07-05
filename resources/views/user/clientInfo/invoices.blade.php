@@ -123,17 +123,17 @@ background-color: #ddd;
                 <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
 
                 <a class="btn btn-danger" onclick="cancelOrder()" role="button">Hủy đơn</a>
-            <div id="cancelPopup" class="popup-container">
-            <div class="popup-content">
-                <p><strong>Bạn có muốn hủy đơn hàng?</strong></p>
-                <div class="popup-buttons">
-                <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
-                <form action="{{ url('/client/invoices/'.$invoice->sal_id.'/cancel') }}" method="put">
-                <button class="popup-button" style="color:white;background-color:red">Hủy đơn</button>
-                </form>
+                <div id="cancelPopup" class="popup-container">
+                    <div class="popup-content">
+                        <p><strong>Bạn có muốn hủy đơn hàng?</strong></p>
+                        <div class="popup-buttons">
+                            <button class="popup-button" onClick="closePopup()" style="background-color:#F4CCCD;">Cancel</button>
+                            <form action="{{ url('/client/invoices/'.$invoice->sal_id.'/cancel') }}" method="put">
+                                <button class="popup-button" style="color:white;background-color:red">Hủy đơn</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
             <?php } ?>
 
             <?php
@@ -180,21 +180,21 @@ background-color: #ddd;
 @section('js')
 @parent
 <script>
-function cancelOrder() {
-  var confirmationPopup = document.getElementById("cancelPopup");
-  confirmationPopup.style.display = "block";
-}
+    function cancelOrder() {
+        var confirmationPopup = document.getElementById("cancelPopup");
+        confirmationPopup.style.display = "block";
+    }
 
-function closePopup() {
-  var confirmationPopup = document.getElementById("cancelPopup");
-  confirmationPopup.style.display = "none";
-}
+    function closePopup() {
+        var confirmationPopup = document.getElementById("cancelPopup");
+        confirmationPopup.style.display = "none";
+    }
 
-var cancel = document.getElementById('cancelPopup');
-window.onclick = function(event) {
-  if (event.target == cancel) {
-    cancel.style.display = "none";
-  }
-}
+    var cancel = document.getElementById('cancelPopup');
+    window.onclick = function(event) {
+        if (event.target == cancel) {
+            cancel.style.display = "none";
+        }
+    }
 </script>
 @endsection

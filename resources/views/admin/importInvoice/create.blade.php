@@ -116,6 +116,10 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         price.className = "form-control";
         expiryDate.className = "form-control";
 
+        quantity.placeholder = "Số lượng";
+        price.placeholder = "Giá sản phẩm";
+        expiryDate.placeholder = "Ngày hết hạn";
+
         productName.innerHTML = `
             <option value="" selected="selected">----Chọn tên sản phẩm----</option>
             @foreach($products as $product)

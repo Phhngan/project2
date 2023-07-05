@@ -16,15 +16,18 @@ class Importinvoice extends Model
         'imp_total',
     ];
 
-    public function supplyUnit(){
+    public function supplyUnit()
+    {
         return $this->belongsTo(Supplyunit::class, 'unit_id', 'unit_id');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'use_id', 'id');
     }
 
-    public function importInvoiceDetail(){
+    public function importInvoiceDetail()
+    {
         return $this->hasMany(Importinvoicedetail::class, 'imp_id', 'imp_id');
     }
 }

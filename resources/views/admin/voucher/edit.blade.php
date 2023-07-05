@@ -14,7 +14,7 @@
     <br>
     <label for="voucherImage">Ảnh voucher:</label>
     <br>
-    <img  id="imagePreview" src="/storage/{{substr($voucher->vou_image, 7)}}" width="200px">
+    <img id="imagePreview" src="/storage/{{substr($voucher->vou_image, 7)}}" width="200px">
     <input accept="image/*" type="file" name="voucherImage" onchange="previewImage(event)">
     <br><br>
     <label for="voucherDate">Ngày áp dụng:</label>
@@ -46,15 +46,15 @@
         });
 </script>
 <script>
-  function previewImage(event) {
-    var input = event.target;
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        document.getElementById("imagePreview").src = e.target.result;
-      };
-      reader.readAsDataURL(input.files[0]);
+    function previewImage(event) {
+        var input = event.target;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("imagePreview").src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-  }
 </script>
 @endsection

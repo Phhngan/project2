@@ -49,23 +49,21 @@
 @section('js')
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
 <script>
-$(document).ready(function() {
-  $('#myTable').DataTable({
-    columnDefs: [
-      {
-        targets: 0,
-        render: function(data, type, row, meta) {
-            if (type === 'sort') {
-                return parseInt(data.replace('SP', ''));
-            }
-            return data;
-        }
-      }
-    ],
-    ordering: true,
-    searching: true,
-    paging: true
-  });
-});
+    $(document).ready(function() {
+        $('#myTable').DataTable({
+            columnDefs: [{
+                targets: 0,
+                render: function(data, type, row, meta) {
+                    if (type === 'sort') {
+                        return parseInt(data.replace('SP', ''));
+                    }
+                    return data;
+                }
+            }],
+            ordering: true,
+            searching: true,
+            paging: true
+        });
+    });
 </script>
 @endsection

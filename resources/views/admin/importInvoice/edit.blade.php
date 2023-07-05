@@ -140,40 +140,45 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         var c5 = r.insertCell(4);
 
         var checkbox = document.createElement("input");
-        var maSP = document.createElement("input");
+        var productName = document.createElement("select");
         var quantity = document.createElement("input");
         var price = document.createElement("input");
-        var hsd = document.createElement("input");
+        var expiryDate = document.createElement("input");
 
         checkbox.type = "checkbox";
-        maSP.type = "text";
         quantity.type = "number";
         price.type = "number";
-        hsd.type = "date";
+        expiryDate.type = "date";
 
-        maSP.class = "form-control";
-        quantity.class = "form-control";
-        price.class = "form-control";
-        hsd.class = "form-control";
+        productName.className = "form-control";
+        quantity.className = "form-control";
+        price.className = "form-control";
+        expiryDate.className = "form-control";
 
-        maSP.placeholder = "Mã sản phẩm";
         quantity.placeholder = "Số lượng";
         price.placeholder = "Giá sản phẩm";
-        hsd.placeholder = "Ngày hết hạn";
+        expiryDate.placeholder = "Ngày hết hạn";
 
-        r.className = "new-row"; // Add a CSS class to the row
+        productName.innerHTML = `
+            <option value="" selected="selected">----Chọn tên sản phẩm----</option>
+            @foreach($products as $product)
+            <option value="{{ $product->prd_name }}">{{ $product->prd_name }}</option>
+            @endforeach
+        `;
+
+        r.className = "new-row";
         c1.style.textAlign = "center";
 
-        maSP.name = "productId[]";
+        productName.name = "productName[]";
         quantity.name = "quantity[]";
         price.name = "price[]";
-        hsd.name = "expiryDate[]";
+        expiryDate.name = "expiryDate[]";
 
         c1.appendChild(checkbox);
-        c2.appendChild(maSP);
+        c2.appendChild(productName);
         c3.appendChild(quantity);
         c4.appendChild(price);
-        c5.appendChild(hsd);
+        c5.appendChild(expiryDate);
     }
 
     function del() {
