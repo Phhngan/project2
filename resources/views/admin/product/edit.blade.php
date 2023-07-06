@@ -19,7 +19,7 @@
     <label for="image">Ảnh sản phẩm:</label>
     <br>
     <img id="imagePreview" src="/storage/{{substr($product->prd_image, 7)}}" width="200px">
-    <input accept="image/*" type="file" name="image" onchange="previewImage(event)" required>
+    <input accept="image/*" type="file" name="image" onchange="previewImage(event)" value="{{$product->prd_image}}">
     <br><br>
     <label for="productType">Loại sản phẩm:</label>
     <br>

@@ -59,7 +59,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
                 <select class="form-control" id="" name="productId[]" required>
                     <option value="" selected="selected">----Chọn tên sản phẩm----</option>
                     @foreach($products as $product)
-                    <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
+                    <option value="{{ $product->prd_id }}">({{$product->prd_code}}) {{$product->prd_name}}</option>
                     @endforeach
             </td>
             <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" required></td>
@@ -123,7 +123,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         productName.innerHTML = `
             <option value="" selected="selected">----Chọn tên sản phẩm----</option>
             @foreach($products as $product)
-            <option value="{{ $product->prd_name }}">{{ $product->prd_name }}</option>
+            <option value="{{ $product->prd_id }}">({{$product->prd_code}}) {{ $product->prd_name }}</option>
             @endforeach
         `;
 

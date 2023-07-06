@@ -76,9 +76,9 @@ $products = Illuminate\Support\Facades\DB::table('Products')
                     $productPre = App\Models\Product::findOrFail($prdID[$i]);
                     ?>
                     <select class="form-control" id="" name="productId[]" required>
-                        <option value="{{$prdID[$i]}}" selected="selected">----{{$productPre->prd_name}}----</option>
+                        <option value="{{$prdID[$i]}}" selected="selected">----({{$productPre->prd_code}}) {{$productPre->prd_name}}----</option>
                         @foreach($products as $product)
-                        <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
+                        <option value="{{ $product->prd_id }}">({{$product->prd_code}}) {{ $product->prd_name}}</option>
                         @endforeach
                 </td>
                 <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}" required></td>
@@ -91,15 +91,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
     <input type="button" class="btn btn-success" value="Thêm sản phẩm" onclick="row()">
     <input type="button" class="btn btn-danger" value="Xóa" onclick="del()">
     <br><br>
-    <button type="submit" class="btn btn-primary" onclick="processForm()">Thêm mới</button>
-</form>
-
-<!-- <label for="importTotal">Tổng giá trị đơn nhập:</label>
-        <br>
-        <input value="{{$importInvoice->imp_total}}" name="importTotal" type="number" class="form-control" placeholder="Tổng tiền nhập">
-        <br> -->
-<br>
-<button type="submit" class="btn btn-primary">Cập nhật</button>
+    <button type="submit" class="btn btn-primary" onclick="processForm()">Cập nhật</button>
 </form>
 @endforeach
 @endsection
@@ -162,7 +154,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         productName.innerHTML = `
             <option value="" selected="selected">----Chọn tên sản phẩm----</option>
             @foreach($products as $product)
-            <option value="{{ $product->prd_name }}">{{ $product->prd_name }}</option>
+            <option value="{{ $product->prd_id }}">({{$product->prd_code}}) {{ $product->prd_name }}</option>
             @endforeach
         `;
 

@@ -18,7 +18,10 @@ class ProductController extends Controller
             return redirect()->to("http://127.0.0.1:8000/login");
         } else {
             $products = DB::table('Products')
+                ->join('ImportInvoiceDetails', 'Products.prd_id', '=', 'ImportInvoiceDetails.prd_id')
                 ->select('Products.*')
+                ->distinct()
+                ->where('ImportInvoiceDetails.prd_status_id', '<', 5)
                 ->orderByDesc('prd_id')
                 ->get();
             return view('admin/product.index', ['products' => $products]);
@@ -106,13 +109,23 @@ class ProductController extends Controller
         $prd_price = $request->get('productPrice');
         $prd_discount = $request->get('productDiscount');
         $prd_description = $request->get('productDescription');
-        $prd_image = $request->file('image')->store('public');
+        $image = $request->file('image');
+        // dd($prd_image);
+        if ($image != null) {
+            $prd_image = $request->file('image')->store('public');
+            DB::table('Products')->where('prd_id', $prd_id)
+                ->update([
+                    'prd_code' => $prd_code, 'prd_name' => $prd_name, 'prd_type_id' => $prd_type_id, 'prd_weigh' => $prd_weigh, 'prd_source' => $prd_source,
+                    'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description, 'prd_image' => $prd_image
+                ]);
+        } else {
+            DB::table('Products')->where('prd_id', $prd_id)
+                ->update([
+                    'prd_code' => $prd_code, 'prd_name' => $prd_name, 'prd_type_id' => $prd_type_id, 'prd_weigh' => $prd_weigh, 'prd_source' => $prd_source,
+                    'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description
+                ]);
+        }
 
-        DB::table('Products')->where('prd_id', $prd_id)
-            ->update([
-                'prd_code' => $prd_code, 'prd_name' => $prd_name, 'prd_type_id' => $prd_type_id, 'prd_weigh' => $prd_weigh, 'prd_source' => $prd_source,
-                'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description, 'prd_image' => $prd_image
-            ]);
         return redirect('admin/products');
     }
 }

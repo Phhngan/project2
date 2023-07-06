@@ -38,13 +38,29 @@
         <td>
             <p>{{$product->imp_expiryDate}}</p>
         </td>
-        <td>
-            <a class="btn btn-warning" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
-        </td>
+        <?php
+        $productRemains = Illuminate\Support\Facades\DB::table('ImportInvoiceDetails')
+            ->distinct()
+            ->select('ImportInvoiceDetails.prd_id')
+            ->where('prd_id', $product->prd_id)
+            ->where('prd_status_id', '<', 3)
+            ->get();
+        if (count($productRemains) == 0) {
+        ?>
+            <td>
+                <a class="btn btn-warning" href="{{url('/admin/productStatus/'.$product->prd_id.'/chuyen')}}" role="button">Không còn sản xuất</a>
+            </td>
+        <?php } else { ?>
+            <td></td>
+        <?php } ?>
     </tr>
     @empty
     <tr>
-        <td>Danh sách rỗng</td><td></td><td></td><td></td><td></td>
+        <td>Danh sách rỗng</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
     @endforelse
 </table>
