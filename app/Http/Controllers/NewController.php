@@ -99,7 +99,7 @@ class NewController extends Controller
                     'new_title' => $newsName, 'new_day' => $newsDate, 'new_content' => $newsDescription,
                 ]);
         }
-        return redirect('admin/voucher');
+        return redirect('admin/news');
     }
 
     function newsMain()
