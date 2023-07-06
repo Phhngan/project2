@@ -46,15 +46,22 @@ class VoucherController extends Controller
     function update(Request $request, $vou_id)
     {
         $voucherName = $request->get('voucherName');
-        $voucherImage = $request->file('voucherImage')->store('public');
         $voucherDate = $request->get('voucherDate');
         $voucherDiscount = $request->get('voucherDiscount');
         $voucherMin = $request->get('voucherMin');
-
-        DB::table('Vouchers')->where('vou_id', $vou_id)
-            ->update([
-                'vou_title' => $voucherName, 'vou_image' => $voucherImage, 'vou_day' => $voucherDate, 'vou_discount' => $voucherDiscount, 'vou_min' => $voucherMin,
-            ]);
+        $image = $request->file('voucherImage');
+        if ($image != null) {
+            $voucherImage = $request->file('voucherImage')->store('public');
+            DB::table('Vouchers')->where('vou_id', $vou_id)
+                ->update([
+                    'vou_title' => $voucherName, 'vou_image' => $voucherImage, 'vou_day' => $voucherDate, 'vou_discount' => $voucherDiscount, 'vou_min' => $voucherMin,
+                ]);
+        } else {
+            DB::table('Vouchers')->where('vou_id', $vou_id)
+                ->update([
+                    'vou_title' => $voucherName, 'vou_day' => $voucherDate, 'vou_discount' => $voucherDiscount, 'vou_min' => $voucherMin,
+                ]);
+        }
         return redirect('admin/voucher');
     }
 

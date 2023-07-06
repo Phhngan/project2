@@ -15,7 +15,7 @@
     <label for="newsImage">Ảnh bài viết:</label>
     <br>
     <img id="imagePreview" src="/storage/{{substr($new->new_image, 7)}}" width="200px">
-    <input accept="image/*" type="file" name="newsImage" onchange="previewImage(event)" required>
+    <input accept="image/*" type="file" name="newsImage" onchange="previewImage(event)">
     <br><br>
     <label for="newsDate">Ngày viết:</label>
     <br>

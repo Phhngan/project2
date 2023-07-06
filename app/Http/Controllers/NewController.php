@@ -84,14 +84,21 @@ class NewController extends Controller
     function update(Request $request, $new_id)
     {
         $newsName = $request->get('newsName');
-        $newsImage = $request->file('newsImage')->store('public');
         $newsDate = $request->get('newsDate');
         $newsDescription = $request->get('newsDescription');
-
-        DB::table('News')->where('new_id', $new_id)
-            ->update([
-                'new_title' => $newsName, 'new_image' => $newsImage, 'new_day' => $newsDate, 'new_content' => $newsDescription,
-            ]);
+        $image = $request->file('newsImage');
+        if ($image != null) {
+            $newsImage = $request->file('newsImage')->store('public');
+            DB::table('News')->where('new_id', $new_id)
+                ->update([
+                    'new_title' => $newsName, 'new_image' => $newsImage, 'new_day' => $newsDate, 'new_content' => $newsDescription,
+                ]);
+        } else {
+            DB::table('News')->where('new_id', $new_id)
+                ->update([
+                    'new_title' => $newsName, 'new_day' => $newsDate, 'new_content' => $newsDescription,
+                ]);
+        }
         return redirect('admin/voucher');
     }
 

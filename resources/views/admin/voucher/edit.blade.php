@@ -15,7 +15,7 @@
     <label for="voucherImage">Ảnh voucher:</label>
     <br>
     <img id="imagePreview" src="/storage/{{substr($voucher->vou_image, 7)}}" width="200px">
-    <input accept="image/*" type="file" name="voucherImage" onchange="previewImage(event)" required>
+    <input accept="image/*" type="file" name="voucherImage" onchange="previewImage(event)">
     <br><br>
     <label for="voucherDate">Ngày áp dụng:</label>
     <br>

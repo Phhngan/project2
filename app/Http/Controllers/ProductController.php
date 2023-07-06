@@ -110,7 +110,6 @@ class ProductController extends Controller
         $prd_discount = $request->get('productDiscount');
         $prd_description = $request->get('productDescription');
         $image = $request->file('image');
-        // dd($prd_image);
         if ($image != null) {
             $prd_image = $request->file('image')->store('public');
             DB::table('Products')->where('prd_id', $prd_id)
@@ -125,7 +124,6 @@ class ProductController extends Controller
                     'prd_price' => $prd_price, 'prd_discount' => $prd_discount, 'prd_description' => $prd_description
                 ]);
         }
-
         return redirect('admin/products');
     }
 }
