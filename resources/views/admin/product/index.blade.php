@@ -9,13 +9,13 @@
 <table class="table" id="myTable">
     <thead>
         <tr>
-            <th>Mã sản phẩm</th>
-            <th>Sản phẩm</th>
-            <th>Ảnh sản phẩm</th>
-            <th>Loại sản phẩm</th>
+            <th data-orderable="false">Mã sản phẩm</th>
+            <th data-orderable="false">Sản phẩm</th>
+            <th data-orderable="false">Ảnh sản phẩm</th>
+            <th data-orderable="false">Loại sản phẩm</th>
             <th>Số lượng</th>
-            <th>Giá bán</th>
-            <th>Hành động</th>
+            <th data-orderable="false">Giá bán</th>
+            <th data-orderable="false">Hành động</th>
         </tr>
     </thead>
     @forelse($products as $product)
@@ -63,7 +63,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Chưa có sản phẩm nào</td>
+        <td colspan="7">Chưa có sản phẩm nào</td>
     </tr>
     @endforelse
 </table>
@@ -82,7 +82,6 @@
                     return data;
                 }
             }],
-            ordering: true,
             searching: true,
             paging: true,
             language: {

@@ -1,18 +1,17 @@
 @extends('layout.admin_base')
 
-@section('title','Loại sản phẩm')
+@section('title','Sản phẩm đã bán hết')
 
 @section('content')
-{{-- Do du lieu      --}}
 <br>
 <table class="table" id="myTable">
     <thead>
         <tr>
-            <th>Mã sản phẩm</th>
-            <th>Sản phẩm</th>
+            <th data-orderable="false">Mã sản phẩm</th>
+            <th data-orderable="false">Sản phẩm</th>
             <th>Số lượng còn lại</th>
-            <th>Hạn sử dụng</th>
-            <th>Hành động</th>
+            <th data-orderable="false">Hạn sử dụng</th>
+            <th data-orderable="false">Hành động</th>
         </tr>
     </thead>
     @forelse($products as $product)

@@ -11,10 +11,10 @@
         <tr>
             <th>Mã hóa đơn</th>
             <th>Đơn vị cung cấp</th>
-            <th>Tổng tiền nhập</th>
-            <th>Ngày nhập</th>
-            <th>Nhân viên nhập hàng</th>
-            <th>Hành động</th>
+            <th data-orderable="false">Tổng tiền nhập</th>
+            <th data-orderable="false">Ngày nhập</th>
+            <th data-orderable="false">Nhân viên nhập hàng</th>
+            <th data-orderable="false">Hành động</th>
         </tr>
     </thead>
     @forelse($importInvoices as $importInvoice)
@@ -42,7 +42,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sach rong</td>
+        <td colspan="6">Danh sach rong</td>
     </tr>
     @endforelse
 </table>

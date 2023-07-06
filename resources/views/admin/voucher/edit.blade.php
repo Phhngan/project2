@@ -21,11 +21,11 @@
     <br>
     <input value="{{$voucher->vou_day}}" name="voucherDate" type="date" class="form-control" placeholder="Ngày áp dụng" required>
     <br>
-    <label for="voucherDiscount">Giảm giá:</label>
+    <label for="voucherDiscount">Giảm giá (VND):</label>
     <br>
     <input value="{{$voucher->vou_discount}}" name="voucherDiscount" type="number" class="form-control" placeholder="Giảm giá" required>
     <br>
-    <label for="voucherMin">Tổng tiền áp dụng:</label>
+    <label for="voucherMin">Tổng tiền áp dụng (VND):</label>
     <br>
     <input value="{{$voucher->vou_min}}" name="voucherMin" type="number" class="form-control" placeholder="Tổng tiền áp dụng" required>
     <br>

@@ -1,15 +1,14 @@
 @extends('layout.admin_base')
 
-@section('title','Loại sản phẩm')
+@section('title','Sản phẩm không còn sản xuất')
 
 @section('content')
-{{-- Do du lieu --}}
 <br>
 <table class="table" id="myTable">
     <thead>
         <tr>
-            <th>Mã sản phẩm</th>
-            <th>Sản phẩm</th>
+            <th data-orderable="false">Mã sản phẩm</th>
+            <th data-orderable="false">Sản phẩm</th>
             <th>Số lượng còn lại</th>
         </tr>
     </thead>

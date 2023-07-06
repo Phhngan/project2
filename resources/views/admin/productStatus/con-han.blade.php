@@ -1,18 +1,17 @@
 @extends('layout.admin_base')
 
-@section('title','Loại sản phẩm')
+@section('title','Sản phẩm còn hạn')
 
 @section('content')
-{{-- Do du lieu      --}}
 <br><a class="btn btn-primary" href="{{url('admin/productStatus/update')}}" role="button" method="put">Cập nhật</a>
 <br><br>
 <table class="table" id="myTable">
     <thead>
         <tr>
-            <th>Mã sản phẩm</th>
-            <th>Sản phẩm</th>
+            <th data-orderable="false">Mã sản phẩm</th>
+            <th data-orderable="false">Sản phẩm</th>
             <th>Số lượng còn lại</th>
-            <th>Hạn sử dụng</th>
+            <th data-orderable="false">Hạn sử dụng</th>
     </thead>
     </tr>
     @forelse($products as $product)
@@ -41,7 +40,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sách rỗng</td>
+        <td>Danh sách rỗng</td><td></td><td></td><td></td>
     </tr>
     @endforelse
 </table>

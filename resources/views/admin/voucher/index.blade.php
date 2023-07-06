@@ -10,12 +10,12 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Tên mã giảm giá</th>
-            <th>Ảnh</th>
-            <th>Ngày áp dụng</th>
-            <th>Giảm giá</th>
-            <th>Tổng tiền áp dụng</th>
-            <th>Hành động</th>
+            <th data-orderable="false">Tên mã giảm giá</th>
+            <th data-orderable="false">Ảnh</th>
+            <th data-orderable="false">Ngày áp dụng</th>
+            <th data-orderable="false">Giảm giá (VND)</th>
+            <th data-orderable="false">Tổng tiền áp dụng</th>
+            <th data-orderable="false">Hành động</th>
         </tr>
     </thead>
     @forelse($vouchers as $voucher)

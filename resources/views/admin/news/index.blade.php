@@ -10,10 +10,10 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Tên bài viết</th>
-            <th>Ảnh</th>
-            <th>Ngày viết</th>
-            <th>Hành động</th>
+            <th data-orderable="false">Tên bài viết</th>
+            <th data-orderable="false">Ảnh</th>
+            <th data-orderable="false">Ngày viết</th>
+            <th data-orderable="false">Hành động</th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +33,7 @@
             </td>
             <td>
                 <a class="btn btn-primary" href="{{url('admin/news/'.$new->new_id.'/edit')}}" role="button">Sửa</a>
-                <a class="btn btn-outline-secondary" href="{{url('admin/news/'.$new->new_id)}}" role="button">Xem chi tiết</a>
+                <a class="btn btn-outline-success" href="{{url('admin/news/'.$new->new_id)}}" role="button">Xem chi tiết</a>
             </td>
         </tr>
         @empty

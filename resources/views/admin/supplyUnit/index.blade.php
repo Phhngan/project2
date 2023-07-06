@@ -6,15 +6,17 @@
 <br>
 <a class="btn btn-primary" href="{{url('/admin/supplyUnit/create')}}" role="button">+ Thêm đơn vị cung cấp</a>
 <br><br>
-<table class="table">
+<table class="table" id="myTable">
+    <thead>
     <tr>
         <th> ID
         <th>Mã đơn vị</th>
-        <th>Tên đơn vị</th>
-        <th>Email</th>
-        <th>Số điện thoại</th>
-        <th>Hành động</th>
+        <th data-orderable="false">Tên đơn vị</th>
+        <th data-orderable="false">Email</th>
+        <th data-orderable="false">Số điện thoại</th>
+        <th data-orderable="false">Hành động</th>
     </tr>
+    </thead>
     @forelse($supplyUnits as $supplyUnit)
     <tr>
         <td>
@@ -46,7 +48,7 @@
     </tr>
     @empty
     <tr>
-        <td colspan="3">Danh sach rong</td>
+        <td colspan="6">Danh sách rỗng</td>
     </tr>
     @endforelse
 </table>

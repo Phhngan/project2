@@ -5,8 +5,6 @@
 @section('content')
 <br>
 <h3>Hóa đơn số: {{$importInvoice->imp_id}}</h3>
-<!-- <br>
-<a class="btn btn-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/create')}}" role="button">+ Thêm sản phẩm</a> -->
 <br><br>
 <table class="table">
     <tr>
@@ -15,7 +13,6 @@
         <th>Số lượng</th>
         <th>Giá tiền</th>
         <th>Hạn sử dụng</th>
-        <!-- <th>Hành động</th> -->
     </tr>
     @forelse($importInvoiceDetails as $importInvoiceDetail)
     <tr>

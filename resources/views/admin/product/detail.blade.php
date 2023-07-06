@@ -12,9 +12,9 @@
 <table class="table">
 
     <tr>
-        <th>Hình ảnh sản phẩm:</th>
+        <th width="200px">Hình ảnh sản phẩm:</th>
         <td>
-            <img src="/storage/{{substr($product->prd_image, 7)}}" width="300px" alt="">
+            <img src="/storage/{{substr($product->prd_image, 7)}}" width="300px" style="display:flex;margin-left:auto;margin-right:auto;">
         </td>
     </tr>
     <tr>

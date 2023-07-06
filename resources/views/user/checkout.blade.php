@@ -29,7 +29,12 @@ height:80px;
 border-radius:5px;
 padding: 20px;
 }
-
+input[type="checkbox"].selected {
+  /* Định dạng CSS cho checkbox đã chọn */
+  /* Ví dụ: */
+  border: 2px solid blue;
+  background-color: lightblue;
+}
 @endsection
 
 @section('content')
@@ -342,19 +347,39 @@ padding: 20px;
 @section('js')
 @parent
 <script>
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+ const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const selectedVoucherKey = 'selectedVoucher';
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            // Uncheck all checkboxes
-            checkboxes.forEach(cb => {
-                cb.checked = false;
-            });
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    const isChecked = checkbox.checked;
 
-            // Check the clicked checkbox
-            checkbox.checked = true;
-        });
+    // Uncheck all checkboxes
+    checkboxes.forEach(cb => {
+      cb.checked = false;
+      cb.classList.remove('selected');
     });
+
+    if (isChecked) {
+      checkbox.checked = true;
+      checkbox.classList.add('selected');
+    }
+
+    // Save the selected voucher ID to Local Storage
+    const selectedVoucherId = isChecked ? checkbox.value : '';
+    localStorage.setItem(selectedVoucherKey, selectedVoucherId);
+  });
+});
+
+// Check if there is a selected voucher in Local Storage and mark the checkbox as checked
+const selectedVoucherId = localStorage.getItem(selectedVoucherKey);
+if (selectedVoucherId) {
+  const selectedCheckbox = document.querySelector(`input[value="${selectedVoucherId}"]`);
+  if (selectedCheckbox) {
+    selectedCheckbox.checked = true;
+    selectedCheckbox.classList.add('selected');
+  }
+}
 </script>
 <script>
     function validateGold() {
@@ -363,10 +388,10 @@ padding: 20px;
 
         if (goldValue % 100 !== 0) {
             alert("Số xu sử dụng phải chia hết cho 100.");
-            return false; // Prevent form submission
+            return false; 
         }
 
-        return true; // Allow form submission
+        return true;
     }
 </script>
 @endsection
