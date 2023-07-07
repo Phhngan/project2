@@ -60,7 +60,7 @@
             </p>
         </td>
         <td>
-            <a class="btn btn-outline-primary" href="{{url('/admin/employee/'.$user->id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-primary" href="{{url('/admin/employee/'.$user->id.'/edit')}}" role="button">Sửa</a>
         </td>
     </tr>
     @empty

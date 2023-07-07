@@ -37,7 +37,7 @@
             <p>{{$ship->ship_time}} ngày</p>
         </td>
         <td>
-            <a class="btn btn-outline-primary" href="{{url('/admin/ship/'.$ship->ship_id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-primary" href="{{url('/admin/ship/'.$ship->ship_id.'/edit')}}" role="button">Sửa</a>
         </td>
     </tr>
     @empty

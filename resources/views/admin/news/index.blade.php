@@ -33,7 +33,7 @@
             </td>
             <td>
                 <a class="btn btn-primary" href="{{url('admin/news/'.$new->new_id.'/edit')}}" role="button">Sửa</a>
-                <a class="btn btn-outline-success" href="{{url('admin/news/'.$new->new_id)}}" role="button">Xem chi tiết</a>
+                <a class="btn btn-outline-primary" href="{{url('admin/news/'.$new->new_id)}}" role="button">Xem chi tiết</a>
             </td>
         </tr>
         @empty

@@ -8,14 +8,14 @@
 <br><br>
 <table class="table" id="myTable">
     <thead>
-    <tr>
-        <th> ID
-        <th>Mã đơn vị</th>
-        <th data-orderable="false">Tên đơn vị</th>
-        <th data-orderable="false">Email</th>
-        <th data-orderable="false">Số điện thoại</th>
-        <th data-orderable="false">Hành động</th>
-    </tr>
+        <tr>
+            <th> ID
+            <th>Mã đơn vị</th>
+            <th data-orderable="false">Tên đơn vị</th>
+            <th data-orderable="false">Email</th>
+            <th data-orderable="false">Số điện thoại</th>
+            <th data-orderable="false">Hành động</th>
+        </tr>
     </thead>
     @forelse($supplyUnits as $supplyUnit)
     <tr>
@@ -37,7 +37,7 @@
         </td>
 
         <td>
-            <a class="btn btn-outline-primary" href="{{url('/admin/supplyUnit/'.$supplyUnit->unit_id.'/edit')}}" role="button">Sửa</a>
+            <a class="btn btn-primary" href="{{url('/admin/supplyUnit/'.$supplyUnit->unit_id.'/edit')}}" role="button">Sửa</a>
             <br>
             <!-- <form method="POST" action="{{url('admin/supplyUnit/'.$supplyUnit->unit_id.'/delete')}}">
                 @csrf

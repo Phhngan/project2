@@ -28,7 +28,7 @@
     <br>
     <label for="newsContent">Nội dung:</label>
     <br>
-    <textarea id="editor" name="newsContent" type="text" class="form-control" placeholder="Nội dung" required></textarea>
+    <textarea id="editor" name="newsContent" type="text" class="form-control" placeholder="Nội dung"></textarea>
     <br>
     <button type="submit" class="btn btn-primary">Thêm mới</button>
 </form>

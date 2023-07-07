@@ -57,7 +57,7 @@
         </td>
         <td>
             <a class="btn btn-primary" href="{{url('/admin/products/'.$product->prd_id.'/edit')}}" role="button">Sửa</a>
-            <a class="btn btn-outline-success" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
+            <a class="btn btn-outline-primary" href="{{url('/admin/products/'.$product->prd_id)}}" role="button">Xem chi tiết</a>
             <br>
         </td>
     </tr>
@@ -85,8 +85,8 @@
             searching: true,
             paging: true,
             language: {
-        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/vi.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/vi.json'
+            }
         });
     });
 </script>
