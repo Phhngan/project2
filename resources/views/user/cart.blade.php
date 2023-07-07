@@ -91,7 +91,7 @@ margin: 0;
                         @method('delete')
                         <button type="submit" class="btn btn-danger">Xóa</button>
                     </form> -->
-                    <a class="btn-add-to-cart" href="/cart/{{$product->car_id}}/delete" role="button" onClick="deleteProduct()">Xóa</a>
+                    <a class="btn btn-danger" href="/cart/{{$product->car_id}}/delete" role="button" onClick="deleteProduct()">Xóa</a>
                 </td>
             </tr>
             @empty
@@ -104,7 +104,7 @@ margin: 0;
         if (count($products) != 0) {
         ?>
             <td colspan="6" style="text-align:center;">
-                <button style="margin-left:735px;margin-bottom:15px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+                <button style="margin-left:780px;margin-bottom:15px;" type="submit" class="btn btn-primary">Cập nhật số lượng</button>
             </td>
         <?php } ?>
     </form>

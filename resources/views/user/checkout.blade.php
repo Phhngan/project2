@@ -29,12 +29,7 @@ height:80px;
 border-radius:5px;
 padding: 20px;
 }
-input[type="checkbox"].selected {
-/* Định dạng CSS cho checkbox đã chọn */
-/* Ví dụ: */
-border: 2px solid blue;
-background-color: lightblue;
-}
+
 @endsection
 
 @section('content')
@@ -76,7 +71,7 @@ background-color: lightblue;
 
 <div class="row">
     <div class="col">
-        <div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:auto">
+        <div class="card mb-4" id="card-client" style="background-color:#EBECFE;height:280px;">
             <div class="card-body">
                 @forelse($locations as $location)
                 <div class="row">
@@ -143,7 +138,7 @@ background-color: lightblue;
     }
     ?>
     <div class="col">
-        <div class="card mb-4" id="card-client" style="height:auto">
+        <div class="card mb-4" id="card-client" style="height:280px;">
             <div class="card-body">
                 <div class="row">
                     <form id='form-note' method='PUT' class='note' action='checkOut/updateNote'>
@@ -162,12 +157,12 @@ background-color: lightblue;
 
 <div class="row">
     <div class="col">
-        <div class="card mb-4" id="card-client" style="height:auto">
+        <div class="card mb-4" id="card-client" style="height:530px;">
             <div class="card-body">
                 <div class="row">
                     <div class="row">
                         <div class="col">
-                            <h5 class="text-center">Chọn voucher <a href="/chinh-sach#Xu" target="_blank"><i class="fa-regular fa-circle-question" style="color: #7389b0;"></i></a></h5>
+                            <h5 class="text-center">Chọn voucher <a href="/chinh-sach#Xu" target="_blank"><i class="fa-regular fa-circle-question" style="color: #7389b0;"></i></a></h5><br>
                         </div>
                     </div>
                     <hr>
@@ -180,8 +175,9 @@ background-color: lightblue;
                         <button type="submit" class="btn btn-primary" style="width:90px;margin-top:10px">Áp dụng</button>
                     </form>
                     <hr>
-
-                    <form style="overflow:scroll; height: 222px;overflow-x: hidden;" action="checkOut/updateVoucher" method='PUT'>
+                    <label>Voucher hiện có:</label>
+                    <br><br>
+                    <form style="overflow-x: hidden;" action="checkOut/updateVoucher" method='PUT'>
                         @if ($countVoucher == 1)
                         <?php
                         $today = date('Y-m-d');
@@ -216,7 +212,7 @@ background-color: lightblue;
 
     <div class="col">
 
-        <div class="card mb-4" id="card-client" style="height:auto">
+        <div class="card mb-4" id="card-client" style="height:530px;">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
