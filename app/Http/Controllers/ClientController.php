@@ -100,7 +100,7 @@ class ClientController extends Controller
                 ->where('SalesInvoices.sal_status_id', '<', 5)
                 ->orderBy('SalesInvoices.sal_status_id')
                 ->orderByDesc('SalesInvoices.sal_id')
-                ->get();
+                ->paginate(7);
             return view('user/clientInfo.invoices', ['invoices' => $invoices]);
         }
     }

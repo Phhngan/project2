@@ -116,7 +116,7 @@ background-color: #ddd;
             ?>
                 <a class="btn btn-primary" href="{{url('/client/invoices/'.$invoice->sal_id.'/details')}}" role="button" style="margin-bottom:10px">Xem chi tiết</a><br>
 
-                <a class="btn btn-danger" onclick="cancelOrder()" role="button">Hủy đơn</a>
+                <a class="btn btn-danger" onclick="cancelOrder()" role="button" style="width:110px;">Hủy đơn</a>
                 <div id="cancelPopup" class="popup-container">
                     <div class="popup-content">
                         <p><strong>Bạn có muốn hủy đơn hàng?</strong></p>
@@ -164,6 +164,7 @@ background-color: #ddd;
     </tr>
     @endforelse
 </table>
+{{ $invoices->links() }}
 @endsection
 
 @section('js')
