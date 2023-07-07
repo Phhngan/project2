@@ -30,10 +30,10 @@ border-radius:5px;
 padding: 20px;
 }
 input[type="checkbox"].selected {
-  /* Định dạng CSS cho checkbox đã chọn */
-  /* Ví dụ: */
-  border: 2px solid blue;
-  background-color: lightblue;
+/* Định dạng CSS cho checkbox đã chọn */
+/* Ví dụ: */
+border: 2px solid blue;
+background-color: lightblue;
 }
 @endsection
 
@@ -193,15 +193,15 @@ input[type="checkbox"].selected {
                             $vou_image = $voucher->vou_image;
                             $vou_title = $voucher->vou_title;
                             $vou_id = $voucher->vou_id;
-                        }
                         ?>
-                        <div class="voucher-selector">
-                            <div class="voucher-container">
-                                <img class="voucher-img" src="/storage/{{substr($vou_image, 7)}}" height="100" />
-                                <label for="voucher1" class="name-voucher">{{$vou_title}}</label>
-                                <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="{{$vou_id}}">
+                            <div class="voucher-selector">
+                                <div class="voucher-container">
+                                    <img class="voucher-img" src="/storage/{{substr($vou_image, 7)}}" height="100" />
+                                    <label for="voucher1" class="name-voucher">{{$vou_title}}</label>
+                                    <input class="voucher-checkbox" type="checkbox" id="voucher1" name="voucher" value="{{$vou_id}}">
+                                </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         @else
                         <tr>
                             <td colspan="3">Không có voucher thích hợp</td>
@@ -347,39 +347,39 @@ input[type="checkbox"].selected {
 @section('js')
 @parent
 <script>
- const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-const selectedVoucherKey = 'selectedVoucher';
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const selectedVoucherKey = 'selectedVoucher';
 
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', () => {
-    const isChecked = checkbox.checked;
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const isChecked = checkbox.checked;
 
-    // Uncheck all checkboxes
-    checkboxes.forEach(cb => {
-      cb.checked = false;
-      cb.classList.remove('selected');
+            // Uncheck all checkboxes
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+                cb.classList.remove('selected');
+            });
+
+            if (isChecked) {
+                checkbox.checked = true;
+                checkbox.classList.add('selected');
+            }
+
+            // Save the selected voucher ID to Local Storage
+            const selectedVoucherId = isChecked ? checkbox.value : '';
+            localStorage.setItem(selectedVoucherKey, selectedVoucherId);
+        });
     });
 
-    if (isChecked) {
-      checkbox.checked = true;
-      checkbox.classList.add('selected');
+    // Check if there is a selected voucher in Local Storage and mark the checkbox as checked
+    const selectedVoucherId = localStorage.getItem(selectedVoucherKey);
+    if (selectedVoucherId) {
+        const selectedCheckbox = document.querySelector(`input[value="${selectedVoucherId}"]`);
+        if (selectedCheckbox) {
+            selectedCheckbox.checked = true;
+            selectedCheckbox.classList.add('selected');
+        }
     }
-
-    // Save the selected voucher ID to Local Storage
-    const selectedVoucherId = isChecked ? checkbox.value : '';
-    localStorage.setItem(selectedVoucherKey, selectedVoucherId);
-  });
-});
-
-// Check if there is a selected voucher in Local Storage and mark the checkbox as checked
-const selectedVoucherId = localStorage.getItem(selectedVoucherKey);
-if (selectedVoucherId) {
-  const selectedCheckbox = document.querySelector(`input[value="${selectedVoucherId}"]`);
-  if (selectedCheckbox) {
-    selectedCheckbox.checked = true;
-    selectedCheckbox.classList.add('selected');
-  }
-}
 </script>
 <script>
     function validateGold() {
@@ -388,7 +388,7 @@ if (selectedVoucherId) {
 
         if (goldValue % 100 !== 0) {
             alert("Số xu sử dụng phải chia hết cho 100.");
-            return false; 
+            return false;
         }
 
         return true;

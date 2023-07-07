@@ -18,8 +18,6 @@ class ForgetPassController extends Controller
     function forgetPass(Request $request)
     {
         $email = $request->get('email');
-        // $password = $request->get('password');
-        // $password2 = $request->get('password2');
         $users = DB::table('Users')->select('Users.email')->where('pos_id', 1)->get();
         $check = false;
         foreach ($users as $user) {

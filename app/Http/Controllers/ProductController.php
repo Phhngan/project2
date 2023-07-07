@@ -88,7 +88,6 @@ class ProductController extends Controller
         } else {
             if ($user->pos_id == 2 || $user->pos_id == 3) {
                 $product = Product::findOrFail($prd_id);
-                // $product = DB::table('Product')->where('prd_id',$prd_id)->get();
                 if ($product == null) {
                     return redirect()->route('error');
                 }

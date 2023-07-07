@@ -92,8 +92,6 @@ class CartController extends Controller
     {
         $car_quantity = $request->get('quantities');
         $car_id = $request->get('car_ids');
-        // var_dump($car_id);
-        // var_dump($car_quantity);
         // dd($car_id, $car_quantity);
         for ($i = 0; $i < count($car_id); $i++) {
             DB::table('Carts')->where('car_id', $car_id[$i])

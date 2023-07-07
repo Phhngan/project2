@@ -86,11 +86,12 @@ margin: 0;
                     <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>
                 </td>
                 <td>
-                    <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
+                    <!-- <form method="POST" onClick="deleteProduct()" action="{{url('/cart/'.$product->car_id.'/delete')}}">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form>
+                    </form> -->
+                    <a class="btn-add-to-cart" href="/cart/{{$product->car_id}}/delete" role="button" onClick="deleteProduct()">Xóa</a>
                 </td>
             </tr>
             @empty
