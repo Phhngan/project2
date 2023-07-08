@@ -124,15 +124,16 @@ class ClientController extends Controller
             return view('error/chua-dang-nhap');
         } else {
             $invoices = DB::table('SalesInvoices')->where('sal_id', $sal_id)->select('SalesInvoices.*')->get();
-            $products = DB::table('SalesInvoiceDatails')
-                ->join('SalesInvoices', 'SalesInvoiceDatails.sal_id', '=', 'SalesInvoices.sal_id')
-                ->where('SalesInvoiceDatails.sal_id', $sal_id)
-                ->select('SalesInvoiceDatails.*')->get();
+            $products = DB::table('SalesInvoiceDetails')
+                ->join('SalesInvoices', 'SalesInvoiceDetails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
+                ->where('SalesInvoiceDetails.sal_id', $sal_id)
+                ->select('SalesInvoiceDetails.*', 'Products.*')->get();
             $price = 0;
             $weigh = 0;
             foreach ($products as $product) {
-                $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
-                $weigh = $weigh + ($product->prd_weigh * $product->car_quantity);
+                $price = $price + ($product->sal_price * $product->sal_quantity);
+                $weigh = $weigh + ($product->prd_weigh * $product->sal_quantity);
             }
             foreach ($invoices as $invoice) {
                 $ships = DB::table('Ships')
