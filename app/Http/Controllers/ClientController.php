@@ -160,8 +160,9 @@ class ClientController extends Controller
                 } else {
                     $discount = 0;
                 }
-                $gold = $invoice->sal_total - $price - $shipMoney - $discount;
+                $gold = $price + $shipMoney - $invoice->sal_total - $discount;
             }
+            // dd($gold);
             foreach ($invoices as $invoice) {
                 if ($invoice->sal_status_id == 1) {
                     DB::table('Users')->where('id', $user->id)
