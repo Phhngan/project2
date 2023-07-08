@@ -124,8 +124,47 @@ class ClientController extends Controller
             return view('error/chua-dang-nhap');
         } else {
             $invoices = DB::table('SalesInvoices')->where('sal_id', $sal_id)->select('SalesInvoices.*')->get();
+            $products = DB::table('SalesInvoiceDatails')
+                ->join('SalesInvoices', 'SalesInvoiceDatails.sal_id', '=', 'SalesInvoices.sal_id')
+                ->where('SalesInvoiceDatails.sal_id', $sal_id)
+                ->select('SalesInvoiceDatails.*')->get();
+            $price = 0;
+            $weigh = 0;
+            foreach ($products as $product) {
+                $price = $price + (($product->prd_price * (100 - $product->prd_discount) / 100) * $product->car_quantity);
+                $weigh = $weigh + ($product->prd_weigh * $product->car_quantity);
+            }
+            foreach ($invoices as $invoice) {
+                $ships = DB::table('Ships')
+                    ->select('Ships.*')
+                    ->where('Ships.ship_id', $invoice->ship_id)
+                    ->get();
+                $shipMoney = 0;
+                foreach ($ships as $ship) {
+                    if ($weigh <= 2000) {
+                        $shipMoney = $ship->ship_price;
+                    } else {
+                        $weighDiffer = $weigh - 2000;
+                        $shipMoney = $ship->ship_price + $ship->ship_extra * ($weighDiffer / 200);
+                    }
+                }
+                if ($invoice->vou_id != null) {
+                    $vouchers = DB::table('Vouchers')
+                        ->select('Vouchers.*')
+                        ->where('Vouchers.vou_id', $invoice->vou_id)
+                        ->get();
+                    foreach ($vouchers as $voucher) {
+                        $discount = $voucher->vou_discount;
+                    }
+                } else {
+                    $discount = 0;
+                }
+                $gold = $invoice->sal_total - $price - $shipMoney - $discount;
+            }
             foreach ($invoices as $invoice) {
                 if ($invoice->sal_status_id == 1) {
+                    DB::table('Users')->where('id', $user->id)
+                        ->update(['use_gold' => $user->use_gold + $gold]);
                     DB::table('SalesInvoices')->where('sal_id', $sal_id)
                         ->update(['sal_status_id' => 5]);
                     return redirect('client/invoices');
