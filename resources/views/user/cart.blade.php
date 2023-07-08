@@ -55,7 +55,7 @@ margin: 0;
             <tr>
                 <th>Mã sản phẩm</th>
                 <th>Hình ảnh</th>
-                <th>Tên sản phẩm</th>
+                <th width="360px">Tên sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Giá</th>
                 <th>Hành động</th>
