@@ -178,6 +178,7 @@ class CartController extends Controller
                     ->select('SalesInvoices.*')
                     ->where('SalesInvoices.vou_id', $voucherAll->vou_id)
                     ->where('SalesInvoices.use_id', $user->id)
+                    ->where('SalesInvoices.sal_status_id', '<', 5)
                     ->count();
                 if ($number == 0) {
                     $countVoucher = 1;

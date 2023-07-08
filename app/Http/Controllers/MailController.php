@@ -52,16 +52,18 @@ class MailController extends Controller
             $mail->isHTML(true);
             $mail->Subject = 'Đặt hàng thành công tại SnackStore';
             $mail->Body    = '
+                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt="logo" height="80px" style="display:flex;margin-left:auto;margin-right:auto;" class="logo"><br>
+                <div style="background-color: #F8DEDF;width: 80%;margin-left: auto;margin-right: auto;">
                 <p>Cảm ơn bạn đã mua hàng tại SnackStore!</p>
                 <p>Đơn hàng số ' . $sal_id . ' đã được đặt hàng thành công.</p>
                 <p>Ngày đặt hàng: ' . $sal_date . '</p>
                 <p>Tổng tiền đơn hàng: ' . $sal_total . '</p>
                 <p>Địa chỉ: ' . $address . '</p>
                 <p>Theo dõi đơn hàng <a href="http://127.0.0.1:8000/client/invoices">tại đây</a></p>
+                </div>
             ';
 
             $mail->send();
-            echo ("Message has been sent");
         } catch (Exception $e) {
             echo ("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
         }

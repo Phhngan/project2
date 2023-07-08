@@ -13,7 +13,7 @@
     <br>
     <label for="productName">Tên sản phẩm:</label>
     <br>
-    <input name="productName" type="text" class="form-control" placeholder="Tên sản phẩm" required>
+    <input name="productName" type="text" class="form-control" placeholder="Tên sản phẩm" maxlength="50" required>
     <br>
     <label for="productImage">Ảnh sản phẩm:</label>
     <br>
