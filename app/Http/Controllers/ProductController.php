@@ -18,10 +18,10 @@ class ProductController extends Controller
             return redirect()->to("http://127.0.0.1:8000/login");
         } else {
             $products = DB::table('Products')
-                ->join('ImportInvoiceDetails', 'Products.prd_id', '=', 'ImportInvoiceDetails.prd_id')
+                // ->join('ImportInvoiceDetails', 'Products.prd_id', '=', 'ImportInvoiceDetails.prd_id')
                 ->select('Products.*')
                 ->distinct()
-                ->where('ImportInvoiceDetails.prd_status_id', '<', 5)
+                // ->where('ImportInvoiceDetails.prd_status_id', '<', 5)
                 ->orderByDesc('prd_id')
                 ->get();
             return view('admin/product.index', ['products' => $products]);
