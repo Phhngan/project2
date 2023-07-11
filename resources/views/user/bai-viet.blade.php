@@ -22,6 +22,7 @@ display: flex;
     <h5 style="text-align:center;">Ngày viết: {{$new->new_day}}</h5>
 </div>
 <img id="banner-tintuc" src="/storage/{{substr($new->new_image, 7)}}">
+<br>
 <div class="bai-viet">
     {!!$new->new_content!!}
 </div>
