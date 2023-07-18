@@ -36,7 +36,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         ->get();
     ?>
     <select class="form-control" id="" name="userId" required>
-        <option value="{{$importInvoice->unit_id}}" selected="selected">----{{$importInvoice->use_lastName}} {{$importInvoice->name}}----</option>
+        <option value="{{$importInvoice->use_id}}" selected="selected">----{{$importInvoice->use_lastName}} {{$importInvoice->name}}----</option>
         @foreach($users as $user)
         <option value="{{ $user->id }}">{{ $user->use_lastName }} {{ $user->name }}</option>
         @endforeach

@@ -9,10 +9,11 @@
 <table class="table" id="myTable">
     <thead>
         <tr>
+            <th>STT</th>
             <th data-orderable="false">Mã sản phẩm</th>
-            <th data-orderable="false">Sản phẩm</th>
+            <th>Sản phẩm</th>
             <th data-orderable="false">Ảnh sản phẩm</th>
-            <th data-orderable="false">Loại sản phẩm</th>
+            <th>Loại sản phẩm</th>
             <th>Số lượng</th>
             <th data-orderable="false">Giá bán</th>
             <th data-orderable="false">Hành động</th>
@@ -20,6 +21,9 @@
     </thead>
     @forelse($products as $product)
     <tr>
+        <td>
+            <p>{{$product->prd_id}}</p>
+        </td>
         <td>
             <p>{{$product->prd_code}}</p>
         </td>
@@ -74,7 +78,7 @@
     $(document).ready(function() {
         $('#myTable').DataTable({
             columnDefs: [{
-                targets: 0,
+                targets: 1,
                 render: function(data, type, row, meta) {
                     if (type === 'sort') {
                         return parseInt(data.replace('SP', ''));
