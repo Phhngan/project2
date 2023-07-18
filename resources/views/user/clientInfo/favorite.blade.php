@@ -89,7 +89,7 @@ background-color: #ddd;
                 <img src="/storage/{{substr($product->prd_image, 7)}}" style="height:100px">
             </td>
             <td>
-                <a href="" class="text-sp">{{$product->prd_name}}</a>
+                <a href="/{{$product->prd_id}}/productDetails" class="text-sp">{{$product->prd_name}}</a>
             </td>
             <td>
                 <p>{{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</p>

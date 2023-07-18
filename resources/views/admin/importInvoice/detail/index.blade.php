@@ -10,6 +10,7 @@
     <tr>
         <th>Mã sản phẩm</th>
         <th>Tên sản phẩm</th>
+        <th>Hình ảnh</th>
         <th>Số lượng</th>
         <th>Giá tiền</th>
         <th>Hạn sử dụng</th>
@@ -20,11 +21,13 @@
             <p>{{$importInvoiceDetail->prd_code}}</p>
         </td>
         <td>
-            <p>{{$importInvoiceDetail->prd_name}}</p>
+            <a href="/admin/products/{{$importInvoiceDetail->prd_id}}" class="text-sp">{{$importInvoiceDetail->prd_name}}</a>
+        </td>
+        <td>
+            <img src="/storage/{{substr($importInvoiceDetail->prd_image, 7)}}" style="height:100px">
         </td>
         <td>
             <p>{{$importInvoiceDetail->imp_quantity}}</p>
-
         </td>
         <td>
             <p>{{number_format($importInvoiceDetail->imp_price).' VND'}}</p>
