@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('use_id');
             $table->date('imp_date');
             $table->integer('imp_total');
+            $table->string('imp_note')->nullable();
             $table->timestamps();
 
             $table->foreign('unit_id')->references('unit_id')->on('SupplyUnits');

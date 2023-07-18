@@ -41,7 +41,7 @@
             <img src="/storage/{{substr($invoiceDetail->prd_image, 7)}}" width="100px">
         </td>
         <td>
-            <p>{{$invoiceDetail->prd_name}}</p>
+            <a href="/{{$invoiceDetail->prd_id}}/productDetails" class="text-sp">{{$invoiceDetail->prd_name}}</a>
         </td>
         <td>
             <p>{{$invoiceDetail->sal_quantity}}</p>
