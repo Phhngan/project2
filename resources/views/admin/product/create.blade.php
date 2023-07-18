@@ -49,7 +49,7 @@
     <br>
     <label for="productDescription">Mô tả:</label>
     <br>
-    <textarea id="editor" name="productDescription" type="text" class="form-control" placeholder="Mô tả"></textarea>
+    <textarea id="editor" name="productDescription" type="text" class="form-control" placeholder="Mô tả" required></textarea>
     <br>
 
     <button type="submit" class="btn btn-primary">Thêm mới</button>
