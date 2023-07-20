@@ -9,6 +9,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
     ->get();
 ?>
 <h1 class="text-center">Tạo hóa đơn nhập hàng mới</h1>
+<a class="btn btn-primary" href="{{url('admin/products/create')}}" role="button">+ Thêm sản phẩm mới</a>
 <form action="{{url('/admin/importInvoice/create')}}" method="POST">
     @csrf
     <br>
