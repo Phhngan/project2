@@ -107,8 +107,12 @@ margin-right: auto;
                 ?>
                 @if($quantity != 0)
                 <div class="popup" onclick="addToCart()">
+                    @if(Auth::check() == false)
+                    <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                    @else
                     <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                    @endif
                 </div>
                 @else
                 <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
@@ -131,8 +135,12 @@ margin-right: auto;
                 ?>
                 @if($quantity != 0)
                 <div class="popup" onclick="addToCart()">
+                    @if(Auth::check() == false)
+                    <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                    @else
                     <a class="btn-add-to-cart" href="/{{$newProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                    @endif
                 </div>
                 @else
                 <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
@@ -173,8 +181,12 @@ margin-right: auto;
                 ?>
                 @if($quantity != 0)
                 <div class="popup" onclick="addToCart()">
+                    @if(Auth::check() == false)
+                    <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                    @else
                     <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                    @endif
                 </div>
                 @else
                 <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
@@ -197,8 +209,12 @@ margin-right: auto;
                 ?>
                 @if($quantity != 0)
                 <div class="popup" onclick="addToCart()">
+                    @if(Auth::check() == false)
+                    <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                    @else
                     <a class="btn-add-to-cart" href="/{{$discountProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                     <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                    @endif
                 </div>
                 @else
                 <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>

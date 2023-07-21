@@ -187,8 +187,12 @@ color:grey;
             </p>
             @if($quantity != 0)
             <div class="action popup" onclick="addToCart()" style="width: fit-content;">
+                @if(Auth::check() == false)
+                <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
+                @else
                 <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                @endif
             </div>
             @endif
             <?php
@@ -417,8 +421,12 @@ color:grey;
                     ?>
                     @if($quantity != 0)
                     <div class="popup" onclick="addToCart()">
+                        @if(Auth::check() == false)
+                        <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                        @else
                         <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                        @endif
                     </div>
                     @else
                     <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
@@ -441,8 +449,12 @@ color:grey;
                     ?>
                     @if($quantity != 0)
                     <div class="popup" onclick="addToCart()">
+                        @if(Auth::check() == false)
+                        <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
+                        @else
                         <a class="btn-add-to-cart" href="/{{$randomProduct->prd_id}}/addCart" role="button">Thêm vào giỏ</a>
                         <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                        @endif
                     </div>
                     @else
                     <a class="btn-add-to-cart" role="button" style="background-color:red;margin-top:0px;">Hết hàng</a>
