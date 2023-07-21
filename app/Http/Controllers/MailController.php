@@ -52,15 +52,37 @@ class MailController extends Controller
             $mail->isHTML(true);
             $mail->Subject = 'Đặt hàng thành công tại SnackStore';
             $mail->Body    = '
-                <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt="logo" height="80px" style="display:flex;margin-left:auto;margin-right:auto;" class="logo"><br>
-                <div style="background-color: #F8DEDF;width: 80%;margin-left: auto;margin-right: auto;">
-                <p>Cảm ơn bạn đã mua hàng tại SnackStore!</p>
-                <p>Đơn hàng số ' . $sal_id . ' đã được đặt hàng thành công.</p>
-                <p>Ngày đặt hàng: ' . $sal_date . '</p>
-                <p>Tổng tiền đơn hàng: ' . $sal_total . '</p>
-                <p>Địa chỉ: ' . $address . '</p>
-                <p>Theo dõi đơn hàng <a href="http://127.0.0.1:8000/client/invoices">tại đây</a></p>
-                </div>
+            <div style="background-color: #F8DEDF;width:200px;display:flex;margin-left:auto;margin-right:auto;">
+            <img src="https://raw.githubusercontent.com/Phhngan/snack_images/master/logo/logo1.png" alt="logo" height="80px" style="display:flex;margin-left:auto;margin-right:auto;" class="logo">
+</div>
+            <br>
+            <div style="background-color: #F8DEDF;width: 80%;margin-left: auto;margin-right: auto;">
+              <p>Cảm ơn bạn đã mua hàng tại SnackStore!</p>
+              <p>Đơn hàng số ' . $sal_id . ' đã được đặt hàng thành công.</p>
+              <p>Ngày đặt hàng: ' . $sal_date . '</p>
+              <p>Tổng tiền đơn hàng: ' . $sal_total . '</p>
+              <p>Địa chỉ: ' . $address . '</p>
+              <p>Theo dõi đơn hàng <a href="http://127.0.0.1:8000/client/invoices">tại đây</a></p>
+              <hr>
+              <label><strong>Sản phẩm:</strong></label><br>
+              <br>
+              <table style="width:100%; text-align:center;">
+                <thead>
+                  <th>Sản phẩm</th>
+                  <th>Số lượng</th>
+                  <th>Giá tiền</th>
+                </thead>
+                <tbody>
+                  <td> Khô gà </td>
+                  <td> 5 </td>
+                  <td> 50000 </td>
+                </tbody>
+              </table>
+              <hr>
+                <p><strong>Thành tiền:</strong><span style="margin-left:45px;">10000</span></p>
+                <p><strong>Phí vận chuyển:</strong><span style="margin-left:17px;">10000</span></p>
+                <p><strong>Số tiền thanh toán:</strong><span>10000</span></p>
+            </div>
             ';
 
             $mail->send();

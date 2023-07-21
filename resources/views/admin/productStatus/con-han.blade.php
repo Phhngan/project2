@@ -10,6 +10,7 @@
         <tr>
             <th data-orderable="false">Mã sản phẩm</th>
             <th data-orderable="false">Sản phẩm</th>
+            <th data-orderable="false">Ảnh</th>
             <th>Số lượng còn lại</th>
             <th data-orderable="false">Hạn sử dụng</th>
     </thead>
@@ -23,6 +24,9 @@
             <a href="{{url('/admin/products/'.$product->prd_id)}}" style="text-decoration:none;color:black;">
                 <p>{{$product->prd_name}}</p>
             </a>
+        </td>
+        <td>
+            <img src="/storage/{{substr($product->prd_image, 7)}}" width="100px">
         </td>
         <td>
             <p>

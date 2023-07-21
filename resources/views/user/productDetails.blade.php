@@ -171,11 +171,11 @@ color:grey;
             <h4 class="price-details">Giá bán: <span id="new-price"> {{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</span></h4>
             @endif
 
-            <!-- <form id='form-quantity' method='POST' class='quantity' action='#'>
-        <input type='button' value='-' class='qtyminus minus' field='quantity' />
-        <input type='text' name='quantity' value='1' class='qty' />
-        <input type='button' value='+' class='qtyplus plus' field='quantity' />
-      </form> -->
+            <form id='form-quantity' method='POST' class='quantity' action='#'>
+                <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                <input type='text' name='quantity' value='1' class='qty' />
+                <input type='button' value='+' class='qtyplus plus' field='quantity' />
+            </form>
 
             <p style="margin:10px 0px 25px 0px;background-color:#FFECEC;padding:6px;border-radius:5px;display:inline-flex">Còn lại:
                 <?php

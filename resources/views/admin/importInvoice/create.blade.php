@@ -45,6 +45,10 @@ $products = Illuminate\Support\Facades\DB::table('Products')
     <br>
     <input name="importDate" type="date" class="form-control" placeholder="Ngày nhập" required>
     <br>
+    <label for="importNote">Ghi chú:</label>
+    <br>
+    <input name="importNote" type="text" class="form-control" placeholder="Note (Tên nhân viên giao hàng)">
+    <br>
     <h5>Thêm sản phẩm vào hóa đơn:</h5>
     <table id="mytable">
         <tr>
