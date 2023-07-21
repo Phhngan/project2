@@ -101,7 +101,7 @@ class SalesInvoiceController extends Controller
         } else {
             $salesInvoiceDetails = DB::table('SalesInvoiceDetails')
                 ->join('Products', 'SalesInvoiceDetails.prd_id', '=', 'Products.prd_id')
-                ->select('SalesInvoiceDetails.*', 'Products.prd_code', 'Products.prd_name', 'Products.prd_weigh')
+                ->select('SalesInvoiceDetails.*', 'Products.prd_code', 'Products.prd_name', 'Products.prd_weigh', 'Products.prd_image')
                 ->where('sal_id', $sal_id)
                 ->get();
             return view('admin/salesInvoice.details', ['salesInvoiceDetails' => $salesInvoiceDetails], ['sal_id', $sal_id]);

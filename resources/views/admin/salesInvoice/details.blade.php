@@ -12,6 +12,7 @@
     <tr>
         <th>Mã sản phẩm</th>
         <th>Tên sản phẩm</th>
+        <th>Ảnh</th>
         <th>Số lượng</th>
         <th>Trọng lượng tổng</th>
         <th>Giá bán</th>
@@ -22,7 +23,12 @@
             <p>{{$salesInvoiceDetail->prd_code}}</p>
         </td>
         <td>
-            <p>{{$salesInvoiceDetail->prd_name}}</p>
+            <a href="{{url('/admin/products/'.$salesInvoiceDetail->prd_id)}}" style="text-decoration:none;color:black;">
+                <p>{{$salesInvoiceDetail->prd_name}}</p>
+            </a>
+        </td>
+        <td>
+            <img src="/storage/{{substr($salesInvoiceDetail->prd_image, 7)}}" width="100px">
         </td>
         <td>
             <p>{{$salesInvoiceDetail->sal_quantity}}</p>

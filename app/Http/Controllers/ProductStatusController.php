@@ -19,7 +19,7 @@ class ProductStatusController extends Controller
             $products = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
                 ->distinct()
-                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
+                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name', 'Products.prd_image')
                 ->where('prd_status_id', 1)
                 ->orderBy('prd_id')
                 // ->paginate(8);
@@ -50,7 +50,7 @@ class ProductStatusController extends Controller
             $products = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
                 ->distinct()
-                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
+                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name', 'Products.prd_image')
                 ->where('prd_status_id', 2)
                 ->orderBy('prd_id')
                 ->get();
@@ -68,7 +68,7 @@ class ProductStatusController extends Controller
             $products = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
                 ->distinct()
-                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
+                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name', 'Products.prd_image')
                 ->where('prd_status_id', 3)
                 ->orderBy('prd_id')
                 ->get();
@@ -86,7 +86,7 @@ class ProductStatusController extends Controller
             $products = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
                 ->distinct()
-                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.prd_status_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
+                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.prd_status_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name', 'Products.prd_image')
                 ->where('prd_status_id', 4)
                 ->orderBy('prd_id')
                 ->get();
@@ -116,7 +116,7 @@ class ProductStatusController extends Controller
             $products = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
                 ->distinct()
-                ->select('ImportInvoiceDetails.prd_id', 'Products.prd_code', 'Products.prd_name')
+                ->select('ImportInvoiceDetails.prd_id', 'Products.prd_code', 'Products.prd_name', 'Products.prd_image')
                 ->where('prd_status_id', 5)
                 ->orderBy('prd_id')
                 ->get();
@@ -151,7 +151,7 @@ class ProductStatusController extends Controller
             $products = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
                 ->distinct()
-                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name')
+                ->select('ImportInvoiceDetails.prd_id', 'ImportInvoiceDetails.imp_expiryDate', 'Products.prd_code', 'Products.prd_name', 'Products.prd_image')
                 ->where('prd_status_id', '<', 4)
                 ->orderBy('prd_id')
                 ->get();

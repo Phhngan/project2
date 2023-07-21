@@ -160,7 +160,7 @@ class ImportInvoiceController extends Controller
             $importInvoice = Importinvoice::findOrFail($imp_id);
             $importInvoiceDetails = DB::table('ImportInvoiceDetails')
                 ->join('Products', 'ImportInvoiceDetails.prd_id', '=', 'Products.prd_id')
-                ->select('ImportInvoiceDetails.*', 'Products.prd_name', 'Products.prd_code')
+                ->select('ImportInvoiceDetails.*', 'Products.prd_name', 'Products.prd_code', 'Products.prd_image')
                 ->where('ImportInvoiceDetails.imp_id', $imp_id)->orderByDesc('ImportInvoiceDetails.id')
                 ->get();
             return view('admin/importInvoice/detail.index', ['importInvoiceDetails' => $importInvoiceDetails], ['importInvoice' => $importInvoice]);
