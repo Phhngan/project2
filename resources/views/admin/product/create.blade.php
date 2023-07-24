@@ -49,10 +49,10 @@
     <br>
     <label for="productDescription">Mô tả:</label>
     <br>
-    <textarea id="editor" name="productDescription" type="text" class="form-control" placeholder="Mô tả" required></textarea>
+    <textarea id="editor" name="productDescription" type="text" class="form-control" placeholder="Mô tả"></textarea>
     <br>
-
     <button type="submit" class="btn btn-primary">Thêm mới</button>
+    <br>
 </form>
 @endsection
 
