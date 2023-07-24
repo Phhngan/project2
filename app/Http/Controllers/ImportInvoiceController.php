@@ -42,9 +42,11 @@ class ImportInvoiceController extends Controller
     }
     function save(Request $request)
     {
+        $user = Auth::user();
         $unit_id = $request->get('unitId');
-        $use_id = $request->get('userId');
+        // $use_id = $request->get('userId');
         $imp_date = $request->get('importDate');
+        $imp_note = $request->get('importNote');
         $prd_id = $request->input('productId');
         $imp_quantity = $request->get('quantity');
         $imp_price = $request->get('price');
@@ -55,12 +57,12 @@ class ImportInvoiceController extends Controller
             $total = $total + ($imp_price[$i] * $imp_quantity[$i]);
         }
         DB::table('ImportInvoices')->insert(
-            ['unit_id' => $unit_id, 'use_id' => $use_id, 'imp_date' => $imp_date, 'imp_total' => $total]
+            ['unit_id' => $unit_id, 'use_id' => $user->id, 'imp_date' => $imp_date, 'imp_note' => $imp_note, 'imp_total' => $total]
         );
         $importInvoices = DB::table('ImportInvoices')
             ->select('ImportInvoices.*')
             ->where('ImportInvoices.unit_id', $unit_id)
-            ->where('ImportInvoices.use_id', $use_id)
+            ->where('ImportInvoices.use_id', $user->id)
             ->where('ImportInvoices.imp_date', $imp_date)
             ->where('ImportInvoices.imp_total', $total)
             ->get();
@@ -109,8 +111,9 @@ class ImportInvoiceController extends Controller
     function update(Request $request, $imp_id)
     {
         $unit_id = $request->get('unitId');
-        $use_id = $request->get('userId');
+        // $use_id = $request->get('userId');
         $imp_date = $request->get('importDate');
+        $imp_note = $request->get('importNote');
         $prd_id = $request->input('productId');
         $imp_quantity = $request->get('quantity');
         $imp_price = $request->get('price');
@@ -121,7 +124,7 @@ class ImportInvoiceController extends Controller
             $total = $total + ($imp_price[$i] * $imp_quantity[$i]);
         }
         DB::table('ImportInvoices')->where('imp_id', $imp_id)
-            ->update(['unit_id' => $unit_id, 'use_id' => $use_id, 'imp_date' => $imp_date, 'imp_total' => $total]);
+            ->update(['unit_id' => $unit_id, 'imp_date' => $imp_date, 'imp_note' => $imp_note, 'imp_total' => $total]);
         $importInvoiceDetails = DB::table('ImportInvoiceDetails')
             ->select('ImportInvoiceDetails.*')
             ->where('ImportInvoiceDetails.imp_id', $imp_id)

@@ -239,6 +239,7 @@ Route::put("/admin/changePass", [AdminController::class, 'updatePass']);
 
 // CART
 Route::get("/{prd_id}/addCart", [CartController::class, 'addCart']);
+Route::post("/{prd_id}/addCartQuantity", [CartController::class, 'addCartQuantity']);
 Route::get("/cart", [CartController::class, 'showCart']);
 Route::get("/cart/update", [CartController::class, 'update']);
 Route::get("/cart/{car_id}/delete", [CartController::class, 'delete']);

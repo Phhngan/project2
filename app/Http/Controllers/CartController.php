@@ -49,6 +49,42 @@ class CartController extends Controller
         }
     }
 
+    function addCartQuantity($prd_id, Request $request)
+    {
+        $quantity = $request->get('quantity');
+        // dd($quantity);
+        $user = Auth::user();
+        if ($user == null) {
+            return view('error/chua-dang-nhap');
+        } else {
+            $carts = DB::table('Carts')
+                ->where('Carts.prd_id', $prd_id)
+                ->where('Carts.use_id', $user->id)
+                ->get();
+            $number = count($carts);
+            // dd($number);
+            if ($number == 1) {
+                foreach ($carts as $cart) {
+                    DB::table('Carts')->where('prd_id', $prd_id)->where('Carts.use_id', $user->id)
+                        ->update([
+                            'car_quantity' => $cart->car_quantity + $quantity
+                        ]);
+                }
+            } else {
+                DB::table('Carts')->insert(
+                    [
+                        'use_id' => $user->id, 'prd_id' => $prd_id, 'car_quantity' => $quantity
+                    ]
+                );
+                DB::table('Carts')->where('Carts.use_id', $user->id)
+                    ->update([
+                        'ship_id' => null, 'car_detailAddress' => null, 'car_town' => null, 'car_district' => null, 'car_province' => null
+                    ]);
+            }
+            return back();
+        }
+    }
+
     //show cart
     function showCart()
     {

@@ -14,6 +14,7 @@
             <th data-orderable="false">Tổng tiền nhập</th>
             <th data-orderable="false">Ngày nhập</th>
             <th data-orderable="false">Nhân viên nhập hàng</th>
+            <th data-orderable="false">Ghi chú</th>
             <th data-orderable="false">Hành động</th>
         </tr>
     </thead>
@@ -34,6 +35,9 @@
         </td>
         <td>
             <p>{{$importInvoice->name}}</p>
+        </td>
+        <td>
+            <p>{{$importInvoice->imp_note}}</p>
         </td>
         <td>
             <a class="btn btn-primary" href="{{url('/admin/importInvoice/'.$importInvoice->imp_id.'/edit')}}" role="button">Sửa</a>

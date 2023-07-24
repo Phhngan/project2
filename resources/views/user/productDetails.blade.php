@@ -170,15 +170,9 @@ color:grey;
             <h4 class="price-details" style="color:#3E526D">Giá gốc: <span id="old-price"> {{number_format($product->prd_price).' VND'}}</span></h4>
             <h4 class="price-details">Giá bán: <span id="new-price"> {{number_format($product->prd_price * (100 - $product->prd_discount)/100).' VND'}}</span></h4>
             @endif
-
-            <form id='form-quantity' method='POST' class='quantity' action='#'>
-                <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                <input type='text' name='quantity' value='1' class='qty' />
-                <input type='button' value='+' class='qtyplus plus' field='quantity' />
-            </form>
-
             <p style="margin:10px 0px 25px 0px;background-color:#FFECEC;padding:6px;border-radius:5px;display:inline-flex">Còn lại:
                 <?php
+                $quantityAdd = 1;
                 $quantity = App\Models\Importinvoicedetail::where('prd_id', $product->prd_id)
                     ->where('prd_status_id', '<', 3)
                     ->sum('ImportInvoiceDetails.imp_quantity_left');
@@ -186,14 +180,21 @@ color:grey;
                 ?> sản phẩm
             </p>
             @if($quantity != 0)
-            <div class="action popup" onclick="addToCart()" style="width: fit-content;">
-                @if(Auth::check() == false)
-                <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
-                @else
-                <a class="btn-add-to-cart" href="/{{$product->prd_id}}/addCart" role="button" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</a>
+            <?php
+            if (Illuminate\Support\Facades\Auth::check() == true) {
+            ?>
+                <div class="action popup" onclick="addToCart()" style="width: fit-content;">
+                    <form id='form-quantity' method='POST' class='quantity' action="/{{$product->prd_id}}/addCartQuantity">
+                        @csrf
+                        <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                        <input type='text' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' />
+                        <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                        <br><br>
+                        <button type="submit" class="btn-add-to-cart" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</button>
+                    </form>
+                </div>
                 <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
-                @endif
-            </div>
+            <?php } ?>
             @endif
             <?php
             $user = Illuminate\Support\Facades\Auth::user();

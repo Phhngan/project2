@@ -27,20 +27,6 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         @endforeach
     </select>
     <br>
-    <label for="userId">Người nhập:</label>
-    <br>
-    <?php
-    $users = Illuminate\Support\Facades\DB::table('Users')
-        ->select('Users.*')->where('Users.pos_id', '>', 1)
-        ->get();
-    ?>
-    <select class="form-control" id="" name="userId" required>
-        <option value="" selected="selected">----Chọn người nhập----</option>
-        @foreach($users as $user)
-        <option value="{{ $user->id }}">{{ $user->use_lastName }} {{ $user->name }}</option>
-        @endforeach
-    </select>
-    <br>
     <label for="importDate">Ngày nhập:</label>
     <br>
     <input name="importDate" type="date" class="form-control" placeholder="Ngày nhập" required>

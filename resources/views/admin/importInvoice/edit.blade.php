@@ -28,23 +28,13 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         @endforeach
     </select>
     <br>
-    <label for="userId">Tên người nhập:</label>
-    <br>
-    <?php
-    $users = Illuminate\Support\Facades\DB::table('Users')
-        ->select('Users.*')->where('Users.pos_id', '>', 1)
-        ->get();
-    ?>
-    <select class="form-control" id="" name="userId" required>
-        <option value="{{$importInvoice->use_id}}" selected="selected">----{{$importInvoice->use_lastName}} {{$importInvoice->name}}----</option>
-        @foreach($users as $user)
-        <option value="{{ $user->id }}">{{ $user->use_lastName }} {{ $user->name }}</option>
-        @endforeach
-    </select>
-    <br>
     <label for="importDate">Ngày nhập:</label>
     <br>
     <input value="{{$importInvoice->imp_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập" required>
+    <br>
+    <label for="importNote">Ghi chú:</label>
+    <br>
+    <input name="importNote" value="{{$importInvoice->imp_note}}" type="text" class="form-control" placeholder="Note (Tên nhân viên giao hàng)">
     <br>
     <?php
     $count = 0;

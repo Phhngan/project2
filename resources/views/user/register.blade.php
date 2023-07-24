@@ -48,7 +48,6 @@ margin-left: 0px;
 @section('content')
 <div>
     <h1>Đăng kí</h1>
-
 </div>
 <form class="register" action="{{url('/register')}}" method="POST">
     @csrf
