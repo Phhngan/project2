@@ -144,6 +144,35 @@ class SalesInvoiceDetailsDatabase extends Seeder
                     'sal_price' => 30000,
                     'imp_price' => 12000,
                 ],
+                [
+                    'sal_id' => 19,
+                    'prd_id' => 17,
+                    'sal_quantity' => 5,
+                    'sal_price' => 75000,
+                    'imp_price' => 35000,
+                ],
+                [
+                    'sal_id' => 19,
+                    'prd_id' => 16,
+                    'sal_quantity' => 5,
+                    'sal_price' => 52000,
+                    'imp_price' => 25000,
+                ],
+                [
+                    'sal_id' => 20,
+                    'prd_id' => 10,
+                    'sal_quantity' => 5,
+                    'sal_price' => 20000,
+                    'imp_price' => 9000,
+                ],
+                [
+                    'sal_id' => 21,
+                    'prd_id' => 16,
+                    'sal_quantity' => 10,
+                    'sal_price' => 52000,
+                    'imp_price' => 25000,
+                ],
+                
             ]
         );
     }

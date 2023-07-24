@@ -23,7 +23,28 @@ class VouchersDatabase extends Seeder
                     'vou_discount' => 10000,
                     'vou_image' => 'public/voucher1.png',
                     'vou_min' => 100000
-                ]
+                ],
+                [
+                    'vou_day' => '2023/07/24',
+                    'vou_title' => 'Giảm 10k cho đơn hàng từ 100k',
+                    'vou_discount' => 10000,
+                    'vou_image' => 'public/voucher1.png',
+                    'vou_min' => 100000
+                ],
+                [
+                    'vou_day' => '2023/07/27',
+                    'vou_title' => 'Giảm 10k cho đơn hàng từ 100k',
+                    'vou_discount' => 10000,
+                    'vou_image' => 'public/voucher1.png',
+                    'vou_min' => 100000
+                ],
+                [
+                    'vou_day' => '2023/07/28',
+                    'vou_title' => 'Giảm 10k cho đơn hàng từ 100k',
+                    'vou_discount' => 10000,
+                    'vou_image' => 'public/voucher1.png',
+                    'vou_min' => 100000
+                ],
 
             ]
         );

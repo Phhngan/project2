@@ -55,7 +55,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Thị',
-                'name' => 'A',
+                'name' => 'Mai',
                 'use_gender' => 2,
                 'email' => 'nguyenthia@gmail.com',
                 'use_phone' => '0921345278',
@@ -72,7 +72,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Văn',
-                'name' => 'B',
+                'name' => 'Huy',
                 'use_gender' => 1,
                 'email' => 'nguyenvanb@gmail.com',
                 'use_phone' => '0367123283',
@@ -89,7 +89,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Thị',
-                'name' => 'C',
+                'name' => 'Phương',
                 'use_gender' => 2,
                 'email' => 'nguyenthic@gmail.com',
                 'use_phone' => '0347273472',
@@ -106,7 +106,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Văn',
-                'name' => 'D',
+                'name' => 'Hiếu',
                 'use_gender' => 1,
                 'email' => 'nguyenvand@gmail.com',
                 'use_phone' => '0237123721',
@@ -123,7 +123,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Thị',
-                'name' => 'E',
+                'name' => 'Ngọc',
                 'use_gender' => 2,
                 'email' => 'nguyenthie@gmail.com',
                 'use_phone' => '0346278319',
@@ -140,7 +140,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Văn',
-                'name' => 'F',
+                'name' => 'Phúc',
                 'use_gender' => 1,
                 'email' => 'nguyenvanf@gmail.com',
                 'use_phone' => '0367123283',

@@ -249,6 +249,63 @@ class ProductsDatabase extends Seeder
 
                     <br>- Thương hiệu: Orion</p>',
                 ],
+                [
+                    'prd_code' => 'SP14',
+                    'prd_name' => 'Thịt hộp Dongwon',
+                    'prd_type_id' => 1,
+                    'prd_weigh' => 340,
+                    'prd_source' => 'Hàn Quốc',
+                    'prd_price' => 105000,
+                    'prd_discount' => 0,
+                    'prd_image' => 'public/SP14.png',
+                    'prd_description' => '<p><strong>Thịt hộp&nbsp;Dongwon 340g&nbsp;</strong>
+                    được làm từ nguyên liệu thịt heo và thịt gà tươi thông qua chọn lọc kỹ càng, sau đó được nấu trong phương pháp ủ nhiệt độ thấp 
+                    nhằm giữ nguyên hương vị mang đến người tiêu dùng những miếng thịt nguội mềm, ít mặn, thanh nhẹ đầy thơm béo.&nbsp;</p><p>
+                    <img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0617/2497/files/thit-hop-dongwon_480x480.png?v=1609235387" alt="Canned meat Dongwon 340g">
+                    </p><p>Với sản phẩm này bạn sẽ dễ dàng có ngay một bữa ăn dinh dưỡng mà không cần tốn thời gian chế biến cầu kỳ. 
+                    Tiết kiệm được nhiều thời gian nấu nướng khi bận rộn.</p><p>Tuy là sản phẩm đóng sẵn nhưng thịt hộp Luncheon Meat vẫn giữ nguyên hương vị thơm 
+                    ngon của thịt và giữ lại được rất nhiều vitamin như vitamin B1, A, D,...</p>
+                    <p><img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0617/2497/files/thit-hop-lucheon-meat_480x480.jpg?v=1609235408" alt="Canned meat Dongwon 340g"></p>
+                    <p>Có thể ăn chung với cơm hoặc kẹp sandwich,...Thích hợp dùng làm lương khô trong các chuyến dã ngoại, picnic,...</p>
+                    <p>Đóng hộp nhỏ gọn, dễ dảng bảo quản và mang theo.</p><p><strong>Origin:</strong> South korea</p><p>
+                    <strong>Thành phần:&nbsp;</strong>Thịt heo, tinh bột khoai tây, protein sữa, muối, gia vị…</p><p><strong>Khối lượng tịnh:</strong>
+                    &nbsp;340g/hộp</p><p><strong>Bảo quản:</strong>&nbsp;Nơi khô ráo, thoáng mát và tránh ánh nắng mặt trời.</p><p><strong>Hướng dẫn sử dụng:</strong> 
+                    Hâm nóng lại và ăn trực tiếp hoặc chế biến món ăn theo ý thích.</p><p><strong>Hạn sử dụng: </strong>36 tháng kể từ ngày sản xuất</p>
+                    <p><img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0617/2497/files/spam-fried-rice_480x480.jpg?v=1609235587" alt="Canned meat Dongwon 340g"></p>',
+                ],
+                [
+                    'prd_code' => 'SP15',
+                    'prd_name' => 'Rong biển giòn trộn khô gà O food',
+                    'prd_type_id' => 1,
+                    'prd_weigh' => 40,
+                    'prd_source' => 'Hàn Quốc',
+                    'prd_price' => 45000,
+                    'prd_discount' => 0,
+                    'prd_image' => 'public/SP15.png',
+                    'prd_description' => '<p>Không chỉ dừng lại ở <i>rong biển giòn trộn gia vị truyền thống</i>, mới đây Ofood đã cho ra mắt thêm&nbsp;<strong>Rong biển giòn trộn khô gà Ofood 40g </strong>- một sản phẩm mới với sự&nbsp;kết hợp mới mẻ và sáng tạo giữa rong biển Hàn Quốc và khô gà Việt Nam mang đến một món snack đầy thú vị và hấp dẫn.<br>&nbsp;</p><p><img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0617/2497/files/rong-bien-tron-kho-ga-ofood_480x480.png?v=1628609115" alt=""></p><p>Rong biển được nướng giòn với nhiệt độ thích hợp, sau đó trộn cùng dầu mè, vừng và một số loại gia vị mang đến hương vị mằn mặn vừa ăn, xen lẫn vài sợi khô gà dai thơm càng làm cho món snack trở nên thu hút. Hứa hẹn sẽ là món ăn vặt lí tưởng cho các buổi xem phim, vui chơi sinh hoạt,...</p><p><img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0617/2497/files/rong-bien-gion-tron-kho-ga_480x480.png?v=1628609225" alt=""></p><p>Có thể dùng để ăn trực triếp hoặc dùng kèm với cơm, mì đều được. Sản phẩm được đóng gói nhỏ gọn, dây chuyền sản xuất hiện đại giúp giảm sự thấm dầu, tăng độ giòn và giữ nguyên hương vị của sản phẩm.<br>&nbsp;</p><p><strong>Thành phần:</strong>&nbsp;Dầu ngô, rong biển Hàn Quốc (21.64%), khô gà (30%), đường, vừng, dầu mè, muối gia vị (3.4%), chất chống oxy hóa (E392)</p><p><strong>Khối lượng tịnh:</strong>&nbsp;40g/gói</p><p><strong>Storage:</strong>&nbsp;dry, cool and avoid sunshine</p><p><strong>Hướng dẫn sử dụng:</strong>&nbsp;Có thể ăn trực tiếp hoặc rắc lên cơm, cháo, súp,...</p><p><strong>Hạn sử dụng:</strong>&nbsp;12&nbsp;tháng kể từ ngày sản xuất</p><p><strong>Xuất xứ:</strong>&nbsp;Việt Nam</p>',
+                ],
+                [
+                    'prd_code' => 'SP16',
+                    'prd_name' => 'Khoai Tây Mật Ong Calbee',
+                    'prd_type_id' => 2,
+                    'prd_weigh' => 60,
+                    'prd_source' => 'Hàn Quốc',
+                    'prd_price' => 52000,
+                    'prd_discount' => 0,
+                    'prd_image' => 'public/SP16.png',
+                    'prd_description' => '<p>Sản phẩm trực thuộc một trong những tập đoàn thực phẩm lớn nhất Nhật Bản: Calbee - sau này tấn công vào thị trường Hàn Quốc, Hongkong và đạt được những thành công rất lớn.</p><p>####</p><p>Sản phẩm trực thuộc một trong những tập đoàn thực phẩm lớn nhất Nhật Bản: Calbee - sau này tấn công vào thị trường Hàn Quốc, Hongkong và đạt được những thành công rất lớn.</p><figure class="image"><img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0563/5745/4002/products/CALBEE.png?v=1623403279" alt=""></figure><p><br>Snack khoai tây tẩm mật ong được Calbee sản xuất riêng cho thị trường Hàn Quốc, và nhanh chóng ĐỨNG ĐẦU top <a href="https://shopee.vn/bestseller-tag">#bestseller</a> tại đây, với số lượng tiêu thụ xếp hạng nhất so với tất cả snacks cùng loại. Đến nỗi các tín đồ ăn vặt kháo nhau đến Hàn tuyệt đối ko bỏ qua "nhất sữa chuối, nhì khoai Calbee.<br>&nbsp;</p><figure class="image"><img width="400px" style="display:flex;margin-left:auto;margin-right:auto;" src="https://cdn.shopify.com/s/files/1/0563/5745/4002/products/CAL.png?v=1623403286" alt=""></figure><p><br>Calbee tuyệt đối nói không với các loại hương liệu độc hại, nên vị bánh được làm bởi 100% khoai tây nguyên chất, tẩm sốt mật ong thơm nức nở, thêm hành xắt nhuyễn phủ ngoài bánh ngon vô cùng. Ko một loại snacks nào có thể so sánh .</p>',
+                ],
+                [
+                    'prd_code' => 'SP17',
+                    'prd_name' => 'Trà Sữa Kirin Nhật 1.5L',
+                    'prd_type_id' => 3,
+                    'prd_weigh' => 1500,
+                    'prd_source' => 'Nhật Bản',
+                    'prd_price' => 75000,
+                    'prd_discount' => 0,
+                    'prd_image' => 'public/SP17.png',
+                    'prd_description' => '<p><strong>1. Thành phần:</strong>&nbsp;Hồng trà, sữa bò, đường, sữa bột toàn phần,...</p><p><strong>2. Công dụng sản phẩm</strong></p><p>Trà sữa Kirin&nbsp;được làm từ những lá hồng trà được tuyển chọn kỹ càng kết hợp&nbsp;với sữa mang đến ly trà sữa ngọt ngào, thanh mát.&nbsp;Sản phẩm được&nbsp;được sản xuất theo tiêu chuẩn Nhật Bản, an toàn cho sức khỏe, đảm bảo đạt các tiêu chuẩn về an toàn vệ sinh thực phẩm cho&nbsp;người sử dụng.</p><p><strong>3. Hướng dẫn sử dụng</strong></p><p>- Lắc đều trước khi dùng. Các thành phần của sản phẩm có thể lắng đọng bên dưới, nhưng hoàn toàn không ảnh hưởng đến chất lượng sản phẩm.</p><p>- Trà sữa Kirin ngon hơn khi uống lạnh.</p><p><strong>Lưu ý:</strong></p><p>- Bảo quản nơi thoáng mát. Tránh ánh nắng trực tiếp.</p><p>- Bảo quản&nbsp;trong tủ lạnh sau khi mở nắp chai và&nbsp;nhanh chóng sử dụng hết.</p><p><strong>4. Đối tượng sử dụng</strong></p><p>Trà sữa&nbsp;Kirin&nbsp;được đóng chai lớn 1.5L, thích hợp sử dụng trong các bữa tiệc, liên hoan hoặc sử dụng trong gia đình.</p>',
+                ],
             ]
         );
     }
