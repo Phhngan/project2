@@ -66,16 +66,16 @@ class MailController extends Controller
               <hr>
               <label><strong>Sản phẩm:</strong></label><br>
               <br>
-              <table style="width:100%; text-align:center;">
+              <table style="width:100%;text-align:center;border: 1px solid black;border-collapse: collapse;">
                 <thead>
-                  <th>Sản phẩm</th>
-                  <th>Số lượng</th>
-                  <th>Giá tiền</th>
+                  <th style="border: 1px solid black;border-collapse: collapse;">Sản phẩm</th>
+                  <th style="border: 1px solid black;border-collapse: collapse;">Số lượng</th>
+                  <th style="border: 1px solid black;border-collapse: collapse;">Giá tiền</th>
                 </thead>
                 <tbody>
-                  <td> Khô gà </td>
-                  <td> 5 </td>
-                  <td> 50000 </td>
+                  <td style="border: 1px solid black;border-collapse: collapse;"> Khô gà </td>
+                  <td style="border: 1px solid black;border-collapse: collapse;"> 5 </td>
+                  <td style="border: 1px solid black;border-collapse: collapse;"> 50000 </td>
                 </tbody>
               </table>
               <hr>

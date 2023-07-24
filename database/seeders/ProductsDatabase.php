@@ -27,22 +27,19 @@ class ProductsDatabase extends Seeder
                     'prd_price' => 95000,
                     'prd_discount' => 15,
                     'prd_image' => 'public/SP1.png',
-                    'prd_description' => '<p>Khô gà được lựa chọn từ những miếng thịt gà tươi thơm ngon. Sản xuất dựa trên công nghệ hiện đại đảm bảo an toàn vệ sinh thực phẩm.<br>
-                    <br>- Thành phần: Thịt gà tươi, Muối, Đường, Tỏi, Ớt, Dầu ăn, Gia vị,..
-                    <br>- Quy trình sản xuất:
-                    <br>&emsp;Lựa chọn nguyên liệu từ các nông trại vùng quê phía NAM, Gia Vị được nghiên cứu hơn 2 năm
-                    <br>&emsp;+	Sơ chế ức gà tươi bằng công nghệ VATPP giúp ức gà sạch sẽ
-                    <br>&emsp;+	Luộc bằng nước tinh khiết ở nhiệt độ 120°C để giữ độ ngọt của gà
-                    <br>&emsp;+	Xé gà bằng máy xé chuyên dụng ở môi trường khép kín
-                    <br>&emsp;+	Sau đó trộn gia vị vào cùng thịt gà xoay đều 260 vòng / 1 phút
-                    <br>&emsp;+	Cuối cùng sấy ở nhiệt độ 80°C và đóng gói thành phẩm tại chỗ
-                    <br>⇒ Đã tạo thành sản phẩm: “Khô Gà Lá Chanh”
-                    <br>✓ Thích hợp với tất cả từ già tới trẻ, từ gái đến trai. Từ học sinh, sinh viên tới nhân viên văn phòng.
-                    <br>✓ Dùng để nhâm nhi hay có thể thưởng thức với cơm hoặc tạo thành gỏi mực xé chua ngọt siêu thần thánh.
-                    <br>✓ Nhỏ gọn, tiện lợi có thể dùng để mang theo khi đi học, picnic ở nhà ngồi không tán gẫu với bạn bè.
-
-                    <br><br>- Hướng dẫn sử dụng: Dùng ăn trực tiếp.
-                    <br>- Hướng dẫn bảo quản: Nhiệt độ thường</p>',
+                    'prd_description' => '<p>&nbsp;</p><p>Khô gà được lựa chọn từ những miếng thịt gà tươi thơm ngon. Sản xuất dựa trên công nghệ hiện đại đảm bảo an toàn vệ sinh thực phẩm.<br>
+                    <br>- Thành phần: Thịt gà tươi, Muối, Đường, Tỏi, Ớt, Dầu ăn, Gia vị,..&nbsp;<br>- Quy trình sản xuất:&nbsp;
+                    <br> Lựa chọn nguyên liệu từ các nông trại vùng quê phía NAM, Gia Vị được nghiên cứu hơn 2 năm&nbsp;<br>
+                     + Sơ chế ức gà tươi bằng công nghệ VATPP giúp ức gà sạch sẽ&nbsp;<br>
+                     + Luộc bằng nước tinh khiết ở nhiệt độ 120°C để giữ độ ngọt của gà&nbsp;<br> 
+                    + Xé gà bằng máy xé chuyên dụng ở môi trường khép kín&nbsp;<br> 
+                    + Sau đó trộn gia vị vào cùng thịt gà xoay đều 260 vòng / 1 phút&nbsp;<br>
+                     + Cuối cùng sấy ở nhiệt độ 80°C và đóng gói thành phẩm tại chỗ&nbsp;<br>
+                    ⇒ Đã tạo thành sản phẩm: “Khô Gà Lá Chanh”&nbsp;<br>✓ Thích hợp với tất cả từ già tới trẻ, từ gái đến trai. Từ học sinh, sinh viên tới nhân viên văn phòng.&nbsp;<br>
+                    ✓ Dùng để nhâm nhi hay có thể thưởng thức với cơm hoặc tạo thành gỏi mực xé chua ngọt siêu thần thánh.&nbsp;<br>
+                    ✓ Nhỏ gọn, tiện lợi có thể dùng để mang theo khi đi học, picnic ở nhà ngồi không tán gẫu với bạn bè.</p>
+                    <figure class="image"><img class="format-img" src="https://vinafood.vn/wp-content/uploads/2020/07/mon-kho-ga-la-chanh.jpg" alt="Khô gà lá chanh món ăn tốt cho sức khỏe gia đình"></figure>
+                    <p>&nbsp;</p><p>- Hướng dẫn sử dụng: Dùng ăn trực tiếp.&nbsp;<br>- Hướng dẫn bảo quản: Nhiệt độ thường</p>',
                 ],
                 [
                     'prd_code' => 'SP2',

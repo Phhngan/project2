@@ -24,7 +24,7 @@
         </td>
     </tr>
     <tr>
-        <th>Giảm giá: </th>
+        <th>Giảm giá (%): </th>
         <td>
             <p>{{$product->prd_discount}}</p>
         </td>
@@ -36,7 +36,7 @@
         </td>
     </tr>
     <tr>
-        <th>Khối lượng: </th>
+        <th>Khối lượng (gam): </th>
         <td>
             <p>{{$product->prd_weigh}}g</p>
         </td>

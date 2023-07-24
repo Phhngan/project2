@@ -190,10 +190,10 @@ color:grey;
                         <input type='text' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' />
                         <input type='button' value='+' class='qtyplus plus' field='quantity' />
                         <br><br>
-                        <button type="submit" class="btn-add-to-cart" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white">Thêm vào giỏ</button>
+                        <button type="submit" class="btn-add-to-cart" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white;border:none;">Thêm vào giỏ</button>
                     </form>
+                    <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
                 </div>
-                <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
             <?php } ?>
             @endif
             <?php

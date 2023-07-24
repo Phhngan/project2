@@ -23,7 +23,7 @@
             <p>{{$salesInvoiceDetail->prd_code}}</p>
         </td>
         <td>
-            <a href="{{url('/admin/products/'.$salesInvoiceDetail->prd_id)}}" style="text-decoration:none;color:black;">
+            <a href="{{url('/admin/products/'.$salesInvoiceDetail->prd_id)}}" class="text-sp">
                 <p>{{$salesInvoiceDetail->prd_name}}</p>
             </a>
         </td>
