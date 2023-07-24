@@ -72,7 +72,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'use_lastName' => 'Nguyễn Văn',
-                'name' => 'Huy',
+                'name' => 'Bách',
                 'use_gender' => 1,
                 'email' => 'nguyenvanb@gmail.com',
                 'use_phone' => '0367123283',

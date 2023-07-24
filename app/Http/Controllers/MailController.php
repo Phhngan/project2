@@ -57,31 +57,12 @@ class MailController extends Controller
 </div>
             <br>
             <div style="background-color: #F8DEDF;width: 80%;margin-left: auto;margin-right: auto;">
-              <p>Cảm ơn bạn đã mua hàng tại SnackStore!</p>
-              <p>Đơn hàng số ' . $sal_id . ' đã được đặt hàng thành công.</p>
+              <p><strong>Cảm ơn bạn đã mua hàng tại SnackStore!</strong></p>
+              <p>Đơn hàng số <strong>' . $sal_id . '</strong> đã được đặt hàng thành công.</p>
               <p>Ngày đặt hàng: ' . $sal_date . '</p>
-              <p>Tổng tiền đơn hàng: ' . $sal_total . '</p>
+              <p>Tổng tiền đơn hàng: ' . $sal_total . ' VND</p>
               <p>Địa chỉ: ' . $address . '</p>
               <p>Theo dõi đơn hàng <a href="http://127.0.0.1:8000/client/invoices">tại đây</a></p>
-              <hr>
-              <label><strong>Sản phẩm:</strong></label><br>
-              <br>
-              <table style="width:100%;text-align:center;border: 1px solid black;border-collapse: collapse;">
-                <thead>
-                  <th style="border: 1px solid black;border-collapse: collapse;">Sản phẩm</th>
-                  <th style="border: 1px solid black;border-collapse: collapse;">Số lượng</th>
-                  <th style="border: 1px solid black;border-collapse: collapse;">Giá tiền</th>
-                </thead>
-                <tbody>
-                  <td style="border: 1px solid black;border-collapse: collapse;"> Khô gà </td>
-                  <td style="border: 1px solid black;border-collapse: collapse;"> 5 </td>
-                  <td style="border: 1px solid black;border-collapse: collapse;"> 50000 </td>
-                </tbody>
-              </table>
-              <hr>
-                <p><strong>Thành tiền:</strong><span style="margin-left:45px;">10000</span></p>
-                <p><strong>Phí vận chuyển:</strong><span style="margin-left:17px;">10000</span></p>
-                <p><strong>Số tiền thanh toán:</strong><span>10000</span></p>
             </div>
             ';
 

@@ -88,6 +88,27 @@ class ImportInvoicesDatabase extends Seeder
                     'imp_total' => 5750000,
                     'imp_note' => 'Nguyễn Thái Hưng',
                 ],
+                [
+                    'unit_id' => 6,
+                    'use_id' => 5,
+                    'imp_date' => '2023/07/20',
+                    'imp_total' => 2200000,
+                    'imp_note' => 'Nguyễn Thái Nam',
+                ],
+                [
+                    'unit_id' => 6,
+                    'use_id' => 5,
+                    'imp_date' => '2023/07/21',
+                    'imp_total' => 2500000,
+                    'imp_note' => 'Nguyễn Thái Nam',
+                ],
+                [
+                    'unit_id' => 6,
+                    'use_id' => 2,
+                    'imp_date' => '2023/07/24',
+                    'imp_total' => 3600000,
+                    'imp_note' => 'Nguyễn Thái Hưng',
+                ],
             ]
         );
     }
