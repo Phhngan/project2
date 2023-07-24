@@ -68,9 +68,9 @@ margin: auto;
 
 <div class="banner-gioi-thieu">
     <h2 class="text-center">Giới thiệu</h2>
-    <p class="text-center">Snack là website cung cấp các sản phẩm nhập khẩu trực tiếp từ Châu Âu, Mỹ, Đức, Hàn, Nhật...</p>
+    <p class="text-center">Snack là website cung cấp các sản phẩm đồ ăn nhập khẩu trực tiếp từ Châu Âu, Mỹ, Đức, Hàn, Nhật...</p>
     <p class="text-center">Với mong muốn mang đến những điều tốt đẹp nhất
-        cho gia đình với những thiết bị cao cấp, an toàn và tiện lợi...</p>
+        cho khách hàng với những thực phẩm an toàn và tiện lợi...</p>
 </div>
 
 <div class="row">
@@ -82,7 +82,7 @@ margin: auto;
     <div class="col-4">
         <i class="fas fa-heart icon-gioithieu"></i>
         <h3 class="text-center">Chu đáo tận tình</h3>
-        <p class="text-center">Tư vấn rõ ràng sản phẩm về thông tin, chế độ bảo hành… Tận tâm chăm sóc khách hàng từ những điều nhỏ nhặt nhất. Sẵn sàng phục vụ 24/7 khi khách hàng cần.</p>
+        <p class="text-center">Tư vấn rõ ràng sản phẩm về thông tin, chính sách mua hàng… Tận tâm chăm sóc khách hàng từ những điều nhỏ nhặt nhất. Sẵn sàng phục vụ khi khách hàng cần.</p>
     </div>
     <div class="col-4">
         <i class="fas fa-handshake icon-gioithieu"></i>
@@ -121,7 +121,7 @@ margin: auto;
 <div class="container-item">
     <div class="row">
         <div class="column-66">
-            <h3>VẬN CHUYỂN VÀ LẮP ĐẶT TOÀN QUỐC</h3>
+            <h3>VẬN CHUYỂN TOÀN QUỐC</h3>
             <p>Hiện nay tất cả các sản phẩm Snack đang kinh doanh được cung cấp trên toàn quốc và bán online.</p>
         </div>
         <div class="column-33">

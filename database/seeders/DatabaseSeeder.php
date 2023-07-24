@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call((VouchersDatabase::class));
         $this->call((SalesInvoicesDatabase::class));
         $this->call((SalesInvoiceDetailsDatabase::class));
+        $this->call((NewsDatabase::class));
+        $this->call((CommentsDatabase::class));
     }
 }

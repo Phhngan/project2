@@ -97,9 +97,14 @@ opacity: 0.8;
             <p style="font-size:15px; margin-left: 0px; opacity: 0.8;">Các Chính Sách,Quy Định Chung Khi Mua Hàng và cách sử dụng xu</p>
         </div>
 
-        <div class="card-tt">
-            <h3>Follow Me</h3>
-            <p>Some text..</p>
+        <div class="card-tt" style="text-align:center;">
+            <h3>Theo dõi MXH</h3>
+            <a href="https://www.facebook.com/profile.php?id=100094047769737" target="_blank" >
+                        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/facebook.png?raw=true" height="45px">
+            </a>
+            <a href="https://www.instagram.com/chester.hanoi/" target="_blank" >
+                        <img src="https://github.com/Phhngan/snack_images/blob/master/icon/instagram.png?raw=true" height="45px">
+            </a>
         </div>
     </div>
 </div>
