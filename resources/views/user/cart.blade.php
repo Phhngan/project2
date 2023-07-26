@@ -79,7 +79,7 @@ margin: 0;
                 <td>
                     <input type="hidden" name="car_ids[]" value='{{$product->car_id}}'>
                     <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                    <input type='number' name='quantities[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' data-car-id='{{$product->car_id}}' />
+                    <input type='number' name='quantities[]' min='1' max='{{$quantity}}' value='{{$product->car_quantity}}' class='qty' data-car-id='{{$product->car_id}}' required/>
                     <input type='button' value='+' class='qtyplus plus' field='quantity' />
                 </td>
                 <td>

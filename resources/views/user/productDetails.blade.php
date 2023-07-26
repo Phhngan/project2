@@ -193,7 +193,7 @@ margin: 0;
                     <form id='form-quantity' method='POST' class='quantity' action="/{{$product->prd_id}}/addCartQuantity">
                         @csrf
                         <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                        <input type='number' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' />
+                        <input type='number' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' required/>
                         <input type='button' value='+' class='qtyplus plus' field='quantity' />
                         <br><br>
                         <div class="action popup" onclick="addToCart()" style="width: fit-content;">
