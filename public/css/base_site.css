@@ -571,3 +571,8 @@ margin-left: 50px;
   margin-left: auto;
   margin-right: auto;
 }
+.text-sp{
+  color:black;
+  text-decoration: none;
+  font-weight: 500;
+}

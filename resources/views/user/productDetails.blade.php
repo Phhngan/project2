@@ -144,6 +144,12 @@ width: 70%;
 color:grey;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
 @endsection
 
 @section('content')
@@ -183,18 +189,19 @@ color:grey;
             <?php
             if (Illuminate\Support\Facades\Auth::check() == true) {
             ?>
-                
+
                     <form id='form-quantity' method='POST' class='quantity' action="/{{$product->prd_id}}/addCartQuantity">
                         @csrf
                         <input type='button' value='-' class='qtyminus minus' field='quantity' />
                         <input type='number' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' />
                         <input type='button' value='+' class='qtyplus plus' field='quantity' />
                         <br><br>
-                    <div class="action popup" onclick="addToCart()" style="width: fit-content;">
-                        <button type="submit" class="btn-add-to-cart" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white;border:none;">Thêm vào giỏ</button>
-                        <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
-                    </div>
+                        <div class="action popup" onclick="addToCart()" style="width: fit-content;">
+                            <button type="submit" class="btn-add-to-cart" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white;border:none;">Thêm vào giỏ</button>
+                            <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                        </div>
                     </form>
+
                     
             <?php } ?>
             @endif
@@ -499,10 +506,25 @@ color:grey;
 </script>
 
 <script>
-    // When the user clicks on div, open the popup
-    function addToCart() {
+    // Function to show the popup notification
+    function showPopup() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
+        setTimeout(function() {
+            popup.classList.toggle("show");
+        }, 2000); // Hide the popup after 2 seconds (adjust as needed)
+    }
+
+    // When the user clicks on div, check if the quantity input is valid and show the popup if it is
+    function addToCart() {
+        var quantityInput = document.querySelector('input[name="quantity"]');
+        var quantity = parseInt(quantityInput.value);
+        var min = parseInt(quantityInput.getAttribute('min'));
+        var max = parseInt(quantityInput.getAttribute('max'));
+
+        if (Number.isInteger(quantity) && quantity >= min && quantity <= max) {
+            showPopup();
+        }
     }
 </script>
 
