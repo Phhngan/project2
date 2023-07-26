@@ -46,6 +46,10 @@ class EmployeeController extends Controller
         $use_gender = $request->get('gender');
         $email = $request->get('email');
         $use_phone = $request->get('phone');
+        $use_province = $request->get('province');
+        $use_district = $request->get('district');
+        $use_town = $request->get('town');
+        $use_detailAddress = $request->get('detailAddress');
         $password = $request->get('password');
         $pos_id = $request->get('position');
 
@@ -56,6 +60,10 @@ class EmployeeController extends Controller
                 'use_gender' => $use_gender,
                 'email' => $email,
                 'use_phone' => $use_phone,
+                'use_province' => $use_province,
+                'use_district' => $use_district,
+                'use_town' => $use_town,
+                'use_detailAddress' => $use_detailAddress,
                 'password' => Hash::make($password),
                 'pos_id' => $pos_id,
                 'use_gold' => 0

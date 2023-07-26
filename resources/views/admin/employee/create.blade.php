@@ -32,30 +32,30 @@
     <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" required>
     <br>
     <div class="mb-3">
-            <label for="province" class="form-label">Tỉnh thành:</label>
-            <select class="form-control" id="city" name="province" required>
-                <option value="" selected>Chọn tỉnh thành</option>
-            </select>
-        </div>
+        <label for="province" class="form-label">Tỉnh thành:</label>
+        <select class="form-control" id="city" name="province" required>
+            <option value="" selected>---Chọn tỉnh thành---</option>
+        </select>
+    </div>
 
-        <div class="mb-3">
-            <label for="district">Quận/huyện:</label>
-            <select class="form-control" id="district" name="district" required>
-                <option value="" selected>Chọn quận huyện</option>
-            </select>
-        </div>
+    <div class="mb-3">
+        <label for="district">Quận/huyện:</label>
+        <select class="form-control" id="district" name="district" required>
+            <option value="" selected>---Chọn quận huyện---</option>
+        </select>
+    </div>
 
-        <div class="mb-3">
-            <label for="town">Phường/xã:</label>
-            <select class="form-control" id="ward" name="town" required>
-                <option value="" selected>Chọn phường xã</option>
-            </select>
-        </div>
+    <div class="mb-3">
+        <label for="town">Phường/xã:</label>
+        <select class="form-control" id="ward" name="town" required>
+            <option value="" selected>---Chọn phường xã---</option>
+        </select>
+    </div>
 
-        <div class="mb-3">
-            <label for="detail" class="form-label">Thôn/Đường/Số nhà:</label>
-            <input name="detailAddress" type="text" class="form-control" id="detail" aria-describedby="emailHelp" required>
-        </div>
+    <div class="mb-3">
+        <label for="detail" class="form-label">Thôn/Đường/Số nhà:</label>
+        <input name="detailAddress" type="text" class="form-control" id="detail" aria-describedby="emailHelp" required>
+    </div>
 
     <label for="password">Mật khẩu:</label>
     <br>

@@ -317,6 +317,7 @@ class AdminController extends Controller
         if (Hash::check($oldPass, $user->password)) {
             if ($newPass1 == $newPass2) {
                 DB::table('Users')->where('id', $user->id)->update(['password' => Hash::make($newPass1)]);
+                Auth::logout();
                 return redirect('login');
             } else {
                 return view('admin/setting.changePass', ['error' => 'Mật khẩu mới không trùng nhau']);
