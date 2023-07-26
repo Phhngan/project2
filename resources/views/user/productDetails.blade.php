@@ -183,17 +183,19 @@ color:grey;
             <?php
             if (Illuminate\Support\Facades\Auth::check() == true) {
             ?>
-                <div class="action popup" onclick="addToCart()" style="width: fit-content;">
+                
                     <form id='form-quantity' method='POST' class='quantity' action="/{{$product->prd_id}}/addCartQuantity">
                         @csrf
                         <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                        <input type='text' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' />
+                        <input type='number' name='quantity' value='{{$quantityAdd}}' min='1' max='{{$quantity}}' class='qty' />
                         <input type='button' value='+' class='qtyplus plus' field='quantity' />
                         <br><br>
+                    <div class="action popup" onclick="addToCart()" style="width: fit-content;">
                         <button type="submit" class="btn-add-to-cart" style="text-decoration:none;background-color:#5168A1;padding:8px;border-radius:5px;color:white;border:none;">Thêm vào giỏ</button>
+                        <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
+                    </div>
                     </form>
-                    <span class="popuptext" id="myPopup">Đã thêm vào giỏ</span>
-                </div>
+                    
             <?php } ?>
             @endif
             <?php

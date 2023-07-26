@@ -229,7 +229,7 @@ class SalesInvoicesDatabase extends Seeder
                 ],
                 [
                     'use_id' => 8,
-                    'sal_date' => '2023/12/26',
+                    'sal_date' => '2022/12/26',
                     'sal_total' => 122000,
                     'ship_id' => 2,
                     'sal_province' => 'Quảng Ninh',

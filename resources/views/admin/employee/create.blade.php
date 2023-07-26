@@ -31,6 +31,32 @@
     <br>
     <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" required>
     <br>
+    <div class="mb-3">
+            <label for="province" class="form-label">Tỉnh thành:</label>
+            <select class="form-control" id="city" name="province" required>
+                <option value="" selected>Chọn tỉnh thành</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="district">Quận/huyện:</label>
+            <select class="form-control" id="district" name="district" required>
+                <option value="" selected>Chọn quận huyện</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="town">Phường/xã:</label>
+            <select class="form-control" id="ward" name="town" required>
+                <option value="" selected>Chọn phường xã</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="detail" class="form-label">Thôn/Đường/Số nhà:</label>
+            <input name="detailAddress" type="text" class="form-control" id="detail" aria-describedby="emailHelp" required>
+        </div>
+
     <label for="password">Mật khẩu:</label>
     <br>
     <input name="password" type="text" class="form-control" placeholder="Mật khẩu" required>
@@ -61,5 +87,104 @@
         .catch(error => {
             console.error(error);
         });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var citis = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+    };
+    var promise = axios(Parameter);
+    promise.then(function(result) {
+        renderCity(result.data);
+    });
+
+    function renderCity(data) {
+        for (const x of data) {
+            citis.options[citis.options.length] = new Option(x.Name, x.Id);
+        }
+        citis.onchange = function() {
+            district.length = 1;
+            ward.length = 1;
+            if (this.value != "") {
+                const result = data.filter(n => n.Id === this.value);
+
+                for (const k of result[0].Districts) {
+                    district.options[district.options.length] = new Option(k.Name, k.Id);
+                }
+            }
+        };
+        district.onchange = function() {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === citis.value);
+            if (this.value != "") {
+                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+
+                for (const w of dataWards) {
+                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
+                }
+            }
+        };
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var citis = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+    };
+    var promise = axios(Parameter);
+    promise.then(function(result) {
+        renderCity(result.data);
+    });
+
+    function renderCity(data) {
+        for (const x of data) {
+            var opt = document.createElement('option');
+            opt.value = x.Name;
+            opt.text = x.Name;
+            opt.setAttribute('data-id', x.Id);
+            citis.options.add(opt);
+        }
+        citis.onchange = function() {
+            district.length = 1;
+            ward.length = 1;
+            if (this.options[this.selectedIndex].dataset.id != "") {
+                const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
+
+                for (const k of result[0].Districts) {
+                    var opt = document.createElement('option');
+                    opt.value = k.Name;
+                    opt.text = k.Name;
+                    opt.setAttribute('data-id', k.Id);
+                    district.options.add(opt);
+                }
+            }
+        };
+        district.onchange = function() {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === citis.options[citis.selectedIndex].dataset.id);
+            if (this.options[this.selectedIndex].dataset.id != "") {
+                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.options[this.selectedIndex].dataset.id)[0].Wards;
+
+                for (const w of dataWards) {
+                    var opt = document.createElement('option');
+                    opt.value = w.Name;
+                    opt.text = w.Name;
+                    opt.setAttribute('data-id', w.Id);
+                    wards.options.add(opt);
+                }
+            }
+        };
+    }
 </script>
 @endsection

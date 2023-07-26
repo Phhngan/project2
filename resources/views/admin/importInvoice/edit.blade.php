@@ -59,7 +59,7 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         for ($i = 0; $i < $count; $i++) {
         ?>
             <tr>
-                <td style="text-align:center;"><input type="checkbox"></td>
+                <td></td>
                 <td>
                     <!-- <input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm" value="{{$prdID[$i]}}"> -->
                     <?php
@@ -78,9 +78,8 @@ $products = Illuminate\Support\Facades\DB::table('Products')
         <?php } ?>
     </table>
     <br>
-    <input type="button" class="btn btn-success" value="Thêm sản phẩm" onclick="row()">
-    <input type="button" class="btn btn-danger" value="Xóa" onclick="del()">
-    <br><br>
+    <!-- <input type="button" class="btn btn-success" value="Thêm sản phẩm" onclick="row()">
+    <input type="button" class="btn btn-danger" value="Xóa" onclick="del()"> -->
     <button type="submit" class="btn btn-primary" onclick="processForm()">Cập nhật</button>
 </form>
 @endforeach
